@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "六合智慧教育",
+    "onReachBottomDistance": 10,
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-loading": "tdesign-miniprogram/loading/loading",
+        "t-image": "/components/webp-image/index",
+        "t-toast": "tdesign-miniprogram/toast/toast"
+    }
+}
