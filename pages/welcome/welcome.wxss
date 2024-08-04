@@ -1,23 +1,14 @@
 
 /* Code by Joenix */
-.home-page-cover {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999;
-    position: fixed;
+.welcome-page-cover {
+    width: 100vw;
+    height: 100vh;
   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    width: 100vw;
-    height: 100vh;
   
-    background-color: #fff;
-    background-image: url('https://oss.vue-scaff.com/lhdd/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -38,20 +29,30 @@
     }
   }
   
-  .home-page-title,
-  .home-page-title image {
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateX(-30%);
+      }
+      to {
+          opacity: 1;
+          transform: translateX(0);
+      }
+  }
+  
+  .welcome-page-title,
+  .welcome-page-title image {
     width: 180rpx;
     height: 1000rpx;
   }
   
-  .home-page-title {
-    transform: translateY(-10%);
+  .welcome-page-title {
+	animation: fadeIn 1s ease-out;
   }
   
-  .home-page-entry {
-    transform: translateY(-10vw);
-  
+  .welcome-page-entry {
     width: 50vw;
+
     background: linear-gradient(145deg, #d0b66d, #b59b4b) !important; /* 更深更黄的渐变背景 */
     border: 2px solid #664e2c; /* 深棕色边框 */
     color: #664e2c !important; /* 深色文字 */

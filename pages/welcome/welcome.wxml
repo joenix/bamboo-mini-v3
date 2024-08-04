@@ -1,7 +1,7 @@
-<view class="home-page-cover">
-  <t-image class="home-page-title" src="http://oss.vue-scaff.com/lhdd/title.png" mode="aspectFill" aria-label="六合小站">
+<view class="welcome-page-cover" style="background-image: url(https://oss.vue-scaff.com/lhdd/bg.jpg)">
+  <t-image class="welcome-page-title" src="http://oss.vue-scaff.com/lhdd/title.png" mode="aspectFill" aria-label="六合小站">
     <t-loading slot="loading" theme="spinner" size="40rpx" loading />
   </t-image>
 
-  <t-button t-class="home-page-entry" size="large">开始点读</t-button>
+  <t-button t-class="welcome-page-entry" size="large" bindtap="switchToHome">开始点读</t-button>
 </view>
