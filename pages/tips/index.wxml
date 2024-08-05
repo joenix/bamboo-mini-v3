@@ -1,4 +1,4 @@
-<t-user-center-card
+<!-- <t-user-center-card
   userInfo="{{userInfo}}"
   isPhoneHide="{{true}}"
   name-class="custom-name-class"
@@ -44,4 +44,4 @@
     <view class="popup-close" bind:tap="closeMakePhone">取消</view>
   </view>
 </t-popup>
-<t-toast id="t-toast" />
+<t-toast id="t-toast" /> -->

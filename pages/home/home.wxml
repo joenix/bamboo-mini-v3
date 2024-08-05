@@ -1,58 +1,40 @@
 <view style="text-align: center; color: #b9b9b9" wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
+
+<!-- 头部容器 -->
 <view class="home-page-header">
-  <view class="search" bind:tap="navToSearchPage">
-    <t-search
-      t-class-input="t-search__input"
-      t-class-input-container="t-search__input-container"
-      placeholder="iphone 13 火热发售中"
-      leftIcon=""
-      disabled
-    >
-      <t-icon slot="left-icon" prefix="wr" name="search" size="40rpx" color="#bbb" />
-    </t-search>
-  </view>
+  <!-- 轮播 -->
   <view class="swiper-wrap">
-    <t-swiper
-      wx:if="{{imgSrcs.length > 0}}"
-      current="{{current}}"
-      autoplay="{{autoplay}}"
-      duration="{{duration}}"
-      interval="{{interval}}"
-      navigation="{{navigation}}"
-      imageProps="{{swiperImageProps}}"
-      list="{{imgSrcs}}"
-      bind:click="navToActivityDetail"
-    />
+    <t-swiper wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
   </view>
 </view>
+
+<!-- 主页面容器 -->
 <view class="home-page-container">
-  <view class="home-page-tabs">
-    <t-tabs
-      t-class="t-tabs"
-      t-class-active="tabs-external__active"
-      t-class-item="tabs-external__item"
-      defaultValue="{{0}}"
-      space-evenly="{{false}}"
-      bind:change="tabChangeHandle"
-    >
-      <t-tab-panel
-        wx:for="{{tabList}}"
-        wx:for-index="index"
-        wx:key="index"
-        label="{{item.text}}"
-        value="{{item.key}}"
-      />
-    </t-tabs>
+  <!-- 金刚位 -->
+  <view class="block">
+    <t-grid column="{{4}}">
+      <t-grid-item text="学习咨询" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='1' />
+      <t-grid-item text="六合简书" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='2' />
+      <t-grid-item text="直播预告" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='3' />
+      <t-grid-item text="学习商城" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='4' />
+    </t-grid>
   </view>
 
-  <goods-list
-    wr-class="goods-list-container"
-    goodsList="{{goodsList}}"
-    bind:click="goodListClickHandle"
-    bind:addcart="goodListAddCartHandle"
-  />
-  <load-more list-is-empty="{{!goodsList.length}}" status="{{goodsListLoadStatus}}" bind:retry="onReTry" />
-  <t-toast id="t-toast" />
+  <!-- 点读列表 -->
+  <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" />
+
+  <!-- 最新咨询 -->
+  <view class="news-container">
+    <view class="news-header">
+      <view class="news-header-title">最新咨询</view>
+      <view class="news-header-more" bindtap='jump2information'>查看更多></view>
+    </view>
+    <view>
+      <t-cell description="我是第1条咨询" align="top" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='1' />
+      <t-cell description=" 我是第2条咨询" align="top" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='2' />
+    </view>
+
+  </view>
 </view>
