@@ -1,0 +1,66 @@
+/* pages/sign/sign.wxss */
+.sign-header-container {
+  border: 1px solid #333;
+  position: relative;
+  height: 400rpx;
+  margin-bottom: 300rpx;
+}
+
+.sign-header-container .sign-detail {
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: orange;
+}
+
+
+.sign-header-container .sign-detail .day {
+  display: flex;
+  align-items: baseline;
+}
+
+.sign-header-container .sign-detail .num {
+  font-size: 60rpx;
+  margin-right: 10rpx;
+}
+
+.sign-header-container .tips {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+
+.sign-header-container .sign-module {
+  width: 80%;
+  height: 400rpx;
+  border: 1rpx solid #ccc;
+  background: #fff;
+  position: absolute;
+  border-radius: 6rpx;
+  left: 10%;
+  top: 260rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-header-container .sign-module .sign-btn {
+  width: 200rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border: 2rpx solid orange;
+  background: orange;
+  border-radius: 6rpx;
+  color: #fff;
+  margin-top: 260rpx;
+}
+
+.sign-task-container .title {
+  line-height: 60rpx;
+  padding-left: 30rpx;
+}

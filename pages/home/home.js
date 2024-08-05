@@ -186,14 +186,12 @@ Page({
       }
     } = e
 
-    console.log('type', type)
-
     switch (type) {
       case '1':
         // 学习咨询
-        // wx.navigateTo({
-        //   url: 'url',
-        // })
+        wx.navigateTo({
+          url: "/pages/information/list/list",
+        })
         break
       case '2':
         // 六合简书
@@ -203,7 +201,22 @@ Page({
         break
       case '4':
         // 学习商城
+        wx.navigateTo({
+          url: `/pages/webview/webview?url=${encodeURIComponent('http ://www.baidu.com')}`
+        });
         break
     }
-  }
+  },
+
+  // 签到
+  sign() {
+    wx.navigateTo({
+      url: "/pages/sign/sign"
+    })
+  },
+
+  // 关注
+  follow() {
+    console.log('关注')
+  },
 });

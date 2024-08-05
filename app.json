@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/sign/sign",
+    "pages/webview/webview",
     "pages/usercenter/index",
     "pages/book/index",
     "pages/book/ranking/ranking",

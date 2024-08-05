@@ -1,8 +1,8 @@
 <!-- 最新咨询 -->
 <view class="news-container">
   <view>
-    <t-cell description="【新闻】我是第1条咨询" align="top" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='1' />
-    <t-cell description="【开班通知】我是第2条咨询" align="top" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='2' />
+    <t-cell description="【新闻】我是第1条咨询" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='1' />
+    <t-cell description="【开班通知】我是第2条咨询" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='2' />
   </view>
 
 </view>

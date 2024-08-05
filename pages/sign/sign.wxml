@@ -1,0 +1,29 @@
+<view class="sign-contaier">
+  <!-- 头部信息 -->
+  <view class="sign-header-container">
+    <!-- 签到详情 -->
+    <view class="sign-detail">
+      <view class="title">已经连续签到</view>
+      <view class="day"><text class="num">1</text>天</view>
+    </view>
+
+    <!-- 签到说明 -->
+    <view class="tips">签到说明
+      <t-icon name="help" size="24rpx" />
+    </view>
+
+    <!-- 签到模块 -->
+    <view class="sign-module">
+      <view class="sign-btn">立即签到</view>
+    </view>
+  </view>
+  <!-- 日常任务 -->
+  <view class="sign-task-container">
+    <view class="title">日常任务</view>
+    <view class="task-list-container">
+      <t-cell title='每日点读' description="学分+2" note='已完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
+      <t-cell title='每日分享' description="学分+5" note='未完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
+      <t-cell title='每日浏览咨询' description="学分+10" note='已完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
+    </view>
+  </view>
+</view>
