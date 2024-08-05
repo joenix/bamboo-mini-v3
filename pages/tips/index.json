@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "贴士集",
-  "navigationStyle": "custom",
   "usingComponents": {
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-icon": "tdesign-miniprogram/icon/icon",

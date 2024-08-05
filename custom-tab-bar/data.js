@@ -11,7 +11,7 @@ export default [{
   {
     icon: 'cart',
     text: '贴士集',
-    url: 'pages/cart/index',
+    url: 'pages/tips/index',
   },
   {
     icon: 'person',
