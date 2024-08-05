@@ -6,7 +6,7 @@ export default [{
   {
     icon: 'sort',
     text: '点读',
-    url: 'pages/goods/category/index',
+    url: 'pages/book/index',
   },
   {
     icon: 'cart',

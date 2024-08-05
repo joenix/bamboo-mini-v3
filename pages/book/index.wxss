@@ -1,0 +1,31 @@
+/* pages/book/book.wxss */
+.is-holiday:not(.t-calendar__dates-item--selected) {
+  color: #e34d59 !important;
+}
+
+.last-day {
+  background-color: #ccc;
+}
+
+.t-calendar__months {
+  height: 40vh !important;
+}
+
+.t-calendar__title {
+  display: none !important;
+}
+
+.t-calendar__dates-item {
+  height: 98rpx !important;
+  margin-top: 4rpx !important;
+}
+
+.book-container {
+  padding: 0 30rpx;
+}
+
+.calendar-container .calendar-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+}

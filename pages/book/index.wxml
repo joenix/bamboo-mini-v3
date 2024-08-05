@@ -1,0 +1,15 @@
+<!--pages/book/book.wxml-->
+<view class="book-container">
+  <!-- 日历 -->
+  <view class="calendar-container">
+    <view class="calendar-title">六合点读日历</view>
+    <t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" format="{{format}}" />
+  </view>
+  <!-- 榜单 -->
+  <t-cell title="点读排名-第--名" hover arrow leftIcon="lock-on" note="完整榜单" bindtap='jump2rank' />
+
+  <!-- 指法教学 -->
+  <t-cell title="六合竹简点读执法教学" hover arrow leftIcon="lock-on" note="开始学习" />
+
+  <!-- 图书列表 -->
+</view>

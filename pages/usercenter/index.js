@@ -1,46 +1,63 @@
-import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
+import {
+  fetchUserCenter
+} from '../../services/usercenter/fetchUsercenter';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 const menuData = [
-  [
-    {
-      title: '收货地址',
-      tit: '',
+  [{
+      title: '每日签到',
+      tit: '去签到',
       url: '',
       type: 'address',
+      leftIcon: "tips"
     },
     {
-      title: '优惠券',
+      title: '我的学分',
+      tit: '2733',
+      url: '',
+      type: 'address',
+      leftIcon: "education"
+    },
+    {
+      title: '学分兑换',
+      tit: '去签到',
+      url: '',
+      type: 'address',
+      leftIcon: "currency-exchange"
+    },
+    {
+      title: '资料更新',
+      tit: '报告即将生成,请尽快更新个人资料',
+      url: '',
+      type: 'address',
+      leftIcon: "notification"
+    },
+    {
+      title: '我的报告',
+      tit: '月度报告已生成',
+      url: '',
+      type: 'address',
+      leftIcon: "chat-bubble-smile"
+    },
+    {
+      title: '意见反馈',
       tit: '',
       url: '',
       type: 'coupon',
+      leftIcon: "send"
     },
     {
-      title: '积分',
+      title: '关于我们',
       tit: '',
       url: '',
       type: 'point',
+      leftIcon: "member"
     },
   ],
-  [
-    {
-      title: '帮助中心',
-      tit: '',
-      url: '',
-      type: 'help-center',
-    },
-    {
-      title: '客服热线',
-      tit: '',
-      url: '',
-      type: 'service',
-      icon: 'service',
-    },
-  ],
+
 ];
 
-const orderTagInfos = [
-  {
+const orderTagInfos = [{
     title: '待付款',
     iconName: 'wallet',
     orderNum: 0,
@@ -144,12 +161,18 @@ Page({
     );
   },
 
-  onClickCell({ currentTarget }) {
-    const { type } = currentTarget.dataset;
+  onClickCell({
+    currentTarget
+  }) {
+    const {
+      type
+    } = currentTarget.dataset;
 
     switch (type) {
       case 'address': {
-        wx.navigateTo({ url: '/pages/usercenter/address/list/index' });
+        wx.navigateTo({
+          url: '/pages/usercenter/address/list/index'
+        });
         break;
       }
       case 'service': {
@@ -177,7 +200,9 @@ Page({
         break;
       }
       case 'coupon': {
-        wx.navigateTo({ url: '/pages/coupon/coupon-list/index' });
+        wx.navigateTo({
+          url: '/pages/coupon/coupon-list/index'
+        });
         break;
       }
       default: {
@@ -197,22 +222,32 @@ Page({
     const status = e.detail.tabType;
 
     if (status === 0) {
-      wx.navigateTo({ url: '/pages/order/after-service-list/index' });
+      wx.navigateTo({
+        url: '/pages/order/after-service-list/index'
+      });
     } else {
-      wx.navigateTo({ url: `/pages/order/order-list/index?status=${status}` });
+      wx.navigateTo({
+        url: `/pages/order/order-list/index?status=${status}`
+      });
     }
   },
 
   jumpAllOrder() {
-    wx.navigateTo({ url: '/pages/order/order-list/index' });
+    wx.navigateTo({
+      url: '/pages/order/order-list/index'
+    });
   },
 
   openMakePhone() {
-    this.setData({ showMakePhone: true });
+    this.setData({
+      showMakePhone: true
+    });
   },
 
   closeMakePhone() {
-    this.setData({ showMakePhone: false });
+    this.setData({
+      showMakePhone: false
+    });
   },
 
   call() {
@@ -222,9 +257,13 @@ Page({
   },
 
   gotoUserEditPage() {
-    const { currAuthStep } = this.data;
+    const {
+      currAuthStep
+    } = this.data;
     if (currAuthStep === 2) {
-      wx.navigateTo({ url: '/pages/usercenter/person-info/index' });
+      wx.navigateTo({
+        url: '/pages/usercenter/person-info/index'
+      });
     } else {
       this.fetUseriInfoHandle();
     }
@@ -232,7 +271,10 @@ Page({
 
   getVersionInfo() {
     const versionInfo = wx.getAccountInfoSync();
-    const { version, envVersion = __wxConfig } = versionInfo.miniProgram;
+    const {
+      version,
+      envVersion = __wxConfig
+    } = versionInfo.miniProgram;
     this.setData({
       versionNo: envVersion === 'release' ? version : envVersion,
     });

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "点读",
+  "backgroundTextStyle": "light",
+  "component": true,
+  "usingComponents": {
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-cell": "tdesign-miniprogram/cell/cell"
+  }
+}

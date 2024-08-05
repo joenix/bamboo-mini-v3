@@ -1,0 +1,28 @@
+/* pages/book/ranking/ranking.wxss */
+.ranking-list-container {
+  padding: 30rpx 40rpx;
+}
+
+.list-title-container {
+  display: flex;
+  justify-content: space-between;
+  line-height: 60rpx;
+}
+
+.title-rank {
+  font-size: 30rpx;
+  width: 14%;
+  text-align: left;
+}
+
+.title-avator {
+  font-size: 30rpx;
+  flex: 1;
+  text-align: left;
+}
+
+.title-time {
+  font-size: 30rpx;
+  width: 30%;
+  text-align: right;
+}
