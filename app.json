@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/usercenter/index",
     "pages/home/home",
     "pages/sign/sign",
     "pages/webview/webview",
-    "pages/usercenter/index",
     "pages/book/index",
     "pages/book/ranking/ranking",
     "pages/information/detail/detail",
@@ -37,7 +37,13 @@
     "pages/order/delivery-detail/index",
     "pages/order/invoice/index",
     "pages/usercenter/name-edit/index",
-    "pages/information/list"
+    "pages/information/list",
+    "pages/usercenter/suggest/suggest",
+    "pages/usercenter/aboutus/aboutus",
+    "pages/usercenter/report/report",
+    "pages/usercenter/files/files",
+    "pages/usercenter/exchange/exchange",
+    "pages/usercenter/score/score"
   ],
   "tabBar": {
     "custom": true,

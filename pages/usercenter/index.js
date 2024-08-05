@@ -8,49 +8,49 @@ const menuData = [
       title: '每日签到',
       tit: '去签到',
       url: '',
-      type: 'address',
+      type: 'sign',
       leftIcon: "tips"
     },
     {
       title: '我的学分',
       tit: '2733',
       url: '',
-      type: 'address',
+      type: 'score',
       leftIcon: "education"
     },
     {
       title: '学分兑换',
-      tit: '去签到',
+      tit: '',
       url: '',
-      type: 'address',
+      type: 'exchange',
       leftIcon: "currency-exchange"
     },
     {
       title: '资料更新',
       tit: '报告即将生成,请尽快更新个人资料',
       url: '',
-      type: 'address',
+      type: 'files',
       leftIcon: "notification"
     },
     {
       title: '我的报告',
       tit: '月度报告已生成',
       url: '',
-      type: 'address',
+      type: 'report',
       leftIcon: "chat-bubble-smile"
     },
     {
       title: '意见反馈',
       tit: '',
       url: '',
-      type: 'coupon',
+      type: 'suggest',
       leftIcon: "send"
     },
     {
       title: '关于我们',
       tit: '',
       url: '',
-      type: 'point',
+      type: 'aboutus',
       leftIcon: "member"
     },
   ],
@@ -169,26 +169,64 @@ Page({
     } = currentTarget.dataset;
 
     switch (type) {
+      // 签到
+      case 'sign': {
+        wx.navigateTo({
+          url: "/pages/sign/sign",
+        });
+        break;
+      }
+      // 意见反馈 
+      case 'suggest': {
+        wx.navigateTo({
+          url: "/pages/usercenter/suggest/suggest",
+        });
+        break;
+      }
+      // 关于我们 
+      case 'aboutus': {
+        wx.navigateTo({
+          url: "/pages/usercenter/aboutus/aboutus",
+        });
+        break;
+      }
+      // 我的报告  
+      case 'report': {
+        wx.navigateTo({
+          url: "/pages/usercenter/report/report",
+        });
+        break;
+      }
+      // 资料更新  
+      case 'files': {
+        wx.navigateTo({
+          url: "/pages/usercenter/files/files",
+        });
+        break;
+      }
+
+      // 学分兑换 
+      case 'exchange': {
+        wx.navigateTo({
+          url: "/pages/usercenter/exchange/exchange",
+        });
+        break;
+      }
+
+      // 我的学分 
+      case 'score': {
+        wx.navigateTo({
+          url: "/pages/usercenter/score/score",
+        });
+        break;
+      }
       case 'address': {
         wx.navigateTo({
           url: '/pages/usercenter/address/list/index'
         });
         break;
       }
-      case 'service': {
-        this.openMakePhone();
-        break;
-      }
-      case 'help-center': {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '你点击了帮助中心',
-          icon: '',
-          duration: 1000,
-        });
-        break;
-      }
+
       case 'point': {
         Toast({
           context: this,
