@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/information/detail/detail",
+    "pages/information/list/list",
     "pages/welcome/welcome",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
@@ -30,7 +32,8 @@
     "pages/order/fill-tracking-no/index",
     "pages/order/delivery-detail/index",
     "pages/order/invoice/index",
-    "pages/usercenter/name-edit/index"
+    "pages/usercenter/name-edit/index",
+    "pages/information/list"
   ],
   "tabBar": {
     "custom": true,
@@ -40,20 +43,16 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/home/home",
-        "text": "首页"
+        "pagePath": "pages/home/home"
       },
       {
-        "pagePath": "pages/goods/category/index",
-        "text": "点读"
+        "pagePath": "pages/goods/category/index"
       },
       {
-        "pagePath": "pages/cart/index",
-        "text": "贴士集"
+        "pagePath": "pages/cart/index"
       },
       {
-        "pagePath": "pages/usercenter/index",
-        "text": "我的"
+        "pagePath": "pages/usercenter/index"
       }
     ]
   },

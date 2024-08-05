@@ -109,9 +109,7 @@ page {
 }
 
 /* 最新咨询 */
-.news-container {}
-
-.news-header {
+.news-container .news-header {
   display: flex;
   justify-content: space-between;
   font-size: 24rpx;

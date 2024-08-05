@@ -165,15 +165,15 @@ Page({
     console.log('id', id)
 
     if (id) {
-      // 跳转到具体的咨询详情页面
+      // 跳转到咨询详情页面
       wx.navigateTo({
-        url: 'url',
+        url: `/pages/information/detail/detail?id=${id}`,
       })
     }
 
     // 跳转到咨询首页
     wx.navigateTo({
-      url: 'url',
+      url: "/pages/information/list/list",
     })
   },
   // 金刚位跳转

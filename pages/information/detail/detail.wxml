@@ -1,0 +1,2 @@
+<!--pages/information/detail/detail.wxml-->
+<text>咨询详情:{{id}}</text>
