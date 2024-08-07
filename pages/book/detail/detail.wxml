@@ -1,0 +1,17 @@
+<view class="read-detail-container">
+  <view class="header-container">
+    <view class="content-container">
+      <view class="bg">背景 听雪-紫竹调</view>
+      <view class="music">音乐 大自然.mp3</view>
+    </view>
+    <t-button theme="primary" block t-class="changeMusic" bindtap='chooseMusic'>切换音乐</t-button>
+  </view>
+
+  <t-button theme="primary" block t-class="begin" bindtap='beginread'>开始点读</t-button>
+  <view class="tips">点击后开始计时</view>
+</view>
+
+<!-- 音乐选择器 -->
+<t-picker visible="{{musicVisible}}" cancelBtn="取消" confirmBtn="确认" bindchange="musicChange">
+  <t-picker-item options="{{musiceOptions}}"></t-picker-item>
+</t-picker>

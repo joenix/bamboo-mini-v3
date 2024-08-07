@@ -1,0 +1,42 @@
+.read-detail-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.read-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.read-detail-container .header-container {
+  margin-top: 50rpx;
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.read-detail-container .header-container .changeMusic {
+  margin: 0;
+}
+
+.read-detail-container .changeMusic {
+  width: 200rpx;
+}
+
+.read-detail-container .begin {
+  width: 200rpx;
+}
+
+.read-detail-container .begin {
+  position: absolute;
+  bottom: 200rpx;
+}
+
+.read-detail-container .tips {
+  position: absolute;
+  bottom: 120rpx;
+  font-size: 22rpx;
+}

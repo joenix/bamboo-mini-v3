@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "开始点读",
+  "backgroundTextStyle": "light",
+  "component": true,
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item"
+  }
+}

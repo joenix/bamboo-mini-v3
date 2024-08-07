@@ -90,5 +90,17 @@ Page({
     wx.navigateTo({
       url: "/pages/book/ranking/ranking"
     })
+  },
+  beginread(e) {
+    const {
+      currentTarget: {
+        dataset: {
+          id
+        }
+      }
+    } = e
+    wx.navigateTo({
+      url: `/pages/book/detail/detail?id=${id}`
+    })
   }
 })

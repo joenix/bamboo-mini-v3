@@ -12,4 +12,8 @@
   <t-cell title="六合竹简点读执法教学" hover arrow leftIcon="lock-on" note="开始学习" />
 
   <!-- 图书列表 -->
+  <view class="list-container">
+    <t-cell title="三国志" hover arrow leftIcon="lock-on" note="开始点读" data-id="1" bindtap='beginread' />
+    <t-cell title="水浒传" hover arrow leftIcon="lock-on" note="开始点读" data-id="2" bindtap='beginread' />
+  </view>
 </view>

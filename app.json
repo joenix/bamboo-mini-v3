@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/book/detail/detail",
+    "pages/book/index",
+    "pages/tips/index",
     "pages/usercenter/index",
     "pages/usercenter/files/files",
-    "pages/tips/index",
     "pages/tips/detail/detail",
-    "pages/home/home",
     "pages/sign/sign",
     "pages/webview/webview",
-    "pages/book/index",
     "pages/book/ranking/ranking",
     "pages/information/detail/detail",
     "pages/information/list/list",
@@ -46,7 +47,8 @@
     "pages/usercenter/exchange/exchange",
     "pages/usercenter/score/score",
     "pages/home/sixbook/sixbook",
-    "pages/home/notice/notice"
+    "pages/home/notice/notice",
+    "pages/book/time/time"
   ],
   "tabBar": {
     "custom": true,
