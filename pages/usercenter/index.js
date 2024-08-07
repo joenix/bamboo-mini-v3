@@ -317,4 +317,8 @@ Page({
       versionNo: envVersion === 'release' ? version : envVersion,
     });
   },
+
+  loginout() {
+    console.log('loginout')
+  }
 });

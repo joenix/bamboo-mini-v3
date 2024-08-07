@@ -9,4 +9,4 @@
   </view>
 </view>
 
-<t-button theme="primary" block t-class="loginout">退出</t-button>
+<t-button theme="primary" block t-class="loginout" bindtap='loginout'>退出</t-button>

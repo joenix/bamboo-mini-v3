@@ -1,0 +1,5 @@
+<view class="tipsdetail-container">
+  <view>贴士集详情:{{id}}</view>
+  <t-button theme="primary" block t-class="save" bindtap='save'>点击保存图片</t-button>
+  <view class="tips">点击小程序右上角,转发到朋友圈</view>
+</view>

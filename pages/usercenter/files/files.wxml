@@ -1,2 +1,40 @@
-<!--pages/usercenter/suggest/suggest.wxml-->
-<text>资料更新</text>
+<view class="files-container">
+  <image class="avator" src="https://tdesign.gtimg.com/mobile/demos/avatar1.png"></image>
+  <view class="files-form">
+    <t-cell title="手机号" hover>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="姓名" hover required>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="性别" hover required arrow note="{{sex || ''}}" bindtap='chooseSex'></t-cell>
+
+    <t-cell title="选择生日" hover note="{{birthday || ''}}" arrow data-mode="date" bindtap="chooseBirthday" required />
+
+    <t-cell title="年龄" hover required>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="地区" hover required>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="学校" hover>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="年级" hover>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+    <t-cell title="个性签名" hover>
+      <t-input placeholder="请输入" slot="note" borderless="{{true}}" align="right" />
+    </t-cell>
+  </view>
+  <t-button theme="primary" block t-class="submit" bindtap='submit'>提交</t-button>
+</view>
+
+<!-- 性别选择器 -->
+<t-picker visible="{{sexVisible}}" cancelBtn="取消" confirmBtn="确认" bindchange="sexChange">
+  <t-picker-item options="{{sexOptions}}"></t-picker-item>
+</t-picker>
+
+
+<!-- 生日选择器 -->
+<t-date-time-picker title="选择生日" visible="{{dateVisible}}" mode="date" format="YYYY-MM-DD" bindchange="dateChange" />

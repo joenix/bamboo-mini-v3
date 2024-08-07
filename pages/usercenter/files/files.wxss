@@ -1,1 +1,23 @@
-/* pages/usercenter/suggest/suggest.wxss */
+.files-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.files-container .avator {
+  width: 240rpx;
+  height: 240rpx;
+}
+
+.files-container .files-form {
+  width: 100%;
+}
+
+.files-container .files-form .t-input {
+  padding: 0 !important;
+}
+
+.files-container .submit {
+  width: 80%;
+  margin-top: 30rpx;
+}

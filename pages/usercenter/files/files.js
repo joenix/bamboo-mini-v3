@@ -5,6 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sexVisible: false,
+    sexOptions: [{
+        label: '男',
+        value: '1'
+      },
+      {
+        label: '女',
+        value: '2'
+      },
+    ],
+    dateVisible: false,
+    birthday: '1990-02-04',
+    sex: '男'
 
   },
 
@@ -62,5 +75,33 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  chooseSex() {
+    this.setData({
+      sexVisible: !this.sexVisible
+    })
+  },
+  sexChange(e) {
+    const {
+      value,
+      label
+    } = e.detail
+
+
+    this.setData({
+      sex: label[0]
+    })
+  },
+
+  chooseBirthday() {
+    this.setData({
+      dateVisible: !this.dateVisible
+    })
+  },
+
+  dateChange(e) {
+    this.setData({
+      birthday: e.detail.value
+    })
   }
 })

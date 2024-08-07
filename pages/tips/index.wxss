@@ -1,0 +1,5 @@
+.tips-container {}
+
+.tips-container .title {
+  padding-left: 30rpx;
+}

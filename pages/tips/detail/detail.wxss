@@ -1,0 +1,15 @@
+/* pages/tips/detail/detail.wxss */
+.tipsdetail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tipsdetail-container .save {
+  width: 80%;
+}
+
+.tipsdetail-container .tips {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+}
