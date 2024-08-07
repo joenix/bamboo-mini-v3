@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/usercenter/index",
     "pages/home/home",
+    "pages/usercenter/index",
     "pages/sign/sign",
     "pages/webview/webview",
     "pages/book/index",
@@ -43,7 +43,9 @@
     "pages/usercenter/report/report",
     "pages/usercenter/files/files",
     "pages/usercenter/exchange/exchange",
-    "pages/usercenter/score/score"
+    "pages/usercenter/score/score",
+    "pages/home/sixbook/sixbook",
+    "pages/home/notice/notice"
   ],
   "tabBar": {
     "custom": true,

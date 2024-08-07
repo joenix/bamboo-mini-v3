@@ -45,3 +45,13 @@
 
   </view>
 </view>
+
+<!-- 关注弹窗 -->
+<view wx:if="{{showModal}}" class="followModal-container" bindtap='closeModal'>
+  <view class="followModal" catchtap='null'>
+    <view class="title">扫一扫</view>
+    <view class="description">关注六合融道,传播国学智慧</view>
+    <image class="qrcode" src="https://tdesign.gtimg.com/mobile/demos/avatar1.png" class="qrcode"></image>
+    <view class="tips">长按二维码识别,或截图保存</view>
+  </view>
+</view>

@@ -8,6 +8,7 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
+    showModal: false,
     imgSrcs: [],
     tabList: [],
     goodsList: [],
@@ -195,9 +196,15 @@ Page({
         break
       case '2':
         // 六合简书
+        wx.navigateTo({
+          url: "/pages/home/sixbook/sixbook",
+        })
         break
       case '3':
-        // 直播预告
+        // 直播预告   
+        wx.navigateTo({
+          url: "/pages/home/notice/notice",
+        })
         break
       case '4':
         // 学习商城
@@ -217,6 +224,14 @@ Page({
 
   // 关注
   follow() {
-    console.log('关注')
+    this.setData({
+      showModal: true
+    })
+  },
+
+  closeModal() {
+    this.setData({
+      showModal: false
+    })
   },
 });
