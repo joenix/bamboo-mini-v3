@@ -8,7 +8,9 @@ Page({
 
   onLoad() {},
 
-  onShow() {},
+  onShow() {
+    this.getTabBar().init();
+  },
   onPullDownRefresh() {},
 
   jump2Tips(e) {

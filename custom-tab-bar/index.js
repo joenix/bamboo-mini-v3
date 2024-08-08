@@ -27,7 +27,6 @@ Component({
         item.url ===
         `${route}`,
       );
-
       this.setData({
         active
       });
