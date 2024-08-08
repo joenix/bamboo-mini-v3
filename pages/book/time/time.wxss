@@ -1,1 +1,29 @@
-/* pages/book/time/time.wxss */
+.time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-container .timeout {
+  border: 2rpx solid #bbb;
+  padding: 14rpx;
+  border-radius: 10rpx;
+  margin-top: 300rpx;
+}
+
+.time-container .finish {
+  width: 30%;
+  margin-top: 50rpx;
+}
+
+.time-container .tips1 {
+  font-size: 24rpx;
+  margin-top: 30rpx;
+  color: #bbb;
+}
+
+.time-container .tips2 {
+  font-size: 22rpx;
+  margin-top: 14rpx;
+  color: orange;
+}

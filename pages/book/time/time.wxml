@@ -1,2 +1,6 @@
-<!--pages/book/time/time.wxml-->
-<text>计时</text>
+<view class="time-container">
+  <view class="timeout">00:00:01</view>
+  <t-button theme="primary" block t-class="finish" bindtap='finish'>点读结束</t-button>
+  <view class="tips1">点击后计时结束</view>
+  <view class="tips2">温馨提示:请勿关闭/退出小程序</view>
+</view>

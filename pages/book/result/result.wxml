@@ -1,0 +1,9 @@
+<view class="result-container">
+  <view class="result">6秒</view>
+  <view class="tips">本次点读总时长</view>
+  <view class="input-cotainer">
+    <t-input placeholder="请输入点读遍数" slot="note" borderless="{{true}}" align="right" />遍
+  </view>
+  <t-textarea t-class="thinking" placeholder="请您写下本次点读后的感悟,100个字以内" maxlength="100" disableDefaultPadding="{{true}}" indicator />
+  <t-button theme="primary" block t-class="submit" bindtap='submit'>提交</t-button>
+</view>

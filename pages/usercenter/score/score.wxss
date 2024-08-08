@@ -1,1 +1,24 @@
-/* pages/usercenter/suggest/suggest.wxss */
+.score-container .header-container {
+  height: 400rpx;
+  border: 2rpx solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header-container .total,
+.header-container .cur {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-container .score {
+  font-weight: bold;
+  font-size: 60rpx;
+}
+
+.score-container .record-container .title {
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}

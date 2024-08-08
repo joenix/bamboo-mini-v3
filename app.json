@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/book/result/result",
+    "pages/book/time/time",
+    "pages/usercenter/score/score",
     "pages/book/detail/detail",
     "pages/book/index",
     "pages/tips/index",
@@ -45,10 +48,8 @@
     "pages/usercenter/aboutus/aboutus",
     "pages/usercenter/report/report",
     "pages/usercenter/exchange/exchange",
-    "pages/usercenter/score/score",
     "pages/home/sixbook/sixbook",
-    "pages/home/notice/notice",
-    "pages/book/time/time"
+    "pages/home/notice/notice"
   ],
   "tabBar": {
     "custom": true,

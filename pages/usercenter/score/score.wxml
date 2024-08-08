@@ -1,2 +1,19 @@
-<!--pages/usercenter/suggest/suggest.wxml-->
-<text>我的学分</text>
+<view class="score-container">
+  <view class="header-container">
+    <view class="total">
+      <view class="score">4000</view>
+      <view class="title">历史总学分</view>
+    </view>
+    <view class="cur">
+      <view class="score">289</view>
+      <view class="title">可用学分</view>
+    </view>
+  </view>
+  <view class="record-container">
+    <view class="title">学分记录</view>
+    <view class="list-container">
+      <t-cell title='点读任务' description="2024-02-02" align="middle" hover bindtap='' note='学分+3' data-id='1' />
+      <t-cell title='每日点读' description="2024-09-12" align="middle" hover bindtap='' note='学分+1' data-id='2' />
+    </view>
+  </view>
+</view>

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "我的学分",
-  "usingComponents": {}
+  "usingComponents": {
+    "t-cell": "tdesign-miniprogram/cell/cell"
+  }
 }

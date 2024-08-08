@@ -1,4 +1,4 @@
-// pages/book/time/time.js
+// pages/book/result/result.js
 Page({
 
   /**
@@ -63,9 +63,9 @@ Page({
   onShareAppMessage() {
 
   },
-  finish() {
-    wx.navigateTo({
-      url: "/pages/book/result/result"
+  submit() {
+    wx.switchTab({
+      url: "/pages/book/index",
     })
   }
 })
