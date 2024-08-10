@@ -1,3 +1,8 @@
 @import 'style/iconfont.wxss';
 
 @import 'style/theme.wxss';
+
+page {
+  /* Tdesign 主题色 */
+  --td-brand-color: #c8964e;
+}

@@ -17,7 +17,7 @@ page {
 }
 
 .order-group-note {
-  font-size: 24rpx !important;
+  font-size: 21rpx !important;
 }
 
 .cell-box {
@@ -161,5 +161,6 @@ page {
 }
 
 .content-wrapper .t-cell__title-text {
-  font-size: 24rpx !important
+  font-size: 24rpx !important;
+  font-weight: lighter !important;
 }
