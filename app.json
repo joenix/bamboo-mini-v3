@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/home/home",
     "pages/book/result/result",
     "pages/book/time/time",
@@ -15,7 +16,6 @@
     "pages/book/ranking/ranking",
     "pages/information/detail/detail",
     "pages/information/list/list",
-    "pages/welcome/welcome",
     "pages/information/list",
     "pages/usercenter/suggest/suggest",
     "pages/usercenter/aboutus/aboutus",

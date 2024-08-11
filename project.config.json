@@ -44,7 +44,7 @@
     "ignoreDevUnusedFiles": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.23.1",
+  "libVersion": "3.5.3",
   "appid": "wxe033e049b9f77768",
   "projectname": "tdesign-miniprogram-starter-retail",
   "simulatorType": "wechat",

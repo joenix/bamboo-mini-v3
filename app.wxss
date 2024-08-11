@@ -3,6 +3,6 @@
 @import 'style/theme.wxss';
 
 page {
-  /* Tdesign 主题色 */
+  /* Theme for TDesign */
   --td-brand-color: #c8964e;
 }

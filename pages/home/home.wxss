@@ -1,8 +1,6 @@
 page {
   box-sizing: border-box;
   padding-bottom: calc(env(safe-area-inset-bottom) + 110rpx);
-  background: url('https://oss.vue-scaff.com/lhdd/landscape.jpg') no-repeat;
-  background-size: cover/center;
   /* backdrop-filter: brightness(5%); */
 
 }

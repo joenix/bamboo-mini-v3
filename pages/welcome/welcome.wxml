@@ -1,7 +1,4 @@
-<view class="welcome-page-cover" style="background-image: url(https://oss.vue-scaff.com/lhdd/bg.jpg)">
-  <t-image class="welcome-page-title" src="http://oss.vue-scaff.com/lhdd/title.png" mode="aspectFill" aria-label="六合小站">
-    <t-loading slot="loading" theme="spinner" size="40rpx" loading />
-  </t-image>
-
+<view class="welcome-page-cover" wx:if="{{visible}}" style="background-image: url({{bgImage}})">
+  <t-image class="welcome-page-title" src="{{sgImage}}" mode="aspectFill" aria-label="六合小站" />
   <t-button t-class="welcome-page-entry" size="large" bindtap="switchToHome">开始点读</t-button>
 </view>

@@ -1,59 +1,63 @@
-
 /* Code by Joenix */
 .welcome-page-cover {
-    width: 100vw;
-    height: 100vh;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  
-    filter: sepia(50%) brightness(111%);
-    animation: moveBackground 180s linear infinite;
-  }
-  
-  @keyframes moveBackground {
-    0% {
-      background-position: 0% center;
-    }
-    50% {
-      background-position: 100% center;
-    }
-    100% {
-      background-position: 0% center;
-    }
-  }
-  
-  @keyframes fadeIn {
-      from {
-          opacity: 0;
-          transform: translateX(-30%);
-      }
-      to {
-          opacity: 1;
-          transform: translateX(0);
-      }
-  }
-  
-  .welcome-page-title,
-  .welcome-page-title image {
-    width: 180rpx;
-    height: 1000rpx;
-  }
-  
-  .welcome-page-title {
-	animation: fadeIn 1s ease-out;
-  }
-  
-  .welcome-page-entry {
-    width: 50vw;
+  width: 100vw;
+  height: 100vh;
 
-    background: linear-gradient(145deg, #d0b66d, #b59b4b) !important; /* 更深更黄的渐变背景 */
-    border: 2px solid #664e2c; /* 深棕色边框 */
-    color: #664e2c !important; /* 深色文字 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: sepia(10%) brightness(100%);
+  animation: moveBackground 360s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% center;
   }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.welcome-page-title,
+.welcome-page-title image {
+  width: 180rpx;
+  height: 1000rpx;
+}
+
+.welcome-page-title {
+  animation: fadeIn 1s ease-out;
+}
+
+.welcome-page-entry {
+  width: 80vw;
+  transform: translateY(40rpx);
+
+  border-color: #b9a57d !important;
+  border-radius: 200rpx !important;
+  background: linear-gradient(#c8a064, #b99b5f) !important;
+  background-color: transparent !important;
+}
+.welcome-page-entry:after {
+  border: none !important;
+}
