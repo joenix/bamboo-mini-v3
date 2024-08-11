@@ -1,3 +1,7 @@
+.custom-tab-bar {
+  padding: 24rpx 0 !important;
+}
+
 .custom-tab-bar-wrapper {
   display: flex;
   flex-direction: column;
