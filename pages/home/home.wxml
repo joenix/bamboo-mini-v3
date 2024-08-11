@@ -15,10 +15,10 @@
   <!-- 金刚位 -->
   <view class="block">
     <t-grid column="{{4}}">
-      <t-grid-item text="学习资讯" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='1' />
-      <t-grid-item text="六合简书" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='2' />
-      <t-grid-item text="直播预告" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='3' />
-      <t-grid-item text="学习商城" image="https://img1.baidu.com/it/u=966292855,4209235329&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=500" bindtap="jump2jingang" data-type='4' />
+      <t-grid-item text="学习资讯" class="nav-icon" image="/assets/nav_news.png" bindtap="jump2jingang" data-type='1' />
+      <t-grid-item text="六合简书" class="nav-icon" image="/assets/nav_book.png" bindtap="jump2jingang" data-type='2' />
+      <t-grid-item text="直播预告" class="nav-icon" image="/assets/nav_live.png" bindtap="jump2jingang" data-type='3' />
+      <t-grid-item text="学习商城" class="nav-icon" image="/assets/nav_shop.png" bindtap="jump2jingang" data-type='4' />
     </t-grid>
   </view>
 
