@@ -26,12 +26,12 @@
 // ];
 
 const images = [
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png',
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner2.png',
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner3.png',
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner4.png',
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner5.png',
-  'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner6.png',
+  // Banner
+  'https://oss.vue-scaff.com/lhdd/banner_1.webp',
+  'https://oss.vue-scaff.com/lhdd/banner_2.webp',
+  'https://oss.vue-scaff.com/lhdd/banner_3.webp',
+  'https://oss.vue-scaff.com/lhdd/banner_4.webp',
+  'https://oss.vue-scaff.com/lhdd/banner_5.webp'
 ];
 
 export function genSwiperImageList() {
