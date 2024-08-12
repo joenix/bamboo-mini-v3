@@ -2,56 +2,19 @@
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
 
-<!-- 头部容器 -->
-<view class="home-page-header">
-  <!-- 轮播 -->
-  <view class="swiper-wrap">
-    <t-swiper wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
-  </view>
-</view>
-
-<!-- 主页面容器 -->
-<view class="home-page-container">
-  <!-- 金刚位 -->
-  <view class="block">
-    <t-grid column="{{4}}">
-      <t-grid-item text="学习资讯" class="nav-icon" image="/assets/nav_news.png" bindtap="jump2jingang" data-type='1' />
-      <t-grid-item text="六合简书" class="nav-icon" image="/assets/nav_book.png" bindtap="jump2jingang" data-type='2' />
-      <t-grid-item text="直播预告" class="nav-icon" image="/assets/nav_live.png" bindtap="jump2jingang" data-type='3' />
-      <t-grid-item text="学习商城" class="nav-icon" image="/assets/nav_shop.png" bindtap="jump2jingang" data-type='4' />
-    </t-grid>
-  </view>
-
-  <!-- 签到 -->
-  <t-cell description="记得完成每日签到和每日任务哦" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='sign' />
-
-  <!-- 关注  -->
-  <t-cell description="传播国学智慧,创造人生财富,铸就品质人生" title='六合融道' align="top" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='follow' />
-
-
-  <!-- 点读列表 -->
-  <goods-list wr-class="goods-list-container" goodsList="{{goodsList}}" bind:click="goodListClickHandle" />
-
-  <!-- 最新咨询 -->
-  <view class="news-container">
-    <view class="news-header">
-      <view class="news-header-title">最新咨询</view>
-      <view class="news-header-more" bindtap='jump2information'>查看更多></view>
+<t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel">
+  <t-tab-panel label="一首" value="0" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <!-- 选项卡2的内容 -->
+      <t-swiper class="scale-card-theme" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" height='1000rpx' navigation="{{ { type: 'dots' } }}" list="{{imgSrcs}}" image-props="{{ { shape: 'round' } }}" previousMargin="60rpx" nextMargin="60rpx" t-class-nav="card-theme-nav" t-class-prev-image="scale-candidate" t-class-next-image="scale-candidate" catchtouchstart="handleTouchStart" catchtouchmove="handleTouchMove" catchtouchend="handleTouchEnd" bindchange="handleSwiperChange" />
     </view>
-    <view>
-      <t-cell description="【新闻】我是第1条咨询" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='1' />
-      <t-cell description="【开班通知】我是第2条咨询" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' data-id='2' />
-    </view>
-
-  </view>
-</view>
-
-<!-- 关注弹窗 -->
-<view wx:if="{{showModal}}" class="followModal-container" bindtap='closeModal'>
-  <view class="followModal" catchtap='null'>
-    <view class="title">扫一扫</view>
-    <view class="description">关注六合融道,传播国学智慧</view>
-    <image class="qrcode" src="https://tdesign.gtimg.com/mobile/demos/avatar1.png" class="qrcode"></image>
-    <view class="tips">长按二维码识别,或截图保存</view>
-  </view>
-</view>
+  </t-tab-panel>
+  <t-tab-panel label="飞花" value="1" style="{{tabPanelstyle}}">
+    <!-- 选项卡2的内容 -->
+    选项2内容
+  </t-tab-panel>
+  <t-tab-panel label="接古今" value="2" style="{{tabPanelstyle}}">
+    <!-- 选项卡3的内容 -->
+    选项3内容
+  </t-tab-panel>
+</t-tabs>

@@ -106,12 +106,14 @@ page {
   border-radius: 100rpx;
   border: 2px solid var(--td-brand-color);
 }
+
 .nav-icon image {
   width: 48rpx !important;
   height: 48rpx !important;
   margin: 16rpx;
   filter: invert(42%) sepia(64%) saturate(345%) hue-rotate(348deg) brightness(90%) contrast(86%);
 }
+
 .nav-icon .t-grid-item__text {
   font-size: 26rpx;
 }
@@ -177,4 +179,31 @@ page {
 
 .followModal .tips {
   font-size: 24rpx;
+}
+
+/* 新轮播 */
+.card-theme {
+  --td-swiper-radius: 0;
+  --td-swiper-item-padding: 0 12rpx;
+  --td-swiper-nav-dot-color: var(--td-bg-color-component, #e7e7e7);
+  --td-swiper-nav-dot-active-color: var(--td-brand-color, #0052d9);
+
+  padding-bottom: 18px;
+}
+
+/* tab */
+.card-theme .card-theme-nav {
+  bottom: -18px;
+}
+
+.scale-candidate {
+  height: 800rpx !important;
+}
+
+.custom-tabs {
+  height: 100vh;
+}
+
+.custom-panel {
+  margin-top: 80rpx;
 }
