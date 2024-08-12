@@ -1,3 +1,6 @@
+<!-- 自定义nav -->
+<custom-nav title="计时" />
+
 <view class="time-container">
   <view class="timeout">00:00:01</view>
   <t-button theme="primary" block t-class="finish" bindtap='finish'>点读结束</t-button>

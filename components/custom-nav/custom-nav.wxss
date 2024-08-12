@@ -1,0 +1,8 @@
+/* components/custom-nav/custom-nav.wxss */
+.custom-nav-container {
+  text-align: left;
+  padding: 0 0 40rpx 20rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}

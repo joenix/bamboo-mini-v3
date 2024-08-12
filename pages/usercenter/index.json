@@ -8,7 +8,8 @@
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-user-center-card": "./components/user-center-card/index",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-button": "tdesign-miniprogram/button/button",
+    "custom-nav": "/components/custom-nav/custom-nav"
   },
   "enablePullDownRefresh": true
 }

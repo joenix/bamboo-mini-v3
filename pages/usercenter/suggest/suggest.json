@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "意见反馈",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
 }

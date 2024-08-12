@@ -1,2 +1,5 @@
 <!--pages/information/detail/detail.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="咨询详情" />
+
 <text>咨询详情:{{id}}</text>

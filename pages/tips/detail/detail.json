@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "贴士详情",
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-button": "tdesign-miniprogram/button/button",
+    "custom-nav": "/components/custom-nav/custom-nav"
   }
 }

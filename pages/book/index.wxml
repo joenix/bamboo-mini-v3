@@ -1,4 +1,6 @@
-<!--pages/book/book.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="点读" showBack="{{false}}" />
+
 <view class="book-container">
   <!-- 日历 -->
   <view class="calendar-container">

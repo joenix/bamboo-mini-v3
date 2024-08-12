@@ -1,3 +1,6 @@
+<!-- 自定义nav -->
+<custom-nav title="学习咨询" />
+
 <!-- 最新咨询 -->
 <view class="news-container">
   <view>

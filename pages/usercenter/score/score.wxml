@@ -1,3 +1,6 @@
+<!-- 自定义nav -->
+<custom-nav title="我的学分" />
+
 <view class="score-container">
   <view class="header-container">
     <view class="total">

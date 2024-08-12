@@ -1,3 +1,7 @@
+<!-- 自定义nav -->
+<custom-nav title="" />
+
+
 <view class="result-container">
   <view class="result">6秒</view>
   <view class="tips">本次点读总时长</view>

@@ -1,2 +1,4 @@
-<!--pages/home/sixbook/sixbook.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="直播预告" />
+
 <text>直播预告</text>

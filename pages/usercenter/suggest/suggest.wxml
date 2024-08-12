@@ -1,2 +1,5 @@
 <!--pages/usercenter/suggest/suggest.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="意见反馈" />
+
 <text>意见反馈</text>

@@ -5,7 +5,8 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "custom-nav": "/components/custom-nav/custom-nav"
   },
   "enablePullDownRefresh": true
 }

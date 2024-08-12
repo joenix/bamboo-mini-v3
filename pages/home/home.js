@@ -16,11 +16,11 @@ Page({
     interval: 1000,
     showModal: false,
     newImages: [
-      'https://img0.baidu.com/it/u=3120426427,3366290321&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500',
-      'https://img1.baidu.com/it/u=3213028832,2848109658&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=750',
-      'https://img1.baidu.com/it/u=2912630966,3990604461&fm=253&fmt=auto&app=138&f=JPEG?w=495&h=689',
-      'https://img95.699pic.com/xsj/0h/09/25.jpg%21/fw/700/watermark/url/L3hzai93YXRlcl9kZXRhaWwyLnBuZw/align/southeast',
-      'https://img2.baidu.com/it/u=1489611036,127160822&fm=253&fmt=auto&app=138&f=JPEG?w=334&h=500'
+      '/assets/banner1.png',
+      '/assets/banner2.png',
+      '/assets/banner3.png',
+      '/assets/banner1.png',
+      '/assets/banner1.png'
     ],
     imgSrcs: [],
     swiper: [],
@@ -54,6 +54,12 @@ Page({
   },
 
   onLoad() {
+    wx.getImageInfo({
+      src: '/assets/banner1.png',
+      success(res) {
+        console.log(res)
+      }
+    })
     this.init();
   },
 

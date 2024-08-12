@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "学分兑换",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
 }

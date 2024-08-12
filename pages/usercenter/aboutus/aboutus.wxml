@@ -1,2 +1,5 @@
 <!--pages/usercenter/suggest/suggest.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="关于我们" />
+
 <text>关于我们</text>

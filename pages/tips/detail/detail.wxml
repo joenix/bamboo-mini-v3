@@ -1,3 +1,6 @@
+<!-- 自定义nav -->
+<custom-nav title="贴士详情" />
+
 <view class="tipsdetail-container">
   <view>贴士集详情:{{id}}</view>
   <t-button theme="primary" block t-class="save" bindtap='save'>点击保存图片</t-button>

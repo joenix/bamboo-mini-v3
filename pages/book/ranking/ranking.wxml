@@ -1,4 +1,8 @@
 <!--pages/book/ranking/ranking.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="排行榜" />
+
+
 <view class="ranking-container">
   <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel">
     <t-tab-panel label="今日榜单" value="0" style="{{tabPanelstyle}}">

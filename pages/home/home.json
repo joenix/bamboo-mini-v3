@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "首页",
   "onReachBottomDistance": 10,
-  "enablePullDownRefresh": true,
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
     "t-grid": "tdesign-miniprogram/grid/grid",
@@ -18,6 +17,7 @@
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "goods-list": "/components/goods-list/index",
-    "load-more": "/components/load-more/index"
+    "load-more": "/components/load-more/index",
+    "custom-nav": "/components/custom-nav/custom-nav"
   }
 }

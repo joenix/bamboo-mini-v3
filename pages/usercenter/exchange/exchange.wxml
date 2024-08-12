@@ -1,2 +1,5 @@
 <!--pages/usercenter/suggest/suggest.wxml-->
+<!-- 自定义nav -->
+<custom-nav title="学分兑换" />
+
 <text>学分兑换</text>
