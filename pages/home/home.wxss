@@ -221,6 +221,7 @@ page {
   flex-wrap: nowrap;
   width: fit-content;
   transition: all ease-out 0.6s;
+  height: 1000rpx;
 }
 
 .swiper-container .swiper-list-container {
