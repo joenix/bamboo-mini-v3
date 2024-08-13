@@ -230,7 +230,7 @@ page {
   width: 600rpx;
   border-radius: 10rpx;
   overflow: hidden;
-  transition: all ease-out 0.2s;
+  transition: height ease-in 0.2s;
 }
 
 .swiper-list-container .swiper-item {
@@ -278,7 +278,7 @@ page {
 }
 
 .back-template .header {
-  height: 200rpx;
+  min-height: 200rpx;
   border-radius: 10rpx 10rpx 0 0;
 }
 
@@ -364,6 +364,10 @@ page {
   letter-spacing: 3rpx;
   font-size: 24rpx;
   font-weight: 500;
+}
+
+.back-template .footer-container {
+  margin-top: 16rpx;
 }
 
 .back-template .footer-container text {
