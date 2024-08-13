@@ -21,7 +21,7 @@ Page({
     }, {
       src: '/assets/banner4.png',
     }],
-    active: 0,
+    active: 1,
     startY: '',
     startX: '',
     endX: '',

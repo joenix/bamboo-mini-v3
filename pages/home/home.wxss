@@ -220,7 +220,7 @@ page {
   align-items: center;
   flex-wrap: nowrap;
   width: fit-content;
-  transition: all ease-out 0.6s;
+  transition: all ease-out 0.4s;
   height: 1000rpx;
 }
 
@@ -231,7 +231,7 @@ page {
   width: 600rpx;
   border-radius: 10rpx;
   overflow: hidden;
-  transition: height ease-in 0.2s;
+  transition: height ease-in 0.15s;
 }
 
 .swiper-list-container .swiper-item {
