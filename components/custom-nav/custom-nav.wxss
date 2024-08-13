@@ -1,8 +1,12 @@
 /* components/custom-nav/custom-nav.wxss */
 .custom-nav-container {
   text-align: left;
-  padding: 0 0 40rpx 20rpx;
+  padding: 0 0 40rpx 24rpx;
   background: #fff;
   display: flex;
   align-items: center;
+}
+
+.custom-nav-container .noicon {
+  padding-left: 48rpx;
 }

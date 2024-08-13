@@ -6,49 +6,28 @@ import {
 } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
 
+// 轮播定时器
 let timer = null
+const delay = 4
+
 Page({
   data: {
     imgSrcs1: [{
-      src: 'https://oss.vue-scaff.com/lhdd/banner_1.webp',
-      loaded: false,
-      backSrc: '/assets/banner1.png',
+      src: '/assets/banner2.png',
     }, {
-      src: 'https://oss.vue-scaff.com/lhdd/banner_2.webp',
-      loaded: false,
-      backSrc: '/assets/banner2.png',
+      src: '',
     }, {
-      src: 'https://oss.vue-scaff.com/lhdd/banner_3.webp',
-      loaded: false,
-      backSrc: '/assets/banner3.png',
+      src: '/assets/banner3.png',
     }, {
-      src: 'https://oss.vue-scaff.com/lhdd/banner_4.webp',
-      loaded: false,
-      backSrc: '/assets/banner1.png',
-    }, {
-      src: 'https://oss.vue-scaff.com/lhdd/banner_5.webp',
-      loaded: false,
-      backSrc: '/assets/banner1.png',
+      src: '/assets/banner4.png',
     }],
     active: 1,
     startY: '',
     startX: '',
     endX: '',
     endY: '',
-    current: 0,
-    autoplay: true,
-    duration: 200,
-    interval: 1000,
     showModal: false,
-    newImages: [
-      '/assets/banner1.png',
-      '/assets/banner2.png',
-      '/assets/banner3.png',
-      '/assets/banner1.png',
-      '/assets/banner1.png'
-    ],
     imgSrcs: [],
-    swiper: [],
     tabList: [],
     goodsList: [],
     goodsListLoadStatus: 0,
@@ -104,7 +83,7 @@ Page({
       this.setData({
         active
       })
-    }, 4000)
+    }, delay * 1000)
   },
 
   onReachBottom() {
@@ -132,7 +111,6 @@ Page({
       this.setData({
         tabList,
         imgSrcs: swiper.slice(0),
-        swiper,
         pageLoading: false,
       });
       this.loadGoodsList(true);
@@ -222,8 +200,6 @@ Page({
       }
     } = e
 
-    console.log('id', id)
-
     if (id) {
       // 跳转到咨询详情页面
       wx.navigateTo({
@@ -294,52 +270,7 @@ Page({
     })
   },
 
-  // 轮播滚动
-  handleSwiperChange(e) {
-    // 获取当前轮播图的索引
-    const current = e.detail.current;
-    this.setData({
-      current: current,
-      startY: 0,
-      endY: 0,
-      imgSrcs: this.data.swiper.slice(0)
-    });
-  },
   handleTouchStart(e) {
-    this.setData({
-      startY: e.touches[0].pageY,
-    });
-  },
-
-  handleTouchMove(e) {
-    this.setData({
-      endY: e.touches[0].pageY
-    });
-  },
-
-  handleTouchEnd(e) {
-    const {
-      startY,
-      endY,
-      current,
-      newImages
-    } = this.data;
-
-    const slideDistance = startY - endY;
-
-    // 判断是否为上滑
-    if (slideDistance > 50) {
-      const newSrc = newImages[current];
-      this.setData({
-        [`imgSrcs[${current}]`]: newSrc
-      });
-
-    }
-  },
-
-
-  // new
-  handleTouchStart2(e) {
     clearInterval(timer)
     this.setData({
       startY: e.touches[0].pageY,
@@ -347,14 +278,14 @@ Page({
     });
   },
 
-  handleTouchMove2(e) {
+  handleTouchMove(e) {
     this.setData({
       endY: e.touches[0].pageY,
       endX: e.touches[0].pageX
     });
   },
 
-  handleTouchEnd2(e) {
+  handleTouchEnd(e) {
     let {
       startY,
       startX,
@@ -364,25 +295,7 @@ Page({
       imgSrcs1
     } = this.data;
 
-    const slideDistanceY = startY - endY;
     const slideDistanceX = startX - endX;
-
-    // 上滑
-    if (slideDistanceY > 30) {
-      imgSrcs1[active].loaded = true
-      this.setData({
-        imgSrcs1
-      })
-    }
-
-    // 下滑
-    if (slideDistanceY < -30) {
-      imgSrcs1[active].loaded = false
-      this.setData({
-        imgSrcs1
-      })
-    }
-
 
     // 左滑
     if (slideDistanceX > 30) {
