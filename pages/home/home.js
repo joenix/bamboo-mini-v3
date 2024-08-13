@@ -6,9 +6,34 @@ import {
 } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
 
+let timer = null
 Page({
   data: {
+    imgSrcs1: [{
+      src: 'https://oss.vue-scaff.com/lhdd/banner_1.webp',
+      loaded: false,
+      backSrc: '/assets/banner1.png',
+    }, {
+      src: 'https://oss.vue-scaff.com/lhdd/banner_2.webp',
+      loaded: false,
+      backSrc: '/assets/banner2.png',
+    }, {
+      src: 'https://oss.vue-scaff.com/lhdd/banner_3.webp',
+      loaded: false,
+      backSrc: '/assets/banner3.png',
+    }, {
+      src: 'https://oss.vue-scaff.com/lhdd/banner_4.webp',
+      loaded: false,
+      backSrc: '/assets/banner1.png',
+    }, {
+      src: 'https://oss.vue-scaff.com/lhdd/banner_5.webp',
+      loaded: false,
+      backSrc: '/assets/banner1.png',
+    }],
+    active: 1,
     startY: '',
+    startX: '',
+    endX: '',
     endY: '',
     current: 0,
     autoplay: true,
@@ -54,13 +79,32 @@ Page({
   },
 
   onLoad() {
-    wx.getImageInfo({
-      src: '/assets/banner1.png',
-      success(res) {
-        console.log(res)
-      }
-    })
     this.init();
+    this.autoplay()
+  },
+  onHide() {
+    clearInterval(timer)
+  },
+
+  onUnload() {
+    clearInterval(timer)
+  },
+
+  autoplay() {
+    timer = setInterval(() => {
+      let {
+        active,
+        imgSrcs1
+      } = this.data
+
+      active += 1
+
+      if (active === imgSrcs1.length) active = 0
+
+      this.setData({
+        active
+      })
+    }, 4000)
   },
 
   onReachBottom() {
@@ -263,7 +307,7 @@ Page({
   },
   handleTouchStart(e) {
     this.setData({
-      startY: e.touches[0].pageY
+      startY: e.touches[0].pageY,
     });
   },
 
@@ -291,5 +335,73 @@ Page({
       });
 
     }
+  },
+
+
+  // new
+  handleTouchStart2(e) {
+    clearInterval(timer)
+    this.setData({
+      startY: e.touches[0].pageY,
+      startX: e.touches[0].pageX
+    });
+  },
+
+  handleTouchMove2(e) {
+    this.setData({
+      endY: e.touches[0].pageY,
+      endX: e.touches[0].pageX
+    });
+  },
+
+  handleTouchEnd2(e) {
+    let {
+      startY,
+      startX,
+      endX,
+      endY,
+      active,
+      imgSrcs1
+    } = this.data;
+
+    const slideDistanceY = startY - endY;
+    const slideDistanceX = startX - endX;
+
+    // 上滑
+    if (slideDistanceY > 30) {
+      imgSrcs1[active].loaded = true
+      this.setData({
+        imgSrcs1
+      })
+    }
+
+    // 下滑
+    if (slideDistanceY < -30) {
+      imgSrcs1[active].loaded = false
+      this.setData({
+        imgSrcs1
+      })
+    }
+
+
+    // 左滑
+    if (slideDistanceX > 30) {
+      active += 1
+      if (active === imgSrcs1.length) return
+      this.setData({
+        active
+      })
+    }
+
+    // 右滑
+    if (slideDistanceX < -30) {
+      active -= 1
+      if (active < 0) return
+      this.setData({
+        active
+      })
+    }
+
+    this.autoplay()
   }
 });
