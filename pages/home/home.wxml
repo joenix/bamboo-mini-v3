@@ -16,7 +16,7 @@
           <!-- 模版 3 -->
           <view wx:if='{{item.templateId==3}}' class="back-container template1">
             <view class="back-template">
-              <image src='/assets/boss1.png' class="header" mode="aspectFit"></image>
+              <image src='https://mmbiz.qpic.cn/sz_mmbiz_png/xk9spAGZ9zun13AHPsoFfoYiaiaftsuIWic6qsibs4HarHrdytZb9bQhyILOHvVm45DBkhHJDW2ribreenywibfRh2Sw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1' class="header" mode="aspectFit"></image>
               <view class="pagetitle">
                 <text>思想简介</text>
               </view>
@@ -49,7 +49,7 @@
           <!-- 模版 2 -->
           <view wx:if='{{item.templateId==2}}' class="back-container template2">
             <view class="back-template">
-              <image src='/assets/boss2.png' class="header" mode="aspectFill"></image>
+              <image src='https://mmbiz.qpic.cn/sz_mmbiz_jpg/xk9spAGZ9zseRkYombDpneFg3gbwMV0Mjay6gliadCGNJp5kwpv9wNhbwczwJnibEIRqjgzf6LH41hKbgIXmmd0Q/640?from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1' class="header" mode="aspectFill"></image>
               <view class="pagetitle">
                 <text>创办理念</text>
               </view>
@@ -75,7 +75,7 @@
           <!-- 模版 1 -->
           <view wx:if='{{item.templateId==1}}' class="back-container template2">
             <view class="back-template">
-              <image src='/assets/reward.png' class="header" mode="aspectFit"></image>
+              <image src='https://mmbiz.qpic.cn/sz_mmbiz_png/xk9spAGZ9zvElQJAz2xB17ict1tZyvZjibnBicTztTvJyibwkJibdiaudznzAj5JIOPvKxxia9g0RlFjNyrqtb7TF51Hw/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1' class="header" mode="aspectFit"></image>
               <view class="pagetitle">
                 <text>企业简介</text>
               </view>
@@ -101,7 +101,7 @@
           <!-- 模版 4 -->
           <view wx:if='{{item.templateId==4}}' class="back-container template2">
             <view class="back-template">
-              <image src='/assets/book.png' class="header" mode="aspectFill"></image>
+              <image src='https://mmbiz.qpic.cn/sz_mmbiz_png/xk9spAGZ9zun13AHPsoFfoYiaiaftsuIWic1blHrkLreVGI1ah3UYib2rWZXvvDNDUkKqd5Rla6p9nqzzKMNQvuzQA/640?wx_fmt=png&from=appmsg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1' class="header" mode="aspectFill"></image>
               <view class="pagetitle">
                 <text>点读简介</text>
               </view>
