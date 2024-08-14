@@ -5,7 +5,7 @@
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
 
-<t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel" space-evenly="{{false}}">
+<t-tabs swipeable="{{false}}" defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="home-tabs" t-class-content="home-panel" space-evenly="{{false}}">
   <t-tab-panel label="一首" value="0" style="{{tabPanelstyle}}">
     <!-- 轮播 -->
     <view class="swiper-container">
@@ -13,25 +13,116 @@
         <view wx:for="{{imgSrcs1}}" wx:key='index' class=" {{active==index?'active swiper-list-container':'swiper-list-container'}}" catchtouchstart="handleTouchStart" catchtouchmove="handleTouchMove" catchtouchend="handleTouchEnd">
           <!-- 背景图 -->
           <image wx:if="{{item.src}}" class="swiper-item" mode="aspectFill" src="{{item.src}}"></image>
-          <!-- 模版 -->
-          <view wx:else class="back-container">
+          <!-- 模版 3 -->
+          <view wx:if='{{item.templateId==3}}' class="back-container template1">
             <view class="back-template">
-              <image src='https://oss.vue-scaff.com/lhdd/banner_1.webp' class="header" mode="aspectFill"></image>
+              <image src='/assets/boss1.png' class="header" mode="aspectFit"></image>
               <view class="pagetitle">
-                <text>素材·态度</text>
-              </view>
-              <view class="des-container">
-                <view class="des">宠辱不惊，闲看庭前花开花落。</view>
-                <view class="des">去留无意，漫随天外云卷云舒。</view>
-                <view class="author">----陈眉公辑录《小窗幽记》</view>
+                <text>思想简介</text>
               </view>
               <view class="content-container">
-                <view class="title">适用主题：</view>
-                <view class="theme">沉淀心灵，宁静专员，享受孤独等。</view>
-                <view class="content">何谓胜过？生活就是洗了个头，弄了个最帅的发型，还了双干净的鞋子，穿了件帅气的衣服，出去哎了肥水就回家了。是无入时心中的空寂感，即便是热闹也时常觉得格格不入。是夜月下难以道去的淡淡哀愁。师友们可能回觉得孤独，让我们抱团取暖可好</view>
+                <view class="title">七大教育思想：</view>
+                <view class="content">
+                  1.六合智慧教育的中心思想是“六合”，传承中国“天人合一”思想。
+                </view>
+                <view class="content">
+                  2.六合智慧教育是以中华智慧为根基，掀起的教育新革命。
+                </view>
+                <view class="content">
+                  3.六合智慧教育重视的是掌握心法，练好基本功，兼收并蓄，自然生发。
+                </view>
+                <view class="content">
+                  4.六合智慧教育是全息的、全维的、融合的教育体系。
+                </view>
+                <view class="content">
+                  5.六合智慧教育是去课程化、去主题化、去角色中心化的。
+                </view>
+                <view class="content">
+                  6.六合智慧教育是不射之射，是借假修真，是量变带来质变。
+                </view>
+                <view class="content">
+                  7.六合智慧教育是开放式的、生成式的、共建式的。
+                </view>
               </view>
-              <view class="footer-container">
-                <text>一言</text>
+            </view>
+          </view>
+          <!-- 模版 2 -->
+          <view wx:if='{{item.templateId==2}}' class="back-container template2">
+            <view class="back-template">
+              <image src='/assets/boss2.png' class="header" mode="aspectFill"></image>
+              <view class="pagetitle">
+                <text>创办理念</text>
+              </view>
+              <view class="des-container">
+                <view class="des">让天下没有难教的孩子</view>
+                <view class="des">让天下没有难读的书</view>
+                <view class="author">--创始人 仇富军</view>
+              </view>
+              <view class="content-container">
+                <view class="title">三大重要根基：</view>
+                <view class="content">
+                  1. 曾国藩：“盖士人读书，第一要立志。”
+                </view>
+                <view class="content">
+                  2.“质胜文则野，文胜质则史。文质彬彬，然后君子”。故只有文武并济、乃文乃武才能“穷则独善其身，达则兼济天下。”
+                </view>
+                <view class="content">
+                  3.习近平主席的指示：“对我国的传统文化，对外国的东西，要坚持古为今用、洋为中用、去粗取精、去伪存真，经过科学的扬弃后使之为我所用。”
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 模版 1 -->
+          <view wx:if='{{item.templateId==1}}' class="back-container template2">
+            <view class="back-template">
+              <image src='/assets/reward.png' class="header" mode="aspectFit"></image>
+              <view class="pagetitle">
+                <text>企业简介</text>
+              </view>
+              <view class="content-container">
+                <view class="title">企业愿景：</view>
+                <view class="content">
+                  未来30年内，培养1万个亿万富翁，600名院士级人才。
+                </view>
+              </view>
+              <view class="content-container">
+                <view class="title">企业理念：</view>
+                <view class="content">
+                  让点读竹简成为一种新潮流，让六合智慧成为一种新风尚！
+                </view>
+              </view>
+              <view class="content-container">
+                <view class="title">企业成绩：</view>
+                <view class="content">现全国超百家学校/机构已全面开展“六合竹简点读法”，并已有数10万名学生、老师、家长及社会各界人士在“六合竹简点读法”的帮助下改善了身体的免疫力、提升了比赛的成绩,并于2024年1月荣获“非遗文化教育传承示范基地”荣誉称号。
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 模版 4 -->
+          <view wx:if='{{item.templateId==4}}' class="back-container template2">
+            <view class="back-template">
+              <image src='/assets/book.png' class="header" mode="aspectFill"></image>
+              <view class="pagetitle">
+                <text>点读简介</text>
+              </view>
+              <view class="des-container">
+                <view class="des">“六合竹简点读法”顾名思义由两部分组成：特制的竹简（指阅读设备）+特殊的点读方法（指训练方法）</view>
+              </view>
+
+              <view class="content-container">
+                <view class="title">点读原理：</view>
+                <view class="content">
+                  “六合竹简点读法”是以单手或双手,在特制的竹简上边做特殊“手指操”边学习的过程。
+                </view>
+              </view>
+              <view class="content-container">
+                <view class="title">点读功效：</view>
+                <view class="content">
+                  1.“六合竹简点读法”符合脑科学原理，它有助于脑功能的恢复与开发。
+                </view>
+                <view class="content">
+                  2.“六合竹简点读法”符合中医的经络原理，有助于气血的调节与运行。
+                </view>
               </view>
             </view>
           </view>
@@ -41,10 +132,8 @@
   </t-tab-panel>
   <t-tab-panel label="飞花" value="1" style="{{tabPanelstyle}}">
     <!-- 选项卡2的内容 -->
-    选项2内容
   </t-tab-panel>
   <t-tab-panel label="接古今" value="2" style="{{tabPanelstyle}}">
     <!-- 选项卡3的内容 -->
-    选项3内容
   </t-tab-panel>
 </t-tabs>

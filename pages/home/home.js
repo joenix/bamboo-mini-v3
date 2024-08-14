@@ -13,15 +13,17 @@ const delay = 4
 Page({
   data: {
     imgSrcs1: [{
-      src: '/assets/banner2.png',
+      templateId: 1
     }, {
       src: '',
+      templateId: 2
     }, {
-      src: '/assets/banner3.png',
+      src: '',
+      templateId: 3
     }, {
-      src: '/assets/banner4.png',
+      templateId: 4
     }],
-    active: 1,
+    active: 0,
     startY: '',
     startX: '',
     endX: '',
@@ -78,7 +80,9 @@ Page({
 
       active += 1
 
-      if (active === imgSrcs1.length) active = 0
+      if (active === imgSrcs1.length) {
+        return clearInterval(timer)
+      }
 
       this.setData({
         active
