@@ -8,5 +8,5 @@
 }
 
 .custom-nav-container .noicon {
-  padding-left: 48rpx;
+  padding-left: 32rpx;
 }
