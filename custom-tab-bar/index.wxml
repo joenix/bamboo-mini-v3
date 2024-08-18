@@ -1,7 +1,7 @@
 <t-tab-bar class="custom-tab-bar" value="{{active}}" bindchange="onChange" split="{{false}}">
   <t-tab-bar-item wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
     <view class="custom-tab-bar-wrapper">
-      <view class="image {{ active === index ? 'active' : '' }}" style="background-image:url(/assets/bar_{{item.icon}}.png)"></view>
+      <image src="/assets/bar_{{item.icon}}{{ active === index ? '_active': '' }}.png" />
       <view class="text">{{ item.text }}</view>
     </view>
   </t-tab-bar-item>

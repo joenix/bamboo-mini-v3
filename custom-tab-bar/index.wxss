@@ -10,16 +10,9 @@
   gap: 10rpx;
 }
 
-.custom-tab-bar-wrapper .image {
+.custom-tab-bar-wrapper image {
   width: 48rpx;
   height: 48rpx;
-
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.custom-tab-bar-wrapper .image.active {
-  background-position: center bottom;
 }
 
 .custom-tab-bar-wrapper .text {
