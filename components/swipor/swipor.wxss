@@ -40,9 +40,6 @@
   width: 80vw !important;
 }
 
-.swipor-item-inner {
-}
-
 .swipor-context {
   padding: 40rpx;
   line-height: 2;
@@ -53,6 +50,9 @@
   font-weight: bold;
   font-size: 32rpx;
   line-height: 3;
+}
+
+.swipor-item-inner {
 }
 
 .swipor-image {
