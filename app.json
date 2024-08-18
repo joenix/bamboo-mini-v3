@@ -22,7 +22,8 @@
     "pages/usercenter/report/report",
     "pages/usercenter/exchange/exchange",
     "pages/home/sixbook/sixbook",
-    "pages/home/notice/notice"
+    "pages/home/notice/notice",
+    "pages/article/article"
   ],
   "tabBar": {
     "custom": true,
