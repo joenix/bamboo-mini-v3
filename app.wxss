@@ -4,7 +4,7 @@
 
 page {
   /* 全局背景色 */
-  background-color: #f8f9f5;
+  background-color: #faf6f7;
 
   /* Theme for TDesign */
   --td-brand-color: #c8964e;

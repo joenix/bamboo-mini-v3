@@ -1,40 +1,24 @@
-import {
-  fetchHome
-} from '../../services/home/home';
-import {
-  fetchGoodsList
-} from '../../services/good/fetchGoods';
+import { fetchHome } from '../../services/home/home';
+import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
-
-// 轮播定时器
-let timer = null
-const delay = 4
 
 Page({
   data: {
-    imgSrcs1: [{
-      templateId: 1
-    }, {
-      src: '',
-      templateId: 2
-    }, {
-      src: '',
-      templateId: 3
-    }, {
-      templateId: 4
-    }],
-    active: 0,
     startY: '',
-    startX: '',
-    endX: '',
     endY: '',
+    current: 0,
+    autoplay: true,
+    duration: 200,
+    interval: 1000,
     showModal: false,
+    newImages: ['/assets/t1.png', '/assets/t2.png', '/assets/banner1.png', '/assets/banner2.png', '/assets/banner3.png'],
     imgSrcs: [],
+    swiper: [],
     tabList: [],
     goodsList: [],
     goodsListLoadStatus: 0,
     pageLoading: false,
-    current: 1,
+    // current: 1,
     autoplay: true,
     duration: '500',
     interval: 5000,
@@ -44,15 +28,38 @@ Page({
     swiperImageProps: {
       mode: 'scaleToFill'
     },
+
+    // Code by Joenix
+    content: [
+      // htps://mp.weixin.qq.com/s/<link>
+      {
+        cover: 'https://oss.lhdd.club/banner_1.webp',
+        title: '六合竹简点读体系之简单介绍',
+        description: '习近平总书记指出：“文化自信是一个国家、一个民族发展中最基本、最深沉、最持久的力量。”没有高度的文化自信，没有文化的繁荣兴盛，就没有中华民族的伟大复兴。同时，习近平总书记指出：“我们现在是距离中华民族文化复兴最近的一个时代。我们自信起来了。',
+        link: 'h2ITrbWI2zgqsZiWYdwGvw'
+      },
+      {
+        cover: 'https://oss.lhdd.club/banner_2.webp',
+        title: '六合竹简点读法原理及相关问题的解答',
+        description: '“六合竹简点读法”是以单手或双手（包括但不限于手指的指尖、指腹及指关节）在特制的竹简上边做特殊“手指操”边学习的过程。',
+        link: '-1wZAttfwxLeY8JUYEy6xw'
+      },
+      {
+        cover: 'https://oss.lhdd.club/banner_3.webp',
+        title: '六合简工考',
+        description: '六合大道，无穷玄妙，无相为体，万法归一。神意天授，先贤真传，无量法施，以简入道。<br />六合简工，仇师亲命，极深研几，九转功成。六合制简，上合天时，下明地理，中省人文。<br />六合竹简，道法神器，心法监造，匠心独运。是故简自千磨万击来，所以一简天下无难事。',
+        link: 'ACWu6C2lkP3QC46IvNmGfw'
+      }
+    ]
   },
 
   goodListPagination: {
     index: 0,
-    num: 4,
+    num: 4
   },
 
   privateData: {
-    tabIndex: 0,
+    tabIndex: 0
   },
 
   onShow() {
@@ -60,39 +67,16 @@ Page({
   },
 
   onLoad() {
-    this.init();
-    this.autoplay()
-  },
-  onHide() {
-    clearInterval(timer)
-  },
-
-  onUnload() {
-    clearInterval(timer)
-  },
-
-  autoplay() {
-    timer = setInterval(() => {
-      let {
-        active,
-        imgSrcs1
-      } = this.data
-
-      active += 1
-
-      if (active === imgSrcs1.length) {
-        return clearInterval(timer)
+    wx.getImageInfo({
+      src: '/assets/banner1.png',
+      success(res) {
+        console.log(res);
       }
-
-      this.setData({
-        active
-      })
-    }, delay * 1000)
+    });
+    this.init();
   },
 
-  onReachBottom() {
-
-  },
+  onReachBottom() {},
 
   onPullDownRefresh() {
     this.init();
@@ -106,16 +90,14 @@ Page({
     wx.stopPullDownRefresh();
 
     this.setData({
-      pageLoading: true,
+      pageLoading: true
     });
-    fetchHome().then(({
-      swiper,
-      tabList
-    }) => {
+    fetchHome().then(({ swiper, tabList }) => {
       this.setData({
         tabList,
         imgSrcs: swiper.slice(0),
-        pageLoading: false,
+        swiper,
+        pageLoading: false
       });
       this.loadGoodsList(true);
     });
@@ -133,7 +115,7 @@ Page({
   async loadGoodsList(fresh = false) {
     if (fresh) {
       wx.pageScrollTo({
-        scrollTop: 0,
+        scrollTop: 0
       });
     }
 
@@ -151,7 +133,7 @@ Page({
       const nextList = await fetchGoodsList(pageIndex, pageSize);
       this.setData({
         goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
-        goodsListLoadStatus: 0,
+        goodsListLoadStatus: 0
       });
 
       this.goodListPagination.index = pageIndex;
@@ -165,15 +147,15 @@ Page({
 
   goodListClickHandle(e) {
     wx.navigateTo({
-      url: "/pages/book/detail/detail",
-    })
+      url: '/pages/book/detail/detail'
+    });
   },
 
   goodListAddCartHandle() {
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '点击加入购物车',
+      message: '点击加入购物车'
     });
   },
 
@@ -183,14 +165,10 @@ Page({
     });
   },
 
-  navToActivityDetail({
-    detail
-  }) {
-    const {
-      index: promotionID = 0
-    } = detail || {};
+  navToActivityDetail({ detail }) {
+    const { index: promotionID = 0 } = detail || {};
     wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
+      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`
     });
   },
 
@@ -198,127 +176,114 @@ Page({
   jump2information(e) {
     const {
       currentTarget: {
-        dataset: {
-          id
-        }
+        dataset: { id }
       }
-    } = e
+    } = e;
+
+    console.log('id', id);
 
     if (id) {
       // 跳转到咨询详情页面
       wx.navigateTo({
-        url: `/pages/information/detail/detail?id=${id}`,
-      })
+        url: `/pages/information/detail/detail?id=${id}`
+      });
     }
 
     // 跳转到咨询首页
     wx.navigateTo({
-      url: "/pages/information/list/list",
-    })
+      url: '/pages/information/list/list'
+    });
   },
   // 金刚位跳转
   jump2jingang(e) {
     const {
       currentTarget: {
-        dataset: {
-          type
-        }
+        dataset: { type }
       }
-    } = e
+    } = e;
 
     switch (type) {
       case '1':
         // 学习咨询
         wx.navigateTo({
-          url: "/pages/information/list/list",
-        })
-        break
+          url: '/pages/information/list/list'
+        });
+        break;
       case '2':
         // 六合简书
         wx.navigateTo({
-          url: "/pages/home/sixbook/sixbook",
-        })
-        break
+          url: '/pages/home/sixbook/sixbook'
+        });
+        break;
       case '3':
-        // 直播预告   
+        // 直播预告
         wx.navigateTo({
-          url: "/pages/home/notice/notice",
-        })
-        break
+          url: '/pages/home/notice/notice'
+        });
+        break;
       case '4':
         // 学习商城
         wx.navigateTo({
           url: `/pages/webview/webview?url=${encodeURIComponent('http ://www.baidu.com')}`
         });
-        break
+        break;
     }
   },
 
   // 签到
   sign() {
     wx.navigateTo({
-      url: "/pages/sign/sign"
-    })
+      url: '/pages/sign/sign'
+    });
   },
 
   // 关注
   follow() {
     this.setData({
       showModal: true
-    })
+    });
   },
 
   closeModal() {
     this.setData({
       showModal: false
-    })
+    });
   },
 
-  handleTouchStart(e) {
-    clearInterval(timer)
+  // 轮播滚动
+  handleSwiperChange(e) {
+    // 获取当前轮播图的索引
+    const current = e.detail.current;
     this.setData({
-      startY: e.touches[0].pageY,
-      startX: e.touches[0].pageX
+      current: current,
+      startY: 0,
+      endY: 0,
+      imgSrcs: this.data.swiper.slice(0)
+    });
+  },
+  handleTouchStart(e) {
+    this.setData({
+      startY: e.touches[0].pageY
     });
   },
 
   handleTouchMove(e) {
     this.setData({
-      endY: e.touches[0].pageY,
-      endX: e.touches[0].pageX
+      endY: e.touches[0].pageY
     });
   },
 
   handleTouchEnd(e) {
-    let {
-      startY,
-      startX,
-      endX,
-      endY,
-      active,
-      imgSrcs1
-    } = this.data;
+    const { startY, endY, current, newImages } = this.data;
 
-    const slideDistanceX = startX - endX;
+    const slideDistance = startY - endY;
 
-    // 左滑
-    if (slideDistanceX > 30) {
-      active += 1
-      if (active === imgSrcs1.length) return
+    // 判断是否为上滑
+    if (slideDistance > 50) {
+      const newSrc = newImages[current];
       this.setData({
-        active
-      })
+        [`imgSrcs[${current}]`]: newSrc
+      });
     }
-
-    // 右滑
-    if (slideDistanceX < -30) {
-      active -= 1
-      if (active < 0) return
-      this.setData({
-        active
-      })
-    }
-
-    this.autoplay()
   }
 });

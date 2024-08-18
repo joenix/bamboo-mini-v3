@@ -18,7 +18,6 @@
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "goods-list": "/components/goods-list/index",
     "load-more": "/components/load-more/index",
-    "custom-nav": "/components/custom-nav/custom-nav",
-    "swipor": "/components/swipor/swipor"
+    "custom-nav": "/components/custom-nav/custom-nav"
   }
 }

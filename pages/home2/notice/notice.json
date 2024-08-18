@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "直播预告",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
+}

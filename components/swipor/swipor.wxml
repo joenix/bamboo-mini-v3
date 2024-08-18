@@ -1,0 +1,17 @@
+<view class="swipor-container">
+  <swiper class="swipor" indicator-dots="true" autoplay="{{false}}" current="{{current}}" bindchange="onSwiporChange">
+    <block wx:for="{{content}}" wx:key="*this">
+      <swiper-item wx:for-index="index" class="swipor-item {{current === index ? 'active' : ''}}">
+          <view class="swipor-item-content">
+            <navigator open-type="navigate" url="{{item.link}}" class="swipor-item-inner">
+              <image mode="aspectFill" class="swipor-image" src="{{item.cover}}"></image>
+              <view class="swipor-context">
+                <text class="swipor-title">{{item.title}}</text>
+                <rich-text nodes="{{item.description}}"></rich-text>
+              </view>
+            </navigator>
+          </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

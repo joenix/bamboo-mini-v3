@@ -1,0 +1,43 @@
+.swipor-container {
+  width: 100%;
+  height: 60vh;
+}
+
+.swipor {
+  height: 100%;
+
+  display: flex;
+  flex: 0 0 1;
+}
+
+.swipor-item {
+  /* box-sizing: border-box; */
+  box-sizing: content-box;
+
+  width: 100vw !important;
+  height: 60vh !important;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.swipor-item-content {
+  height: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.swipor-item.active .swipor-item-content {
+  width: 80vw !important;
+}
+
+.swipor-item-inner {
+}
+
+.swipor-image {
+  width: 100%;
+  height: 480rpx;
+}
+
+.swipor-context {
+}
