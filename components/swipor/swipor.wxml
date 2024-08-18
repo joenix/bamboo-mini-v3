@@ -3,7 +3,7 @@
     <block wx:for="{{content}}" wx:key="*this">
       <swiper-item wx:for-index="index" class="swipor-item {{current === index ? 'active' : ''}}">
         <view class="swipor-item-content">
-          <navigator open-type="navigate" url="{{item.link}}" class="swipor-item-inner">
+          <navigator open-type="navigate" url="/pages/article/article?article={{item.link}}" class="swipor-item-inner">
             <image mode="aspectFill" class="swipor-image" src="{{item.cover}}"></image>
             <view class="swipor-context">
               <text class="swipor-title">{{item.title}}</text>

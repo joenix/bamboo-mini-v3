@@ -8,7 +8,7 @@ Page({
     // 判断参数是否存在，并设置 URL
     if (article) {
       return this.setData({
-        url: decodeURIComponent(article)
+        url: decodeURIComponent(`htps://mp.weixin.qq.com/s/${article}`)
       });
     }
 

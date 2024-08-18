@@ -14,34 +14,51 @@
   /* box-sizing: border-box; */
   box-sizing: content-box;
 
-  height: 60vh !important;
+  height: 56vh !important;
+  margin-top: 4vh;
 
   overflow-x: hidden;
   overflow-y: auto;
 
-  transition: height ease-in 0.3s;
+  transition: all ease-out 0.24s;
 }
 
-
 .swipor-container .active {
-  height: 65vh !important;
+  height: 64vh !important;
+  margin-top: 0 !important;
 }
 
 .swipor-item-content {
   height: 100%;
   margin: 0 auto;
   background-color: white;
+  border-radius: 10rpx;
+  overflow: hidden;
 }
 
 .swipor-container .active .swipor-item-content {
   width: 80vw !important;
 }
 
-.swipor-item-inner {}
+.swipor-item-inner {
+}
+
+.swipor-context {
+  padding: 40rpx;
+  line-height: 2;
+  text-align: justify;
+}
+
+.swipor-title {
+  font-weight: bold;
+  font-size: 32rpx;
+  line-height: 3;
+}
 
 .swipor-image {
   width: 100%;
   height: 480rpx;
 }
 
-.swipor-context {}
+.swipor-context {
+}

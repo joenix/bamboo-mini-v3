@@ -4,6 +4,7 @@
 
 page {
   /* 全局背景色 */
+  color: #343434;
   background-color: #faf6f7;
 
   /* Theme for TDesign */
