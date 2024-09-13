@@ -1,11 +1,15 @@
 <!-- 自定义nav -->
 <custom-nav title="贴士集" showBack="{{false}}" />
 
-
-<view class="tips-container">
-  <view class="title">今日贴士</view>
-  <view class="tips-list-container">
-    <t-cell description="点读会让你充满力量,意犹未尽" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2Tips' data-id='1' />
-    <t-cell description="此等感觉，妙哉妙哉" align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2Tips' data-id='2' />
-  </view>
-</view>
+<pager>
+  <t-indexes bind:select="onSelect" index-list="{{indexs}}" sticky-offset="{{stickyOffset}}">
+    <block wx:if="tips.length" wx:for="{{tips}}" wx:key="index">
+      <t-indexes-anchor index="{{item.index}}" t-class="anchor-wrapper">
+        <view>{{item.index}}</view>
+      </t-indexes-anchor>
+      <t-cell-group>
+        <t-cell class="tip-cell" wx:for="{{item.children}}" wx:key="info" wx:for-item="info" title="{{info.content}}" aria-role="button" hover bindtap='jump2Tips' data-id='{{info}}' />
+      </t-cell-group>
+    </block>
+  </t-indexes>
+</pager>

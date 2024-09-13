@@ -1,3 +1,5 @@
+import { api, get, post } from '../../utils/util';
+
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
@@ -73,6 +75,7 @@ Page({
         console.log(res);
       }
     });
+
     this.init();
   },
 
@@ -86,12 +89,35 @@ Page({
     this.loadHomePage();
   },
 
+  /**
+   * Tabs
+   * ====== ====== ======
+   */
+  async onTabsChange(e) {
+    const { value: id } = e.detail;
+
+    if (!id) {
+      return;
+    }
+
+    this.setData({
+      content: []
+    });
+
+    const { data: content } = await post(api.Information.getall, { filters: [{ key: 'type', value: id }] });
+
+    this.setData({
+      content
+    });
+  },
+
   loadHomePage() {
     wx.stopPullDownRefresh();
 
     this.setData({
       pageLoading: true
     });
+
     fetchHome().then(({ swiper, tabList }) => {
       this.setData({
         tabList,
@@ -123,7 +149,7 @@ Page({
       goodsListLoadStatus: 1
     });
 
-    const pageSize = this.goodListPagination.num;
+    const pageSize = this.goodListPagination?.num;
     let pageIndex = this.privateData.tabIndex * pageSize + this.goodListPagination.index + 1;
     if (fresh) {
       pageIndex = 0;

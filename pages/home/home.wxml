@@ -6,26 +6,46 @@
 </view>
 
 <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel" t-class-track="custom-track" space-evenly="{{false}}">
-  <t-tab-panel label="师资团队" value="0" style="{{tabPanelstyle}}">
+  
+  <t-tab-panel label="最新资讯" value="0" style="{{tabPanelstyle}}">
     <view class="card-theme">
       <swipor content="{{content}}"></swipor>
     </view>
   </t-tab-panel>
-  <t-tab-panel label="六合点读" value="1" style="{{tabPanelstyle}}">
-    <!-- 选项卡2的内容 -->
-    选项2内容
-  </t-tab-panel>
-  <t-tab-panel label="学习分享" value="2" style="{{tabPanelstyle}}">
-    <!-- 选项卡3的内容 -->
-    选项3内容
-  </t-tab-panel>
-  <t-tab-panel label="公司简介" value="3" style="{{tabPanelstyle}}">
-    <!-- 选项卡4的内容 -->
-    公司简介
-  </t-tab-panel>
-  <t-tab-panel label="创办理念" value="4" style="{{tabPanelstyle}}">
-    <!-- 选项卡5的内容 -->
-    创办理念
+
+  <t-tab-panel label="师资团队" value="1" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
   </t-tab-panel>
 
+  <t-tab-panel label="授权机构" value="2" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
+  </t-tab-panel>
+
+  <t-tab-panel label="学习课件" value="3" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
+  </t-tab-panel>
+
+  <t-tab-panel label="仇师讲座" value="4" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
+  </t-tab-panel>
+
+  <t-tab-panel label="成功案例" value="5" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
+  </t-tab-panel>
+
+  <t-tab-panel label="学习分享" value="6" style="{{tabPanelstyle}}">
+    <view class="card-theme">
+      <swipor content="{{content}}"></swipor>
+    </view>
+  </t-tab-panel>
 </t-tabs>

@@ -6,7 +6,10 @@
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "pager": "/components/pager/pager",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "t-indexes": "tdesign-miniprogram/indexes/indexes",
+    "t-indexes-anchor": "tdesign-miniprogram/indexes-anchor/indexes-anchor"
   },
   "enablePullDownRefresh": true
 }

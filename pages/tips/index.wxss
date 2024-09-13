@@ -1,5 +1,31 @@
-.tips-container {}
+.tips-container {
+}
 
 .tips-container .title {
   padding-left: 30rpx;
+}
+
+.t-cell-group {
+  padding: 24rpx 0;
+}
+
+.tip-cell {
+  margin-bottom: 20rpx;
+}
+
+.t-indexes-anchor__wrapper {
+  display: none;
+}
+
+.t-indexes__sidebar-item {
+  padding: 8rpx 0;
+  line-height: 1.5;
+  margin-top: 16rpx !important;
+}
+
+.t-indexes__sidebar-item + .t-indexes__sidebar-item {
+}
+
+.t-indexes__sidebar-item--active {
+  border-radius: 4rpx !important;
 }

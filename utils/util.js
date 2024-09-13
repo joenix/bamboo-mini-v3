@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { host, api } from './api';
 
 const formatTime = (date, template) => dayjs(date).format(template);
 
@@ -47,21 +48,18 @@ const cosThumb = (url, width, height = width) => {
   return `${url}?imageMogr2/thumbnail/${~~width}x${~~height}`;
 };
 
-const get = (source, paths, defaultValue) => {
-  if (typeof paths === 'string') {
-    paths = paths
-      .replace(/\[/g, '.')
-      .replace(/\]/g, '')
-      .split('.')
-      .filter(Boolean);
-  }
-  const { length } = paths;
-  let index = 0;
-  while (source != null && index < length) {
-    source = source[paths[index++]];
-  }
-  return source === undefined || index === 0 ? defaultValue : source;
-};
+// const get = (source, paths, defaultValue) => {
+//   if (typeof paths === 'string') {
+//     paths = paths.replace(/\[/g, '.').replace(/\]/g, '').split('.').filter(Boolean);
+//   }
+//   const { length } = paths;
+//   let index = 0;
+//   while (source != null && index < length) {
+//     source = source[paths[index++]];
+//   }
+//   return source === undefined || index === 0 ? defaultValue : source;
+// };
+
 let systemWidth = 0;
 /** 获取系统宽度，为了减少启动消耗所以在函数里边做初始化 */
 export const loadSystemWidth = () => {
@@ -108,8 +106,7 @@ const phoneEncryption = (phone) => {
 };
 
 // 内置手机号正则字符串
-const innerPhoneReg =
-  '^1(?:3\\d|4[4-9]|5[0-35-9]|6[67]|7[0-8]|8\\d|9\\d)\\d{8}$';
+const innerPhoneReg = '^1(?:3\\d|4[4-9]|5[0-35-9]|6[67]|7[0-8]|8\\d|9\\d)\\d{8}$';
 
 /**
  * 手机号正则校验
@@ -122,6 +119,36 @@ const phoneRegCheck = (phone) => {
   return phoneRegExp.test(phone);
 };
 
+/**
+ * HTTP Request
+ * ====== ====== ======
+ */
+const get = (url, data = {}, options = {}) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: `${host}${url}`,
+      method: 'GET',
+      data,
+      header: options.header || { 'Content-Type': 'application/json' },
+      success: ({ data }) => resolve(data.msg),
+      fail: (error) => reject(error)
+    });
+  });
+};
+
+const post = async (url, data = {}, options = {}) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: `${host}${url}`,
+      method: 'POST',
+      data,
+      header: options.header || { 'Content-Type': 'application/json' },
+      success: ({ data }) => resolve(data.msg),
+      fail: (error) => reject(error)
+    });
+  });
+};
+
 module.exports = {
   formatTime,
   priceFormat,
@@ -130,4 +157,10 @@ module.exports = {
   rpx2px,
   phoneEncryption,
   phoneRegCheck,
+
+  host,
+  api,
+
+  get,
+  post
 };

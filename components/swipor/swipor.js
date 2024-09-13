@@ -3,7 +3,10 @@ Component({
     // 这里可以定义一些传入的参数，比如自定义内容
     content: {
       type: Array,
-      value: []
+      value: [],
+      observer(value) {
+        console.log(333, value);
+      }
     }
   },
   data: {
@@ -19,6 +22,8 @@ Component({
         current,
         link: this.data.content[current]
       });
-    }
+    },
+
+    onSwiporTransition(e) {}
   }
 });
