@@ -149,11 +149,20 @@ const post = async (url, data = {}, options = {}) => {
   });
 };
 
+const link2 = async (page, param) => {
+  const query = Object.entries(param)
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+    .join('&');
+
+  wx.navigateTo({
+    url: `/pages/${page}?${query}`
+  });
+};
+
 module.exports = {
   formatTime,
   priceFormat,
   cosThumb,
-  get,
   rpx2px,
   phoneEncryption,
   phoneRegCheck,
@@ -162,5 +171,6 @@ module.exports = {
   api,
 
   get,
-  post
+  post,
+  link2
 };

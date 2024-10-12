@@ -1,0 +1,3 @@
+<view class="content-{{count}}" style="color: #{{color}};">
+    <slot></slot>
+</view>

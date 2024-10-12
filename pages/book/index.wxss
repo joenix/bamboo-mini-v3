@@ -29,3 +29,45 @@
   font-weight: bold;
   line-height: 80rpx;
 }
+
+.book-calendar {
+}
+
+.book-calendar-header {
+  position: relative;
+  display: flex;
+  height: 100rpx;
+  padding-left: 12rpx;
+  border-radius: 8rpx 8rpx 0 0;
+  background:
+    url(https://oss.lhdd.club/ui/ui_calendar.png) right/contain no-repeat,
+    linear-gradient(to bottom, #7c5a2c, #91764b);
+}
+
+.book-calendar-header::after {
+  content: ' ';
+  position: absolute;
+  height: 12rpx;
+  top: -12rpx;
+  left: 0;
+  right: 0;
+  margin: 0 12rpx;
+  background: #7c5a2c;
+  border-radius: 8rpx 8rpx 0 0;
+}
+
+.book-calendar-header text {
+  width: 64rpx;
+  height: 64rpx;
+  margin: 12rpx 0 0 12rpx;
+  line-height: 64rpx;
+  display: block;
+  text-align: center;
+  border-radius: 64rpx;
+  color: #fff;
+  border: 2rpx solid #fff;
+}
+
+.book-calendar-content {
+  border: 2rpx solid #926523;
+}

@@ -1,0 +1,5 @@
+<view class="liner {{side ? 'side' : 'side hide'}} {{vertical ? 'vertical' : ''}}">
+  <view></view>
+</view>
+
+

@@ -1,0 +1,3 @@
+<view class="grider">
+  <slot></slot>
+</view>

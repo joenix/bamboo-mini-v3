@@ -4,8 +4,18 @@
 <view class="book-container">
   <!-- 日历 -->
   <view class="calendar-container">
-    <view class="calendar-title">六合点读日历</view>
-    <t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" format="{{format}}" />
+    <view class="book-calendar">
+      <view class="book-calendar-header">
+        <text>今</text>
+        <text>日</text>
+        <text>点</text>
+        <text>读</text>
+      </view>
+
+      <view class="book-calendar-content">
+        <t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" format="{{format}}" />
+      </view>
+    </view>
   </view>
   <!-- 榜单 -->
   <t-cell title="点读排名-第--名" hover arrow leftIcon="lock-on" note="完整榜单" bindtap='jump2rank' />

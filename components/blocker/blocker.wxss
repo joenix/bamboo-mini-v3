@@ -1,0 +1,29 @@
+.blocker {
+  display: flex;
+  margin-bottom: 32rpx;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.blocker.shadow {
+  box-shadow: 0 2rpx 8rpx #c2b9ac33;
+}
+
+.blocker.vertical {
+  flex-direction: column;
+}
+
+.blocker.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.blocker image {
+  border-radius: 8rpx;
+}
+
+.blocker liner {
+  width: 100%;
+}

@@ -1,0 +1,57 @@
+.liner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  margin: 24rpx 0;
+
+  border-bottom: 1rpx solid #ebe4dd;
+}
+
+.liner view {
+  position: relative;
+  width: 11rpx;
+  height: 11rpx;
+  top: 6rpx;
+  background-color: #dfcaa9; /* 菱形的颜色 */
+  transform: rotate(45deg); /* 旋转正方形成为菱形 */
+}
+
+.liner.side::before,
+.liner.side::after {
+  content: '';
+  position: relative;
+  width: 11rpx;
+  height: 11rpx;
+  top: 6rpx;
+  background-color: #dfcaa9; /* 菱形的颜色 */
+  transform: rotate(45deg); /* 旋转正方形成为菱形 */
+}
+
+.liner.side::after {
+  margin-left: 0rpx; /* 两端菱形与线的间距 */
+}
+
+.liner.side::before {
+  margin-right: 0rpx;
+}
+
+.liner.side::after,
+.liner.side::before {
+  flex-shrink: 0;
+}
+
+.liner.hide:after,
+.liner.hide:before {
+  background-color: transparent;
+}
+
+.liner.vertical {
+  flex-direction: column;
+  width: 0;
+  height: 100%;
+  margin: 0 24rpx;
+  border-bottom: none;
+  border-right: 1rpx solid #ebe4dd;
+}

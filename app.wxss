@@ -4,9 +4,14 @@
 
 page {
   /* 全局背景色 */
-  color: #343434;
   background-color: #faf6f7;
 
   /* Theme for TDesign */
   --td-brand-color: #c8964e;
+}
+
+view,
+text {
+  color: #363636;
+  font-size: 28rpx;
 }

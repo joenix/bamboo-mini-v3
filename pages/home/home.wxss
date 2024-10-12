@@ -135,6 +135,84 @@ page {
   padding-bottom: 18px;
 }
 
+.card-theme .card-theme-infos {
+  position: relative;
+  display: block;
+  line-height: 1.5;
+}
+
+.card-theme .card-theme-infos .mound {
+  top: 0;
+  right: 24rpx;
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 54rpx;
+  height: 108rpx;
+  line-height: 1.2;
+  font-size: 24rpx;
+  color: white;
+  letter-spacing: 12rpx;
+  padding-top: 8rpx;
+  padding-left: 16rpx;
+  background: url(https://oss.lhdd.club/ui/ui_plate.png) center/cover no-repeat;
+}
+
+.card-theme .card-theme-infos .avatar {
+  border-radius: 8rpx;
+}
+
+.card-theme .card-theme-infos .name {
+  font-size: 32rpx;
+}
+
+.card-theme .card-theme-infos .gender text {
+  margin: 0 16rpx;
+  color: #c0975a;
+}
+
+.card-theme .card-theme-infos .region {
+  font-size: 24rpx;
+}
+
+.card-theme .card-theme-orgs {
+  line-height: 1.75;
+}
+
+.card-theme .card-theme-orgs liner {
+  width: auto;
+}
+
+.card-theme .card-theme-orgs .org {
+  color: #c0975a;
+  margin-bottom: 8rpx;
+}
+
+.card-theme .card-theme-orgs .region {
+  font-size: 24rpx;
+  color: #444;
+}
+
+.card-theme .card-theme-entry .t-col {
+  position: relative;
+  margin-bottom: 32rpx;
+}
+
+.card-theme .card-theme-entry .name {
+  top: 12rpx;
+  left: 32rpx;
+  position: absolute;
+  font-weight: bold;
+}
+
+.card-theme .card-theme-entry .subname {
+  top: 52rpx;
+  left: 32rpx;
+  position: absolute;
+  font-size: 24rpx;
+  color: #926523;
+}
+
 /* tab */
 .card-theme .card-theme-nav {
   bottom: -18px;
@@ -149,7 +227,8 @@ page {
 }
 
 .custom-panel {
-  margin-top: 80rpx;
+  /* margin-top: 80rpx; */
+  margin-top: 32rpx;
 }
 
 .custom-track {
@@ -159,4 +238,31 @@ page {
 
 .scale-card-theme image {
   max-width: 100%;
+}
+
+.course-card {
+  margin-bottom: 40rpx;
+}
+
+.course-card .t-image {
+  border-radius: 12rpx;
+}
+
+.auth-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.auth-card {
+  width: calc(50vw - 48rpx);
+  margin-bottom: 32rpx;
+  padding: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+}
+
+.auth-card-title {
+  font-size: 28rpx;
 }

@@ -2,7 +2,6 @@
 .custom-nav-container {
   text-align: left;
   padding: 0 0 40rpx 24rpx;
-  background: #fff;
   display: flex;
   align-items: center;
 }

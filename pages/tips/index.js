@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { api, get, post } from '../../utils/util';
+import { api, get, post, formatTime } from '../../utils/util';
 
 import Toast from 'tdesign-miniprogram/toast/index';
 
@@ -20,6 +20,7 @@ Page({
         children: []
       }
     ],
+    opens: [0],
     stickyOffset: 0
   },
 
@@ -43,6 +44,17 @@ Page({
     this.getTabBar().init();
   },
 
+  onControl(event) {
+    const { index } = event.currentTarget.dataset;
+    const value = this.data.opens[index] || false;
+
+    this.data.opens[index] = !value;
+
+    this.setData({
+      opens: this.data.opens
+    });
+  },
+
   onPullDownRefresh() {},
 
   async getTips() {
@@ -51,9 +63,9 @@ Page({
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;
 
-    data.forEach((item) => {
+    data.forEach((item, index) => {
       const time = new Date(item.updatedAt).getTime();
-      console.log(100, time);
+      item.updatedAt = formatTime(item.updatedAt, 'YYYY年MM月DD日');
 
       if (time <= day * 1) {
         this.data.tips[0].children.push(item);
@@ -66,9 +78,10 @@ Page({
       if (time > day * 7 && time <= day * 30) {
         this.data.tips[2].children.push(item);
       }
-    });
 
-    console.log(111, this.data.tips);
+      // 补丁
+      this.data.opens[index] = false;
+    });
 
     this.setData({
       tips: this.data.tips

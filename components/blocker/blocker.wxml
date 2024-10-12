@@ -1,0 +1,3 @@
+<view class="blocker {{vertical ? 'vertical' : ''}} {{center ? 'center' : ''}} {{shadow ? 'shadow' : ''}}">
+  <slot></slot>
+</view>

@@ -1,4 +1,17 @@
 <!-- article.wxml -->
-<view class="container">
-  <web-view src="{{url}}" class="webview"></web-view>
-</view>
+<custom-nav title="资讯详情" />
+
+<pager class="article">
+  <view class="article-title">{{article.title}}</view>
+  <view class="article-header">
+    <view class="article-author">
+      <text class="article-tag">原创</text>
+      <text>六合融道</text>
+    </view>
+    <view class="article-datetime">{{article.datetime}}</view>
+  </view>
+  <liner side="{{false}}" />
+  <blocker shadow="{{false}}" class="article-content">
+    <rich-text nodes="{{article.content}}"></rich-text>
+  </blocker>
+</pager>

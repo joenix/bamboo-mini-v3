@@ -9,43 +9,104 @@
   
   <t-tab-panel label="最新资讯" value="0" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
+      <pager>
+        <blocker wx:for="{{content}}" wx:key="index" data-item="{{item}}" data-id="{{item.id}}" bind:tap="link_article">
+          <t-image src="{{item.img[0].link}}" mode="aspectFill" width="100%" height="120" />
+          <liner></liner>
+          <content class="card-theme-desc">{{item.name}}</content>
+        </blocker>
+      </pager>
     </view>
   </t-tab-panel>
 
   <t-tab-panel label="师资团队" value="1" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
+      <pager>
+        <t-row gutter="16">
+          <t-col span="12" wx:for="{{content}}" wx:key="index" data-item="{{item}}">
+            <blocker vertical="{{true}}" center="{{true}}" class="card-theme-infos">
+              <view class="mound">{{item.content[3]}}</view>
+              <t-avatar class="avatar" image="{{item.img[0].link}}" size="large" />
+              <view class="name">{{item.name}}</view>
+              <view class="gender">
+                <text>{{item.content[0] ? '女' : '男'}}</text>
+                <text>{{item.content[1]}}岁</text>
+              </view>
+              <view class="region">{{item.content[2]}}</view>
+              <liner side="{{false}}"></liner>
+              <content count="3" color="777" class="card-theme-desc">{{item.remark}}</content>
+            </blocker>
+          </t-col>
+        </t-row>
+      </pager>
     </view>
   </t-tab-panel>
 
   <t-tab-panel label="授权机构" value="2" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
+      <pager>
+        <blocker wx:for="{{content}}" wx:key="index" data-item="{{item}}" vertical="{{false}}" class="card-theme-orgs" bind:tap="link_2_news">
+          <t-image src="{{item.img[0].link}}" mode="aspectFill" width="72" height="72" />
+          <liner side="{{false}}" vertical="{{true}}"></liner>
+          <view>
+            <view>{{item.name}}</view>
+            <view class="org">{{item.remark}}</view>
+            <view class="region">{{item.content}}</view>
+          </view>
+        </blocker>
+        <view class="auth-group">
+          <view wx:for="{{content}}" wx:key="index" class="auth-card">
+            {{ item.name }}
+          </view>
+        </view>
+      </pager>
     </view>
   </t-tab-panel>
 
   <t-tab-panel label="学习课件" value="3" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
+      <pager>
+        <view class="auth-group">
+          <view wx:for="{{content}}" wx:key="index" class="auth-card">
+            <view class="auth-card-title">《{{ item.name }}》</view>
+            <view>讲师：{{item.content}}</view>
+          </view>
+        </view>
+      </pager>
     </view>
   </t-tab-panel>
 
-  <t-tab-panel label="仇师讲座" value="4" style="{{tabPanelstyle}}">
+  <t-tab-panel label="学习商城" value="4" style="{{tabPanelstyle}}">
     <view class="card-theme">
       <swipor content="{{content}}"></swipor>
     </view>
   </t-tab-panel>
 
-  <t-tab-panel label="成功案例" value="5" style="{{tabPanelstyle}}">
+  <t-tab-panel label="从这里入" value="5" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
-    </view>
-  </t-tab-panel>
-
-  <t-tab-panel label="学习分享" value="6" style="{{tabPanelstyle}}">
-    <view class="card-theme">
-      <swipor content="{{content}}"></swipor>
+      <pager class="card-theme-entry">
+        <t-row gutter="16">
+          <t-col span="12">
+            <view>
+              <text class="name">六场功夫</text>
+              <t-image src="https://oss.lhdd.club/ui/ui_entry_1.png" width="100%" height="90" />
+            </view>
+          </t-col>
+          <t-col span="12">
+              <text class="name">仇师讲座</text>
+              <t-image src="https://oss.lhdd.club/ui/ui_entry_2.png" width="100%" height="90" />
+          </t-col>
+          <t-col span="12">
+              <text class="name">成功案例</text>
+              <t-image src="https://oss.lhdd.club/ui/ui_entry_3.png" width="100%" height="90" />
+          </t-col>
+          <t-col span="12">
+              <text class="name">学习分享</text>
+              <text class="subname">点读指法教学</text>
+              <t-image src="https://oss.lhdd.club/ui/ui_entry_4.png" width="100%" height="90" />
+          </t-col>
+        </t-row>
+      </pager>
     </view>
   </t-tab-panel>
 </t-tabs>

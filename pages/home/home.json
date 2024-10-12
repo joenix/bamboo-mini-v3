@@ -16,9 +16,17 @@
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "goods-list": "/components/goods-list/index",
     "load-more": "/components/load-more/index",
     "custom-nav": "/components/custom-nav/custom-nav",
-    "swipor": "/components/swipor/swipor"
+    "pager": "/components/pager/pager",
+    "grider": "/components/grider/grider",
+    "swipor": "/components/swipor/swipor",
+    "blocker": "/components/blocker/blocker",
+    "liner": "/components/liner/liner",
+    "content": "/components/content/content"
   }
 }

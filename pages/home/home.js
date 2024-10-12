@@ -1,4 +1,4 @@
-import { api, get, post } from '../../utils/util';
+import { api, get, post, link2 } from '../../utils/util';
 
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
@@ -52,7 +52,22 @@ Page({
         description: '六合大道，无穷玄妙，无相为体，万法归一。神意天授，先贤真传，无量法施，以简入道。<br />六合简工，仇师亲命，极深研几，九转功成。六合制简，上合天时，下明地理，中省人文。',
         link: 'ACWu6C2lkP3QC46IvNmGfw'
       }
-    ]
+    ],
+
+    course: []
+  },
+
+  // 从 Blocker 同步数据
+  syncIndex(e) {
+    // 解构数据
+    const { name, index, item } = e.detail;
+
+    // 更新数据
+    this.setData({
+      [`${name}[${index}]`]: { ...item }
+    });
+
+    // return false;
   },
 
   goodListPagination: {
@@ -85,8 +100,10 @@ Page({
     this.init();
   },
 
-  init() {
-    this.loadHomePage();
+  async init() {
+    // this.loadHomePage();
+
+    await this.onTabsChange({ detail: { value: '0' } });
   },
 
   /**
@@ -104,7 +121,14 @@ Page({
       content: []
     });
 
-    const { data: content } = await post(api.Information.getall, { filters: [{ key: 'type', value: id }] });
+    let { data: content } = await post(api.Information.getall, { filters: [{ key: 'type', value: id }] });
+
+    content = content.map((item) => {
+      if (/\,/.test(item.content)) {
+        item.content = item.content.split(',');
+      }
+      return item;
+    });
 
     this.setData({
       content
@@ -193,9 +217,17 @@ Page({
 
   navToActivityDetail({ detail }) {
     const { index: promotionID = 0 } = detail || {};
+
     wx.navigateTo({
       url: `/pages/promotion-detail/index?promotion_id=${promotionID}`
     });
+  },
+
+  // 最新资讯 链接跳转
+  link_article(e) {
+    const { id } = e.currentTarget.dataset;
+
+    link2('article/article', { id });
   },
 
   // 跳转咨询页面
@@ -220,6 +252,7 @@ Page({
       url: '/pages/information/list/list'
     });
   },
+
   // 金刚位跳转
   jump2jingang(e) {
     const {

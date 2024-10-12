@@ -4,9 +4,7 @@ Component({
     content: {
       type: Array,
       value: [],
-      observer(value) {
-        console.log(333, value);
-      }
+      observer(value) {}
     }
   },
   data: {

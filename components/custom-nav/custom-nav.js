@@ -1,6 +1,5 @@
 // components/custom-nav/custom-nav.js
 Component({
-
   /**
    * 组件的属性列表
    */
@@ -11,7 +10,7 @@ Component({
       observer: function (title) {
         this.setData({
           title
-        })
+        });
       }
     },
     showBack: {
@@ -20,8 +19,12 @@ Component({
       observer: function (showBack) {
         this.setData({
           showBack
-        })
+        });
       }
+    },
+    background: {
+      type: String,
+      value: '#fff'
     }
   },
 
@@ -38,7 +41,7 @@ Component({
    */
   methods: {
     handleBack() {
-      wx.navigateBack()
+      wx.navigateBack();
     }
   },
   lifetimes: {
@@ -48,8 +51,8 @@ Component({
 
       // 设置 navBarHeight
       this.setData({
-        navBarHeight: (app.globalData.navBarHeight * 2) + this.data.height,
+        navBarHeight: app.globalData.navBarHeight * 2 + this.data.height
       });
     }
-  },
-})
+  }
+});

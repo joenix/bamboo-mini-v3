@@ -1,15 +1,39 @@
 <!-- 自定义nav -->
-<custom-nav title="贴士集" showBack="{{false}}" />
+<custom-nav title="贴士集" showBack="{{false}}" background="{{'#ddd4c3'}}" />
 
-<pager>
+<pager class="page-tips">
   <t-indexes bind:select="onSelect" index-list="{{indexs}}" sticky-offset="{{stickyOffset}}">
     <block wx:if="tips.length" wx:for="{{tips}}" wx:key="index">
       <t-indexes-anchor index="{{item.index}}" t-class="anchor-wrapper">
         <view>{{item.index}}</view>
       </t-indexes-anchor>
-      <t-cell-group>
-        <t-cell class="tip-cell" wx:for="{{item.children}}" wx:key="info" wx:for-item="info" title="{{info.content}}" aria-role="button" hover bindtap='jump2Tips' data-id='{{info}}' />
-      </t-cell-group>
+      <view class="page-tips-info">
+        <view wx:for="{{item.children}}" wx:key="info" wx:for-index="index" wx:for-item="info">
+          <view wx:if="{{index === 0}}" class="page-tip-first">
+            <view class="page-tip-first-in">
+              <view class="page-tip-header">
+                <view class="tip-tip">
+                  <view class="tip-tip-in">
+                    今日贴士
+                  </view>
+                  <view class="tip-tip-ar"></view>
+                </view>
+                <view class="tip-date">{{info.updatedAt}}</view>
+              </view>
+              <view class="page-tip-content">
+                <content count="6">{{info.content}}</content>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="page-tip-block">
+              <t-icon class="tip-control" name="{{opens[index] ? 'chevron-down-circle' : 'chevron-up-circle'}}" size="52rpx" data-index="{{index}}" bind:tap="onControl" />
+              <view class="tip-date">{{info.updatedAt}}</view>
+              <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}">{{info.content}}</content>
+            </view>
+          </view>
+        </view>
+      </view>
     </block>
   </t-indexes>
 </pager>

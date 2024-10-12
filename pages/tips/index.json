@@ -7,6 +7,8 @@
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-toast": "tdesign-miniprogram/toast/toast",
     "pager": "/components/pager/pager",
+    "blocker": "/components/blocker/blocker",
+    "content": "/components/content/content",
     "custom-nav": "/components/custom-nav/custom-nav",
     "t-indexes": "tdesign-miniprogram/indexes/indexes",
     "t-indexes-anchor": "tdesign-miniprogram/indexes-anchor/indexes-anchor"

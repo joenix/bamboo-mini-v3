@@ -1,4 +1,10 @@
 {
-    "navigationBarTitleText": "文章页面",
-    "backgroundColor": "#ffffff"
+    "navigationBarTitleText": "详情",
+    "backgroundColor": "#f9f8f7",
+    "usingComponents": {
+        "custom-nav": "/components/custom-nav/custom-nav",
+        "pager": "/components/pager/pager",
+        "liner": "/components/liner/liner",
+        "blocker": "/components/blocker/blocker"
+    }
 }
