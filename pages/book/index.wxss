@@ -3,6 +3,20 @@
   color: #e34d59 !important;
 }
 
+.is-readed {
+  position: relative;
+}
+.is-readed::after {
+  content: ' ';
+  top: 18rpx;
+  right: 12rpx;
+  position: absolute;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 24rpx;
+  background-color: #e34d59;
+}
+
 .last-day {
   background-color: #ccc;
 }

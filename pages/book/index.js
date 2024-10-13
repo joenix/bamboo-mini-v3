@@ -25,6 +25,10 @@ Page({
         current.className = 'is-holiday';
       }
 
+      if ([21, 22, 27, 30].includes(day)) {
+        current.className = 'is-readed';
+      }
+
       // 日期
       current.suffix = dayStr;
 
