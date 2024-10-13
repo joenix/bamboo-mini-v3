@@ -11,6 +11,10 @@ Component({
     shadow: {
       type: Boolean,
       value: true
+    },
+    background: {
+      type: String,
+      value: ''
     }
   }
 });

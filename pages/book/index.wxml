@@ -1,31 +1,69 @@
 <!-- 自定义nav -->
 <custom-nav title="点读" showBack="{{false}}" />
 
-<view class="book-container">
-  <!-- 日历 -->
-  <view class="calendar-container">
-    <view class="book-calendar">
-      <view class="book-calendar-header">
-        <text>今</text>
-        <text>日</text>
-        <text>点</text>
-        <text>读</text>
-      </view>
+<pager class="book-container">
+	<!-- 日历 -->
+	<view class="calendar-container">
+		<view class="book-calendar">
+			<view class="book-calendar-header">
+				<text>今</text>
+				<text>日</text>
+				<text>点</text>
+				<text>读</text>
+			</view>
 
-      <view class="book-calendar-content">
-        <t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" format="{{format}}" />
-      </view>
-    </view>
-  </view>
-  <!-- 榜单 -->
-  <t-cell title="点读排名-第--名" hover arrow leftIcon="lock-on" note="完整榜单" bindtap='jump2rank' />
+			<view class="book-calendar-content">
+				<t-calendar use-popup="{{false}}" bind:select="handleSelect" format="{{format}}" />
+			</view>
+		</view>
+	</view>
 
-  <!-- 指法教学 -->
-  <t-cell title="六合竹简点读执法教学" hover arrow leftIcon="lock-on" note="开始学习" />
-
-  <!-- 图书列表 -->
-  <view class="list-container">
-    <t-cell title="三国志" hover arrow leftIcon="lock-on" note="开始点读" data-id="1" bindtap='beginread' />
-    <t-cell title="水浒传" hover arrow leftIcon="lock-on" note="开始点读" data-id="2" bindtap='beginread' />
-  </view>
-</view>
+	<t-row gutter="16" class="book-entries">
+		<t-col span="12">
+			<blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-1.png) right top/60% no-repeat">
+        <view class="book-entries-title">点读排名</view>
+        <view class="book-entries-text">
+          第<text>22</text>名
+        </view>
+        <view class="book-entries-button">完整榜单 <text>▶</text></view>
+      </blocker>
+		</t-col>
+		<t-col span="12">
+			<blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-2.png) right top/60% no-repeat">
+        <view class="book-entries-title">六合竹简</view>
+        <view class="book-entries-text">
+          点读指法教学
+        </view>
+        <view class="book-entries-button">开始学习 <text>▶</text></view>
+      </blocker>
+    </t-col>
+		<t-col span="24">
+			<blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top/60% no-repeat">
+        <t-row>
+          <t-col span="12">
+            <view class="book-entries-flex">
+              <view>
+                <view class="book-entries-title">诫子书&诫外甥书</view>
+                <view class="book-entries-text">
+                  建议单次时长45分
+                </view>
+              </view>
+              <view class="book-entries-total">
+                今日已完成 <text>0</text> 次，总时长 <text>0</text>
+              </view>
+            </view>
+          </t-col>
+          <t-col span="9" offset="3">
+            <view class="book-entries-flex">
+              <view></view>
+              <view class="book-entries-affix">
+                今天已有 <text>99</text> 人完成点读
+                <view class="book-entries-button-large" bind:tap="link_read">开始点读 <text>▶</text></view>
+              </view>
+            </view>
+          </t-col>
+        </t-row>
+      </blocker>
+    </t-col>
+	</t-row>
+</pager>

@@ -5,6 +5,11 @@
   "usingComponents": {
     "t-calendar": "tdesign-miniprogram/calendar/calendar",
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "pager": "/components/pager/pager",
+    "liner": "/components/liner/liner",
+    "blocker": "/components/blocker/blocker"
   }
 }

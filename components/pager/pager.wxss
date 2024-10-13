@@ -1,6 +1,7 @@
 .pager {
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-bottom: calc(80rpx + 2rpx + 32rpx);
 
   font-size: 28rpx;
 }

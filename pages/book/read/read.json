@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText": "点读",
+    "backgroundTextStyle": "light",
+    "component": true,
+    "usingComponents": {
+        "t-row": "tdesign-miniprogram/row/row",
+        "t-col": "tdesign-miniprogram/col/col",
+        "t-input": "tdesign-miniprogram/input/input",
+        "t-textarea": "tdesign-miniprogram/textarea/textarea",
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "t-message": "tdesign-miniprogram/message/message",
+        "custom-nav": "/components/custom-nav/custom-nav",
+        "pager": "/components/pager/pager"
+    }
+}

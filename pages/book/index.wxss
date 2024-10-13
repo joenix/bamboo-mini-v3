@@ -71,3 +71,92 @@
 .book-calendar-content {
   border: 2rpx solid #926523;
 }
+
+.book-entries {
+  margin-top: 32rpx;
+}
+
+.book-entries-title {
+  font-size: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.book-entries-text,
+.book-entries-button {
+  color: #926523;
+  font-size: 24rpx;
+}
+
+.book-entries-text {
+  height: 48rpx;
+  overflow: hidden;
+}
+
+.book-entries-text text {
+  font-size: 24rpx;
+  margin: 0 0.25rem;
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  border: 2rpx solid #eb866a;
+}
+
+.book-entries-button {
+  text-align: right;
+}
+
+.book-entries-button text {
+  color: #926523;
+  vertical-align: middle;
+  font-size: 12rpx;
+}
+
+.book-entries-flex {
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-entries-flex.end {
+}
+
+.book-entries-total,
+.book-entries-affix {
+  font-size: 24rpx;
+  color: #926523;
+}
+
+.book-entries-total text,
+.book-entries-affix text {
+  font-size: 24rpx;
+  color: #926523;
+}
+
+.book-entries-affix {
+  font-size: 20rpx;
+}
+
+.book-entries-affix > text {
+  display: inline-block;
+  padding: 0 8rpx;
+  border-radius: 48rpx;
+  color: #fff;
+  background-color: #8b682d;
+}
+
+.book-entries-button-large {
+  color: #926523;
+  margin-top: 16rpx;
+  padding: 8rpx 0;
+  text-align: center;
+  border: 2rpx solid #926523;
+}
+
+.book-entries-button-large text {
+  font-size: 16rpx;
+  vertical-align: middle;
+}

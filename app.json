@@ -6,7 +6,6 @@
     "pages/book/time/time",
     "pages/usercenter/score/score",
     "pages/book/detail/detail",
-    "pages/book/index",
     "pages/tips/index",
     "pages/usercenter/index",
     "pages/usercenter/files/files",
@@ -23,7 +22,9 @@
     "pages/usercenter/exchange/exchange",
     "pages/home/sixbook/sixbook",
     "pages/home/notice/notice",
-    "pages/article/article"
+    "pages/article/article",
+    "pages/book/index",
+    "pages/book/read/read"
   ],
   "tabBar": {
     "custom": true,
@@ -46,6 +47,10 @@
       }
     ]
   },
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ],
   "requiredPrivateInfos": [
     "chooseAddress"
   ],

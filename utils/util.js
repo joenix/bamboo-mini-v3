@@ -1,7 +1,19 @@
 import dayjs from 'dayjs';
+
+// Use UTC from DayJS
+import utc from './dayjs_utc';
+// Use Timezone from DayJS
+import timezone from './dayjs_timezone';
+
 import { host, api } from './api';
+import lunar from './lunar';
+
+// Add Extension for DayJS
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const formatTime = (date, template) => dayjs(date).format(template);
+const utcFormatTime = (date, template) => dayjs(date).utc(0).format(template);
 
 /**
  * 格式化价格数额为字符串
@@ -149,7 +161,7 @@ const post = async (url, data = {}, options = {}) => {
   });
 };
 
-const link2 = async (page, param) => {
+const link2 = async (page, param = {}) => {
   const query = Object.entries(param)
     .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
     .join('&');
@@ -161,6 +173,9 @@ const link2 = async (page, param) => {
 
 module.exports = {
   formatTime,
+  utcFormatTime,
+  lunar,
+
   priceFormat,
   cosThumb,
   rpx2px,

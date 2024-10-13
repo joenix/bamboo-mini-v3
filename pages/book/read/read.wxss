@@ -1,0 +1,135 @@
+.read {
+  overflow: hidden;
+  background: url(https://oss.lhdd.club/ui/read_bg.png) center top/cover no-repeat;
+}
+
+.read-bgm-title {
+  color: #787878;
+  margin-bottom: 12rpx;
+}
+
+.read-bgm-hem {
+  text-align: right;
+}
+
+.read-bgm-change {
+  word-break: normal;
+  white-space: nowrap;
+  border-radius: 12rpx;
+  padding: 18rpx 24rpx 18rpx 60rpx;
+  color: #4f4f4f;
+  background: #ffffff80 url(https://oss.lhdd.club/ui/ui_change.png) 24rpx center/15% no-repeat;
+}
+
+.read-bgm-choose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64rpx 32rpx;
+}
+
+.read-bgm-lister {
+  width: 100%;
+}
+
+.read-bgm-lister view {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  margin-top: 24rpx;
+  padding: 24rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: #656c74;
+}
+
+.read-bgm-active {
+  border-top-color: #ebe0d0 !important;
+  border-bottom-color: #ebe0d0 !important;
+  background: linear-gradient(270deg, rgba(192, 151, 90, 0) 0%, rgba(192, 151, 90, 0.3) 50%, rgba(192, 151, 90, 0) 100%);
+}
+
+.read-button {
+  height: 96rpx;
+  line-height: 96rpx;
+  font-size: 32rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #c0975a;
+}
+
+.read-tip {
+  text-align: center;
+  margin-top: 24rpx;
+  color: #959595;
+}
+.read-subtip {
+  text-align: center;
+  margin-top: 24rpx;
+  color: #c0975a;
+}
+
+.read-be-choose {
+  margin-top: 48rpx;
+  width: 100%;
+}
+
+.read-poster {
+  height: 60vh;
+  background: url(https://oss.lhdd.club/ui/read_bg_1.png) center/64% no-repeat;
+}
+
+.read-countdown {
+  height: 64vh;
+  background: url(https://oss.lhdd.club/ui/read_bg_2.png) center 40%/64% no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.read-countdown-time {
+  width: 100%;
+  margin-top: 360rpx;
+  padding: 24rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #c0975a;
+  border: 1px solid #c0975a;
+  background-color: #c0975a1a;
+}
+
+.read-result {
+  margin-bottom: 48rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48rpx;
+}
+
+.read-result-time {
+  font-size: 64rpx;
+  color: #c0975a;
+}
+
+.read-result-tip {
+  color: #656c74;
+}
+
+.read-result .t-input,
+.read-result .t-textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.read-result .t-input {
+  background: #fbf9f590 !important;
+}
+
+.read-result .t-input text {
+  color: #c0975a;
+}
+
+.read-result .t-textarea {
+  background-color: #fbf9f590 !important;
+}
