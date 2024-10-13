@@ -133,3 +133,48 @@
 .read-result .t-textarea {
   background-color: #fbf9f590 !important;
 }
+
+.read-setting {
+  position: relative;
+  top: -32rpx;
+  font-size: 28rpx;
+  color: #c0975a;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.read-setting-popup {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.read-setting-popup-title {
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #656c74;
+  border-bottom: 2rpx solid #f3f6f8;
+}
+
+.read-setting-popup-content {
+  height: 420rpx;
+}
+
+.read-setting-popup-content .t-cell__title-text,
+.read-setting-popup-content .t-radio__title {
+  font-size: 28rpx;
+}
+
+.read-setting-popup-content .t-radio__icon--left {
+  margin-right: 8rpx;
+  margin-left: 16rpx;
+}
+.read-setting-popup-content .t-icon-check-circle-filled {
+  font-size: 48rpx;
+}
+
+.read-setting-popup-submit {
+  width: 90%;
+  margin: 48rpx auto;
+}

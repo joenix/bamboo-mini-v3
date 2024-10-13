@@ -28,6 +28,27 @@
             <view class="read-poster"></view>
         </view>
         <view class="read-layout-control">
+            <t-popup visible="{{settingPopup}}" bind:visible-change="onSettingPopupOpen" usingCustomNavbar placement="center">
+                <view class="read-setting-popup">
+                    <view class="read-setting-popup-title">设置</view>
+                    <view class="read-setting-popup-content">
+                      <t-cell title="是否需要提醒" hover>
+                        <t-radio-group default-value="0" borderless t-class="box" slot="note">
+                            <t-radio block="{{false}}" label="需要" value="1" />
+                            <t-radio block="{{false}}" label="不需要" value="0" />
+                        </t-radio-group>
+                      </t-cell>
+                      <t-cell title="是否需要引导" hover>
+                        <t-radio-group default-value="0" borderless t-class="box" slot="note">
+                            <t-radio block="{{false}}" label="需要" value="1" />
+                            <t-radio block="{{false}}" label="不需要" value="0" />
+                        </t-radio-group>
+                      </t-cell>
+                      <view class="read-button read-setting-popup-submit" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
+                    </view>
+                </view>
+            </t-popup>
+            <view class="read-button read-setting" bind:tap="settingPopupOpen">点读设置</view>
             <view class="read-button" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
             <view class="read-tip">点击后开始计时</view>
         </view>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "个人中心",
   "navigationStyle": "custom",
   "usingComponents": {
+    "t-image": "tdesign-miniprogram/image/image",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",

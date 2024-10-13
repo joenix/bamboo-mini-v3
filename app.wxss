@@ -12,6 +12,6 @@ page {
 
 view,
 text {
-  color: #363636;
-  font-size: 28rpx;
+  /* color: #363636; */
+  /* font-size: 28rpx; */
 }

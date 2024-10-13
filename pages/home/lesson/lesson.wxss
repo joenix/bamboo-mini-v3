@@ -1,37 +1,45 @@
-/* pages/article/article.wxss */
+/* pages/home/lesson/lesson.wxss */
 
-.article {
+.lesson {
 }
 
-.article-title {
+.lesson-avatar {
+  margin-top: 24rpx;
+}
+
+.lesson-title {
   font-size: 32rpx;
   margin: 24rpx 0;
 }
 
-.article-header text {
+.lesson-header text {
   padding: 4rpx 8rpx;
   color: #d3be9c;
 }
 
-.article-author {
+.lesson-author {
   display: flex;
   color: #d3be9c;
   gap: 16rpx;
 }
 
-.article-tag {
+.lesson-tag {
   color: #ba9863 !important;
   background-color: #ebe4d8;
 }
 
-.article-datetime {
+.lesson-datetime {
   color: #d3be9c;
 }
 
-.article-rich {
+.lesson-rich {
   text-align: justify;
 }
 
-.article-rich p {
+.lesson-rich p {
   margin-bottom: 12rpx;
+}
+
+.lesson-picture {
+  margin-bottom: 24rpx;
 }

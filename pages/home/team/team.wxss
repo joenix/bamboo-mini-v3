@@ -1,37 +1,41 @@
-/* pages/article/article.wxss */
+/* pages/home/teacher/teacher.wxss */
 
-.article {
+.teacher {
 }
 
-.article-title {
+.teacher-avatar {
+  margin-top: 24rpx;
+}
+
+.teacher-title {
   font-size: 32rpx;
   margin: 24rpx 0;
 }
 
-.article-header text {
+.teacher-header text {
   padding: 4rpx 8rpx;
   color: #d3be9c;
 }
 
-.article-author {
+.teacher-author {
   display: flex;
   color: #d3be9c;
   gap: 16rpx;
 }
 
-.article-tag {
+.teacher-tag {
   color: #ba9863 !important;
   background-color: #ebe4d8;
 }
 
-.article-datetime {
+.teacher-datetime {
   color: #d3be9c;
 }
 
-.article-rich {
+.teacher-rich {
   text-align: justify;
 }
 
-.article-rich p {
+.teacher-rich p {
   margin-bottom: 12rpx;
 }

@@ -1,37 +1,41 @@
-/* pages/article/article.wxss */
+/* pages/home/org/org.wxss */
 
-.article {
+.org {
 }
 
-.article-title {
+.org-avatar {
+  margin-top: 24rpx;
+}
+
+.org-title {
   font-size: 32rpx;
   margin: 24rpx 0;
 }
 
-.article-header text {
+.org-header text {
   padding: 4rpx 8rpx;
   color: #d3be9c;
 }
 
-.article-author {
+.org-author {
   display: flex;
   color: #d3be9c;
   gap: 16rpx;
 }
 
-.article-tag {
+.org-tag {
   color: #ba9863 !important;
   background-color: #ebe4d8;
 }
 
-.article-datetime {
+.org-datetime {
   color: #d3be9c;
 }
 
-.article-rich {
+.org-rich {
   text-align: justify;
 }
 
-.article-rich p {
+.org-rich p {
   margin-bottom: 12rpx;
 }

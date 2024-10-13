@@ -1,6 +1,30 @@
 <!-- 自定义nav -->
 <custom-nav title="个人中心" showBack="{{false}}" />
 
+<view class="mine-sample mine-sample-1" wx:if="{{mine_type === 1}}">
+  <view class="mine-sample-link" style="width: 90vw; height: 100rpx; top: 430rpx; left: 5vw;" data-go="{{2}}" bind:tap="updateType"></view>
+  <view class="mine-sample-link" style="width: 90vw; height: 100rpx; top: 820rpx; left: 5vw;" data-go="{{5}}" bind:tap="updateType"></view>
+  <view class="mine-sample-link" style="width: 160rpx; height: 60rpx; top: 60rpx; right: 5vw;" data-go="{{3}}" bind:tap="updateType"></view>
+  <view class="mine-sample-link" style="width: 40vw; height: 140rpx; top: 240rpx; left: 5vw;" data-go="{{4}}" bind:tap="updateType"></view>
+</view>
+
+<view class="mine-sample mine-sample-2" wx:if="{{mine_type === 2}}">
+  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
+</view>
+
+<view class="mine-sample mine-sample-3" wx:if="{{mine_type === 3}}">
+  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
+</view>
+
+<view class="mine-sample mine-sample-4" wx:if="{{mine_type === 4}}">
+  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
+</view>
+
+<view class="mine-sample mine-sample-5" wx:if="{{mine_type === 5}}">
+  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
+</view>
+
+<!--
 <view class="content-wrapper">
   <view wx:for="{{menuData}}" wx:key="item" class="cell-box">
     <t-cell-group>
@@ -10,5 +34,6 @@
     </t-cell-group>
   </view>
 </view>
+-->
 
-<t-button theme="primary" block t-class="loginout" bindtap='loginout'>退出</t-button>
+<!-- <t-button theme="primary" block t-class="loginout" bindtap='loginout'>退出</t-button> -->

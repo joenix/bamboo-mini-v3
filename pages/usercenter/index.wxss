@@ -115,7 +115,9 @@ page {
   align-items: center;
   text-align: center;
   font-size: 30rpx;
-  font-family: PingFangSC-Regular, PingFang SC;
+  font-family:
+    PingFangSC-Regular,
+    PingFang SC;
   font-weight: 400;
   color: #333;
 }
@@ -163,4 +165,35 @@ page {
 .content-wrapper .t-cell__title-text {
   font-size: 24rpx !important;
   font-weight: lighter !important;
+}
+
+.mine-sample {
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 96px);
+}
+
+.mine-sample-link {
+  position: absolute;
+  /* background-color: rgba(255, 0, 0, 0.5); */
+}
+
+.mine-sample-1 {
+  background: url(https://oss.lhdd.club/pic/mine_sample_1.jpg) center -96px / cover no-repeat;
+}
+
+.mine-sample-2 {
+  background: url(https://oss.lhdd.club/pic/mine_sample_2.jpg) center -96px / cover no-repeat;
+}
+
+.mine-sample-3 {
+  background: url(https://oss.lhdd.club/pic/mine_sample_3.jpg) center -96px / cover no-repeat;
+}
+
+.mine-sample-4 {
+  background: url(https://oss.lhdd.club/pic/mine_sample_4.jpg) center -96px / cover no-repeat;
+}
+
+.mine-sample-5 {
+  background: url(https://oss.lhdd.club/pic/mine_sample_5.jpg) center -96px / cover no-repeat;
 }

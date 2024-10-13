@@ -32,8 +32,22 @@ Page({
       }
     ],
 
+    settingPopup: false,
+
     resultTimes: 0,
     resultFeedback: ''
+  },
+
+  settingPopupOpen() {
+    this.setData({
+      settingPopup: true
+    });
+  },
+
+  onSettingPopupOpen(e) {
+    this.setData({
+      settingPopup: e.detail.visible
+    });
   },
 
   bgmPopupOpen(e) {

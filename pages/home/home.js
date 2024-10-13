@@ -124,6 +124,9 @@ Page({
     let { data: content } = await post(api.Information.getall, { filters: [{ key: 'type', value: id }] });
 
     content = content.map((item) => {
+      if (/\,/.test(item.name)) {
+        item.name = item.name.split(',');
+      }
       if (/\,/.test(item.content)) {
         item.content = item.content.split(',');
       }
@@ -228,6 +231,24 @@ Page({
     const { id } = e.currentTarget.dataset;
 
     link2('article/article', { id });
+  },
+
+  link_team(e) {
+    const { id } = e.currentTarget.dataset;
+
+    link2('home/team/team', { id });
+  },
+
+  link_org(e) {
+    const { id } = e.currentTarget.dataset;
+
+    link2('home/org/org', { id });
+  },
+
+  link_lesson(e) {
+    const { id } = e.currentTarget.dataset;
+
+    link2('home/lesson/lesson', { id });
   },
 
   // 跳转咨询页面

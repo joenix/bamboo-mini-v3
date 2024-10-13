@@ -1,0 +1,24 @@
+<!-- org.wxml -->
+<custom-nav title="机构介绍" />
+
+<pager class="org">
+  <t-row>
+    <t-col span="6">
+      <t-image src="{{org.img[0].link}}" class="org-avatar" mode="aspectFill" width="72" height="72" />
+    </t-col>
+    <t-col span="18">
+    <view class="org-title">{{org.title[1]}}</view>
+      <view class="org-header">
+        <view class="org-author">
+            <text class="org-tag">{{org.title[0]}}</text>
+        </view>
+        <view>{{org.content}}</view>
+      </view>
+    </t-col>
+  </t-row>
+  
+  <liner side="{{false}}" />
+  <blocker shadow="{{false}}" class="org-content">
+    <rich-text class="org-rich" nodes="{{org.remark}}"></rich-text>
+  </blocker>
+</pager>

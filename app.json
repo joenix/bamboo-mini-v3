@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/home/team/team",
+    "pages/home/org/org",
+    "pages/home/lesson/lesson",
     "pages/welcome/welcome",
     "pages/book/result/result",
     "pages/book/time/time",

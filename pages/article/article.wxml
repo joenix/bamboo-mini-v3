@@ -12,6 +12,6 @@
   </view>
   <liner side="{{false}}" />
   <blocker shadow="{{false}}" class="article-content">
-    <rich-text nodes="{{article.content}}"></rich-text>
+    <rich-text class="article-rich" nodes="{{article.content}}"></rich-text>
   </blocker>
 </pager>

@@ -264,3 +264,23 @@ page {
 .auth-card-title {
   font-size: 28rpx;
 }
+
+.lesson {
+}
+
+.lesson-poster {
+  margin-bottom: 24rpx;
+}
+
+.lesson-title,
+.lesson-content text {
+  font-size: 24rpx;
+}
+
+.lesson-content text {
+  margin-right: 12rpx;
+}
+
+.lesson-name {
+  color: #c0975a;
+}

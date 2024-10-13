@@ -1,10 +1,10 @@
-import { api, get, post, formatTime } from '../../utils/util';
+import { api, get, post, formatTime } from '../../../utils/util';
 
-// article.js
+// lesson.js
 Page({
   data: {
     id: null,
-    article: {}
+    lesson: {}
   },
 
   onLoad({ id }) {
@@ -16,15 +16,17 @@ Page({
   },
 
   async getData({ id }) {
-    const { name: title, content, updatedAt: datetime } = await post(api.Information.detail, { id });
-    const article = { title, datetime: formatTime(datetime, 'YYYY年MM月DD日 HH:MM'), content };
+    const { name: title, content, remark, updatedAt: datetime } = await post(api.Information.detail, { id });
+    const lesson = { title, datetime: formatTime(datetime, 'YYYY年MM月DD日 HH:MM'), content, remark };
 
-    article.content = article.content
+    lesson.content = lesson.content.split(',');
+
+    lesson.remark = lesson.remark
       // Image
       .replace(/<img/gi, '<img style="max-width: 100%; margin: .75rem 0 .25rem;"')
       // Part
       .replace(/<p/gi, '<p style="text-align: justify; margin: .75rem 0 .25rem; color: #363636;');
 
-    this.setData({ article });
+    this.setData({ lesson });
   }
 });
