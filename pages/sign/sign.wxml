@@ -7,16 +7,50 @@
     <!-- 签到详情 -->
     <view class="sign-detail">
       <view class="title">已经连续签到</view>
-      <view class="day"><text class="num">1</text>天</view>
-    </view>
-
-    <!-- 签到说明 -->
-    <view class="tips">签到说明
-      <t-icon name="help" size="24rpx" />
+      <view class="day"><text class="num">12</text>天</view>
     </view>
 
     <!-- 签到模块 -->
     <view class="sign-module">
+      <!-- 装饰 -->
+      <view class="sign-module-decorate">
+        <view class="decorate-cube cube1"></view>
+        <view class="decorate-cube cube2"></view>
+        <view class="decorate-cube cube3"></view>
+      </view>
+
+      <!-- 签到进度 -->
+      <view class="sign-module-progress">
+        <view class="progress-container signed">
+          <text>第一天</text>
+          <view class="tips"></view>
+        </view>
+        <view class="progress-container signed">
+          <text>第二天</text>
+          <view class="tips"></view>
+        </view>
+        <view class="progress-container ">
+          <text>第三天</text>
+          <view class="tips">+3</view>
+        </view>
+        <view class="progress-container">
+          <text>第四天</text>
+          <view class="tips">+4</view>
+        </view>
+        <view class="progress-container">
+          <text>第五天</text>
+          <view class="tips">+5</view>
+        </view>
+        <view class="progress-container">
+          <text>第六天</text>
+          <view class="tips">+6</view>
+        </view>
+        <view class="progress-container sevenday">
+          <text>连续签到7天</text>
+          <view class="tips"></view>
+        </view>
+      </view>
+      <!-- 立即签到 -->
       <view class="sign-btn">立即签到</view>
     </view>
   </view>
@@ -24,9 +58,28 @@
   <view class="sign-task-container">
     <view class="title">日常任务</view>
     <view class="task-list-container">
-      <t-cell title='每日点读' description="学分+2" note='已完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
-      <t-cell title='每日分享' description="学分+5" note='未完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
-      <t-cell title='每日浏览咨询' description="学分+10" note='已完成' align="middle" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" hover bindtap='jump2information' />
+      <view class="task-list-item">
+        <image class="split" src="https://oss.lhdd.club/ui/split3.png"></image>
+        <view class="task-detail">
+          <view class="task">每日点读</view>
+          <view class="reward">
+            <view class="score">学分</view>
+            <view class="count">+34</view>
+          </view>
+        </view>
+        <view class="todo">去完成</view>
+      </view>
+      <view class="task-list-item">
+        <image class="split" src="https://oss.lhdd.club/ui/split3.png"></image>
+        <view class="task-detail">
+          <view class="task">每日点读</view>
+          <view class="reward">
+            <view class="score">学分</view>
+            <view class="count">+34</view>
+          </view>
+        </view>
+        <view class="todo">去完成</view>
+      </view>
     </view>
   </view>
 </view>

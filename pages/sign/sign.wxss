@@ -1,66 +1,253 @@
 /* pages/sign/sign.wxss */
+page {
+  box-sizing: border-box;
+  background-color: #F9F8F6 !important;
+}
+
 .sign-header-container {
-  border: 1px solid #333;
   position: relative;
-  height: 400rpx;
-  margin-bottom: 300rpx;
+  padding: 0 32rpx;
+  background-image: url('https://oss.lhdd.club/ui/sign-top.png');
+  background-repeat: no-repeat;
+  background-size: 800rpx;
+  background-position: 113rpx -95rpx;
 }
 
 .sign-header-container .sign-detail {
-  margin-top: 50rpx;
-  margin-left: 40rpx;
-  font-size: 40rpx;
+  font-size: 36rpx;
   font-weight: bold;
-  color: orange;
+  color: #3D3D3D;
+  padding-left: 10rpx;
+  height: 200rpx;
+  padding-top: 60rpx;
 }
 
 
 .sign-header-container .sign-detail .day {
   display: flex;
   align-items: baseline;
+  margin-top: 16rpx;
 }
 
 .sign-header-container .sign-detail .num {
-  font-size: 60rpx;
-  margin-right: 10rpx;
-}
-
-.sign-header-container .tips {
-  position: absolute;
-  top: 20rpx;
-  right: 20rpx;
-  font-size: 24rpx;
-  display: flex;
-  align-items: center;
+  font-size: 36rpx;
+  margin-right: 12rpx;
+  color: #FF5A2E;
 }
 
 
 .sign-header-container .sign-module {
-  width: 80%;
-  height: 400rpx;
-  border: 1rpx solid #ccc;
+  height: 588rpx;
   background: #fff;
+  border-radius: 4rpx;
+  padding: 0 40rpx;
+}
+
+.sign-header-container .sign-module .sign-module-decorate {
+  height: 10rpx;
+  position: relative;
+  padding: 30rpx 0;
+}
+
+.sign-header-container .sign-module .sign-module-decorate::before {
+  content: '';
   position: absolute;
-  border-radius: 6rpx;
-  left: 10%;
-  top: 260rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 44%;
+  height: 2rpx;
+  background-color: #EBE4DD;
+}
+
+.sign-header-container .sign-module .sign-module-decorate::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 44%;
+  height: 2rpx;
+  background-color: #EBE4DD;
+}
+
+.sign-module-decorate .decorate-cube {
+  width: 7.42rpx;
+  height: 7.42rpx;
+  background: #DFCAA9;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.sign-module-decorate .cube1,
+.sign-module-decorate .cube3 {
+  width: 7.42rpx;
+  height: 7.42rpx;
+}
+
+.sign-module-decorate .cube1 {
+  left: 47%;
+}
+
+.sign-module-decorate .cube2 {
+  width: 14.6rpx;
+  height: 14.6rpx;
+  left: 49%;
+}
+
+.sign-module-decorate .cube3 {
+  right: 47%;
 }
 
 .sign-header-container .sign-module .sign-btn {
-  width: 200rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #C0975A;
+  font-size: 32rpx;
   line-height: 80rpx;
-  text-align: center;
-  border: 2rpx solid orange;
-  background: orange;
-  border-radius: 6rpx;
-  color: #fff;
-  margin-top: 260rpx;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  margin-top: 28rpx;
+}
+
+.sign-task-container {
+  padding: 0 32rpx;
 }
 
 .sign-task-container .title {
-  line-height: 60rpx;
-  padding-left: 30rpx;
+  width: 144rpx;
+  line-height: 52rpx;
+  background-image: url('https://oss.lhdd.club/ui/btn-bg.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: 34rpx;
+}
+
+.sign-module .sign-module-progress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sign-module .sign-module-progress .progress-container {
+  width: 24%;
+  box-sizing: border-box;
+  height: 178rpx;
+  background: #F9F8F6;
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32rpx;
+  color: #FF8D1A;
+}
+
+.sign-module .sign-module-progress .tips {
+  width: 64rpx;
+  height: 64rpx;
+  margin-top: 20rpx;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: bold;
+  text-align: center;
+  line-height: 64rpx;
+  background-image: url('https://oss.lhdd.club/ui/sign-normal.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.sign-module .sign-module-progress .sevenday .tips {
+  background-image: url('https://oss.lhdd.club/ui/sign-gift.png');
+  align-self: flex-start;
+  margin-left: 38rpx;
+}
+
+.sign-module .sign-module-progress .signed {
+  background: #E0FFF8;
+  color: #0BC296;
+}
+
+.sign-module .sign-module-progress .signed .tips {
+  background-image: url('https://oss.lhdd.club/ui/signed.png');
+}
+
+
+.sign-module .sign-module-progress .sevenday {
+  width: 50%;
+  background-image: url('https://oss.lhdd.club/ui/sign-bg.png');
+  background-repeat: no-repeat;
+  background-size: 122rpx;
+  background-position: right bottom;
+}
+
+.sign-task-container .task-list-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34rpx;
+}
+
+.task-list-container .task-list-item {
+  box-sizing: border-box;
+  padding: 12rpx 28rpx;
+  height: 132rpx;
+  margin-bottom: 24rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.task-list-container .task-list-item .split {
+  width: 18rpx;
+  height: 84rpx;
+  margin-right: 20rpx;
+}
+
+.task-list-container .task-list-item .todo {
+  width: 112rpx;
+  height: 64rpx;
+  background: #C0975A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-left: auto;
+}
+
+.task-list-container .task-list-item .task-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list-container .task-list-item .task-detail .task-detail {
+  display: flex;
+}
+
+.task-list-container .task-list-item .task-detail .task {
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 48rpx;
+}
+
+.task-list-container .task-list-item .task-detail .reward {
+  display: flex;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+
+.task-list-container .task-list-item .task-detail .reward .score {
+  color: #B3ABA0;
+  margin-right: 10rpx;
+}
+
+.task-list-container .task-list-item .task-detail .reward .count {
+  color: #B28A4E;
 }
