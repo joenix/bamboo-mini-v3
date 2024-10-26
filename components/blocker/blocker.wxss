@@ -20,6 +20,10 @@
   align-items: center;
 }
 
+.blocker.stick {
+  padding: 0;
+}
+
 .blocker image {
   border-radius: 8rpx;
 }

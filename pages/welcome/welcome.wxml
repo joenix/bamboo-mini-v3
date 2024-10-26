@@ -1,4 +1,6 @@
 <view class="welcome-page-cover" wx:if="{{visible}}" style="background-image: url({{bgImage}})">
-  <t-image class="welcome-page-title" src="{{sgImage}}" mode="aspectFill" aria-label="六合小站" />
-  <t-button t-class="welcome-page-entry" size="large" bindtap="switchToHome">开始点读</t-button>
+  <!-- <t-image class="welcome-page-title" src="{{sgImage}}" mode="aspectFill" aria-label="六合小站" /> -->
+  <!-- <t-button t-class="welcome-page-entry" size="large" bindtap="switchToHome">开始点读</t-button> -->
+  <view class="welcome-logo"></view>
+  <view class="welcome-btn-entry" bind:tap="start"></view>
 </view>

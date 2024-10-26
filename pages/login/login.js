@@ -1,9 +1,13 @@
-// pages/book/ranking/ranking.js
+import { api, get, post, link2 } from '../../utils/util';
+
+// pages/sign/sign.js
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    bgImage: 'https://oss.lhdd.club/ui/bg.jpg'
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -44,11 +48,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {},
-  onTabsChange(e) {
-    console.log(e.detail.value);
-  },
 
-  linkBack() {
-    wx.navigateBack();
+  /* !!
+   * Functionals
+   * ======== ======== ========
+   */
+  doLogin(e) {
+    console.log(e);
   }
 });

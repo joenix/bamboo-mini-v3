@@ -1,0 +1,47 @@
+.login {
+  height: 100vh;
+}
+
+.login-logo {
+  width: 512rpx;
+  height: 512rpx;
+  margin: 0 auto;
+  background: url(https://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
+}
+
+.login-input {
+  margin-bottom: 36rpx;
+  padding: 12rpx 12rpx 12rpx 36rpx !important;
+  border: 1px solid #6c6348;
+}
+
+.login-input-entry {
+  height: 80rpx;
+}
+
+.login-verify {
+  padding: 12rpx 24rpx;
+  color: #fff;
+  background: #c0975a;
+}
+
+.login-input-captcha {
+}
+
+.login-btn-entry {
+  width: 100%;
+  height: 112rpx;
+  margin: 0 auto;
+  background: url(https://oss.lhdd.club/ui/login-btn-entry.png) center/cover no-repeat;
+}
+
+.login-btn-tip {
+  margin: 0 auto;
+  padding: 24rpx;
+  color: #89704b;
+}
+
+.login-slogan {
+  text-align: center;
+  color: #9e967c;
+}

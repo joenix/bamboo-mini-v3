@@ -7,9 +7,18 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "t-user-center-card": "./components/user-center-card/index",
     "t-toast": "tdesign-miniprogram/toast/toast",
     "t-button": "tdesign-miniprogram/button/button",
+    "pager": "/components/pager/pager",
+    "grider": "/components/grider/grider",
+    "blocker": "/components/blocker/blocker",
+    "btn": "/components/btn/btn",
+    "liner": "/components/liner/liner",
+    "content": "/components/content/content",
     "custom-nav": "/components/custom-nav/custom-nav"
   },
   "enablePullDownRefresh": true

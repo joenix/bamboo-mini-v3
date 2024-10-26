@@ -1,5 +1,5 @@
 @import 'style/iconfont.wxss';
-
+@import 'style/icons.wxss';
 @import 'style/theme.wxss';
 
 page {
@@ -8,10 +8,4 @@ page {
 
   /* Theme for TDesign */
   --td-brand-color: #c8964e;
-}
-
-view,
-text {
-  /* color: #363636; */
-  /* font-size: 28rpx; */
 }

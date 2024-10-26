@@ -1,4 +1,5 @@
 import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
+import { api, get, post, link2 } from '../../utils/util';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 const menuData = [
@@ -93,23 +94,28 @@ const orderTagInfos = [
   }
 ];
 
-const getDefaultData = () => ({
-  showMakePhone: false,
-  userInfo: {
-    avatarUrl: '',
-    nickName: '正在登录...',
-    phoneNumber: ''
-  },
-  menuData,
-  orderTagInfos,
-  customerServiceInfo: {},
-  currAuthStep: 1,
-  showKefu: true,
-  versionNo: '',
+// 生成信息
+const getDefaultData = () => {
+  return {
+    showMakePhone: false,
+    userInfo: {
+      avatarUrl: '',
+      nickname: '正在登录...',
+      mobile: ''
+    },
+    menuData,
+    orderTagInfos,
+    customerServiceInfo: {},
+    currAuthStep: 1,
+    showKefu: true,
+    versionNo: '',
 
-  // Test
-  mine_type: 1
-});
+    // Test
+    mine_type: 1
+
+    // Code by Joenix
+  };
+};
 
 Page({
   // Test
@@ -135,8 +141,29 @@ Page({
     this.init();
   },
 
-  init() {
-    this.fetUseriInfoHandle();
+  /**
+   * Code by Joenix
+   * ======== ======== ========
+   */
+  async init() {
+    // this.fetUseriInfoHandle();
+
+    // 0. 调试，手动注入 Token
+    wx.setStorageSync('token', 'a1b2c3d4e5');
+
+    // 1. 校验本地 OpenID
+    const token = wx.getStorageSync('token');
+
+    // 2. 根据 Token 获取 User 数据
+    const userInfo = await post(api.User.info, { token });
+
+    // 2.1 本地存储 User 信息
+    wx.setStorageSync('userInfo', userInfo);
+
+    // 2.2 Mock
+    this.setData({
+      userInfo
+    });
   },
 
   fetUseriInfoHandle() {
@@ -313,7 +340,16 @@ Page({
     });
   },
 
-  loginout() {
-    console.log('loginout');
+  link2infoupdate(e) {
+    const { id } = e.currentTarget.dataset;
+    link2('usercenter/uc-info-update/index', { id });
+  },
+
+  logout() {
+    wx.removeStorageSync('token');
+
+    wx.navigateTo({
+      url: ''
+    });
   }
 });

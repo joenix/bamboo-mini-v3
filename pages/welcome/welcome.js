@@ -1,4 +1,6 @@
 // pages/welcome/welcome.js
+import { link2 } from '../../utils/util';
+
 Page({
   data: {
     bgImage: null,
@@ -44,8 +46,14 @@ Page({
 
   onLoad() {
     this.preloadImage([
-      { key: 'bgImage', src: 'https://oss.vue-scaff.com/lhdd/landscape.jpg' },
+      { key: 'bgImage', src: 'https://oss.lhdd.club/ui/bg.jpg' },
       { key: 'sgImage', src: 'http://oss.vue-scaff.com/lhdd/title.png' }
     ]);
+  },
+
+  start() {
+    wx.switchTab({
+      url: '/pages/home/home' // 跳转到首页
+    });
   }
 });

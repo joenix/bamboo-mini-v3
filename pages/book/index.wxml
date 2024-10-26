@@ -20,7 +20,7 @@
 
 	<t-row gutter="16" class="book-entries">
 		<t-col span="12">
-			<blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-1.png) right top/60% no-repeat">
+			<blocker shadow="{{false}}" class="book-entries-block" bind:tap="link_ranking" background="#fff url(https://oss.lhdd.club/ui/book-entries-1.png) right top/60% no-repeat">
         <view class="book-entries-title">点读排名</view>
         <view class="book-entries-text">
           第<text>22</text>名

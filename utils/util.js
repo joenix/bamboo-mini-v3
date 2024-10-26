@@ -171,6 +171,10 @@ const link2 = async (page, param = {}) => {
   });
 };
 
+const checkToken = () => {
+  return wx.getStorageSync('token');
+};
+
 module.exports = {
   formatTime,
   utcFormatTime,
@@ -187,5 +191,7 @@ module.exports = {
 
   get,
   post,
-  link2
+  link2,
+
+  checkToken
 };

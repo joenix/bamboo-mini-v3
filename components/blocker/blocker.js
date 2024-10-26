@@ -15,6 +15,10 @@ Component({
     background: {
       type: String,
       value: ''
+    },
+    stick: {
+      type: String,
+      value: ''
     }
   }
 });

@@ -1,4 +1,4 @@
-import { api, get, post, link2 } from '../../utils/util';
+import { checkToken, api, get, post, link2 } from '../../utils/util';
 
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
@@ -84,6 +84,12 @@ Page({
   },
 
   onLoad() {
+    if (!checkToken()) {
+      return wx.redirectTo({
+        url: '/pages/login/login'
+      });
+    }
+
     wx.getImageInfo({
       src: '/assets/banner1.png',
       success(res) {

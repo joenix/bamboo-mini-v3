@@ -197,3 +197,47 @@ page {
 .mine-sample-5 {
   background: url(https://oss.lhdd.club/pic/mine_sample_5.jpg) center -96px / cover no-repeat;
 }
+
+/* User Info */
+.userinfo {
+}
+
+.userinfo-layout {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.userinfo-nickname {
+  font-size: 36rpx;
+  margin-bottom: 12rpx;
+}
+
+.userinfo-badge {
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  color: #926523;
+  background: #ebe4dd;
+}
+
+.userinfo-cell {
+  font-size: 32rpx;
+}
+
+.userinfo-sub {
+  font-size: 26rpx !important;
+  color: #999999 !important;
+}
+
+.userinfo-sign {
+  width: 152rpx;
+  height: 58rpx;
+  background: url(https://oss.lhdd.club/ui/userinfo-sign.png) center / cover no-repeat;
+}
+
+.userinfo-image {
+  width: 64rpx !important;
+  height: 64rpx !important;
+}
+
+.userinfo-icon-credit {
+}

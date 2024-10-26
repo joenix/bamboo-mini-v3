@@ -61,3 +61,19 @@
 .welcome-page-entry:after {
   border: none !important;
 }
+
+.welcome-page-cover {
+  gap: 24vh;
+}
+
+.welcome-logo {
+  width: 512rpx;
+  height: 512rpx;
+  background: url(https://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
+}
+
+.welcome-btn-entry {
+  width: 532rpx;
+  height: 140rpx;
+  background: url(https://oss.lhdd.club/ui/btn-entry-red.png) center/cover no-repeat;
+}

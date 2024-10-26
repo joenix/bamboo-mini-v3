@@ -37,6 +37,10 @@ Page({
     }
   },
 
+  link_ranking() {
+    link2('book/ranking/ranking');
+  },
+
   link_read() {
     link2('book/read/read');
   },

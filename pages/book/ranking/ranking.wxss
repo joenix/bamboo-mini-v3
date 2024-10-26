@@ -26,3 +26,13 @@
   width: 30%;
   text-align: right;
 }
+
+.read-ranking {
+  position: relative;
+  height: 100vh;
+  background: url(https://oss.lhdd.club/pic/page_read_ranking.png) center top/cover no-repeat;
+}
+
+.read-ranking-link {
+  position: absolute;
+}

@@ -7,6 +7,8 @@ export const api = {
   User: {
     registry: '/users/regist',
     getall: '/users/get_all',
+    info: '/users/get_info',
+    data: '/users/get_data',
     login: '/users/login',
     update: '/users/update'
   },
