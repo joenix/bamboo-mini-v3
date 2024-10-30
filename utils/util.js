@@ -136,26 +136,30 @@ const phoneRegCheck = (phone) => {
  * ====== ====== ======
  */
 const get = (url, data = {}, options = {}) => {
+  const token = wx.getStorageSync('token');
+
   return new Promise((resolve, reject) => {
     wx.request({
       url: `${host}${url}`,
       method: 'GET',
       data,
-      header: options.header || { 'Content-Type': 'application/json' },
-      success: ({ data }) => resolve(data.msg),
+      header: options.header || { 'Content-Type': 'application/json', token },
+      success: ({ data }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
       fail: (error) => reject(error)
     });
   });
 };
 
 const post = async (url, data = {}, options = {}) => {
+  const token = wx.getStorageSync('token');
+
   return new Promise((resolve, reject) => {
     wx.request({
       url: `${host}${url}`,
       method: 'POST',
       data,
-      header: options.header || { 'Content-Type': 'application/json' },
-      success: ({ data }) => resolve(data.msg),
+      header: options.header || { 'Content-Type': 'application/json', token },
+      success: ({ data }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
       fail: (error) => reject(error)
     });
   });
@@ -175,6 +179,17 @@ const checkToken = () => {
   return wx.getStorageSync('token');
 };
 
+const wait = async (time) => {
+  return new Promise((resolve) => {
+    const out = setTimeout(() => {
+      resolve(), clearTimeout(out);
+    }, time);
+  });
+};
+
+const day1 = 1000 * 60 * 60 * 24;
+const stream1 = new Date().getTime();
+
 module.exports = {
   formatTime,
   utcFormatTime,
@@ -193,5 +208,9 @@ module.exports = {
   post,
   link2,
 
-  checkToken
+  checkToken,
+  wait,
+
+  day1,
+  stream1
 };

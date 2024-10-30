@@ -6,6 +6,7 @@
         "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
         "t-icon": "tdesign-miniprogram/icon/icon",
         "t-input": "tdesign-miniprogram/input/input",
+        "t-message": "tdesign-miniprogram/message/message",
         "blocker": "/components/blocker/blocker",
         "pager": "/components/pager/pager",
         "custom-nav": "/components/custom-nav/custom-nav"

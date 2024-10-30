@@ -12,7 +12,7 @@
         <text class="userinfo-badge">{{userInfo.mobile}}</text>
       </t-col>
       <t-col span="5">
-        <view class="userinfo-sign"></view>
+        <view class="userinfo-sign" bind:tap="link2sign"></view>
       </t-col>
     </t-row>
   </blocker>

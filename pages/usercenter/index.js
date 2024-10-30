@@ -148,11 +148,14 @@ Page({
   async init() {
     // this.fetUseriInfoHandle();
 
-    // 0. 调试，手动注入 Token
-    wx.setStorageSync('token', 'a1b2c3d4e5');
-
     // 1. 校验本地 OpenID
     const token = wx.getStorageSync('token');
+
+    if (!token) {
+      return wx.redirectTo({
+        url: '/pages/login/login'
+      });
+    }
 
     // 2. 根据 Token 获取 User 数据
     const userInfo = await post(api.User.info, { token });
@@ -343,6 +346,10 @@ Page({
   link2infoupdate(e) {
     const { id } = e.currentTarget.dataset;
     link2('usercenter/uc-info-update/index', { id });
+  },
+
+  link2sign() {
+    link2('sign/sign');
   },
 
   logout() {

@@ -10,7 +10,9 @@ export const api = {
     info: '/users/get_info',
     data: '/users/get_data',
     login: '/users/login',
-    update: '/users/update'
+    wx_login: '/users/wx_login',
+    update: '/users/update',
+    updateInfo: '/users/update_user_info'
   },
   // 通用
   Public: {

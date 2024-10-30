@@ -21,8 +21,8 @@
 
       <!-- 签到进度 -->
       <view class="sign-module-progress">
-        <view class="progress-container signed">
-          <text>第一天</text>
+        <view class="progress-container signed" wx:for="{{checks}}" wx:for-index="index" wx:key="*this">
+          <text>第 {{index + 1}} 天</text>
           <view class="tips"></view>
         </view>
         <view class="progress-container signed">
