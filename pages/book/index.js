@@ -1,4 +1,5 @@
 import { lunar, api, post, link2 } from '../../utils/util';
+import dayjs from 'dayjs';
 
 // pages/book/book.js
 Page({
@@ -6,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    calendarValue: dayjs().valueOf(),
+    minDate: dayjs().subtract(1, 'year').valueOf(),
     format(current) {
       const { date } = current;
 
@@ -35,6 +38,10 @@ Page({
       // Update
       return current;
     }
+  },
+  handleSelect(e) {
+    const { value } = e.detail;
+    console.log(12, value);
   },
 
   link_ranking() {
