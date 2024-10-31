@@ -191,6 +191,7 @@ const day1 = 1000 * 60 * 60 * 24;
 const stream1 = new Date().getTime();
 
 module.exports = {
+  dayjs,
   formatTime,
   utcFormatTime,
   lunar,
