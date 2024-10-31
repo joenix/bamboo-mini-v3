@@ -1,42 +1,56 @@
 <!--pages/book/ranking/ranking.wxml-->
 <!-- 自定义nav -->
-<!-- <custom-nav title="排行榜" /> -->
-
-<!--  
+<custom-nav title="排行榜2" background="transparent" />
 <view class="ranking-container">
-  <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel">
-    <t-tab-panel label="今日榜单" value="0" style="{{tabPanelstyle}}">
-      <view class="ranking-list-container">
-        <view class="list-title-container">
-          <view class="title-rank">排名</view>
-          <view class="title-avator">头像/昵称</view>
-          <view class="title-time">点读时长(时)</view>
+  <view class="header">
+    <view class="header-line-1">点读排名 <text>排行榜</text></view>
+    <view>(按照点读时长排名)</view>
+  </view>
+  <view class="main">
+    <view class="tab-bar">
+      <view class="tab-item {{currentTab === 'today' ? 'active' : ''}}" bindtap="switchTab" data-tab="today">今日榜单</view>
+      <view class="tab-item {{currentTab === 'history' ? 'active' : ''}}" bindtap="switchTab" data-tab="history">历史榜单</view>
+    </view>
+    <view>
+      <view class="top3">
+        <view class="top-item" wx:for="{{ top3ListData }}" wx:for-index="idx" wx:for-item="item">
+          <t-avatar class="avatar" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
+          <view class="text-box">
+            <view class="lv-num" style="border-color:{{idx === 0 ? '#94C8C4' : idx===1 ? '#DA784A' : '#CEA08A' }};color:{{idx === 0 ? '#94C8C4' : idx===1 ? '#DA784A' : '#CEA08A'}}">LV{{idx + 1}}</view>
+            <view class="top-num">TOP{{idx + 1}}</view>
+            <view>{{ item.time }}h</view>
+          </view>
+          <image class="bg" src="/assets/top{{idx + 1}}.png" mode="" />
         </view>
-
-        <view>
-          <view class="list-title-container">
-            <view class="title-rank">1</view>
-            <view class="title-avator">张三</view>
-            <view class="title-time">14.2</view>
-          </view>
-          <view class="list-title-container">
-            <view class="title-rank">2</view>
-            <view class="title-avator">李四</view>
-            <view class="title-time">24.8</view>
-          </view>
-          <view class="list-title-container">
-            <view class="title-rank">3</view>
-            <view class="title-avator">王五</view>
-            <view class="title-time">30.1</view>
+      </view>
+      <view class="my-rank">
+        <t-avatar image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
+        <view class="rank-num">
+          <view>第<text class="strong">09</text>名</view>
+          <view>我的排名</view>
+        </view>
+        <view class="time">
+          <text class="strong">12.2</text>
+          <view>点读时长(时)</view>
+        </view>
+      </view>
+      <view class="rank-list">
+        <view class="row rank-list-header">
+          <text>排名</text>
+          <text>头像/昵称</text>
+          <text>点读时长(时)</text>
+        </view>
+        <view class="rank-list-body">
+          <view class="row rank-list-item" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item">
+            <text>{{idx + 4}}</text>
+            <view>
+              <t-avatar image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
+              <text class="name">{{ item.name }}</text>
+            </view>
+            <text class="strong">{{ item.time }}</text>
           </view>
         </view>
       </view>
-    </t-tab-panel>
-    <t-tab-panel label="历史榜单" value="1" style="{{tabPanelstyle}}">历史榜单</t-tab-panel>
-  </t-tabs>
-</view>
--->
-
-<view class="read-ranking">
-  <view class="read-ranking-link" bind:tap="linkBack" style="top: 80rpx; left: 40rpx; width: 80rpx; height: 80rpx;"></view>
+    </view>
+  </view>
 </view>
