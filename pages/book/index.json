@@ -9,6 +9,7 @@
     "t-col": "tdesign-miniprogram/col/col",
     "custom-nav": "/components/custom-nav/custom-nav",
     "pager": "/components/pager/pager",
-    "liner": "/components/liner/liner"
+    "liner": "/components/liner/liner",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

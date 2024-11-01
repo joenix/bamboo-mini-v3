@@ -12,7 +12,15 @@
         <text>历</text>
       </view>
       <view class="book-calendar-content">
-        <t-calendar use-popup="{{false}}" bind:select="handleSelect" format="{{format}}" minDate="{{minDate}}" value="{{calendarValue}}" />
+        <view class="calendar-action">
+          <view class="year-month">
+            <t-icon name="chevron-left" size="48rpx" bind:tap="prevMonth" />
+            {{currentYearMonthStr}}
+            <t-icon class="{{disableNext ? 'disbaled' : ''}}" name="chevron-right" size="48rpx" bind:tap="nextMonth" />
+          </view>
+          <view class="today" bind:tap="toToday">今日</view>
+        </view>
+        <t-calendar use-popup="{{false}}" bind:select="handleSelect" format="{{format}}" minDate="{{minDate}}" maxDate="{{maxDate}}" value="{{calendarValue}}" />
       </view>
     </view>
   </view>
