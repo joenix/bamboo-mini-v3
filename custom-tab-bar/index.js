@@ -5,7 +5,6 @@ Component({
     active: 0,
     list: TabMenu
   },
-
   methods: {
     onChange(event) {
       this.setData({

@@ -6,6 +6,7 @@
 .is-readed {
   position: relative;
 }
+
 .is-readed::after {
   content: ' ';
   top: 18rpx;
@@ -44,8 +45,7 @@
   line-height: 80rpx;
 }
 
-.book-calendar {
-}
+.book-calendar {}
 
 .book-calendar-header {
   position: relative;
@@ -135,10 +135,13 @@
   justify-content: space-between;
 }
 
-.book-entries-flex.end {
+.book-entries-flex.end {}
+
+.book-entries-total {
+  font-size: 24rpx;
+  color: #B3ABA0;
 }
 
-.book-entries-total,
 .book-entries-affix {
   font-size: 24rpx;
   color: #926523;
@@ -154,7 +157,7 @@
   font-size: 20rpx;
 }
 
-.book-entries-affix > text {
+.book-entries-affix>text {
   display: inline-block;
   padding: 0 8rpx;
   border-radius: 48rpx;

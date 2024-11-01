@@ -1,6 +1,6 @@
 <!--pages/book/ranking/ranking.wxml-->
 <!-- 自定义nav -->
-<custom-nav title="排行榜2" background="transparent" />
+<custom-nav title="排行榜" background="transparent" />
 <view class="ranking-container">
   <view class="header">
     <view class="header-line-1">点读排名 <text>排行榜</text></view>

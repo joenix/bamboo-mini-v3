@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "学习视频",
+  "backgroundTextStyle": "light",
+  "component": true,
+  "usingComponents": {
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
+}

@@ -29,7 +29,7 @@
       </blocker>
     </t-col>
     <t-col span="12">
-      <blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-2.png) right top/60% no-repeat">
+      <blocker shadow="{{false}}" class="book-entries-block" bind:tap="startLearn" background="#fff url(https://oss.lhdd.club/ui/book-entries-2.png) right top/60% no-repeat">
         <view class="book-entries-title">六合竹简</view>
         <view class="book-entries-text">
           点读指法教学
@@ -37,19 +37,17 @@
         <view class="book-entries-button">开始学习 <text>▶</text></view>
       </blocker>
     </t-col>
-    <t-col span="24">
+    <t-col span="24" wx:for="{{listData}}" wx:key="index">
       <blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top/60% no-repeat">
         <t-row>
           <t-col span="12">
             <view class="book-entries-flex">
               <view>
-                <view class="book-entries-title">诫子书&诫外甥书</view>
-                <view class="book-entries-text">
-                  建议单次时长45分
-                </view>
+                <view class="book-entries-title">{{item.name}}</view>
+                <view class="book-entries-text">{{item.suggestion}}</view>
               </view>
               <view class="book-entries-total">
-                今日已完成 <text>0</text> 次，总时长 <text>0</text>
+                今日已完成 <text>{{item.count}}</text> 次，总时长 <text>{{item.time}}</text>
               </view>
             </view>
           </t-col>
@@ -57,8 +55,10 @@
             <view class="book-entries-flex">
               <view></view>
               <view class="book-entries-affix">
-                今天已有 <text>99</text> 人完成点读
-                <view class="book-entries-button-large" bind:tap="link_read">开始点读 <text>▶</text></view>
+                今天已有 <text>{{ item.userName }}</text> 人完成点读
+                <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap">
+                  {{ item.status === 0 ? "暂未激活" : "开始点读" }} <text>▶</text>
+                </view>
               </view>
             </view>
           </t-col>

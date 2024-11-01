@@ -1,4 +1,9 @@
-import { lunar, api, post, link2 } from '../../utils/util';
+import {
+  lunar,
+  api,
+  post,
+  link2
+} from '../../utils/util';
 import dayjs from 'dayjs';
 
 // pages/book/book.js
@@ -9,38 +14,41 @@ Page({
   data: {
     calendarValue: dayjs().valueOf(),
     minDate: dayjs().subtract(1, 'year').valueOf(),
+    listData: [],
     format(current) {
-      const { date } = current;
-
+      const {
+        date
+      } = current;
       // 年
       const year = date.getFullYear();
       // 月
       const month = date.getMonth() + 1;
       // 日
       const today = date.getDate();
-
       // 农历
-      const { dayStr, day, monthStr } = lunar.solarToLunar(year, month, today);
-
+      const {
+        dayStr,
+        day,
+        monthStr
+      } = lunar.solarToLunar(year, month, today);
       // 月份
       if (day === 1) {
         current.prefix = monthStr;
         current.className = 'is-holiday';
       }
-
       if ([21, 22, 27, 30].includes(day)) {
         current.className = 'is-readed';
       }
-
       // 日期
       current.suffix = dayStr;
-
       // Update
       return current;
-    }
+    },
   },
   handleSelect(e) {
-    const { value } = e.detail;
+    const {
+      value
+    } = e.detail;
     console.log(12, value);
   },
 
@@ -51,11 +59,39 @@ Page({
   link_read() {
     link2('book/read/read');
   },
-
+  startLearn() {
+    link2('book/learn/learn');
+  },
+  onButtonTap(e) {
+    const data = e.currentTarget.dataset.item
+    if (data.status === 1) {
+      this.link_read()
+      return;
+    }
+    // todo: 未激活
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      listData: [{
+        name: "诫子书",
+        suggestion: "建议单次时长45分",
+        userNum: 99,
+        count: 0,
+        time: 0,
+        status: 1
+      }, {
+        name: "诫外甥书",
+        suggestion: "建议单次时长45分",
+        userNum: 99,
+        count: 0,
+        time: 0,
+        status: 0
+      }]
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
