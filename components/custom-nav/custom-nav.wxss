@@ -1,11 +1,16 @@
 /* components/custom-nav/custom-nav.wxss */
 .custom-nav-container {
-  text-align: left;
-  padding: 0 0 40rpx 24rpx;
+  position: relative;
   display: flex;
   align-items: center;
+  padding: 0 32rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+  color: #000;
 }
 
-.custom-nav-container .noicon {
-  padding-left: 32rpx;
+.custom-nav-container .title {
+  flex: 1;
+  font-size: 36rpx;
+  letter-spacing: 0.1em;
 }

@@ -1,4 +1,6 @@
-<view class="custom-nav-container" style="padding-top: {{navBarHeight}}rpx; background: {{background}}">
-  <t-icon name="chevron-left" size="48rpx" bind:click="handleBack" wx-if="{{showBack}}" />
-  <text class="{{showBack?'':'noicon'}}">{{title}}</text>
+<view class="custom-nav-container" style="{{containerStyle}}">
+  <view style="width: 48rpx;margin-right: 8rpx;" wx-if="{{showBack}}">
+    <t-icon name="chevron-left" size="48rpx" bind:click="handleBack" />
+  </view>
+  <text class="title" style="{{ titleStyle }}">{{title}}</text>
 </view>

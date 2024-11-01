@@ -1,6 +1,6 @@
 <!--pages/book/ranking/ranking.wxml-->
 <!-- 自定义nav -->
-<custom-nav title="排行榜" background="transparent" />
+<custom-nav title="排行榜" background="transparent" white="{{true}}" center="{{true}}" />
 <view class="ranking-container">
   <view class="header">
     <view class="header-line-1">点读排名 <text>排行榜</text></view>
@@ -13,7 +13,7 @@
     </view>
     <view>
       <view class="top3">
-        <view class="top-item" wx:for="{{ top3ListData }}" wx:for-index="idx" wx:for-item="item">
+        <view class="top-item" wx:for="{{ top3ListData }}" wx:key="index" wx:for-index="idx" wx:for-item="item">
           <t-avatar class="avatar" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
           <view class="text-box">
             <view class="lv-num" style="border-color:{{idx === 0 ? '#94C8C4' : idx===1 ? '#DA784A' : '#CEA08A' }};color:{{idx === 0 ? '#94C8C4' : idx===1 ? '#DA784A' : '#CEA08A'}}">LV{{idx + 1}}</view>

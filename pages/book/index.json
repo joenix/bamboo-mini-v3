@@ -9,7 +9,6 @@
     "t-col": "tdesign-miniprogram/col/col",
     "custom-nav": "/components/custom-nav/custom-nav",
     "pager": "/components/pager/pager",
-    "liner": "/components/liner/liner",
-    "blocker": "/components/blocker/blocker"
+    "liner": "/components/liner/liner"
   }
 }

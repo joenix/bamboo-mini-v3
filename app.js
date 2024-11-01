@@ -2,11 +2,16 @@ import updateManager from './common/updateManager';
 
 App({
   globalData: {
-    navBarHeight: 0
+    navBarHeight: 0,
+    navBarTop: 0,
   },
-  onLaunch: async function () {
-    const info = await wx.getSystemInfo()
-    this.globalData.navBarHeight = info.statusBarHeight
+  onLaunch: function () {
+    const {
+      height,
+      top
+    } = wx.getMenuButtonBoundingClientRect();
+    this.globalData.navBarHeight = height
+    this.globalData.navBarTop = top
   },
   onShow: function () {
     updateManager();

@@ -1,69 +1,66 @@
 <!-- 自定义nav -->
-<custom-nav title="点读" showBack="{{false}}" />
+<custom-nav title="点读" showBack="{{false}}" center="{{ true }}" background="transparent" />
 
 <pager class="book-container">
   <!-- 日历 -->
   <view class="calendar-container">
     <view class="book-calendar">
       <view class="book-calendar-header">
-        <text>今</text>
-        <text>日</text>
         <text>点</text>
         <text>读</text>
+        <text>日</text>
+        <text>历</text>
       </view>
-
       <view class="book-calendar-content">
         <t-calendar use-popup="{{false}}" bind:select="handleSelect" format="{{format}}" minDate="{{minDate}}" value="{{calendarValue}}" />
       </view>
     </view>
   </view>
 
-  <t-row gutter="16" class="book-entries">
+  <t-row gutter="10" class="book-entries">
     <t-col span="12">
-      <blocker shadow="{{false}}" class="book-entries-block" bind:tap="link_ranking" background="#fff url(https://oss.lhdd.club/ui/book-entries-1.png) right top/60% no-repeat">
+      <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(https://oss.lhdd.club/ui/book-entries-1.png);">
         <view class="book-entries-title">点读排名</view>
         <view class="book-entries-text">
           第<text>22</text>名
         </view>
         <view class="book-entries-button">完整榜单 <text>▶</text></view>
-      </blocker>
+      </view>
     </t-col>
     <t-col span="12">
-      <blocker shadow="{{false}}" class="book-entries-block" bind:tap="startLearn" background="#fff url(https://oss.lhdd.club/ui/book-entries-2.png) right top/60% no-repeat">
+      <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(https://oss.lhdd.club/ui/book-entries-2.png);">
         <view class="book-entries-title">六合竹简</view>
         <view class="book-entries-text">
           点读指法教学
         </view>
         <view class="book-entries-button">开始学习 <text>▶</text></view>
-      </blocker>
-    </t-col>
-    <t-col span="24" wx:for="{{listData}}" wx:key="index">
-      <blocker shadow="{{false}}" class="book-entries-block" background="#fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top/60% no-repeat">
-        <t-row>
-          <t-col span="12">
-            <view class="book-entries-flex">
-              <view>
-                <view class="book-entries-title">{{item.name}}</view>
-                <view class="book-entries-text">{{item.suggestion}}</view>
-              </view>
-              <view class="book-entries-total">
-                今日已完成 <text>{{item.count}}</text> 次，总时长 <text>{{item.time}}</text>
-              </view>
-            </view>
-          </t-col>
-          <t-col span="9" offset="3">
-            <view class="book-entries-flex">
-              <view></view>
-              <view class="book-entries-affix">
-                今天已有 <text>{{ item.userName }}</text> 人完成点读
-                <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap">
-                  {{ item.status === 0 ? "暂未激活" : "开始点读" }} <text>▶</text>
-                </view>
-              </view>
-            </view>
-          </t-col>
-        </t-row>
-      </blocker>
+      </view>
     </t-col>
   </t-row>
+  <view class="book-entries-block" wx:for="{{listData}}" wx:key="index">
+    <t-row>
+      <t-col span="12">
+        <view class="book-entries-flex">
+          <view>
+            <view class="book-entries-title">{{item.name}}</view>
+            <view class="book-entries-text">{{item.suggestion}}</view>
+          </view>
+          <view class="book-entries-total">
+            今日已完成 <text>{{item.count}}</text> 次，总时长 <text>{{item.time}}</text>
+          </view>
+        </view>
+      </t-col>
+      <t-col span="9" offset="3">
+        <view class="book-entries-flex">
+          <view></view>
+          <view class="book-entries-affix">
+            今天已有 <text>{{ item.userName }}</text> 人完成点读
+            <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap">
+              {{ item.status === 0 ? "暂未激活" : "开始点读" }} <text>▶</text>
+            </view>
+          </view>
+        </view>
+      </t-col>
+    </t-row>
+  </view>
 </pager>
