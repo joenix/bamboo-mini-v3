@@ -8,7 +8,7 @@ Page({
   },
 
   onLoad(options) {
-    // 从本地存储中获取 userInfo
+    // 从本地存储中获取 userInfo，来自前一个页面
     const userInfo = wx.getStorageSync('userInfo');
 
     this.setData({
@@ -18,6 +18,23 @@ Page({
     this.init();
   },
 
+  // 输入框输入时
+  onInput(e) {
+    const { value } = e.detail;
+    const { name } = e.currentTarget.dataset;
+
+    this.data.userInfo[name] = value;
+
+    wx.setStorageSync('userInfo', this.data.userInfo);
+
+    // this.setData({
+    //   userInfo: {
+    //     [name]: value
+    //   }
+    // });
+  },
+
+  // 初始化获取用户资料
   async init() {
     const userInfo = await post(api.User.data, { userId: this.data.userInfo.id });
 
@@ -29,7 +46,7 @@ Page({
   },
 
   async update() {
-    const { id, leftEyes, rightEyes, height, weight } = this.data.userInfo;
+    const { id, leftEyes, rightEyes, height, weight } = wx.getStorageSync('userInfo'); // this.data.userInfo;
     const success = await post(api.User.updateInfo, { id, leftEyes, rightEyes, height, weight });
 
     if (success) {

@@ -1,13 +1,15 @@
 <!-- 自定义nav -->
 <custom-nav title="签到" />
 
+<t-message id="t-message" />
+
 <view class="sign-contaier">
   <!-- 头部信息 -->
   <view class="sign-header-container">
     <!-- 签到详情 -->
     <view class="sign-detail">
       <view class="title">已经连续签到</view>
-      <view class="day"><text class="num">12</text>天</view>
+      <view class="day"><text class="num">{{continous}}</text>天</view>
     </view>
 
     <!-- 签到模块 -->
@@ -21,41 +23,19 @@
 
       <!-- 签到进度 -->
       <view class="sign-module-progress">
-        <view class="progress-container signed" wx:for="{{checks}}" wx:for-index="index" wx:key="*this">
+        <view class="progress-container {{index === 6 ? 'sevenday' : ''}} {{item.checked ? 'signed' : ''}}" wx:for="{{checks}}" wx:for-index="index" wx:for-item="item" data-index="{{index}}" data-item="{{item}}" data-credit="{{index + 1}}" wx:key="*this" bind:tap="onSign">
           <text>第 {{index + 1}} 天</text>
-          <view class="tips"></view>
-        </view>
-        <view class="progress-container signed">
-          <text>第二天</text>
-          <view class="tips"></view>
-        </view>
-        <view class="progress-container ">
-          <text>第三天</text>
-          <view class="tips">+3</view>
-        </view>
-        <view class="progress-container">
-          <text>第四天</text>
-          <view class="tips">+4</view>
-        </view>
-        <view class="progress-container">
-          <text>第五天</text>
-          <view class="tips">+5</view>
-        </view>
-        <view class="progress-container">
-          <text>第六天</text>
-          <view class="tips">+6</view>
-        </view>
-        <view class="progress-container sevenday">
-          <text>连续签到7天</text>
-          <view class="tips"></view>
+          <view class="tips" wx:if="{{index === 6 || item.checked === true}}"></view>
+          <view class="tips" wx:else>+{{index + 1}}</view>
         </view>
       </view>
       <!-- 立即签到 -->
       <view class="sign-btn">立即签到</view>
     </view>
   </view>
+
   <!-- 日常任务 -->
-  <view class="sign-task-container">
+  <view class="sign-task-container" wx:if="{{false}}">
     <view class="title">日常任务</view>
     <view class="task-list-container">
       <view class="task-list-item">
@@ -82,4 +62,6 @@
       </view>
     </view>
   </view>
+
+  <!-- Endness -->
 </view>
