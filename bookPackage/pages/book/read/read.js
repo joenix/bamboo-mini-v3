@@ -12,13 +12,32 @@ Page({
     },
     countdown_interval: null,
     bgm: null,
+    isBgmStop: false,
     bgmInfo: {},
     bgmPopup: false,
     bgmList: [],
     settingPopup: false,
+    settingData: {
+      remind: "0",
+      guide: "0",
+      hour: '',
+      minute: '',
+    },
+    remindCountDown: 0,
+    remindAudioContext: null,
     resultPopup: false,
     resultTimes: '',
     resultFeedback: ''
+  },
+  settingChange(e) {
+    const key = e.currentTarget.dataset.type
+    const value = e.detail.value;
+    this.setData({
+      settingData: {
+        ...this.data.settingData,
+        [key]: value
+      }
+    })
   },
   settingPopupOpen() {
     this.setData({
@@ -66,7 +85,6 @@ Page({
       resultFeedback: ''
     });
   },
-
   startCountdown() {
     const that = this;
 
@@ -101,7 +119,16 @@ Page({
     });
   },
   endCountdown() {
-    this.data.bgm.stop();
+    if (this.data.bgm) {
+      this.data.bgm.stop();
+    }
+    if (this.data.remindAudioContext) {
+      this.data.remindAudioContext.destroy();
+    }
+    this.setData({
+      remindCountDown: 0,
+      remindAudioContext: null
+    })
     clearInterval(this.data.countdown_interval);
   },
   startBgm() {
@@ -128,7 +155,7 @@ Page({
     bgm.title = title;
     bgm.onEnded(() => {
       if (bgmInfo.value !== 'loop') {
-        bgm.play()
+        bgm.src = src;
         return;
       }
       index = index === bgmList.length - 1 ? 2 : index + 1
@@ -136,10 +163,22 @@ Page({
       bgm.title = bgmList[index].label
     })
   },
+  toggleStop() {
+    const stop = !this.data.isBgmStop
+    if (stop) {
+      this.data.bgm.pause()
+    } else {
+      this.data.bgm.play()
+    }
+    this.setData({
+      isBgmStop: stop
+    })
+  },
   // 内部跳转
   updateStep(e) {
     const {
-      go: step
+      go: step,
+      inner,
     } = e.currentTarget.dataset;
     // 提交点读
     if (step === 1) {
@@ -165,11 +204,21 @@ Page({
     // 开始点读
     if (step === 2) {
       this.setData({
-        pageTitle: "计时"
+        pageTitle: "计时",
+        isBgmStop: false,
+        settingPopup: false
       })
+      const {
+        remind,
+        hour,
+        minute
+      } = this.data.settingData
       this.startBgm();
       this.resetCountdown();
       this.startCountdown();
+      if (inner && remind === '1') {
+        this.handleRemind(hour, minute)
+      }
     }
     // 结束点读
     if (step === 3) {
@@ -183,7 +232,39 @@ Page({
       step
     });
   },
-
+  handleRemind(hour, minute) {
+    if (!hour && !minute) {
+      return;
+    }
+    const time = (hour || 0) * 3600 + (minute || 0) * 60;
+    this.setData({
+      remindCountDown: time * 1000
+    })
+  },
+  remindFinish() {
+    console.log(323);
+    let count = 0;
+    const audioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: false
+    })
+    this.setData({
+      remindAudioContext: audioContext
+    })
+    audioContext.src = 'https://oss.lhdd.club/music/ring.mp3'
+    audioContext.onEnded(() => {
+      count += 1
+      if (count === 3) {
+        audioContext.destroy();
+        this.setData({
+          remindAudioContext: null
+        });
+      } else {
+        audioContext.seek(0);
+        audioContext.play();
+      }
+    })
+    audioContext.play();
+  },
   onResultTimesChange(e) {
     const {
       value: resultTimes
@@ -236,9 +317,6 @@ Page({
     });
   },
   onUnload() {
-    this.endCountdown();
-  },
-  onHide() {
     this.endCountdown();
   }
 });

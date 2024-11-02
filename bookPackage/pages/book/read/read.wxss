@@ -109,6 +109,31 @@ page {
   width: 100%;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 8rpx;
+}
+
+.count-down-box {
+  font-size: 28rpx;
+  color: #FFF;
+}
+
+.t-count-down {
+  color: transparent !important;
+}
+
+.music-icon-box {
+  text-align: right;
+}
+
+.music-icon {
+  width: 56rpx;
+  height: 56rpx;
+}
+
 .read-countdown {
   height: 64vh;
   background: url(https://oss.lhdd.club/ui/read_bg_2.png) center 40%/64% no-repeat;
@@ -195,13 +220,18 @@ page {
   text-align: center;
   font-size: 32rpx;
   color: #656c74;
-  border-bottom: 2rpx solid #f3f6f8;
+  border-bottom: 2rpx solid #F3F6F8;
   padding-bottom: 36rpx;
 }
 
-.read-setting-popup-content .t-cell__title-text,
-.read-setting-popup-content .t-radio__title {
-  font-size: 28rpx;
+.read-setting-popup-content .t-cell {
+  padding: 32rpx 0;
+  border-bottom: 1rpx solid #EBE4DD;
+}
+
+.read-setting-popup-content .t-cell__title-text {
+  font-size: 28rpx !important;
+  color: #656C74 !important;
 }
 
 .read-setting-popup-content .t-radio__icon--left {
@@ -218,4 +248,23 @@ page {
   height: 96rpx;
   line-height: 96rpx;
   margin-top: 80rpx;
+}
+
+.input-group {
+  display: flex;
+  gap: 12rpx;
+}
+
+.input-group .t-input {
+  padding: 0;
+  width: 150rpx;
+}
+
+.input-group .t-input__control {
+  text-align: center;
+}
+
+.input-group .t-input__wrap--suffix {
+  font-size: 28rpx;
+  padding-left: 10rpx !important;
 }

@@ -13,6 +13,7 @@
     "custom-nav": "/components/custom-nav/custom-nav",
     "pager": "/components/pager/pager",
     "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item"
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "t-count-down": "tdesign-miniprogram/count-down/count-down"
   }
 }

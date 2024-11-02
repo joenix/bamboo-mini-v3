@@ -1,5 +1,5 @@
 <!-- article.wxml -->
-<custom-nav title="{{pageTitle}}" background="transparent" />
+<custom-nav title="{{pageTitle}}" center background="transparent" />
 <t-message id="t-message" />
 
 <view class="read">
@@ -23,6 +23,17 @@
   </pager>
 
   <pager wx:if="{{step === 2}}">
+    <view class="header">
+      <view class="count-down-box">
+        <view wx:if="{{remindCountDown > 0}}">
+          <t-count-down time="{{ remindCountDown }}" bind:finish="remindFinish" />
+        </view>
+      </view>
+      <view class="music-icon-box">
+        <image class="music-icon" wx:if="{{isBgmStop}}" src="/assets/music-2-fill.png" mode="scaleToFill" bind:tap="toggleStop" />
+        <image class="music-icon" wx:else src="/assets/music-play.png" mode="scaleToFill" bind:tap="toggleStop" />
+      </view>
+    </view>
     <view class="read-countdown">
       <view class="read-countdown-time">{{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}</view>
     </view>
@@ -39,19 +50,25 @@
     <view class="read-setting-popup">
       <view class="read-setting-popup-title">设置</view>
       <view class="read-setting-popup-content">
-        <t-cell title="是否需要提醒" hover>
-          <t-radio-group default-value="0" borderless t-class="box" slot="note">
+        <t-cell title="是否需要提醒" bordered="{{false}}">
+          <t-radio-group default-value="0" borderless t-class="box" slot="note" data-type="remind" bind:change="settingChange">
             <t-radio icon="dot" block="{{false}}" label="需要" value="1" />
             <t-radio icon="dot" block="{{false}}" label="不需要" value="0" />
           </t-radio-group>
         </t-cell>
-        <t-cell title="是否需要引导" hover>
-          <t-radio-group default-value="0" borderless t-class="box" slot="note">
+        <t-cell title="提醒时间" bordered="{{false}}" wx:if="{{settingData.remind === '1'}}">
+          <view class="input-group" slot="note">
+            <t-input borderless placeholder="0" suffix="小时" data-type="hour" bind:change="settingChange" type="number" maxlength="{{2}}" />
+            <t-input borderless placeholder="0" suffix="分钟" data-type="minute" bind:change="settingChange" type="number" maxlength="{{2}}" />
+          </view>
+        </t-cell>
+        <t-cell title="是否需要引导" bordered="{{false}}">
+          <t-radio-group default-value="0" borderless t-class="box" slot="note" data-type="guide" bind:change="settingChange">
             <t-radio icon="dot" block="{{false}}" label="需要" value="1" />
             <t-radio icon="dot" block="{{false}}" label="不需要" value="0" />
           </t-radio-group>
         </t-cell>
-        <view class="read-button read-setting-popup-submit" data-go="{{2}}" bind:tap="updateStep">
+        <view class="read-button read-setting-popup-submit" data-inner="{{true}}" data-go="{{2}}" bind:tap="updateStep">
           开始点读
         </view>
       </view>
