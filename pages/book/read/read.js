@@ -1,10 +1,8 @@
-import dayjs from 'dayjs';
-import { lunar, api, post, link2, utcFormatTime } from '../../../utils/util';
 import Message from 'tdesign-miniprogram/message/index';
 
 Page({
   data: {
-    screen: 0,
+    pageTitle: '开始点读',
     step: 1,
     countdown: 0,
     countdown_ui: {
@@ -15,95 +13,47 @@ Page({
     countdown_interval: null,
     bgm: null,
     bgmInfo: {},
-    bgmCurrent: 0,
     bgmPopup: false,
-    bgmList: [
-      {
-        src: 'https://oss.lhdd.club/music/read_bgm_1.mp3',
-        title: '古筝 - 古风温馨春华秋实',
-        singer: '仇氏点读',
-        coverImgUrl: null
-      },
-      {
-        src: 'https://oss.lhdd.club/music/read_bgm_2.mp3',
-        title: '古筝 - 中国风 余音绕梁',
-        singer: '仇氏点读',
-        coverImgUrl: null
-      }
-    ],
-
+    bgmList: [],
     settingPopup: false,
-
-    resultTimes: 0,
+    resultPopup: false,
+    resultTimes: '',
     resultFeedback: ''
   },
-
   settingPopupOpen() {
     this.setData({
       settingPopup: true
     });
   },
-
   onSettingPopupOpen(e) {
     this.setData({
       settingPopup: e.detail.visible
     });
   },
-
   bgmPopupOpen(e) {
-    const { index } = e.currentTarget.dataset;
-
     this.setData({
-      bgmCurrent: index,
       bgmPopup: true
     });
   },
-
-  onBgmPopupOpen(e) {
+  onbgmPopupCancel() {
     this.setData({
-      bgmPopup: e.detail.visible
-    });
+      bgmPopup: false
+    })
   },
-
-  setBgm({ title, singer = '仇氏点读', src } = {}) {
-    this.data.bgm.src = src;
-    this.data.bgm.title = title;
-    this.data.bgm.singer = singer;
-
-    this.data.bgm.onCanplay(() => this.data.bgm.pause());
-
-    setTimeout(() => {
-      this.data.bgm.pause();
-    }, 500);
-
+  bgmConfirm(e) {
+    const {
+      value,
+      label
+    } = e.detail;
+    const bgmInfo = {
+      value: value[0],
+      label: label[0]
+    }
     this.setData({
-      bgm: this.data.bgm
-    });
-  },
-
-  setCountdown() {},
-
-  bgmChange(e) {
-    const { index } = e.currentTarget.dataset;
-    const bgmInfo = this.data.bgmList[index];
-
-    this.setData({
-      bgmCurrent: index,
       bgmInfo,
       bgmPopup: false
     });
-
-    this.setBgm(bgmInfo);
   },
-
-  bgmChoose(e) {
-    const { index } = e.currentTarget.dataset;
-
-    this.setData({
-      bgmCurrent: index
-    });
-  },
-
   resetCountdown() {
     this.setData({
       countdown: 0,
@@ -112,7 +62,7 @@ Page({
         mm: '00',
         ss: '00'
       },
-      resultTimes: 0,
+      resultTimes: '',
       resultFeedback: ''
     });
   },
@@ -150,19 +100,53 @@ Page({
       countdown_interval
     });
   },
-
   endCountdown() {
-    this.data.bgm.pause();
+    this.data.bgm.stop();
     clearInterval(this.data.countdown_interval);
   },
+  startBgm() {
+    const {
+      bgm,
+      bgmList,
+      bgmInfo
+    } = this.data;
+    if (!bgmInfo.value || bgmList.length <= 2) {
+      return;
+    }
+    let index = 2;
+    let src = '';
+    let title = '';
 
+    if (bgmInfo.value === 'loop') {
+      src = bgmList[index].value
+      title = bgmList[index].label
+    } else {
+      src = bgmInfo.value;
+      title = bgmInfo.label;
+    }
+    bgm.src = src;
+    bgm.title = title;
+    bgm.onEnded(() => {
+      if (bgmInfo.value !== 'loop') {
+        bgm.play()
+        return;
+      }
+      index = index === bgmList.length - 1 ? 2 : index + 1
+      bgm.src = bgmList[index].value
+      bgm.title = bgmList[index].label
+    })
+  },
   // 内部跳转
   updateStep(e) {
-    const { go: step } = e.currentTarget.dataset;
-
+    const {
+      go: step
+    } = e.currentTarget.dataset;
     // 提交点读
     if (step === 1) {
-      if (this.data.resultTimes < 1) {
+      this.setData({
+        pageTitle: "开始点读"
+      })
+      if ((this.data.resultTimes || 0) < 1) {
         return Message.error({
           context: this,
           offset: [90, 32],
@@ -170,7 +154,6 @@ Page({
           content: '请检查点读遍数'
         });
       }
-
       Message.success({
         context: this,
         offset: [90, 32],
@@ -179,26 +162,32 @@ Page({
       });
       this.resetCountdown();
     }
-
     // 开始点读
     if (step === 2) {
-      this.bgmChange({ currentTarget: { dataset: { index: this.data.bgmCurrent } } });
+      this.setData({
+        pageTitle: "计时"
+      })
+      this.startBgm();
       this.resetCountdown();
       this.startCountdown();
     }
-
     // 结束点读
     if (step === 3) {
+      this.setData({
+        resultPopup: true,
+        pageTitle: "计时"
+      })
       this.endCountdown();
     }
-
     this.setData({
       step
     });
   },
 
   onResultTimesChange(e) {
-    const { value: resultTimes } = e.detail;
+    const {
+      value: resultTimes
+    } = e.detail;
 
     this.setData({
       resultTimes
@@ -206,7 +195,9 @@ Page({
   },
 
   onResultFeedbackChange(e) {
-    const { value: resultFeedback } = e.detail;
+    const {
+      value: resultFeedback
+    } = e.detail;
 
     this.setData({
       resultFeedback
@@ -215,21 +206,39 @@ Page({
 
   onReady() {
     const bgm = wx.getBackgroundAudioManager();
-    const bgmInfo = this.data.bgmList[this.data.bgmCurrent];
-
     this.setData({
-      bgm,
-      bgmInfo
-    });
+      bgm
+    })
   },
 
   onLoad() {
-    // 获取应用实例
-    const app = getApp();
-
-    // 设置 navBarHeight
+    const defalutList = [{
+        value: null,
+        label: '无',
+      },
+      {
+        value: 'loop',
+        label: '列表默认循环',
+      }
+    ]
+    const newBgmList = [{
+        value: 'https://oss.lhdd.club/music/read_bgm_1.mp3',
+        label: '古筝 - 古风温馨春华秋实',
+      },
+      {
+        value: 'https://oss.lhdd.club/music/read_bgm_2.mp3',
+        label: '古筝 - 中国风 余音绕梁',
+      }
+    ];
     this.setData({
-      screen: `calc(100vh - ${app.globalData.navBarHeight * 2 + 18}rpx)`
+      bgmInfo: newBgmList[0],
+      bgmList: defalutList.concat(newBgmList)
     });
+  },
+  onUnload() {
+    this.endCountdown();
+  },
+  onHide() {
+    this.endCountdown();
   }
 });

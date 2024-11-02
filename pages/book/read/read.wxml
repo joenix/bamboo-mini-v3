@@ -1,84 +1,77 @@
 <!-- article.wxml -->
-<custom-nav title="点读" background="{{'#d0bd97'}}" />
-
+<custom-nav title="{{pageTitle}}" background="transparent" />
 <t-message id="t-message" />
 
-<view class="read" style="min-height: {{screen}}">
-    <pager wx:if="{{step === 1}}">
-        <view class="read-layout-content">
-            <view class="read-bgm">
-                <view class="read-bgm-title">背景音乐</view>
-                <t-row gutter="18">
-                    <t-col span="16">{{bgmInfo.title || '未知 BGM'}}</t-col>
-                    <t-col span="8">
-                        <view class="read-bgm-hem">
-                            <t-button class="read-bgm-change" data-index="{{bgmCurrent}}" bind:tap="bgmPopupOpen">切换音乐</t-button>
-                        </view>
-                    </t-col>
-                </t-row>
-                <t-popup visible="{{bgmPopup}}" bind:visible-change="onBgmPopupOpen" placement="bottom">
-                    <view class="read-bgm-choose">
-                        <view class="read-bgm-lister">
-                            <view class="{{ bgmCurrent === index ? 'read-bgm-active' : '' }}" wx:for="{{bgmList}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" bind:tap="bgmChoose">{{item.title}}</view>
-                        </view>
-                        <view class="read-button read-be-choose" data-index="{{bgmCurrent}}" bind:tap="bgmChange">确定</view>
-                    </view>
-                </t-popup>
-            </view>
-            <view class="read-poster"></view>
-        </view>
-        <view class="read-layout-control">
-            <t-popup visible="{{settingPopup}}" bind:visible-change="onSettingPopupOpen" usingCustomNavbar placement="center">
-                <view class="read-setting-popup">
-                    <view class="read-setting-popup-title">设置</view>
-                    <view class="read-setting-popup-content">
-                      <t-cell title="是否需要提醒" hover>
-                        <t-radio-group default-value="0" borderless t-class="box" slot="note">
-                            <t-radio block="{{false}}" label="需要" value="1" />
-                            <t-radio block="{{false}}" label="不需要" value="0" />
-                        </t-radio-group>
-                      </t-cell>
-                      <t-cell title="是否需要引导" hover>
-                        <t-radio-group default-value="0" borderless t-class="box" slot="note">
-                            <t-radio block="{{false}}" label="需要" value="1" />
-                            <t-radio block="{{false}}" label="不需要" value="0" />
-                        </t-radio-group>
-                      </t-cell>
-                      <view class="read-button read-setting-popup-submit" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
-                    </view>
-                </view>
-            </t-popup>
-            <view class="read-button read-setting" bind:tap="settingPopupOpen">点读设置</view>
-            <view class="read-button" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
-            <view class="read-tip">点击后开始计时</view>
-        </view>
-    </pager>
+<view class="read">
+  <pager wx:if="{{step === 1}}">
+    <view class="read-bgm">
+      <view class="flex-1">
+        <view class="read-bgm-title">背景音乐</view>
+        <view class="read-bgm-name">{{bgmInfo.label || '未知 BGM'}}</view>
+      </view>
+      <t-button class="read-bgm-change" bind:tap="bgmPopupOpen">切换音乐</t-button>
+    </view>
+    <view class="read-poster">
+      <image src="https://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
+    </view>
+    <view class="read-button read-setting w-600" bind:tap="settingPopupOpen">
+      <image class="read-setting-icon" src="/assets/list-settings-fill.png" mode="aspectFit" />
+      点读设置
+    </view>
+    <view class="read-button w-600" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
+    <view class="read-tip">点击后开始计时</view>
+  </pager>
 
-    <pager wx:if="{{step === 2}}">
-         <view class="read-layout-content">
-            <view class="read-countdown">
-                <view class="read-countdown-time">{{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}</view>
-            </view>
-         </view>
-         <view class="read-layout-control">
-            <view class="read-button" data-go="{{3}}" bind:tap="updateStep">点读结束</view>
-            <view class="read-tip">点击后结束点读</view>
-            <view class="read-subtip">温馨提示：请勿关闭/退出小程序</view>
+  <pager wx:if="{{step === 2}}">
+    <view class="read-countdown">
+      <view class="read-countdown-time">{{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}</view>
+    </view>
+    <view class="read-button w-600" data-go="{{3}}" bind:tap="updateStep">点读结束</view>
+    <view class="read-tip">点击后结束点读</view>
+    <view class="read-subtip">温馨提示：请勿关闭/退出小程序</view>
+  </pager>
+  <!-- 音乐 popup -->
+  <t-picker visible="{{bgmPopup}}" value="{{[bgmInfo.value]}}" cancelBtn="取消" confirmBtn="确定" bindconfirm="bgmConfirm" bindcancel="onbgmPopupCancel">
+    <t-picker-item options="{{bgmList}}"></t-picker-item>
+  </t-picker>
+  <!-- 设置 popup -->
+  <t-popup visible="{{settingPopup}}" bind:visible-change="onSettingPopupOpen" usingCustomNavbar placement="center">
+    <view class="read-setting-popup">
+      <view class="read-setting-popup-title">设置</view>
+      <view class="read-setting-popup-content">
+        <t-cell title="是否需要提醒" hover>
+          <t-radio-group default-value="0" borderless t-class="box" slot="note">
+            <t-radio icon="dot" block="{{false}}" label="需要" value="1" />
+            <t-radio icon="dot" block="{{false}}" label="不需要" value="0" />
+          </t-radio-group>
+        </t-cell>
+        <t-cell title="是否需要引导" hover>
+          <t-radio-group default-value="0" borderless t-class="box" slot="note">
+            <t-radio icon="dot" block="{{false}}" label="需要" value="1" />
+            <t-radio icon="dot" block="{{false}}" label="不需要" value="0" />
+          </t-radio-group>
+        </t-cell>
+        <view class="read-button read-setting-popup-submit" data-go="{{2}}" bind:tap="updateStep">
+          开始点读
         </view>
-    </pager>
-
-    <pager wx:if="{{step === 3}}">
-        <view class="read-layout-content">
-            <view class="read-result">
-                <view class="read-result-time">{{countdown_ui.hh}}小时 {{countdown_ui.mm}}分钟 {{countdown_ui.ss}}秒</view>
-                <view class="read-result-tip">本次点读总时长</view>
-
-                <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" />
-                <t-textarea value="{{resultFeedback}}" maxcharacter="100" disableDefaultPadding="{{true}}" indicator placeholder="请您写下本次点读后的感悟，100字以内" bind:change="onResultFeedbackChange" />
-            </view>
-         </view>
-         <view class="read-layout-control">
-            <view class="read-button" data-go="{{1}}" bind:tap="updateStep">提交</view>
+      </view>
+    </view>
+  </t-popup>
+  <!-- 结束 popup -->
+  <t-popup visible="{{resultPopup}}" placement="bottom">
+    <view class="read-result-popup">
+      <view class="read-result">
+        <view class="read-result-time">{{countdown / 1000}}秒</view>
+        <view class="read-result-tip">本次点读总时长</view>
+        <view class="input-box">
+          <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" />
         </view>
-    </pager>
+        <view class="textarea-box">
+          <t-textarea value="{{resultFeedback}}" maxcharacter="300" disableDefaultPadding="{{true}}" indicator placeholder="请您写下本次点读后的感悟，300字以内" bind:change="onResultFeedbackChange" />
+        </view>
+      </view>
+      <view>温馨提示：本次点读数据后续支持分享</view>
+      <view class="read-button" data-go="{{1}}" bind:tap="updateStep">提交</view>
+    </view>
+  </t-popup>
 </view>

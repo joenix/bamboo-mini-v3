@@ -29,7 +29,8 @@
     "pages/home/notice/notice",
     "pages/article/article",
     "pages/book/index",
-    "pages/book/read/read"
+    "pages/book/read/read",
+    "pages/book/learn/learn"
   ],
   "tabBar": {
     "custom": true,

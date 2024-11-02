@@ -10,6 +10,6 @@
     "custom-nav": "/components/custom-nav/custom-nav",
     "pager": "/components/pager/pager",
     "liner": "/components/liner/liner",
-    "blocker": "/components/blocker/blocker"
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

@@ -1,37 +1,6 @@
 /* pages/book/book.wxss */
-.is-holiday:not(.t-calendar__dates-item--selected) {
-  color: #e34d59 !important;
-}
-
-.is-readed {
-  position: relative;
-}
-.is-readed::after {
-  content: ' ';
-  top: 18rpx;
-  right: 12rpx;
-  position: absolute;
-  width: 12rpx;
-  height: 12rpx;
-  border-radius: 24rpx;
-  background-color: #e34d59;
-}
-
-.last-day {
-  background-color: #ccc;
-}
-
-.t-calendar__months {
-  height: 40vh !important;
-}
-
-.t-calendar__title {
-  display: none !important;
-}
-
-.t-calendar__dates-item {
-  height: 98rpx !important;
-  margin-top: 4rpx !important;
+page {
+  background: linear-gradient(180deg, #E0D4BB 0%, rgba(224, 212, 187, 0) 484rpx, #F9F8F6 100%) no-repeat;
 }
 
 .book-container {
@@ -44,18 +13,16 @@
   line-height: 80rpx;
 }
 
-.book-calendar {
-}
-
 .book-calendar-header {
   position: relative;
   display: flex;
-  height: 100rpx;
+  align-items: center;
+  height: 116rpx;
   padding-left: 12rpx;
   border-radius: 8rpx 8rpx 0 0;
   background:
-    url(https://oss.lhdd.club/ui/ui_calendar.png) right/contain no-repeat,
-    linear-gradient(to bottom, #7c5a2c, #91764b);
+    #926523 url(https://oss.lhdd.club/ui/ui_calendar.png) right 68rpx top no-repeat;
+  background-size: 332rpx 124rpx;
 }
 
 .book-calendar-header::after {
@@ -66,14 +33,14 @@
   left: 0;
   right: 0;
   margin: 0 12rpx;
-  background: #7c5a2c;
+  background: #926523;
   border-radius: 8rpx 8rpx 0 0;
 }
 
 .book-calendar-header text {
-  width: 64rpx;
-  height: 64rpx;
-  margin: 12rpx 0 0 12rpx;
+  width: 68rpx;
+  height: 68rpx;
+  margin-left: 16rpx;
   line-height: 64rpx;
   display: block;
   text-align: center;
@@ -84,10 +51,97 @@
 
 .book-calendar-content {
   border: 2rpx solid #926523;
+  background-color: #fff;
+}
+
+.calendar-action {
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 24rpx 30rpx;
+}
+
+.calendar-action .year-month {
+  display: flex;
+  align-items: center;
+  color: #926523;
+  font-weight: 900;
+  gap: 8rpx;
+}
+
+.calendar-action .year-month .disbaled {
+  opacity: 0.3;
+}
+
+.calendar-action .today {
+  box-sizing: border-box;
+  font-size: 28rpx;
+  width: 80rpx;
+  height: 48rpx;
+  text-align: center;
+  font-weight: 900;
+  line-height: 48rpx;
+  border: 1rpx solid #926523;
+  color: #926523;
+}
+
+.t-calendar__months {
+  height: 520rpx !important;
+  padding: 0 24rpx 24rpx !important;
+}
+
+.t-calendar__title,
+.t-calendar__days,
+.t-calendar__month {
+  display: none !important;
+}
+
+.t-calendar__dates-item {
+  width: 76rpx;
+  height: 80rpx !important;
+  align-items: flex-start !important;
+  border-radius: 0 !important;
+}
+
+.t-calendar__dates-item--selected {
+  background: #EEE8DC;
+}
+
+.t-calendar__dates-item.is-readed::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate3d(8rpx, -8rpx, 0);
+  content: '';
+  color: #FFF;
+  font-size: 12rpx;
+  text-align: center;
+  line-height: 20rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #926523;
+}
+
+.t-calendar__dates-item.saturday:not(.t-calendar__dates-item--selected),
+.t-calendar__dates-item.saturday:not(.t-calendar__dates-item--selected) .t-calendar__dates-item-suffix {
+  color: #259C5F;
+}
+
+.t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected),
+.t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected) .t-calendar__dates-item-suffix {
+  color: #E44A38;
 }
 
 .book-entries {
-  margin-top: 32rpx;
+  margin-top: 24rpx;
+}
+
+.book-entries-block {
+  background: #fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top no-repeat;
+  background-size: 400rpx 164rpx;
+  border: 1px solid #CBBA9F;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
 }
 
 .book-entries-title {
@@ -135,10 +189,11 @@
   justify-content: space-between;
 }
 
-.book-entries-flex.end {
+.book-entries-total {
+  font-size: 24rpx;
+  color: #B3ABA0;
 }
 
-.book-entries-total,
 .book-entries-affix {
   font-size: 24rpx;
   color: #926523;
@@ -154,7 +209,7 @@
   font-size: 20rpx;
 }
 
-.book-entries-affix > text {
+.book-entries-affix>text {
   display: inline-block;
   padding: 0 8rpx;
   border-radius: 48rpx;

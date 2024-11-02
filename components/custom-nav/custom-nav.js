@@ -1,4 +1,5 @@
 // components/custom-nav/custom-nav.js
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -25,6 +26,14 @@ Component({
     background: {
       type: String,
       value: '#fff'
+    },
+    white: {
+      type: Boolean,
+      value: false
+    },
+    center: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -32,8 +41,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    navBarHeight: 0,
-    height: 14
+    containerStyle: "",
+    titleStyle: ""
   },
 
   /**
@@ -46,12 +55,18 @@ Component({
   },
   lifetimes: {
     ready() {
-      // 获取应用实例
-      const app = getApp();
-
-      // 设置 navBarHeight
       this.setData({
-        navBarHeight: app.globalData.navBarHeight * 2 + this.data.height
+        containerStyle: `
+          padding-top: ${app.globalData.navBarTop}px;
+          background-color: ${this.data.background};
+          color: ${this.data.white ? " #FFF" : "#000" };
+          `,
+        titleStyle: `
+          height: ${app.globalData.navBarHeight}px;
+          line-height: ${app.globalData.navBarHeight}px;
+          text-align: ${this.data.center ? 'center': 'left'};
+          text-indent: ${ this.data.center && this.data.showBack ? '-56rpx' : '' };
+        `
       });
     }
   }
