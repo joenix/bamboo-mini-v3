@@ -1,3 +1,6 @@
 .info-icon {
   color: #c0975a;
 }
+
+.info-left {
+}

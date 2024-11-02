@@ -2,4 +2,12 @@
 <!-- 自定义nav -->
 <custom-nav title="关于我们" />
 
-<text>关于我们</text>
+<view class="usercenter-aboutus">
+    <pager class="usercenter-aboutus-container">
+        <view class="usercenter-aboutus-up"></view>
+        <view class="usercenter-aboutus-content">
+            <rich-text nodes="{{content}}"></rich-text>
+        </view>
+        <view class="usercenter-aboutus-down"></view>
+    </pager>
+</view>

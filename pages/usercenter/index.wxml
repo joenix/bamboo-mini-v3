@@ -42,7 +42,7 @@
   </blocker>
   <blocker stick="{{true}}">
     <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
-    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
+    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow bind:tap="link2aboutus" />
     <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
   </blocker>
   <blocker background="transparent" stick="{{true}}">
