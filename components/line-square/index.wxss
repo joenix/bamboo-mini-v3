@@ -1,0 +1,21 @@
+/* components/line-square/index.wxss */
+.line-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1px;
+  background-color: #EBE4DD;
+  margin-bottom: 44rpx;
+}
+
+.square {
+  background: #DFCAA9;
+  width: 8rpx;
+  height: 8rpx;
+  transform: rotate(45deg);
+}
+
+.square:nth-child(2) {
+  width: 16rpx;
+  height: 16rpx;
+}

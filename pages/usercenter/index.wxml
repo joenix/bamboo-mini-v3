@@ -1,5 +1,5 @@
 <!-- 自定义nav -->
-<custom-nav title="个人中心" showBack="{{false}}" />
+<custom-nav title="我的" showBack="{{false}}" background="transparent" />
 
 <pager class="userinfo">
   <blocker background="transparent" stick="{{true}}" vertical="{{false}}" shadow="{{false}}">
@@ -8,7 +8,7 @@
         <t-avatar size="large" image="{{userInfo.avatarUrl}}" />
       </t-col>
       <t-col span="14">
-        <view class="userinfo-nickname">{{userInfo.nickname}}</view>
+        <view class="userinfo-nickname">{{userInfo.nickname || "--"}}</view>
         <text class="userinfo-badge">{{userInfo.mobile}}</text>
       </t-col>
       <t-col span="5">
@@ -17,16 +17,16 @@
     </t-row>
   </blocker>
   <t-row gutter="16">
-    <t-col span="12">
+    <t-col span="12" data-type="score" bind:tap="onClickCell">
       <blocker vertical="{{false}}" class="userinfo-block userinfo userinfo-icon-credit">
         <t-image src="https://oss.lhdd.club/icon/userinfo-icon-credit.png" mode="aspectFill" width="36" height="36" />
         <view>
           <view class="userinfo-cell">我的学分</view>
-          <text class="userinfo-sub">{{userInfo.credits.credit}}</text>
+          <text class="userinfo-sub">{{userInfo.credits.credit || 0}}</text>
         </view>
       </blocker>
     </t-col>
-    <t-col span="12">
+    <t-col span="12" data-type="exchange" bind:tap="onClickCell">
       <blocker vertical="{{false}}" class="userinfo-block userinfo userinfo-icon-credit">
         <t-image src="https://oss.lhdd.club/icon/userinfo-icon-change.png" mode="aspectFill" width="36" height="36" />
         <view>
@@ -37,54 +37,15 @@
     </t-col>
   </t-row>
   <blocker stick="{{true}}">
-    <t-cell title="更新资料" image="https://oss.lhdd.club/icon/userinfo-icon-update.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="请尽快更新个人资料" t-class-note="userinfo-sub" arrow bind:tap="link2infoupdate" />
-    <t-cell title="我的报告" image="https://oss.lhdd.club/icon/userinfo-icon-report.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="月度报告已生成" t-class-note="userinfo-sub" arrow />
+    <t-cell title="资料更新" image="https://oss.lhdd.club/icon/userinfo-icon-update.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="请尽快更新个人资料" t-class-note="userinfo-sub" arrow url="/pages/usercenter/uc-info-update/index" />
+    <t-cell title="我的报告" image="https://oss.lhdd.club/icon/userinfo-icon-report.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="月度报告已生成" t-class-note="userinfo-sub" arrow url="/pages/usercenter/report/report" />
   </blocker>
   <blocker stick="{{true}}">
-    <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
-    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
-    <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow />
+    <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/pages/usercenter/suggest/suggest" />
+    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/pages/usercenter/aboutus/aboutus" />
+    <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="" />
   </blocker>
   <blocker background="transparent" stick="{{true}}">
     <btn bind:tap="logout">退出</btn>
   </blocker>
 </pager>
-
-<!--
-<view class="mine-sample mine-sample-1" wx:if="{{mine_type === 1}}">
-  <view class="mine-sample-link" style="width: 90vw; height: 100rpx; top: 430rpx; left: 5vw;" data-go="{{2}}" bind:tap="updateType"></view>
-  <view class="mine-sample-link" style="width: 90vw; height: 100rpx; top: 820rpx; left: 5vw;" data-go="{{5}}" bind:tap="updateType"></view>
-  <view class="mine-sample-link" style="width: 160rpx; height: 60rpx; top: 60rpx; right: 5vw;" data-go="{{3}}" bind:tap="updateType"></view>
-  <view class="mine-sample-link" style="width: 40vw; height: 140rpx; top: 240rpx; left: 5vw;" data-go="{{4}}" bind:tap="updateType"></view>
-</view>
-
-<view class="mine-sample mine-sample-2" wx:if="{{mine_type === 2}}">
-  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
-</view>
-
-<view class="mine-sample mine-sample-3" wx:if="{{mine_type === 3}}">
-  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
-</view>
-
-<view class="mine-sample mine-sample-4" wx:if="{{mine_type === 4}}">
-  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
-</view>
-
-<view class="mine-sample mine-sample-5" wx:if="{{mine_type === 5}}">
-  <view class="mine-sample-link" style="width: 200rpx; height: 100rpx; top: -100rpx; left: 20rpx;" data-go="{{1}}" bind:tap="updateType"></view>
-</view>
--->
-
-<!--
-<view class="content-wrapper">
-  <view wx:for="{{menuData}}" wx:key="item" class="cell-box">
-    <t-cell-group>
-      <t-cell wx:for="{{item}}" wx:for-item="xitem" wx:for-index="xindex" wx:key="xindex" title="{{xitem.title}}" arrow="{{!xitem.icon}}" note="{{xitem.tit}}" data-type="{{xitem.type}}" leftIcon="{{xitem.leftIcon}}" bordered="{{false}}" bind:click="onClickCell" t-class="t-cell-padding" t-class-note="order-group-note" t-class-left="order-group__left">
-        <t-icon name="{{xitem.icon}}" size="48rpx" slot="note" />
-      </t-cell>
-    </t-cell-group>
-  </view>
-</view>
--->
-
-<!-- <t-button theme="primary" block t-class="loginout" bindtap='loginout'>退出</t-button> -->

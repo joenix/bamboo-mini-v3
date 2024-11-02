@@ -40,64 +40,7 @@ page {
   height: 588rpx;
   background: #fff;
   border-radius: 4rpx;
-  padding: 0 40rpx;
-}
-
-.sign-header-container .sign-module .sign-module-decorate {
-  height: 10rpx;
-  position: relative;
-  padding: 30rpx 0;
-}
-
-.sign-header-container .sign-module .sign-module-decorate::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  width: 44%;
-  height: 2rpx;
-  background-color: #EBE4DD;
-}
-
-.sign-header-container .sign-module .sign-module-decorate::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-  width: 44%;
-  height: 2rpx;
-  background-color: #EBE4DD;
-}
-
-.sign-module-decorate .decorate-cube {
-  width: 7.42rpx;
-  height: 7.42rpx;
-  background: #DFCAA9;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.sign-module-decorate .cube1,
-.sign-module-decorate .cube3 {
-  width: 7.42rpx;
-  height: 7.42rpx;
-}
-
-.sign-module-decorate .cube1 {
-  left: 47%;
-}
-
-.sign-module-decorate .cube2 {
-  width: 14.6rpx;
-  height: 14.6rpx;
-  left: 49%;
-}
-
-.sign-module-decorate .cube3 {
-  right: 47%;
+  padding: 30rpx 40rpx 0;
 }
 
 .sign-header-container .sign-module .sign-btn {

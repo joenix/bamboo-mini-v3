@@ -1,5 +1,5 @@
 <!-- 自定义nav -->
-<custom-nav title="签到" />
+<custom-nav title="签到" center background="transparent" />
 
 <t-message id="t-message" />
 
@@ -15,11 +15,7 @@
     <!-- 签到模块 -->
     <view class="sign-module">
       <!-- 装饰 -->
-      <view class="sign-module-decorate">
-        <view class="decorate-cube cube1"></view>
-        <view class="decorate-cube cube2"></view>
-        <view class="decorate-cube cube3"></view>
-      </view>
+      <line-square />
 
       <!-- 签到进度 -->
       <view class="sign-module-progress">

@@ -1,0 +1,6 @@
+<!--components/line-square/index.wxml-->
+<view class="line-box">
+  <view class="square"></view>
+  <view class="square"></view>
+  <view class="square"></view>
+</view>

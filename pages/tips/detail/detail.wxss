@@ -1,15 +1,54 @@
 /* pages/tips/detail/detail.wxss */
+page {
+  position: relative;
+  background: #F9F8F6;
+}
+
+.bg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .tipsdetail-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 200rpx;
+  padding: 0 32rpx;
+}
+
+.tipsdetail-container .content {
+  font-size: 14px;
+  line-height: 40px;
+  color: #373737;
+  border-radius: 4rpx;
+  background-color: #FAF8F4;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 410rpx 390rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #E1D5BD;
+  padding: 46rpx 40rpx;
+  padding-bottom: 420rpx;
+  text-decoration: underline #E4C79C solid 4rpx;
+  text-underline-offset: 6rpx;
+  margin-bottom: 140rpx;
 }
 
 .tipsdetail-container .save {
-  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #FFF;
+  border-radius: 4rpx;
+  background-color: #C0975A;
+  font-size: 32rpx;
 }
 
 .tipsdetail-container .tips {
   margin-top: 20rpx;
-  font-size: 22rpx;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #B3ABA0;
 }

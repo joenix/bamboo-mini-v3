@@ -1,22 +1,27 @@
-import dayjs from 'dayjs';
-import { api, get, post, formatTime } from '../../utils/util';
-
-import Toast from 'tdesign-miniprogram/toast/index';
+import {
+  api,
+  post,
+  formatTime
+} from '../../utils/util';
 
 Page({
   data: {
     indexs: [],
-    tips: [
-      {
+    selectIdx: 0,
+    viewId: '',
+    tips: [{
         index: '今日贴士',
+        id: 'today',
         children: []
       },
       {
         index: '本周贴士',
+        id: 'week',
         children: []
       },
       {
         index: '本月贴士',
+        id: "month",
         children: []
       }
     ],
@@ -25,27 +30,27 @@ Page({
   },
 
   onLoad() {
-    this.getTips();
-  },
-
-  onReady() {
     this.setData({
-      indexs: this.data.tips.map((item) => item.index)
+      indexs: this.data.tips.map((item) => item.index),
+      viewId: this.data.tips[0].id
     });
-  },
-
-  onSelect(e) {
-    const { index } = e.detail;
-
-    console.log(index);
+    this.getTips();
   },
 
   onShow() {
     this.getTabBar().init();
   },
-
+  onSelect(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+      selectIdx: index,
+      viewId: this.data.tips[index].id
+    });
+  },
   onControl(event) {
-    const { index } = event.currentTarget.dataset;
+    const {
+      index
+    } = event.currentTarget.dataset;
     const value = this.data.opens[index] || false;
 
     this.data.opens[index] = !value;
@@ -58,7 +63,9 @@ Page({
   onPullDownRefresh() {},
 
   async getTips() {
-    const { data } = await post(api.Tips.getall);
+    const {
+      data
+    } = await post(api.Tips.getall);
 
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;
@@ -83,27 +90,14 @@ Page({
       this.data.opens[index] = false;
     });
 
+    console.log(this.data.tips);
+
     this.setData({
       tips: this.data.tips
     });
   },
-
-  getCustomNavbarHeight() {
-    const query = wx.createSelectorQuery();
-    query.select('.custom-navbar').boundingClientRect();
-    query.exec((res) => {
-      const { height = 0 } = res[0] || {};
-      this.setData({ stickyOffset: height });
-    });
-  },
-
-  jump2Tips(e) {
-    const {
-      currentTarget: {
-        dataset: { id }
-      }
-    } = e;
-
+  jump2Detail(e) {
+    const id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `/pages/tips/detail/detail?id=${id}`
     });

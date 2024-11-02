@@ -9,9 +9,7 @@
     "pager": "/components/pager/pager",
     "blocker": "/components/blocker/blocker",
     "content": "/components/content/content",
-    "custom-nav": "/components/custom-nav/custom-nav",
-    "t-indexes": "tdesign-miniprogram/indexes/indexes",
-    "t-indexes-anchor": "tdesign-miniprogram/indexes-anchor/indexes-anchor"
+    "custom-nav": "/components/custom-nav/custom-nav"
   },
   "enablePullDownRefresh": true
 }

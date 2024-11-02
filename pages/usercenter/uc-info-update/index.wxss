@@ -1,3 +1,45 @@
-.info-icon {
-  color: #c0975a;
+page {
+  background: #F9F8F6;
+}
+
+.blocker {
+  padding: 48rpx 32rpx !important;
+  background: #FFF;
+  border-radius: 4rpx;
+  margin: 48rpx 0;
+}
+
+.avatar-box {
+  margin: 0 auto 40rpx;
+  text-align: center;
+  width: 200rpx;
+  height: 200rpx;
+  padding: 0;
+}
+
+.t-input {
+  padding: 24rpx 0 !important;
+  border-bottom: 1rpx solid #EBE4DD;
+}
+
+.t-input__icon--prefix {
+  display: flex;
+  align-items: center;
+}
+
+.prefix-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.t-input__label {
+  font-size: 28rpx !important;
+  font-weight: 500;
+  line-height: 40rpx;
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.input-placeholder {
+  color: #D8D8D8 !important;
+  font-size: 28rpx !important;
 }

@@ -1,13 +1,14 @@
 <!-- 自定义nav -->
-<custom-nav title="贴士集" showBack="{{false}}" background="{{'#ddd4c3'}}" />
-
-<pager class="page-tips">
-  <t-indexes bind:select="onSelect" index-list="{{indexs}}" sticky-offset="{{stickyOffset}}">
+<scroll-view style="height: 100vh;" scroll-y scroll-with-animation scroll-into-view="{{viewId}}">
+  <custom-nav title="贴士集" center showBack="{{false}}" background="transparent" />
+  <pager class="page-tips">
+    <view class="tabs">
+      <view class="tabs-item {{selectIdx === index ? 'selected' : ''}}" wx:for="{{indexs}}" wx:key="index" data-index="{{index}}" bind:tap="onSelect">
+        {{ item }}
+      </view>
+    </view>
     <block wx:if="tips.length" wx:for="{{tips}}" wx:key="index">
-      <t-indexes-anchor index="{{item.index}}" t-class="anchor-wrapper">
-        <view>{{item.index}}</view>
-      </t-indexes-anchor>
-      <view class="page-tips-info">
+      <view class="page-tips-info" id="{{item.id}}">
         <view wx:for="{{item.children}}" wx:key="info" wx:for-index="index" wx:for-item="info">
           <view wx:if="{{index === 0}}" class="page-tip-first">
             <view class="page-tip-first-in">
@@ -21,19 +22,18 @@
                 <view class="tip-date">{{info.updatedAt}}</view>
               </view>
               <view class="page-tip-content">
-                <content count="6">{{info.content}}</content>
+                <content count="6" bind:tap="jump2Detail">{{info.content}}</content>
               </view>
             </view>
           </view>
-          <view wx:else>
-            <view class="page-tip-block">
-              <t-icon class="tip-control" name="{{opens[index] ? 'chevron-down-circle' : 'chevron-up-circle'}}" size="52rpx" data-index="{{index}}" bind:tap="onControl" />
-              <view class="tip-date">{{info.updatedAt}}</view>
-              <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}">{{info.content}}</content>
-            </view>
+          <view class="page-tip-block" wx:else>
+            <t-icon class="tip-control" name="{{opens[index] ? 'chevron-down-circle' : 'chevron-up-circle'}}" size="48rpx" data-index="{{index}}" bind:tap="onControl" />
+            <view class="tip-date">{{info.updatedAt}}</view>
+            <view class="line"></view>
+            <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}" bind:tap="jump2Detail">{{info.content}}</content>
           </view>
         </view>
       </view>
     </block>
-  </t-indexes>
-</pager>
+  </pager>
+</scroll-view>

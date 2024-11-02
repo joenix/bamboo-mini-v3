@@ -7,7 +7,7 @@
   overflow: hidden;
   display: block;
   line-height: 1.5;
-  transition: height 0.32s;
+  transition: height 0.32s linear;
 }
 
 .content-1 {

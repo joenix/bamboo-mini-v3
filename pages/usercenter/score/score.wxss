@@ -1,24 +1,88 @@
-.score-container .header-container {
-  height: 400rpx;
-  border: 2rpx solid #ccc;
+page {
+  background: linear-gradient(180deg, #C0975A 0%, #C0975A 520rpx, #F9F8F6 521rpx, #F9F8F6 100%);
+}
+
+.score-container {
+  padding: 48rpx 32rpx;
+}
+
+.total,
+.cur {
+  color: #FFF;
+}
+
+.cur {
+  margin-bottom: 40rpx;
+}
+
+.cur .title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.cur .score {
+  font-size: 44rpx;
+  font-weight: 900;
+}
+
+.total .title {
+  font-size: 28rpx;
+  opacity: 0.7;
+  margin-right: 20rpx;
+}
+
+.total .score {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.record-container {
+  border-radius: 2px;
+  opacity: 1;
+  background: #FAF8F4;
+  box-sizing: border-box;
+  border: 1px solid #E1D5BD;
+  margin-top: 40rpx;
+  padding: 40rpx 32rpx;
+}
+
+.record-container .title {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #3D3D3D;
+  margin-bottom: 24rpx;
+}
+
+.list-item {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #E1D5BD;
+  padding: 24rpx 0px;
+  font-size: 24rpx;
+  color: #B3ABA0
 }
 
-.header-container .total,
-.header-container .cur {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.list-item .name {
+  font-weight: 500;
+  line-height: 48rpx;
+  color: #373737;
+  font-size: 28rpx;
 }
 
-.header-container .score {
-  font-weight: bold;
-  font-size: 60rpx;
+.list-item .time {
+  font-size: 24rpx;
+  line-height: 36rpx;
 }
 
-.score-container .record-container .title {
-  line-height: 80rpx;
-  padding-left: 30rpx;
+.list-item .score {
+  font-size: 28rpx;
+  color: #C0975A;
+  font-weight: 700;
+  margin-left: 8rpx;
 }

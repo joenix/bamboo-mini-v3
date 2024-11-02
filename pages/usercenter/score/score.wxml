@@ -1,22 +1,26 @@
 <!-- 自定义nav -->
-<custom-nav title="我的学分" />
+<custom-nav title="我的学分" white center background="transparent" />
 
 <view class="score-container">
-  <view class="header-container">
-    <view class="total">
-      <view class="score">4000</view>
-      <view class="title">历史总学分</view>
-    </view>
-    <view class="cur">
-      <view class="score">289</view>
-      <view class="title">可用学分</view>
-    </view>
+  <view class="cur">
+    <view class="title">可用学分</view>
+    <view class="score">{{score}}</view>
+  </view>
+  <view class="total">
+    <text class="title">历史总学分</text>
+    <text class="score">{{total}}</text>
   </view>
   <view class="record-container">
-    <view class="title">学分记录</view>
+    <view class="title">积分明细</view>
+    <line-square />
     <view class="list-container">
-      <t-cell title='点读任务' description="2024-02-02" align="middle" hover bindtap='' note='学分+3' data-id='1' />
-      <t-cell title='每日点读' description="2024-09-12" align="middle" hover bindtap='' note='学分+1' data-id='2' />
+      <view class="list-item" wx:for="{{listData}}" wx:key="index">
+        <view class="left">
+          <view class="name">{{ item.name }}</view>
+          <view class="time">{{ item.time }}</view>
+        </view>
+        <view>学分<text class="score">+{{ item.score }}</text></view>
+      </view>
     </view>
   </view>
 </view>

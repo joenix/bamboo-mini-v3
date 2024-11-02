@@ -1,7 +1,9 @@
 {
-  "navigationBarTitleText": "贴士详情",
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button",
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "line-square": "/components/line-square/index",
+    "wxml-to-canvas": "wxml-to-canvas"
   }
 }

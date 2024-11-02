@@ -1,5 +1,13 @@
 page {
-  background-color: #f5f5f5;
+  background-color: #F9F8F6;
+}
+
+.t-cell__title-text {
+  font-weight: 500 !important;
+}
+
+.t-icon {
+  color: #E1D5BD !important;
 }
 
 .content-wrapper {
@@ -199,8 +207,7 @@ page {
 }
 
 /* User Info */
-.userinfo {
-}
+.userinfo {}
 
 .userinfo-layout {
   margin-top: 1rem;
@@ -221,11 +228,12 @@ page {
 
 .userinfo-cell {
   font-size: 32rpx;
+  font-weight: 500;
 }
 
 .userinfo-sub {
-  font-size: 26rpx !important;
-  color: #999999 !important;
+  font-size: 24rpx !important;
+  color: #979797 !important;
 }
 
 .userinfo-sign {
@@ -239,5 +247,4 @@ page {
   height: 64rpx !important;
 }
 
-.userinfo-icon-credit {
-}
+.userinfo-icon-credit {}

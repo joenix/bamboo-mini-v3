@@ -7,10 +7,12 @@
   overflow: hidden;
   margin-bottom: 16rpx;
   color: #000;
+  z-index: 1000;
 }
 
 .custom-nav-container .title {
   flex: 1;
   font-size: 36rpx;
   letter-spacing: 0.1em;
+  font-weight: 600;
 }
