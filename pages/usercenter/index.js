@@ -165,6 +165,10 @@ Page({
     link2('sign/sign');
   },
 
+  link2aboutus() {
+    link2('usercenter/aboutus/aboutus');
+  },
+
   logout() {
     wx.removeStorageSync('token');
 

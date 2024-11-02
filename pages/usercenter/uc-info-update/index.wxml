@@ -1,8 +1,6 @@
 <!-- 自定义nav -->
 <custom-nav title="更新资料" center background="transparent" />
-
 <t-message id="t-message" />
-
 <pager>
   <view class="blocker">
     <line-square />
