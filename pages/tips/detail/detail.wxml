@@ -1,8 +1,8 @@
 <!-- 自定义nav -->
 <custom-nav title="" white background="transparent" />
-<image class="bg" src="/assets/tips_bg.png" mode="widthFix" />
+
 <view class="tipsdetail-container">
-  <view class="content" style="background-image: url('/assets/flower_bg.png');">
+  <view class="content">
     <line-square />
     <view>
       点读会让你全身充满力量，酣畅淋漓又意犹未尽，此等感觉，实在妙哉、妙哉！酣畅淋漓又意犹未尽，此等感觉，实在妙哉、妙哉！妙哉！妙哉！妙哉！妙哉！妙哉！妙…

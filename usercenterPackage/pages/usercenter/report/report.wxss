@@ -1,0 +1,4 @@
+/* pages/usercenter/suggest/suggest.wxss */
+page {
+  background: #F9F8F6;
+}

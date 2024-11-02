@@ -1,5 +1,10 @@
-import { api, get, post, link2 } from '../../utils/util';
-import Message from 'tdesign-miniprogram/message/index';
+import {
+  api,
+  get,
+  post,
+  link2
+} from '../../utils/util';
+import Message from 'tdesign-miniprogram/message/message';
 
 // pages/sign/sign.js
 Page({
@@ -78,7 +83,10 @@ Page({
    * ======== ======== ========
    */
   async doLogin(e) {
-    const { mobile, captcha } = this.data;
+    const {
+      mobile,
+      captcha
+    } = this.data;
 
     if (!/^[1][3,4,5,7,8,9][0-9]{9}$/.test(mobile)) {
       return Message.error({
@@ -108,7 +116,10 @@ Page({
     });
 
     // 因为验证码没下来，先把验证码当密码用
-    const token = await post(api.User.wx_login, { mobile, captcha });
+    const token = await post(api.User.wx_login, {
+      mobile,
+      captcha
+    });
 
     if (!token) {
       return Message.error({

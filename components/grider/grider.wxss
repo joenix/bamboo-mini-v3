@@ -1,5 +1,0 @@
-.grider {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}

@@ -1,7 +1,17 @@
-import { checkToken, api, get, post, link2 } from '../../utils/util';
+import {
+  checkToken,
+  api,
+  get,
+  post,
+  link2
+} from '../../utils/util';
 
-import { fetchHome } from '../../services/home/home';
-import { fetchGoodsList } from '../../services/good/fetchGoods';
+import {
+  fetchHome
+} from '../../services/home/home';
+import {
+  fetchGoodsList
+} from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -13,7 +23,7 @@ Page({
     duration: 200,
     interval: 1000,
     showModal: false,
-    newImages: ['/assets/t1.png', '/assets/t2.png', '/assets/banner1.png', '/assets/banner2.png', '/assets/banner3.png'],
+    newImages: [],
     imgSrcs: [],
     swiper: [],
     tabList: [],
@@ -60,11 +70,17 @@ Page({
   // 从 Blocker 同步数据
   syncIndex(e) {
     // 解构数据
-    const { name, index, item } = e.detail;
+    const {
+      name,
+      index,
+      item
+    } = e.detail;
 
     // 更新数据
     this.setData({
-      [`${name}[${index}]`]: { ...item }
+      [`${name}[${index}]`]: {
+        ...item
+      }
     });
 
     // return false;
@@ -109,7 +125,11 @@ Page({
   async init() {
     // this.loadHomePage();
 
-    await this.onTabsChange({ detail: { value: '0' } });
+    await this.onTabsChange({
+      detail: {
+        value: '0'
+      }
+    });
   },
 
   /**
@@ -117,7 +137,9 @@ Page({
    * ====== ====== ======
    */
   async onTabsChange(e) {
-    const { value: id } = e.detail;
+    const {
+      value: id
+    } = e.detail;
 
     if (!id) {
       return;
@@ -127,7 +149,14 @@ Page({
       content: []
     });
 
-    let { data: content } = await post(api.Information.getall, { filters: [{ key: 'type', value: id }] });
+    let {
+      data: content
+    } = await post(api.Information.getall, {
+      filters: [{
+        key: 'type',
+        value: id
+      }]
+    });
 
     content = content.map((item) => {
       if (/\,/.test(item.name)) {
@@ -151,7 +180,10 @@ Page({
       pageLoading: true
     });
 
-    fetchHome().then(({ swiper, tabList }) => {
+    fetchHome().then(({
+      swiper,
+      tabList
+    }) => {
       this.setData({
         tabList,
         imgSrcs: swiper.slice(0),
@@ -206,7 +238,7 @@ Page({
 
   goodListClickHandle(e) {
     wx.navigateTo({
-      url: '/pages/book/detail/detail'
+      url: '/bookPackage/pages/book/detail/detail'
     });
   },
 
@@ -217,51 +249,54 @@ Page({
       message: '点击加入购物车'
     });
   },
-
-  navToSearchPage() {
-    wx.navigateTo({
-      url: '/pages/goods/search/index'
-    });
-  },
-
-  navToActivityDetail({ detail }) {
-    const { index: promotionID = 0 } = detail || {};
-
-    wx.navigateTo({
-      url: `/pages/promotion-detail/index?promotion_id=${promotionID}`
-    });
-  },
-
   // 最新资讯 链接跳转
   link_article(e) {
-    const { id } = e.currentTarget.dataset;
+    const {
+      id
+    } = e.currentTarget.dataset;
 
-    link2('article/article', { id });
+    link2('/homePackage/pages/article/article', {
+      id
+    });
   },
 
   link_team(e) {
-    const { id } = e.currentTarget.dataset;
+    const {
+      id
+    } = e.currentTarget.dataset;
 
-    link2('home/team/team', { id });
+    link2('/homePackage/pages/home/team/team', {
+      id
+    });
   },
 
   link_org(e) {
-    const { id } = e.currentTarget.dataset;
+    const {
+      id
+    } = e.currentTarget.dataset;
 
-    link2('home/org/org', { id });
+    link2('/homePackage/pages/home/org/org', {
+      id
+    });
   },
 
   link_lesson(e) {
-    const { id } = e.currentTarget.dataset;
+    const {
+      id
+    } = e.currentTarget.dataset;
 
-    link2('home/lesson/lesson', { id });
+    link2('/homePackage/pages/home/lesson/lesson', {
+      id
+    });
   },
 
   // 跳转咨询页面
   jump2information(e) {
     const {
       currentTarget: {
-        dataset: { id }
+        dataset: {
+          id
+        }
       }
     } = e;
 
@@ -270,13 +305,13 @@ Page({
     if (id) {
       // 跳转到咨询详情页面
       wx.navigateTo({
-        url: `/pages/information/detail/detail?id=${id}`
+        url: `/informationPackage/pages/information/detail/detail?id=${id}`
       });
     }
 
     // 跳转到咨询首页
     wx.navigateTo({
-      url: '/pages/information/list/list'
+      url: '/informationPackage/pages/information/list/list'
     });
   },
 
@@ -284,7 +319,9 @@ Page({
   jump2jingang(e) {
     const {
       currentTarget: {
-        dataset: { type }
+        dataset: {
+          type
+        }
       }
     } = e;
 
@@ -292,25 +329,25 @@ Page({
       case '1':
         // 学习咨询
         wx.navigateTo({
-          url: '/pages/information/list/list'
+          url: '/informationPackage/pages/information/list/list'
         });
         break;
       case '2':
         // 六合简书
         wx.navigateTo({
-          url: '/pages/home/sixbook/sixbook'
+          url: '/informationPackage/pages/home/sixbook/sixbook'
         });
         break;
       case '3':
         // 直播预告
         wx.navigateTo({
-          url: '/pages/home/notice/notice'
+          url: '/informationPackage/pages/home/notice/notice'
         });
         break;
       case '4':
         // 学习商城
         wx.navigateTo({
-          url: `/pages/webview/webview?url=${encodeURIComponent('http ://www.baidu.com')}`
+          url: `/homePackage/pages/webview/webview?url=${encodeURIComponent('http ://www.baidu.com')}`
         });
         break;
     }
@@ -319,7 +356,7 @@ Page({
   // 签到
   sign() {
     wx.navigateTo({
-      url: '/pages/sign/sign'
+      url: '/usercenterPackage/pages/sign/sign'
     });
   },
 
@@ -360,7 +397,12 @@ Page({
   },
 
   handleTouchEnd(e) {
-    const { startY, endY, current, newImages } = this.data;
+    const {
+      startY,
+      endY,
+      current,
+      newImages
+    } = this.data;
 
     const slideDistance = startY - endY;
 

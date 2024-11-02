@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "意见反馈",
+  "usingComponents": {
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "pager": "/components/pager/pager",
+    "btn": "/components/btn/btn"
+  }
+}

@@ -127,6 +127,11 @@ page {
   color: #259C5F;
 }
 
+/* .t-calendar__dates-item.saturday:not(.t-calendar__dates-item--diabled),
+.t-calendar__dates-item.saturday:not(.t-calendar__dates-item--disabled) .t-calendar__dates-item-suffix {
+  color: #259C5F;
+} */
+
 .t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected),
 .t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected) .t-calendar__dates-item-suffix {
   color: #E44A38;

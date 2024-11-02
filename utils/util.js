@@ -5,7 +5,10 @@ import utc from './dayjs_utc';
 // Use Timezone from DayJS
 import timezone from './dayjs_timezone';
 
-import { host, api } from './api';
+import {
+  host,
+  api
+} from './api';
 import lunar from './lunar';
 
 // Add Extension for DayJS
@@ -60,18 +63,6 @@ const cosThumb = (url, width, height = width) => {
   return `${url}?imageMogr2/thumbnail/${~~width}x${~~height}`;
 };
 
-// const get = (source, paths, defaultValue) => {
-//   if (typeof paths === 'string') {
-//     paths = paths.replace(/\[/g, '.').replace(/\]/g, '').split('.').filter(Boolean);
-//   }
-//   const { length } = paths;
-//   let index = 0;
-//   while (source != null && index < length) {
-//     source = source[paths[index++]];
-//   }
-//   return source === undefined || index === 0 ? defaultValue : source;
-// };
-
 let systemWidth = 0;
 /** 获取系统宽度，为了减少启动消耗所以在函数里边做初始化 */
 export const loadSystemWidth = () => {
@@ -80,7 +71,10 @@ export const loadSystemWidth = () => {
   }
 
   try {
-    ({ screenWidth: systemWidth, pixelRatio } = wx.getSystemInfoSync());
+    ({
+      screenWidth: systemWidth,
+      pixelRatio
+    } = wx.getSystemInfoSync());
   } catch (e) {
     systemWidth = 0;
   }
@@ -143,8 +137,13 @@ const get = (url, data = {}, options = {}) => {
       url: `${host}${url}`,
       method: 'GET',
       data,
-      header: options.header || { 'Content-Type': 'application/json', token },
-      success: ({ data }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
+      header: options.header || {
+        'Content-Type': 'application/json',
+        token
+      },
+      success: ({
+        data
+      }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
       fail: (error) => reject(error)
     });
   });
@@ -158,8 +157,13 @@ const post = async (url, data = {}, options = {}) => {
       url: `${host}${url}`,
       method: 'POST',
       data,
-      header: options.header || { 'Content-Type': 'application/json', token },
-      success: ({ data }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
+      header: options.header || {
+        'Content-Type': 'application/json',
+        token
+      },
+      success: ({
+        data
+      }) => (data.status === 200 ? resolve(data.msg) : reject(data.msg)),
       fail: (error) => reject(error)
     });
   });
@@ -171,7 +175,7 @@ const link2 = async (page, param = {}) => {
     .join('&');
 
   wx.navigateTo({
-    url: `/pages/${page}?${query}`
+    url: `${page}?${query}`
   });
 };
 

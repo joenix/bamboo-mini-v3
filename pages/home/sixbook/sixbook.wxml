@@ -1,5 +1,0 @@
-<!--pages/home/sixbook/sixbook.wxml-->
-<!-- 自定义nav -->
-<custom-nav title="六合简书" />
-
-<text>六合简书</text>

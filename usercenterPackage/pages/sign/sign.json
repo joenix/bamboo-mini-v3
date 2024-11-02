@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "签到",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-message": "tdesign-miniprogram/message/message",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "line-square": "/components/line-square/index"
+  }
+}

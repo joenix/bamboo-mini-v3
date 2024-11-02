@@ -4,7 +4,7 @@
   var owner;
   var state;
 
-  var getState = function(ownerInstance) {
+  var getState = function (ownerInstance) {
     owner = ownerInstance;
     state = owner.getState();
     state.leftWidth = state.leftWidth || 0;
@@ -13,7 +13,7 @@
     state.startOffset = state.startOffset || 0;
   };
 
-  var initRightWidth = function(newVal, oldVal, ownerInstance) {
+  var initRightWidth = function (newVal, oldVal, ownerInstance) {
     getState(ownerInstance);
     state.rightWidth = newVal;
     if (state.offset < 0) {
@@ -21,7 +21,7 @@
     }
   };
 
-  var initLeftWidth = function(newVal, oldVal, ownerInstance) {
+  var initLeftWidth = function (newVal, oldVal, ownerInstance) {
     getState(ownerInstance);
     state.leftWidth = newVal;
     if (state.offset > 0) {
@@ -29,7 +29,7 @@
     }
   }
 
-  var resetTouchStatus = function() {
+  var resetTouchStatus = function () {
     state.direction = '';
     state.deltaX = 0;
     state.deltaY = 0;
@@ -37,7 +37,7 @@
     state.offsetY = 0;
   };
 
-  var touchMove = function(event) {
+  var touchMove = function (event) {
     var touchPoint = event.touches[0];
     state.deltaX = touchPoint.clientX - state.startX;
     state.deltaY = touchPoint.clientY - state.startY;
@@ -46,7 +46,7 @@
     state.direction = state.direction || getDirection(state.offsetX, state.offsetY);
   };
 
-  var getDirection = function(x, y) {
+  var getDirection = function (x, y) {
     if (x > y && x > MIN_DISTANCE) {
       return 'horizontal';
     }
@@ -56,11 +56,11 @@
     return '';
   };
 
-  var range = function(num, min, max) {
+  var range = function (num, min, max) {
     return Math.min(Math.max(num, min), max);
   };
 
-  var swipeMove = function(_offset = 0) {
+  var swipeMove = function (_offset = 0) {
     state.offset = range(
       _offset,
       -state.rightWidth,
@@ -71,19 +71,21 @@
     var transition = state.dragging
       ? 'none'
       : 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)';
-    owner.selectComponent('#wrapper').setStyle({
-      '-webkit-transform': transform,
-      '-webkit-transition': transition,
-      'transform': transform,
-      'transition': transition
-    });
+    if (owner.selectComponent('#wrapper')) {
+      owner.selectComponent('#wrapper').setStyle({
+        '-webkit-transform': transform,
+        '-webkit-transition': transition,
+        'transform': transform,
+        'transition': transition
+      });
+    }
   };
 
-  var close = function() {
+  var close = function () {
     swipeMove(0);
   };
 
-  var onCloseChange = function(newVal, oldVal, ownerInstance) {
+  var onCloseChange = function (newVal, oldVal, ownerInstance) {
     getState(ownerInstance);
     if (newVal === oldVal) return;
     if (newVal) {
@@ -91,7 +93,7 @@
     }
   };
 
-  var touchStart = function(event) {
+  var touchStart = function (event) {
     resetTouchStatus();
     state.startOffset = state.offset;
     var touchPoint = event.touches[0];
@@ -100,12 +102,12 @@
     owner.callMethod('closeOther');
   };
 
-  var startDrag = function(event, ownerInstance) {
+  var startDrag = function (event, ownerInstance) {
     getState(ownerInstance);
     touchStart(event);
   };
 
-  var onDrag = function(event, ownerInstance) {
+  var onDrag = function (event, ownerInstance) {
     getState(ownerInstance);
     touchMove(event);
     if (state.direction !== 'horizontal') {
@@ -115,13 +117,13 @@
     swipeMove(state.startOffset + state.deltaX);
   };
 
-  var open = function(position) {
+  var open = function (position) {
     var _offset = position === 'left' ? +state.leftWidth : -state.rightWidth;
     owner.callMethod('open', { position: position });
     swipeMove(_offset);
   };
 
-  var endDrag = function(event, ownerInstance) {
+  var endDrag = function (event, ownerInstance) {
     getState(ownerInstance);
     state.dragging = false;
     // 左/右侧有可滑动区域，且当前不是已open状态，且滑动幅度超过阈值时open左/右侧（滚动到该侧的最边上）
@@ -147,21 +149,7 @@
   };
 </wxs>
 
-<view
-  class="wr-class wr-swipeout"
-  data-key="cell"
-  capture-bind:tap="onClick"
-  bindtouchstart="{{disabled || swipe.startDrag}}"
-  capture-bind:touchmove="{{disabled || swipe.onDrag}}"
-  bindtouchend="{{disabled || swipe.endDrag}}"
-  bindtouchcancel="{{disabled || swipe.endDrag}}"
-  closed="{{closed}}"
-  change:closed="{{swipe.onCloseChange}}"
-  leftWidth="{{leftWidth}}"
-  rightWidth="{{rightWidth}}"
-  change:leftWidth="{{swipe.initLeftWidth}}"
-  change:rightWidth="{{swipe.initRightWidth}}"
->
+<view class="wr-class wr-swipeout" data-key="cell" capture-bind:tap="onClick" bindtouchstart="{{disabled || swipe.startDrag}}" capture-bind:touchmove="{{disabled || swipe.onDrag}}" bindtouchend="{{disabled || swipe.endDrag}}" bindtouchcancel="{{disabled || swipe.endDrag}}" closed="{{closed}}" change:closed="{{swipe.onCloseChange}}" leftWidth="{{leftWidth}}" rightWidth="{{rightWidth}}" change:leftWidth="{{swipe.initLeftWidth}}" change:rightWidth="{{swipe.initRightWidth}}">
   <view id="wrapper">
     <view wx:if="{{ leftWidth }}" class="wr-swipeout__left" data-key="left" catch:tap="onClick">
       <slot name="left" />

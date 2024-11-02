@@ -1,6 +1,4 @@
 // pages/welcome/welcome.js
-import { link2 } from '../../utils/util';
-
 Page({
   data: {
     bgImage: null,
@@ -14,7 +12,10 @@ Page({
     });
   },
 
-  loadImage({ key, src }) {
+  loadImage({
+    key,
+    src
+  }) {
     return new Promise((resolve, reject) => {
       // wx.getImageInfo({
       //   src,
@@ -22,7 +23,10 @@ Page({
       //   fail: (e) => reject(e)
       // });
 
-      resolve({ key, path: src });
+      resolve({
+        key,
+        path: src
+      });
     });
   },
 
@@ -32,10 +36,22 @@ Page({
     Promise.all(promises)
       .then((results) => {
         // results.forEach(({ key, path }) => this.setData({ [key]: `background-image: url(${path});` }));
-        console.log(results.reduce((acc, { key, path }) => ({ ...acc, [key]: path }), {}));
+        console.log(results.reduce((acc, {
+          key,
+          path
+        }) => ({
+          ...acc,
+          [key]: path
+        }), {}));
 
         this.setData({
-          ...results.reduce((acc, { key, path }) => ({ ...acc, [key]: path }), {}),
+          ...results.reduce((acc, {
+            key,
+            path
+          }) => ({
+            ...acc,
+            [key]: path
+          }), {}),
           visible: true
         });
       })
@@ -45,9 +61,14 @@ Page({
   },
 
   onLoad() {
-    this.preloadImage([
-      { key: 'bgImage', src: 'https://oss.lhdd.club/ui/bg.jpg' },
-      { key: 'sgImage', src: 'http://oss.vue-scaff.com/lhdd/title.png' }
+    this.preloadImage([{
+        key: 'bgImage',
+        src: 'https://oss.lhdd.club/ui/bg.jpg'
+      },
+      {
+        key: 'sgImage',
+        src: 'http://oss.vue-scaff.com/lhdd/title.png'
+      }
     ]);
   },
 

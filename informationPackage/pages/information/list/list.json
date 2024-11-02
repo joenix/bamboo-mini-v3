@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "学习咨询",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "t-cell": "tdesign-miniprogram/cell/cell",
+
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
+}

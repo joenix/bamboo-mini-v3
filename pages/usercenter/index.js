@@ -7,8 +7,6 @@ import {
   post,
   link2
 } from '../../utils/util';
-import Toast from 'tdesign-miniprogram/toast/index';
-
 
 // 生成信息
 const getDefaultData = () => {
@@ -94,40 +92,20 @@ Page({
       // 学分兑换
       case 'exchange': {
         wx.navigateTo({
-          url: '/pages/usercenter/exchange/exchange'
+          url: '/usercenterPackage/pages/usercenter/exchange/exchange'
         });
         break;
       }
       // 我的学分
       case 'score': {
         wx.navigateTo({
-          url: '/pages/usercenter/score/score'
-        });
-        break;
-      }
-      case 'address': {
-        wx.navigateTo({
-          url: '/pages/usercenter/address/list/index'
+          url: '/usercenterPackage/pages/usercenter/score/score'
         });
         break;
       }
       default: {
         break;
       }
-    }
-  },
-
-  jumpNav(e) {
-    const status = e.detail.tabType;
-
-    if (status === 0) {
-      wx.navigateTo({
-        url: '/pages/order/after-service-list/index'
-      });
-    } else {
-      wx.navigateTo({
-        url: `/pages/order/order-list/index?status=${status}`
-      });
     }
   },
 
@@ -143,7 +121,7 @@ Page({
     } = this.data;
     if (currAuthStep === 2) {
       wx.navigateTo({
-        url: '/pages/usercenter/person-info/index'
+        url: '/usercenterPackage/pages/usercenter/person-info/index'
       });
     } else {
       this.fetUseriInfoHandle();
@@ -162,16 +140,11 @@ Page({
   },
 
   link2sign() {
-    link2('sign/sign');
-  },
-
-  link2aboutus() {
-    link2('usercenter/aboutus/aboutus');
+    link2('/usercenterPackage/pages/sign/sign');
   },
 
   logout() {
     wx.removeStorageSync('token');
-
     wx.navigateTo({
       url: ''
     });

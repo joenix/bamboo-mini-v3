@@ -206,9 +206,6 @@ page {
   background: url(https://oss.lhdd.club/pic/mine_sample_5.jpg) center -96px / cover no-repeat;
 }
 
-/* User Info */
-.userinfo {}
-
 .userinfo-layout {
   margin-top: 1rem;
   width: 100%;
@@ -246,5 +243,3 @@ page {
   width: 64rpx !important;
   height: 64rpx !important;
 }
-
-.userinfo-icon-credit {}

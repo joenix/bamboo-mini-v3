@@ -1,13 +1,8 @@
 {
   "navigationBarTitleText": "贴士集",
   "usingComponents": {
-    "t-popup": "tdesign-miniprogram/popup/popup",
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-toast": "tdesign-miniprogram/toast/toast",
     "pager": "/components/pager/pager",
-    "blocker": "/components/blocker/blocker",
     "content": "/components/content/content",
     "custom-nav": "/components/custom-nav/custom-nav"
   },

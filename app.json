@@ -3,34 +3,60 @@
     "pages/welcome/welcome",
     "pages/login/login",
     "pages/home/home",
-    "pages/home/team/team",
-    "pages/home/org/org",
-    "pages/home/lesson/lesson",
-    "pages/book/result/result",
-    "pages/book/time/time",
-    "pages/usercenter/score/score",
-    "pages/book/detail/detail",
-    "pages/tips/index",
-    "pages/usercenter/index",
-    "pages/usercenter/uc-info-update/index",
-    "pages/usercenter/files/files",
-    "pages/tips/detail/detail",
-    "pages/sign/sign",
-    "pages/webview/webview",
-    "pages/book/ranking/ranking",
-    "pages/information/detail/detail",
-    "pages/information/list/list",
-    "pages/information/list",
-    "pages/usercenter/suggest/suggest",
-    "pages/usercenter/aboutus/aboutus",
-    "pages/usercenter/report/report",
-    "pages/usercenter/exchange/exchange",
-    "pages/home/sixbook/sixbook",
-    "pages/home/notice/notice",
-    "pages/article/article",
     "pages/book/index",
-    "pages/book/read/read",
-    "pages/book/learn/learn"
+    "pages/tips/index",
+    "pages/tips/detail/detail",
+    "pages/usercenter/index"
+  ],
+  "subPackages": [
+    {
+      "root": "homePackage/",
+      "name": "home",
+      "pages": [
+        "pages/home/team/team",
+        "pages/home/org/org",
+        "pages/home/lesson/lesson",
+        "pages/home/sixbook/sixbook",
+        "pages/home/notice/notice",
+        "pages/webview/webview",
+        "pages/article/article"
+      ]
+    },
+    {
+      "root": "informationPackage/",
+      "name": "information",
+      "pages": [
+        "pages/information/detail/detail",
+        "pages/information/list/list",
+        "pages/information/list"
+      ]
+    },
+    {
+      "root": "bookPackage/",
+      "name": "book",
+      "pages": [
+        "pages/book/result/result",
+        "pages/book/time/time",
+        "pages/book/detail/detail",
+        "pages/book/ranking/ranking",
+        "pages/book/read/read",
+        "pages/book/learn/learn"
+      ]
+    },
+    {
+      "root": "usercenterPackage/",
+      "name": "usercenter",
+      "pages": [
+        "pages/usercenter/score/score",
+        "pages/usercenter/suggest/suggest",
+        "pages/usercenter/aboutus/aboutus",
+        "pages/usercenter/report/report",
+        "pages/usercenter/exchange/exchange",
+        "pages/usercenter/uc-info-update/index",
+        "pages/usercenter/files/files",
+        "pages/sign/sign"
+      ]
+    }
   ],
   "tabBar": {
     "custom": true,

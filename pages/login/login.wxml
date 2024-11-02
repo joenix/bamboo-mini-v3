@@ -4,24 +4,24 @@
 <t-message id="t-message" />
 
 <view class="login" style="background-image: url({{bgImage}})">
-    <pager>
-        <view class="login-logo"></view>
+  <pager>
+    <view class="login-logo"></view>
 
-        <blocker background="transparent">
-            <t-input value="{{mobile}}" t-class="login-input" t-class-input="login-input-entry" placeholder="请输入手机号" bind:change="onMobileChange" />
-            <t-input value="{{captcha}}" t-class="login-input" t-class-input="login-input-entry" t-class-suffix="login-input-captcha" placeholder="输入验证码" type="number" bind:change="onCaptchaChange">
-                <view slot="suffix" style="display: flex; align-items: center">
-                    <view class="login-verify" aria-role="button"> 发送验证码 </view>
-                </view>
-            </t-input>
-            <t-input t-class="login-input" t-class-input="login-input-entry" placeholder="请输入机构代码（选填）" />
-        </blocker>
+    <blocker background="transparent">
+      <t-input value="{{mobile}}" t-class="login-input" t-class-input="login-input-entry" placeholder="请输入手机号" bind:change="onMobileChange" />
+      <t-input value="{{captcha}}" t-class="login-input" t-class-input="login-input-entry" t-class-suffix="login-input-captcha" placeholder="输入验证码" type="number" bind:change="onCaptchaChange">
+        <view slot="suffix" style="display: flex; align-items: center">
+          <view class="login-verify" aria-role="button"> 发送验证码 </view>
+        </view>
+      </t-input>
+      <t-input t-class="login-input" t-class-input="login-input-entry" placeholder="请输入机构代码（选填）" />
+    </blocker>
 
-        <blocker background="transparent">
-            <view class="login-btn-entry" bind:tap="doLogin"></view>
-            <text class="login-btn-tip">关注公众号xxxxxxx，获取最新学习资讯</text>
-        </blocker>
+    <blocker background="transparent">
+      <view class="login-btn-entry" bind:tap="doLogin"></view>
+      <text class="login-btn-tip">关注公众号xxxxxxx，获取最新学习资讯</text>
+    </blocker>
 
-        <view class="login-slogan">让天下没有难读的书，让天下没有难教的孩子</view>
-    </pager>
+    <view class="login-slogan">让天下没有难读的书，让天下没有难教的孩子</view>
+  </pager>
 </view>

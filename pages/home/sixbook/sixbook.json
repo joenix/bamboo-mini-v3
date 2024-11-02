@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "六合简书",
-  "backgroundTextStyle": "light",
-  "usingComponents": {
-    "custom-nav": "/components/custom-nav/custom-nav"
-  }
-}

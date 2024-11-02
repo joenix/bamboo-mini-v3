@@ -1,5 +1,0 @@
-<!--pages/usercenter/suggest/suggest.wxml-->
-<!-- 自定义nav -->
-<custom-nav title="我的报告" />
-
-<text>我的报告</text>

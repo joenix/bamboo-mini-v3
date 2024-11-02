@@ -37,12 +37,12 @@
     </t-col>
   </t-row>
   <blocker stick="{{true}}">
-    <t-cell title="资料更新" image="https://oss.lhdd.club/icon/userinfo-icon-update.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="请尽快更新个人资料" t-class-note="userinfo-sub" arrow url="/pages/usercenter/uc-info-update/index" />
-    <t-cell title="我的报告" image="https://oss.lhdd.club/icon/userinfo-icon-report.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="月度报告已生成" t-class-note="userinfo-sub" arrow url="/pages/usercenter/report/report" />
+    <t-cell title="资料更新" image="https://oss.lhdd.club/icon/userinfo-icon-update.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="请尽快更新个人资料" t-class-note="userinfo-sub" arrow url="/usercenterPackage/pages/usercenter/uc-info-update/index" />
+    <t-cell title="我的报告" image="https://oss.lhdd.club/icon/userinfo-icon-report.png" t-class-image="userinfo-image" hover bordered="{{false}}" note="月度报告已生成" t-class-note="userinfo-sub" arrow url="/usercenterPackage/pages/usercenter/report/report" />
   </blocker>
   <blocker stick="{{true}}">
-    <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/pages/usercenter/suggest/suggest" />
-    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/pages/usercenter/aboutus/aboutus" />
+    <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/usercenterPackage/pages/usercenter/suggest/suggest" />
+    <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/usercenterPackage/pages/usercenter/aboutus/aboutus" />
     <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="" />
   </blocker>
   <blocker background="transparent" stick="{{true}}">
