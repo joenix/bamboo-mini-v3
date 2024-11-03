@@ -1,7 +1,12 @@
 import Message from 'tdesign-miniprogram/message';
+import {
+  api,
+  post,
+} from '../../../../utils/util';
 
 Page({
   data: {
+    bookId: '',
     pageTitle: '开始点读',
     step: 1,
     countdown: 0,
@@ -185,21 +190,6 @@ Page({
       this.setData({
         pageTitle: "开始点读"
       })
-      if ((this.data.resultTimes || 0) < 1) {
-        return Message.error({
-          context: this,
-          offset: [90, 32],
-          duration: 3200,
-          content: '请检查点读遍数'
-        });
-      }
-      Message.success({
-        context: this,
-        offset: [90, 32],
-        duration: 3200,
-        content: '点读记录提交成功'
-      });
-      this.resetCountdown();
     }
     // 开始点读
     if (step === 2) {
@@ -214,7 +204,6 @@ Page({
         minute
       } = this.data.settingData
       this.startBgm();
-      this.resetCountdown();
       this.startCountdown();
       if (inner && remind === '1') {
         this.handleRemind(hour, minute)
@@ -230,6 +219,39 @@ Page({
     }
     this.setData({
       step
+    });
+  },
+  showMessage(type, content) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: 3200,
+      content
+    })
+  },
+  async doSubmit() {
+    if ((this.data.resultTimes || 0) < 1) {
+      this.showMessage('error', '请检查点读遍数')
+      return;
+    }
+    const userInfo = wx.getStorageSync('userInfo');
+    const {
+      countdown,
+      resultTimes,
+      resultFeedback,
+      bookId
+    } = this.data;
+    await post(api.Read.submit + '?credit=10', {
+      time: countdown,
+      count: +resultTimes,
+      content: resultFeedback,
+      bookId: +bookId,
+      userId: userInfo.id
+    })
+    this.showMessage('success', '点读记录提交成功')
+    this.resetCountdown();
+    this.setData({
+      step: 1
     });
   },
   handleRemind(hour, minute) {
@@ -274,7 +296,6 @@ Page({
       resultTimes
     });
   },
-
   onResultFeedbackChange(e) {
     const {
       value: resultFeedback
@@ -284,15 +305,13 @@ Page({
       resultFeedback
     });
   },
-
   onReady() {
     const bgm = wx.getBackgroundAudioManager();
     this.setData({
       bgm
     })
   },
-
-  onLoad() {
+  onLoad(options) {
     const defalutList = [{
         value: null,
         label: '无',
@@ -313,8 +332,10 @@ Page({
     ];
     this.setData({
       bgmInfo: newBgmList[0],
-      bgmList: defalutList.concat(newBgmList)
+      bgmList: defalutList.concat(newBgmList),
+      bookId: options.bookId
     });
+    this.resetCountdown();
   },
   onUnload() {
     this.endCountdown();

@@ -8,23 +8,23 @@
       <view class="tab-item {{currentTab === 'history' ? 'active' : ''}}" bindtap="switchTab" data-tab="history">历史榜单</view>
     </view>
     <view>
-      <view class="top3">
-        <view class="top-item" wx:for="{{ top3ListData }}" wx:key="index" wx:for-index="idx" wx:for-item="item">
-          <t-avatar class="avatar" image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
+      <view class="top3" wx:if="{{top3ListData.length > 0}}">
+        <view class="top-item" wx:for="{{ top3ListData }}" wx:key="index">
+          <t-avatar class="avatar" image="{{item.avatarUrl}}" />
           <view class="text-box">
-            <image class="lv-num" src="https://oss.lhdd.club/ui/lv{{idx + 1}}.png" mode="scaleToFill" />
+            <image class="lv-num" src="https://oss.lhdd.club/ui/lv{{item.rank + 1}}.png" mode="scaleToFill" />
             <view>{{ item.time }}h</view>
           </view>
         </view>
       </view>
-      <view class="my-rank">
-        <t-avatar image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
+      <view class="my-rank" wx:if="{{ myRankInfo }}">
+        <t-avatar image="{{myRankInfo.avatarUrl}}" />
         <view class="rank-num">
-          <view>第<text class="strong">09</text>名</view>
+          <view>第<text class="strong">{{myRankInfo.rank}}</text>名</view>
           <view>我的排名</view>
         </view>
         <view class="time">
-          <text class="strong">12.2</text>
+          <text class="strong">{{myRankInfo.time || 0}}</text>
           <view>点读时长(时)</view>
         </view>
       </view>
@@ -35,11 +35,11 @@
           <text>点读时长(时)</text>
         </view>
         <view class="rank-list-body">
-          <view class="row rank-list-item" wx:for="{{ listData }}" wx:for-index="idx" wx:for-item="item" wx:key="idx">
-            <text>{{idx + 4}}</text>
+          <view class="row rank-list-item" wx:for="{{ listData }}" wx:key="index">
+            <text>{{item.rank}}</text>
             <view>
-              <t-avatar image="https://tdesign.gtimg.com/mobile/demos/avatar1.png" />
-              <text class="name">{{ item.name }}</text>
+              <t-avatar image="{{item.avatarUrl}}" />
+              <text class="name">{{ item.nickname }}</text>
             </view>
             <text class="strong">{{ item.time }}</text>
           </view>

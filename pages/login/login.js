@@ -116,7 +116,6 @@ Page({
       mobile,
       captcha
     });
-
     if (!token) {
       return Message.error({
         context: this,
@@ -125,10 +124,12 @@ Page({
         content: '请检查账号和密码是否正确'
       });
     }
-
     wx.removeStorageSync('token');
     wx.setStorageSync('token', token);
-
+    const userInfo = await post(api.User.info, {
+      token
+    })
+    wx.setStorageSync('userInfo', userInfo)
     wx.switchTab({
       url: '/pages/home/home'
     });
