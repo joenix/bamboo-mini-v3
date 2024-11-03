@@ -10,15 +10,13 @@ Page({
   data: {
     userInfo: {}
   },
-
-  onLoad(options) {
+  onLoad() {
     const userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo
     });
-    this.init();
+    this.init(userInfo.id);
   },
-
   // 输入框输入时
   onInput(e) {
     const {
@@ -28,24 +26,23 @@ Page({
       name
     } = e.currentTarget.dataset;
     this.setData({
-      ...this.data.userInfo,
-      [name]: value,
+      userInfo: {
+        ...this.data.userInfo,
+        [name]: value,
+      }
     })
   },
-
   // 初始化获取用户资料
-  async init() {
+  async init(userId) {
     const userInfo = await post(api.User.data, {
-      userId: this.data.userInfo.id
+      userId
     });
-
     if (userInfo) {
       this.setData({
         userInfo: userInfo[userInfo.length - 1]
       });
     }
   },
-
   async update() {
     const success = await post(api.User.updateInfo, this.data.userInfo);
     if (success) {
@@ -56,9 +53,7 @@ Page({
         content: '更新成功'
       });
       await wait(2000);
-      wx.navigateBack({
-        delta: 1
-      });
+      wx.navigateBack();
     }
   },
   onChooseAvatar(e) {
@@ -66,8 +61,10 @@ Page({
       avatarUrl
     } = e.detail
     this.setData({
-      ...this.data.userInfo,
-      avatarUrl,
+      userInfo: {
+        ...this.data.userInfo,
+        avatar: avatarUrl,
+      }
     })
   }
 });

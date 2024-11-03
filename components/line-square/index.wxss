@@ -1,21 +1,8 @@
 /* components/line-square/index.wxss */
 .line-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1px;
-  background-color: #EBE4DD;
+  height: 8px;
+  width: 100%;
+  background: url('https://oss.lhdd.club/ui/split1.png') center no-repeat;
+  background-size: 100%;
   margin-bottom: 44rpx;
-}
-
-.square {
-  background: #DFCAA9;
-  width: 8rpx;
-  height: 8rpx;
-  transform: rotate(45deg);
-}
-
-.square:nth-child(2) {
-  width: 16rpx;
-  height: 16rpx;
 }

@@ -1,5 +1,8 @@
-.login {
+page {
   height: 100vh;
+  background: url(https://oss.lhdd.club/ui/bg.jpg) top center no-repeat;
+  background-size: 100%;
+  overflow: hidden;
 }
 
 .login-logo {

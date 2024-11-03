@@ -22,7 +22,7 @@
                 <view class="tip-date">{{info.updatedAt}}</view>
               </view>
               <view class="page-tip-content">
-                <content count="6" bind:tap="jump2Detail">{{info.content}}</content>
+                <content count="6" data-info="{{info}}" bind:tap="jump2Detail">{{info.content}}</content>
               </view>
             </view>
           </view>
@@ -30,7 +30,7 @@
             <t-icon class="tip-control" name="{{opens[index] ? 'chevron-down-circle' : 'chevron-up-circle'}}" size="48rpx" data-index="{{index}}" bind:tap="onControl" />
             <view class="tip-date">{{info.updatedAt}}</view>
             <view class="line"></view>
-            <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}" bind:tap="jump2Detail">{{info.content}}</content>
+            <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}" data-info="{{info}}" bind:tap="jump2Detail">{{info.content}}</content>
           </view>
         </view>
       </view>
