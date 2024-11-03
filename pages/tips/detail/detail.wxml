@@ -1,14 +1,12 @@
 <!-- 自定义nav -->
 <custom-nav title="" white background="transparent" />
-
+<t-toast id="t-toast" />
 <view class="tipsdetail-container">
   <view class="content">
     <line-square />
-    <view>
-      点读会让你全身充满力量，酣畅淋漓又意犹未尽，此等感觉，实在妙哉、妙哉！酣畅淋漓又意犹未尽，此等感觉，实在妙哉、妙哉！妙哉！妙哉！妙哉！妙哉！妙哉！妙…
-    </view>
+    <view id="content">{{ content }}</view>
   </view>
   <view class="save" bindtap='save'>点击保存图片</view>
   <view class="tips">点击保存小程序右上角，转发到微信朋友圈</view>
-  <wxml-to-canvas class="widget"></wxml-to-canvas>
 </view>
+<wxml-to-canvas class="widget" width="{{canvasWidth}}" height="{{canvasHeight}}"></wxml-to-canvas>

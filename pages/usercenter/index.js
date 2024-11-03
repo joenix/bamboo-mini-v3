@@ -27,7 +27,6 @@ Page({
   onLoad() {
     this.getVersionInfo();
   },
-
   onShow() {
     this.getTabBar().init();
     this.init();
@@ -35,31 +34,25 @@ Page({
   onPullDownRefresh() {
     this.init();
   },
-
   /**
    * Code by Joenix
    * ======== ======== ========
    */
   async init() {
     // this.fetUseriInfoHandle();
-
     // 1. 校验本地 OpenID
     const token = wx.getStorageSync('token');
-
     if (!token) {
       return wx.redirectTo({
         url: '/pages/login/login'
       });
     }
-
     // 2. 根据 Token 获取 User 数据
     const userInfo = await post(api.User.info, {
       token
     });
-
     // 2.1 本地存储 User 信息
     wx.setStorageSync('userInfo', userInfo);
-
     // 2.2 Mock
     this.setData({
       userInfo

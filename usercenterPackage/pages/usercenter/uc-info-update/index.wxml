@@ -5,18 +5,18 @@
   <view class="blocker">
     <line-square />
     <button class="avatar-box" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-      <t-image width="100" height="100" mode="aspectFill" />
+      <t-image width="100" height="100" mode="aspectFill" src="{{userInfo.avatar}}" />
     </button>
-    <t-input value="{{userInfo.leftEyes}}" borderless label="左眼视力" placeholder="请输入左眼视力" align="right" data-name="leftEyes" bind:change="onInput">
+    <t-input value="{{userInfo.leftEyes}}" borderless label="左眼视力" placeholder="请输入左眼视力" align="right" data-name="leftEyes" bind:change="onInput" type="number">
       <image slot="prefix-icon" class="prefix-icon" src="https://oss.lhdd.club/ui/left-eyesight.png" mode="scaleToFill" />
     </t-input>
-    <t-input value="{{userInfo.rightEyes}}" borderless label="右眼视力" placeholder="请输入右眼视力" align="right" data-name="rightEyes" bind:change="onInput">
+    <t-input value="{{userInfo.rightEyes}}" borderless label="右眼视力" placeholder="请输入右眼视力" align="right" data-name="rightEyes" bind:change="onInput" type="number">
       <image slot="prefix-icon" class="prefix-icon" src="https://oss.lhdd.club/ui/right-eyesight.png" mode="scaleToFill" />
     </t-input>
-    <t-input value="{{userInfo.height}}" borderless label="身高" placeholder="请输入身高（cm)" align="right" data-name="height" bind:change="onInput">
+    <t-input value="{{userInfo.height}}" borderless label="身高" placeholder="请输入身高（cm)" align="right" data-name="height" bind:change="onInput" type="number">
       <image slot="prefix-icon" class="prefix-icon" src="https://oss.lhdd.club/ui/height.png" mode="scaleToFill" />
     </t-input>
-    <t-input value="{{userInfo.weight}}" borderless label="体重" placeholder="请输入体重（KG)" align="right" data-name="weight" bind:change="onInput">
+    <t-input value="{{userInfo.weight}}" borderless label="体重" placeholder="请输入体重（KG)" align="right" data-name="weight" bind:change="onInput" type="number">
       <image slot="prefix-icon" class="prefix-icon" src="https://oss.lhdd.club/ui/weight.png" mode="scaleToFill" />
     </t-input>
   </view>

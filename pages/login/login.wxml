@@ -1,9 +1,7 @@
 <!-- 自定义nav -->
-<custom-nav title="登录" showBack="{{false}}" background="{{'#cdbe9b'}}" />
-
+<custom-nav title="" showBack="{{false}}" background="transparent" />
 <t-message id="t-message" />
-
-<view class="login" style="background-image: url({{bgImage}})">
+<view class="login">
   <pager>
     <view class="login-logo"></view>
 

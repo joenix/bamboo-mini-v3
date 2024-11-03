@@ -12,13 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bgImage: 'https://oss.lhdd.club/ui/bg.jpg',
-
-    mobile: '',
+    mobile: '13817152426',
     captcha: '',
-
     lock: false,
-
     phoneError: true
   },
 

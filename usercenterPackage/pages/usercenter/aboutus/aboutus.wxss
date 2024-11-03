@@ -9,6 +9,7 @@ page {
   background-size: 100%, 100%, 100%;
   background-position: top center, bottom center, center;
   background-repeat: no-repeat, no-repeat, repeat-y;
+  background-image: url('https://oss.lhdd.club/ui/scroll1.png'), url('https://oss.lhdd.club/ui/scroll3.png'), url('https://oss.lhdd.club/ui/scroll2.png');
   padding: 188rpx 64rpx;
   font-size: 28rpx;
   font-weight: 500;

@@ -15,12 +15,12 @@ page {
 
 .tipsdetail-container {
   margin-top: 200rpx;
-  padding: 0 32rpx;
+  padding: 0 32rpx 200rpx;
 }
 
 .tipsdetail-container .content {
-  font-size: 14px;
-  line-height: 40px;
+  font-size: 28rpx;
+  line-height: 80rpx;
   color: #373737;
   border-radius: 4rpx;
   background: #FAF8F4 url('https://oss.lhdd.club/ui/tips-detail.png') right bottom no-repeat;
@@ -50,4 +50,11 @@ page {
   line-height: 32rpx;
   text-align: center;
   color: #B3ABA0;
+}
+
+.widget {
+  position: fixed;
+  bottom: -99999px;
+  left: -9999px;
+  z-index: -1;
 }

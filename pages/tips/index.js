@@ -97,9 +97,10 @@ Page({
     });
   },
   jump2Detail(e) {
-    const id = e.currentTarget.dataset.id;
+    const info = e.currentTarget.dataset.info;
+    wx.setStorageSync('tipInfo', info)
     wx.navigateTo({
-      url: `/pages/tips/detail/detail?id=${id}`
+      url: `/pages/tips/detail/detail`
     });
   }
 });

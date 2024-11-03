@@ -2,8 +2,9 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "white",
   "usingComponents": {
+    "t-toast": "tdesign-miniprogram/toast/toast",
     "custom-nav": "/components/custom-nav/custom-nav",
     "line-square": "/components/line-square/index",
-    "wxml-to-canvas": "wxml-to-canvas"
+    "wxml-to-canvas": "/components/wxml-to-canvas/index"
   }
 }
