@@ -147,7 +147,7 @@ Page({
       return;
     }
     const bookId = this.data.bookId;
-    await post(api.Read.active, {
+    await post(api.Read.avtiveBook, {
       bookId,
       code,
       userId: userInfo.id
