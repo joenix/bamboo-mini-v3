@@ -1,5 +1,5 @@
 // pages/usercenter/suggest/suggest.js
-import Message from 'tdesign-miniprogram/message';
+import Message from 'tdesign-miniprogram/message/index';
 import {
   api,
   post,

@@ -1,5 +1,10 @@
 import Message from 'tdesign-miniprogram/message/index';
-import { formatTime, dayjs, day1, stream1 } from '../../utils/util';
+import {
+  formatTime,
+  dayjs,
+  day1,
+  stream1
+} from '../../utils/util';
 
 // pages/sign/sign.js
 Page({
@@ -66,7 +71,11 @@ Page({
       }
     }
 
-    this.onSave({ checks, continous, isSign });
+    this.onSave({
+      checks,
+      continous,
+      isSign
+    });
   },
 
   // 初始化日期
@@ -112,7 +121,10 @@ Page({
 
   // 点击签到
   onSign(e) {
-    const { item, index } = e.currentTarget.dataset;
+    const {
+      item,
+      index
+    } = e.currentTarget.dataset;
 
     if (item.date !== this.data.today) {
       return;

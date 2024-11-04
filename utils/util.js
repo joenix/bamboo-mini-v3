@@ -143,10 +143,7 @@ const get = (url, data = {}, options = {}) => {
       },
       success: ({
         data
-      }) => {
-        const _data = !data.msg || typeof data.msg === 'string' ? data.data : data.msg
-        return data.status === 200 ? resolve(_data) : reject(data.msg)
-      },
+      }) => data.status === 200 ? resolve(data.msg) : reject(data.error),
       fail: (error) => reject(error)
     });
   });
@@ -166,10 +163,7 @@ const post = async (url, data = {}, options = {}) => {
       },
       success: ({
         data
-      }) => {
-        const _data = !data.msg || typeof data.msg === 'string' ? data.data : data.msg
-        return data.status === 200 ? resolve(_data) : reject(data.msg)
-      },
+      }) => data.status === 200 ? resolve(data.msg) : reject(data.error),
       fail: (error) => reject(error)
     });
   });
