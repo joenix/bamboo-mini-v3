@@ -90,6 +90,7 @@ export const api = {
   Read: {
     books: '/book/wx_get_books',
     avtiveBook: '/code/active',
+    records: '/book/get_all_records',
     submit: '/book/book_his'
   },
   // 点读排行

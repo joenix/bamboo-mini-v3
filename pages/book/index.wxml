@@ -54,7 +54,7 @@
             <view class="book-entries-text">建议单次时长45分</view>
           </view>
           <view class="book-entries-total">
-            今日已完成 <text>{{item.count}}</text> 次，总时长 <text>{{item.time}}</text>
+            今日已完成 <text>{{item.today_count}}</text>次，总时长 <text>{{item.today_time}}h</text>
           </view>
         </view>
       </t-col>
@@ -62,7 +62,7 @@
         <view class="book-entries-flex">
           <view></view>
           <view class="book-entries-affix">
-            今天已有 <text>{{ item.userName }}</text> 人完成点读
+            今天已有 <text>{{ item.read_count }}</text> 人完成点读
             <view class="book-entries-button-large">
               {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
             </view>

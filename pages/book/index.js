@@ -24,35 +24,29 @@ const initData = getCommonData(dayjs(), true)
 
 const generateFormatFn = (readDates = []) => {
   return (current) => {
-    console.log(this);
     const {
       date
     } = current;
     if (dayjs(date) > dayjs()) {
       current.type = 'disabled'
     }
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const today = date.getDate();
+    const newClassName = [current.className || ""];
     const week_day = date.getDay();
-    // 农历
-    const {
-      dayStr,
-      day,
-      monthStr
-    } = lunar.solarToLunar(year, month, today);
-    let newClassName = [];
     if (week_day === 0) {
       newClassName.push('sunday')
     }
     if (week_day === 6) {
       newClassName.push('saturday');
     }
-    if (readDates.includes(day)) {
+    if (readDates.some(v => dayjs(v).isSame(date, 'day'))) {
       newClassName.push('is-readed');
     }
-    current.className = (current.className || "") + ' ' + newClassName.join(' ');
-    // 日期
+    current.className = newClassName.join(' ');
+    // 农历日期
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const today = date.getDate();
+    const { dayStr } = lunar.solarToLunar(year, month, today);
     current.suffix = dayStr;
     // Update
     return current;
@@ -170,10 +164,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad() {
-    const res = await post(api.Read.books);
+    const [bookList, records] = await Promise.all([
+      post(api.Read.books),
+      post(api.Read.records)
+    ]);
+    const recordDates = records ? records.map(v => dayjs(+v)) : [];
     this.setData({
-      listData: res || [],
-      format: generateFormatFn([1, 5, 9, 22])
+      listData: bookList.map(v => ({...v, today_time: (item.today_time / 3600).toFixed(2)})) || [],
+      format: generateFormatFn(recordDates)
     })
   },
 
