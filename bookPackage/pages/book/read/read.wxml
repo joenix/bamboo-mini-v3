@@ -88,7 +88,7 @@
         </view>
       </view>
       <view>温馨提示：本次点读数据后续支持分享</view>
-      <view class="read-button" data-go="{{1}}" bind:tap="updateStep">提交</view>
+      <view class="read-button" bind:tap="doSubmit">提交</view>
     </view>
   </t-popup>
 </view>

@@ -8,6 +8,10 @@
     "t-col": "tdesign-miniprogram/col/col",
     "custom-nav": "/components/custom-nav/custom-nav",
     "pager": "/components/pager/pager",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-divider": "tdesign-miniprogram/divider/divider"
   }
 }

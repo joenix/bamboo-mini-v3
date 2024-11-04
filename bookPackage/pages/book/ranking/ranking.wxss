@@ -149,16 +149,8 @@ page {
   font-size: 24rpx;
   line-height: 44rpx;
   text-align: center;
-}
-
-.rank-list .row .t-avatar {
-  width: 60rpx;
   height: 60rpx;
-}
-
-.rank-list .row text:last-child {
-  width: 320rpx;
-  text-align: right;
+  padding: 8rpx 0;
 }
 
 .rank-list .rank-list-header {
@@ -166,12 +158,35 @@ page {
   color: #B3ABA0;
 }
 
-.rank-list .row {
+.rank-list .row .t-avatar {
+  width: 60rpx;
   height: 60rpx;
-  padding: 8rpx 0;
+}
+
+.rank-list .row>text:first-child {
+  width: 50rpx;
+}
+
+.rank-list .row>text:nth-child(2) {
+  text-align: left;
+  margin-left: 110rpx;
+  flex: 1;
+}
+
+.rank-list .row>view:nth-child(2) {
+  text-align: left;
+  margin-left: 110rpx;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rank-list .row>text:last-child {
+  width: 160rpx;
+  text-align: right;
 }
 
 .rank-list .name {
   margin-left: 24rpx;
-  vertical-align: middle;
 }

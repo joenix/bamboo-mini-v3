@@ -1,3 +1,8 @@
+import {
+  api,
+  post
+} from '../../../../utils/util';
+
 // pages/book/ranking/ranking.js
 Page({
   /**
@@ -5,21 +10,21 @@ Page({
    */
   data: {
     currentTab: 'today',
+    myUserId: '',
+    myRankInfo: {},
     listData: [],
     top3ListData: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    const list = new Array(15).fill({
-      name: '书书',
-      time: '20'
-    });
+  onLoad: async function () {
+    const userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      listData: list.slice(3),
-      top3ListData: list.slice(0, 3)
-    });
+      myUserId: userInfo.id,
+      currentTab: 'today'
+    })
+    this.getRankList('today')
   },
 
   /**
@@ -35,6 +40,32 @@ Page({
     const tab = e.currentTarget.dataset.tab;
     this.setData({
       currentTab: tab
+    });
+  },
+  async getRankList(listType) {
+    const isTodayList = listType === 'today';
+    const url = isTodayList ? api.Rank.getTodayList : api.Rank.getHistoryList;
+    const rankList = await post(url);
+    let myRankInfo = {};
+    const list = rankList.data.map((v, index) => {
+      const data = {
+        rank: index + 1,
+        userId: v.userId,
+        time: (v._sum.time / 3600).toFixed(2),
+        avatarUrl: v.user.avatarUrl,
+        nickname: v.user.nickname
+      };
+      if (v.userId === this.data.myUserId) {
+        myRankInfo = data;
+      }
+      return data;
+    });
+    const listData = list.length > 3 ? list.slice(3) : list;
+    const top3ListData = list.length > 3 ? list.slice(0, 3) : [];
+    this.setData({
+      listData,
+      top3ListData,
+      myRankInfo: isTodayList ? myRankInfo : null
     });
   },
   linkBack() {

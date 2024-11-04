@@ -5,6 +5,9 @@ import {
   link2
 } from '../../utils/util';
 import dayjs from 'dayjs';
+import {
+  Toast
+} from 'tdesign-miniprogram';
 
 // pages/book/book.js
 function getCommonData(month, disable) {
@@ -19,6 +22,43 @@ function getCommonData(month, disable) {
 
 const initData = getCommonData(dayjs(), true)
 
+const generateFormatFn = (readDates = []) => {
+  return (current) => {
+    console.log(this);
+    const {
+      date
+    } = current;
+    if (dayjs(date) > dayjs()) {
+      current.type = 'disabled'
+    }
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const today = date.getDate();
+    const week_day = date.getDay();
+    // 农历
+    const {
+      dayStr,
+      day,
+      monthStr
+    } = lunar.solarToLunar(year, month, today);
+    let newClassName = [];
+    if (week_day === 0) {
+      newClassName.push('sunday')
+    }
+    if (week_day === 6) {
+      newClassName.push('saturday');
+    }
+    if (readDates.includes(day)) {
+      newClassName.push('is-readed');
+    }
+    current.className = (current.className || "") + ' ' + newClassName.join(' ');
+    // 日期
+    current.suffix = dayStr;
+    // Update
+    return current;
+  }
+}
+
 Page({
   /**
    * 页面的初始数据
@@ -26,46 +66,11 @@ Page({
   data: {
     calendarValue: dayjs().valueOf(),
     ...initData,
-    format(current) {
-      const {
-        date
-      } = current;
-
-      if (dayjs(date) > dayjs()) {
-        current.type = 'disabled'
-      }
-
-      // 年
-      const year = date.getFullYear();
-      // 月
-      const month = date.getMonth() + 1;
-      // 日
-      const today = date.getDate();
-      // 周几
-      const week_day = date.getDay();
-      // 农历
-      const {
-        dayStr,
-        day,
-        monthStr
-      } = lunar.solarToLunar(year, month, today);
-      let newClassName = [];
-      if (week_day === 0) {
-        newClassName.push('sunday')
-      }
-      if (week_day === 6) {
-        newClassName.push('saturday');
-      }
-      if ([1, 22, 27, 30].includes(day)) {
-        newClassName.push('is-readed');
-      }
-      current.className = (current.className || "") + ' ' + newClassName.join(' ');
-      // 日期
-      current.suffix = dayStr;
-      // Update
-      return current;
-    },
+    format: generateFormatFn(),
     listData: [],
+    activePopupShow: false,
+    bookId: '',
+    activeCode: ''
   },
   prevMonth() {
     const current = this.data.curerntDate;
@@ -96,44 +101,79 @@ Page({
       calendarValue: value,
     })
   },
-
   link_ranking() {
     link2('/bookPackage/pages/book/ranking/ranking');
   },
-  link_read() {
-    link2('/bookPackage/pages/book/read/read');
+  link_read(bookId) {
+    link2('/bookPackage/pages/book/read/read?bookId=' + bookId);
   },
   startLearn() {
     link2('/bookPackage/pages/book/learn/learn');
   },
   onButtonTap(e) {
     const data = e.currentTarget.dataset.item
-    if (data.status === 1) {
-      this.link_read()
+    const bookId = data.id
+    if (data.active) {
+      this.link_read(bookId)
       return;
     }
-    // todo: 未激活
+    this.setData({
+      activePopupShow: true,
+      bookId
+    })
+  },
+  onVisibleChange(e) {
+    this.setData({
+      activePopupShow: e.detail.visible,
+    });
+  },
+  onActiveCodeChange(e) {
+    this.setData({
+      activeCode: e.detail.value
+    })
+  },
+  showToast(message) {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message,
+    });
+  },
+  async activeBook() {
+    const userInfo = wx.getStorageSync('userInfo');
+    const code = this.data.activeCode;
+    if (!code) {
+      showToast('请输入激活码');
+      return;
+    }
+    const bookId = this.data.bookId;
+    await post(api.Read.active, {
+      bookId,
+      code,
+      userId: userInfo.id
+    });
+    showToast('激活成功');
+    const newListData = this.data.listData.map(v => {
+      return v.id === bookId ? {
+        ...v,
+        active: true
+      } : v
+    })
+    this.setData({
+      listData: newListData
+    })
+  },
+  goShop() {
+    // TODO
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad() {
+    const res = await post(api.Read.books);
     this.setData({
-      listData: [{
-        name: "诫子书",
-        suggestion: "建议单次时长45分",
-        userNum: 99,
-        count: 0,
-        time: 0,
-        status: 1
-      }, {
-        name: "诫外甥书",
-        suggestion: "建议单次时长45分",
-        userNum: 99,
-        count: 0,
-        time: 0,
-        status: 0
-      }]
+      listData: res || [],
+      format: generateFormatFn([1, 5, 9, 22])
     })
   },
 

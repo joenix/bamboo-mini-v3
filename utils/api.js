@@ -85,5 +85,16 @@ export const api = {
     create: '/tips/create',
     update: '/tips/update',
     getall: '/tips/get_all'
+  },
+  // 点读
+  Read: {
+    books: '/book/wx_get_books',
+    avtiveBook: '/code/active',
+    submit: '/book/book_his'
+  },
+  // 点读排行
+  Rank: {
+    getTodayList: '/book/wx_ranks_today',
+    getHistoryList: '/book/wx_ranks'
   }
 };
