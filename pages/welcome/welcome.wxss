@@ -20,9 +20,11 @@
   0% {
     background-position: 0% center;
   }
+
   50% {
     background-position: 100% center;
   }
+
   100% {
     background-position: 0% center;
   }
@@ -33,6 +35,7 @@
     opacity: 0;
     transform: translateX(-30%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -58,6 +61,7 @@
   background: linear-gradient(#c8a064, #b99b5f) !important;
   background-color: transparent !important;
 }
+
 .welcome-page-entry:after {
   border: none !important;
 }
@@ -69,11 +73,11 @@
 .welcome-logo {
   width: 512rpx;
   height: 512rpx;
-  background: url(https://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
+  background: url(http://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
 }
 
 .welcome-btn-entry {
   width: 532rpx;
   height: 140rpx;
-  background: url(https://oss.lhdd.club/ui/btn-entry-red.png) center/cover no-repeat;
+  background: url(http://oss.lhdd.club/ui/btn-entry-red.png) center/cover no-repeat;
 }

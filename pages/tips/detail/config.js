@@ -2,9 +2,9 @@ const getWxml = function (conetnt) {
   return `
     <view class="container" >
       <view class="main">
-        <image class="img1" src="https://oss.lhdd.club/ui/split1.png"></image>
+        <image class="img1" src="http://oss.lhdd.club/ui/split1.png"></image>
         <text class="text">${conetnt}</text>
-        <image class="img2" src="https://oss.lhdd.club/ui/tips-detail.png"></image>
+        <image class="img2" src="http://oss.lhdd.club/ui/tips-detail.png"></image>
       </view>
     </view>
   `

@@ -12,7 +12,7 @@
       <t-button class="read-bgm-change" bind:tap="bgmPopupOpen">切换音乐</t-button>
     </view>
     <view class="read-poster">
-      <image src="https://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
+      <image src="http://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
     </view>
     <view class="read-button read-setting w-600" bind:tap="settingPopupOpen">
       <image class="read-setting-icon" src="/assets/list-settings-fill.png" mode="aspectFit" />

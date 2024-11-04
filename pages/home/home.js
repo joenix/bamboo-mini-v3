@@ -45,19 +45,19 @@ Page({
     content: [
       // htps://mp.weixin.qq.com/s/<link>
       {
-        cover: 'https://oss.lhdd.club/banner_1.webp',
+        cover: 'http://oss.lhdd.club/banner_1.webp',
         title: '六合竹简点读体系之简单介绍',
         description: '习近平总书记指出：“文化自信是一个国家、一个民族发展中最基本、最深沉、最持久的力量。”没有高度的文化自信，没有文化的繁荣兴盛，就没有中华民族的伟大复兴。同时，习近平总书记指出：“我们现在是距离中华民族文化复兴最近的一个时代。我们自信起来了。',
         link: 'h2ITrbWI2zgqsZiWYdwGvw'
       },
       {
-        cover: 'https://oss.lhdd.club/banner_2.webp',
+        cover: 'http://oss.lhdd.club/banner_2.webp',
         title: '六合竹简点读法原理及相关问题的解答',
         description: '“六合竹简点读法”是以单手或双手（包括但不限于手指的指尖、指腹及指关节）在特制的竹简上边做特殊“手指操”边学习的过程。',
         link: '-1wZAttfwxLeY8JUYEy6xw'
       },
       {
-        cover: 'https://oss.lhdd.club/banner_3.webp',
+        cover: 'http://oss.lhdd.club/banner_3.webp',
         title: '六合简工考',
         description: '六合大道，无穷玄妙，无相为体，万法归一。神意天授，先贤真传，无量法施，以简入道。<br />六合简工，仇师亲命，极深研几，九转功成。六合制简，上合天时，下明地理，中省人文。',
         link: 'ACWu6C2lkP3QC46IvNmGfw'

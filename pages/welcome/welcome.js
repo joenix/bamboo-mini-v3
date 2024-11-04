@@ -63,7 +63,7 @@ Page({
   onLoad() {
     this.preloadImage([{
         key: 'bgImage',
-        src: 'https://oss.lhdd.club/ui/bg.jpg'
+        src: 'http://oss.lhdd.club/ui/bg.jpg'
       },
       {
         key: 'sgImage',

@@ -149,7 +149,7 @@ page {
   letter-spacing: 12rpx;
   padding-top: 8rpx;
   padding-left: 16rpx;
-  background: url(https://oss.lhdd.club/ui/ui_plate.png) center/cover no-repeat;
+  background: url(http://oss.lhdd.club/ui/ui_plate.png) center/cover no-repeat;
 }
 
 .card-theme .card-theme-infos .avatar {

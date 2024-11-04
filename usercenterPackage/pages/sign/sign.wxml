@@ -35,7 +35,7 @@
     <view class="title">日常任务</view>
     <view class="task-list-container">
       <view class="task-list-item">
-        <image class="split" src="https://oss.lhdd.club/ui/split3.png"></image>
+        <image class="split" src="http://oss.lhdd.club/ui/split3.png"></image>
         <view class="task-detail">
           <view class="task">每日点读</view>
           <view class="reward">
@@ -46,7 +46,7 @@
         <view class="todo">去完成</view>
       </view>
       <view class="task-list-item">
-        <image class="split" src="https://oss.lhdd.club/ui/split3.png"></image>
+        <image class="split" src="http://oss.lhdd.club/ui/split3.png"></image>
         <view class="task-detail">
           <view class="task">每日点读</view>
           <view class="reward">

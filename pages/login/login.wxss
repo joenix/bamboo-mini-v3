@@ -1,6 +1,6 @@
 page {
   height: 100vh;
-  background: url(https://oss.lhdd.club/ui/bg.jpg) top center no-repeat;
+  background: url(http://oss.lhdd.club/ui/bg.jpg) top center no-repeat;
   background-size: 100%;
   overflow: hidden;
 }
@@ -9,7 +9,7 @@ page {
   width: 512rpx;
   height: 512rpx;
   margin: 0 auto;
-  background: url(https://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
+  background: url(http://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
 }
 
 .login-input {
@@ -32,7 +32,7 @@ page {
   width: 100%;
   height: 112rpx;
   margin: 0 auto;
-  background: url(https://oss.lhdd.club/ui/login-btn-entry.png) center/cover no-repeat;
+  background: url(http://oss.lhdd.club/ui/login-btn-entry.png) center/cover no-repeat;
 }
 
 .login-btn-tip {

@@ -272,7 +272,7 @@ Page({
     this.setData({
       remindAudioContext: audioContext
     })
-    audioContext.src = 'https://oss.lhdd.club/music/ring.mp3'
+    audioContext.src = 'http://oss.lhdd.club/music/ring.mp3'
     audioContext.onEnded(() => {
       count += 1
       if (count === 3) {
@@ -322,11 +322,11 @@ Page({
       }
     ]
     const newBgmList = [{
-        value: 'https://oss.lhdd.club/music/read_bgm_1.mp3',
+        value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
         label: '古筝 - 古风温馨春华秋实',
       },
       {
-        value: 'https://oss.lhdd.club/music/read_bgm_2.mp3',
+        value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
         label: '古筝 - 中国风 余音绕梁',
       }
     ];

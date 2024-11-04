@@ -85,6 +85,7 @@ Page({
     } = this.data;
 
     if (!/^[1][3,4,5,7,8,9][0-9]{9}$/.test(mobile)) {
+      console.log(Message);
       return Message.error({
         context: this,
         offset: [90, 32],
