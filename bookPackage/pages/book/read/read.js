@@ -136,36 +136,40 @@ Page({
     })
     clearInterval(this.data.countdown_interval);
   },
-  startBgm() {
+  startBgm(guide) {
     const {
       bgm,
       bgmList,
       bgmInfo
     } = this.data;
-    if (!bgmInfo.value || bgmList.length <= 2) {
-      return;
-    }
-    let index = 2;
-    let src = '';
-    let title = '';
 
-    if (bgmInfo.value === 'loop') {
-      src = bgmList[index].value
-      title = bgmList[index].label
-    } else {
-      src = bgmInfo.value;
-      title = bgmInfo.label;
-    }
-    bgm.src = src;
-    bgm.title = title;
-    bgm.onEnded(() => {
-      if (bgmInfo.value !== 'loop') {
-        bgm.src = src;
-        return;
+    let index = 2;
+    const getUserSettingBgm = () => {
+      if (!bgmInfo.value) {
+        return null
+      } else if (bgmInfo.value === 'loop') {
+        const nextBgm = bgmList[index]
+        index = index === bgmList.length - 1 ? 2 : index + 1;
+        return nextBgm
+      } else {
+        return bgmInfo
       }
-      index = index === bgmList.length - 1 ? 2 : index + 1
-      bgm.src = bgmList[index].value
-      bgm.title = bgmList[index].label
+    }
+
+    let currentBgm = null;
+    if (guide === '1') {
+      currentBgm = {value: 'https://oss.lhdd.club/music/guide.mp3', label: '引导音乐'}
+    } else {
+      currentBgm = getUserSettingBgm()
+    }
+    if (!currentBgm) return
+    bgm.src = currentBgm.value
+    bgm.title = currentBgm.label
+    bgm.onEnded(() => {
+      currentBgm = getUserSettingBgm()
+      if (!currentBgm) return;
+      bgm.src = currentBgm.value
+      bgm.title = currentBgm.label
     })
   },
   toggleStop() {
@@ -201,9 +205,10 @@ Page({
       const {
         remind,
         hour,
-        minute
+        minute,
+        guide
       } = this.data.settingData
-      this.startBgm();
+      this.startBgm(guide);
       this.startCountdown();
       if (inner && remind === '1') {
         this.handleRemind(hour, minute)
@@ -264,7 +269,6 @@ Page({
     })
   },
   remindFinish() {
-    console.log(323);
     let count = 0;
     const audioContext = wx.createInnerAudioContext({
       useWebAudioImplement: false
@@ -313,23 +317,21 @@ Page({
   },
   onLoad(options) {
     const defalutList = [{
-        value: null,
-        label: '无',
-      },
-      {
-        value: 'loop',
-        label: '列表默认循环',
-      }
-    ]
+      value: null,
+      label: '无',
+    },
+    {
+      value: 'loop',
+      label: '列表默认循环',
+    }]
     const newBgmList = [{
-        value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
-        label: '古筝 - 古风温馨春华秋实',
-      },
-      {
-        value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
-        label: '古筝 - 中国风 余音绕梁',
-      }
-    ];
+      value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
+      label: '古筝 - 古风温馨春华秋实',
+    },
+    {
+      value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
+      label: '古筝 - 中国风 余音绕梁',
+    }];
     this.setData({
       bgmInfo: newBgmList[0],
       bgmList: defalutList.concat(newBgmList),
