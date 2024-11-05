@@ -73,6 +73,7 @@ Page({
     const month = dayjs(current).subtract(1, 'month');
     const data = getCommonData(month, false);
     this.setData(data);
+    this.getReadRecords();
   },
   nextMonth() {
     if (this.data.disableNext) {
@@ -82,12 +83,14 @@ Page({
     const month = dayjs(current).add(1, 'month');
     const data = getCommonData(month, month >= dayjs());
     this.setData(data);
+    this.getReadRecords();
   },
   toToday() {
     this.setData({
       calendarValue: dayjs().valueOf(),
       ...initData
     });
+    this.getReadRecords();
   },
   handleSelect(e) {
     const {
@@ -170,19 +173,34 @@ Page({
     // TODO
     this.showToast('暂未开通');
   },
-  async initPage() {
-    const [bookList, records] = await Promise.all([
-      post(api.Read.books),
-      post(api.Read.records)
-    ]);
+  async getReadRecords() {
+    const userInfo = wx.getStorageSync('userInfo')
+    const [year, month] = this.data.currentYearMonthStr.split('/')
+    const records = await post(api.Read.records, {
+      year: +year,
+      month: +month,
+      userid: userInfo.id
+    })
     const recordDates = records?.data?.map(v => dayjs(+v)) || [];
     this.setData({
-      listData: bookList?.data?.map(v => ({
-        ...v,
-        today_time: Number((v.today_time / 3600).toFixed(2))
-      })) || [],
       format: generateFormatFn(recordDates)
     })
+  },
+  async getBookList() {
+    const bookList = await post(api.Read.books);
+    const listData = bookList?.data?.map(v => {
+      return {
+        ...v,
+        today_time: Number((v.today_time / 60 / 1000).toFixed(1)) + 'min'
+      }
+    }) || []
+    this.setData({
+      listData
+    })
+  },
+  initPage() {
+    this.getBookList();
+    this.getReadRecords();
   },
   onLoad() {
     this.getTabBar().init();

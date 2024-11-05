@@ -155,10 +155,12 @@ Page({
         return bgmInfo
       }
     }
-
     let currentBgm = null;
     if (guide === '1') {
-      currentBgm = {value: 'https://oss.lhdd.club/music/guide.mp3', label: '引导音乐'}
+      currentBgm = {
+        value: 'https://oss.lhdd.club/music/guide.mp3',
+        label: '引导音乐'
+      }
     } else {
       currentBgm = getUserSettingBgm()
     }
@@ -256,6 +258,13 @@ Page({
     this.showMessage('success', '点读记录提交成功')
     this.resetCountdown();
     this.setData({
+      step: 1,
+      resultPopup: false
+    });
+  },
+  onResultVisible(e) {
+    this.setData({
+      resultPopup: e.detail.visible,
       step: 1
     });
   },
@@ -317,21 +326,23 @@ Page({
   },
   onLoad(options) {
     const defalutList = [{
-      value: null,
-      label: '无',
-    },
-    {
-      value: 'loop',
-      label: '列表默认循环',
-    }]
+        value: null,
+        label: '无',
+      },
+      {
+        value: 'loop',
+        label: '列表默认循环',
+      }
+    ]
     const newBgmList = [{
-      value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
-      label: '古筝 - 古风温馨春华秋实',
-    },
-    {
-      value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
-      label: '古筝 - 中国风 余音绕梁',
-    }];
+        value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
+        label: '古筝 - 古风温馨春华秋实',
+      },
+      {
+        value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
+        label: '古筝 - 中国风 余音绕梁',
+      }
+    ];
     this.setData({
       bgmInfo: newBgmList[0],
       bgmList: defalutList.concat(newBgmList),

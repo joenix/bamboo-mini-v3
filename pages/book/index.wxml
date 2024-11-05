@@ -46,30 +46,26 @@
     </t-col>
   </t-row>
   <view class="book-entries-block" wx:for="{{listData}}" wx:key="index">
-    <t-row data-item="{{item}}" bind:tap="onButtonTap">
-      <t-col span="12">
-        <view class="book-entries-flex">
-          <view>
-            <view class="book-entries-title">{{item.name}}</view>
-            <view class="book-entries-text">建议单次时长45分</view>
-          </view>
-          <view class="book-entries-total">
-            今日已完成 <text>{{item.today_count}}</text>次，总时长 <text>{{item.today_time}}h</text>
+    <view class="flex-block">
+      <view class="book-entries-flex">
+        <view>
+          <view class="book-entries-title">{{item.name}}</view>
+          <view class="book-entries-text">建议单次时长45分</view>
+        </view>
+        <view class="book-entries-total">
+          今日已完成 <text>{{item.today_count}}</text>次，总时长 <text>{{item.today_time}}</text>
+        </view>
+      </view>
+      <view class="book-entries-flex w-220">
+        <view></view>
+        <view class="book-entries-affix">
+          今天已有 <text>{{ item.read_count }}</text> 人完成点读
+          <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap">
+            {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
           </view>
         </view>
-      </t-col>
-      <t-col span="9" offset="3">
-        <view class="book-entries-flex">
-          <view></view>
-          <view class="book-entries-affix">
-            今天已有 <text>{{ item.read_count }}</text> 人完成点读
-            <view class="book-entries-button-large">
-              {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
-            </view>
-          </view>
-        </view>
-      </t-col>
-    </t-row>
+      </view>
+    </view>
   </view>
 </pager>
 <t-popup usingCustomNavbar bind:visible-change="onVisibleChange" visible="{{activePopupShow}}" placement="bottom">

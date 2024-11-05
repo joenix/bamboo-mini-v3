@@ -145,6 +145,12 @@ page {
   padding: 20rpx;
 }
 
+.flex-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .book-entries-title {
   font-size: 32rpx;
   margin-bottom: 16rpx;
@@ -190,6 +196,15 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.flex-block .book-entries-flex {
+  flex: 1;
+}
+
+.w-220 {
+  max-width: 250rpx;
+  margin-left: 10rpx;
 }
 
 .book-entries-total {

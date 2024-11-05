@@ -75,7 +75,7 @@
     </view>
   </t-popup>
   <!-- 结束 popup -->
-  <t-popup visible="{{resultPopup}}" placement="bottom">
+  <t-popup visible="{{resultPopup}}" bind:visible-change="onResultVisible" placement="bottom">
     <view class="read-result-popup">
       <view class="read-result">
         <view class="read-result-time">{{countdown / 1000}}秒</view>
