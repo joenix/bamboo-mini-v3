@@ -191,7 +191,7 @@ Page({
     const listData = bookList?.data?.map(v => {
       return {
         ...v,
-        today_time: Number((v.today_time / 60 / 1000).toFixed(1)) + 'min'
+        today_time: Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h'
       }
     }) || []
     this.setData({
