@@ -1,4 +1,7 @@
 import TabMenu from './data';
+import {
+  checkToken
+} from '../utils/util'
 
 Component({
   data: {
@@ -7,17 +10,21 @@ Component({
   },
   methods: {
     onChange(event) {
+      const index = event.detail.value;
+      if (index !== 0 && !checkToken()) {
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+        return;
+      }
       this.setData({
-        active: event.detail.value
+        active: index
       });
-
-      const url = this.data.list[event.detail.value].url;
-
+      const url = this.data.list[index].url;
       wx.switchTab({
         url: `/${url}`
       });
     },
-
     init() {
       const page = getCurrentPages().pop();
       const route = page ? page.route.split('?')[0] : '';

@@ -46,7 +46,9 @@ const generateFormatFn = (readDates = []) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const today = date.getDate();
-    const { dayStr } = lunar.solarToLunar(year, month, today);
+    const {
+      dayStr
+    } = lunar.solarToLunar(year, month, today);
     current.suffix = dayStr;
     // Update
     return current;
@@ -168,9 +170,13 @@ Page({
       post(api.Read.books),
       post(api.Read.records)
     ]);
-    const recordDates = records ? records.map(v => dayjs(+v)) : [];
+    console.log(bookList);
+    const recordDates = records?.data?.map(v => dayjs(+v)) || [];
     this.setData({
-      listData: bookList.map(v => ({...v, today_time: (item.today_time / 3600).toFixed(2)})) || [],
+      listData: bookList?.data?.map(v => ({
+        ...v,
+        today_time: (v.today_time / 3600).toFixed(2)
+      })) || [],
       format: generateFormatFn(recordDates)
     })
   },
