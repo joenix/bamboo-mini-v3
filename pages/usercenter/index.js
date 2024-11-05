@@ -26,9 +26,9 @@ Page({
   data: getDefaultData(),
   onLoad() {
     this.getVersionInfo();
+    this.getTabBar().init();
   },
   onShow() {
-    this.getTabBar().init();
     this.init();
   },
   onPullDownRefresh() {

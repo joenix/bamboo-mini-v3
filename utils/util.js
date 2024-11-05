@@ -149,7 +149,7 @@ const get = (url, data = {}, options = {}) => {
           })
           return reject(data.error)
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error)
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
       },
       fail: (error) => reject(error)
     });
@@ -176,7 +176,7 @@ const post = async (url, data = {}, options = {}) => {
           })
           return reject(data.error)
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error)
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
       },
       fail: (error) => {
         reject(error)

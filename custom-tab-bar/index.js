@@ -10,13 +10,13 @@ Component({
   },
   methods: {
     onChange(event) {
-      const index = event.detail.value;
-      if (index !== 0 && !checkToken()) {
+      if (!checkToken()) {
         wx.navigateTo({
           url: '/pages/login/login',
         })
         return;
       }
+      const index = event.detail.value;
       this.setData({
         active: index
       });

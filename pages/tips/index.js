@@ -34,11 +34,10 @@ Page({
       indexs: this.data.tips.map((item) => item.index),
       viewId: this.data.tips[0].id
     });
-    this.getTips();
-  },
-
-  onShow() {
     this.getTabBar().init();
+  },
+  onShow() {
+    this.getTips();
   },
   onSelect(e) {
     const index = e.currentTarget.dataset.index;
@@ -59,9 +58,9 @@ Page({
       opens: this.data.opens
     });
   },
-
-  onPullDownRefresh() {},
-
+  onPullDownRefresh() {
+    this.getTips();
+  },
   async getTips() {
     const {
       data

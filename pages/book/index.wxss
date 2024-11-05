@@ -252,5 +252,5 @@ page {
 }
 
 .activePopup .btn:last-child {
-  margin-top: 60rpx;
+  margin-top: 30rpx;
 }

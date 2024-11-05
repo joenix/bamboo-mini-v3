@@ -76,7 +76,7 @@
   <view class="activePopup">
     <t-input borderless placeholder="请输入激活码" bind:change="onActiveCodeChange" />
     <view class="btn" bind:tap="activeBook">激活</view>
-    <t-divider content="或去商场购买" />
+    <t-divider content="或" />
     <view class="btn" bind:tap="goShop">去商场购买</view>
   </view>
 </t-popup>
