@@ -66,7 +66,8 @@ Page({
     listData: [],
     activePopupShow: false,
     bookId: '',
-    activeCode: ''
+    activeCode: '',
+    isToday: true
   },
   prevMonth() {
     const current = this.data.curerntDate;
@@ -88,6 +89,7 @@ Page({
   toToday() {
     this.setData({
       calendarValue: dayjs().valueOf(),
+      isToday: true,
       ...initData
     });
     this.getReadRecords();
@@ -96,8 +98,10 @@ Page({
     const {
       value
     } = e.detail;
+    const isToday = dayjs(value).format('YYYYMMDD') === dayjs().format('YYYYMMDD')
     this.setData({
       calendarValue: value,
+      isToday
     })
   },
   link_ranking() {
@@ -110,6 +114,7 @@ Page({
     link2('/bookPackage/pages/book/learn/learn');
   },
   onButtonTap(e) {
+    if (!this.data.isToday) return;
     const data = e.currentTarget.dataset.item
     const bookId = data.id
     if (data.active) {

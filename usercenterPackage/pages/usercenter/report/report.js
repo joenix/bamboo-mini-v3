@@ -1,7 +1,10 @@
 // pages/usercenter/suggest/suggest.js
 import Message from 'tdesign-miniprogram/message/index';
 import dayjs from 'dayjs';
-import {post, api} from '../../../../utils/util';
+import {
+  post,
+  api
+} from '../../../../utils/util';
 import * as echarts from '../../../../components/ec-canvas/echarts';
 
 Page({
@@ -16,7 +19,17 @@ Page({
     this.ecComponent = this.selectComponent('#mychart-dom-line');
   },
   onShow() {
-    this.getUserReport();
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    if (this.ecComponent) {
+      this.getUserReport();
+      return;
+    }
+    setTimeout(() => {
+      this.getUserReport();
+    }, 300)
   },
   onHide() {
     if (this.chart) {
@@ -26,25 +39,22 @@ Page({
       isDisposed: true
     });
   },
-  getUserReport() {
-    wx.showLoading({
-      title: '加载中',
-    })
+  async getUserReport() {
     try {
       const userInfo = wx.getStorageSync('userInfo');
-      const data = post(api.User.report, {
+      const data = await post(api.User.report, {
         id: userInfo.id,
         day: 30
       })
-      const chart = this.initChart();
-      this.setOption(chart, data);
+      this.initChart(data);
     } catch (error) {
+      console.log(error);
       this.showMessage('error', '获取数据失败')
     } finally {
       wx.hideLoading()
     }
   },
-  initChart () {
+  initChart(data) {
     this.ecComponent.init((canvas, width, height, dpr) => {
       // 获取组件的 canvas、width、height 后的回调函数
       // 在这里初始化图表
@@ -61,17 +71,31 @@ Page({
       // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
       this.chart = chart;
       // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+
+      this.setOption(chart, data);
+
       return chart;
     });
   },
   setOption(chart, data) {
     const xAxisData = data.map(v => dayjs(v.updatedAt).format('YYYY/MM/DD'))
 
-    const legend = [
-      {key: 'leftEyes', name: '左眼'},
-      {key: 'rightEyes', name: '右眼'},
-      {key: 'height', name: '身高'},
-      {key: 'weight', name: '体重'}
+    const legend = [{
+        key: 'leftEyes',
+        name: '左眼'
+      },
+      {
+        key: 'rightEyes',
+        name: '右眼'
+      },
+      {
+        key: 'height',
+        name: '身高'
+      },
+      {
+        key: 'weight',
+        name: '体重'
+      }
     ]
 
     const series = legend.map(v => {
@@ -79,19 +103,20 @@ Page({
         name: v.name,
         type: 'line',
         smooth: true,
-        data: data.map(v => v[v.key])
+        data: data.map(d => d[v.key])
       }
     })
-  
+
     var option = {
       legend: {
         data: legend.map(v => v.name),
-        top: 50,
+        top: 10,
         left: 'center',
-        z: 100
       },
       grid: {
-        containLabel: true
+        containLabel: true,
+        left: 10,
+        right: 10
       },
       tooltip: {
         show: true,
@@ -99,7 +124,6 @@ Page({
       },
       xAxis: {
         type: 'category',
-        boundaryGap: false,
         data: xAxisData,
       },
       yAxis: {
@@ -113,7 +137,7 @@ Page({
       },
       series
     };
-  
+
     chart.setOption(option);
   },
   showMessage(type, content) {

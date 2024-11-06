@@ -17,6 +17,7 @@ Component({
         return;
       }
       const index = event.detail.value;
+      if (index === this.data.active) return;
       this.setData({
         active: index
       });

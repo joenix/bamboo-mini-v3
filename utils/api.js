@@ -8,13 +8,13 @@ export const api = {
     registry: '/users/regist',
     getall: '/users/get_all',
     info: '/users/get_info',
-    data: '/users/get_data',
+    data: '/users/get_user_info_item',
     login: '/users/login',
     wx_login: '/users/wx_login',
     update: '/users/update',
     // updateInfo: '/users/update_user_info'
     updateInfo: '/users/set_user_info',
-    report: '/users/get _user report'
+    report: '/users/get_user_report'
   },
   // 通用
   Public: {

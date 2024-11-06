@@ -60,7 +60,7 @@
         <view></view>
         <view class="book-entries-affix">
           今天已有 <text>{{ item.read_count }}</text> 人完成点读
-          <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap">
+          <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap" style="opacity: {{isToday ? 1 : 0.3}}">
             {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
           </view>
         </view>
