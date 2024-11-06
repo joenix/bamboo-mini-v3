@@ -2,3 +2,7 @@
 page {
   background: #F9F8F6;
 }
+.container, ec-canvas {
+  width: 100%;
+  height: 100%;
+}

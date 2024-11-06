@@ -13,7 +13,8 @@ export const api = {
     wx_login: '/users/wx_login',
     update: '/users/update',
     // updateInfo: '/users/update_user_info'
-    updateInfo: '/users/set_user_info'
+    updateInfo: '/users/set_user_info',
+    report: '/users/get _user report'
   },
   // 通用
   Public: {

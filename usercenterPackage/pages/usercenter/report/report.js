@@ -1,66 +1,127 @@
 // pages/usercenter/suggest/suggest.js
+import Message from 'tdesign-miniprogram/message/index';
+import dayjs from 'dayjs';
+import {post, api} from '../../../../utils/util';
+import * as echarts from '../../../../components/ec-canvas/echarts';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    ec: {
+      lazyLoad: true
+    },
+    isDisposed: false,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
-
+    // 获取组件
+    this.ecComponent = this.selectComponent('#mychart-dom-line');
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  onShow() {
+    this.getUserReport();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  onHide() {
+    if (this.chart) {
+      this.chart.dispose();
+    }
+    this.setData({
+      isDisposed: true
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  getUserReport() {
+    wx.showLoading({
+      title: '加载中',
+    })
+    try {
+      const userInfo = wx.getStorageSync('userInfo');
+      const data = post(api.User.report, {
+        id: userInfo.id,
+        day: 30
+      })
+      const chart = this.initChart();
+      this.setOption(chart, data);
+    } catch (error) {
+      this.showMessage('error', '获取数据失败')
+    } finally {
+      wx.hideLoading()
+    }
   },
+  initChart () {
+    this.ecComponent.init((canvas, width, height, dpr) => {
+      // 获取组件的 canvas、width、height 后的回调函数
+      // 在这里初始化图表
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+      this.setData({
+        isDisposed: false
+      });
 
+      // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+      this.chart = chart;
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return chart;
+    });
   },
+  setOption(chart, data) {
+    const xAxisData = data.map(v => dayjs(v.updatedAt).format('YYYY/MM/DD'))
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+    const legend = [
+      {key: 'leftEyes', name: '左眼'},
+      {key: 'rightEyes', name: '右眼'},
+      {key: 'height', name: '身高'},
+      {key: 'weight', name: '体重'}
+    ]
 
+    const series = legend.map(v => {
+      return {
+        name: v.name,
+        type: 'line',
+        smooth: true,
+        data: data.map(v => v[v.key])
+      }
+    })
+  
+    var option = {
+      legend: {
+        data: legend.map(v => v.name),
+        top: 50,
+        left: 'center',
+        z: 100
+      },
+      grid: {
+        containLabel: true
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: xAxisData,
+      },
+      yAxis: {
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        }
+      },
+      series
+    };
+  
+    chart.setOption(option);
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  showMessage(type, content) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: 3000,
+      content
+    });
   }
 })
