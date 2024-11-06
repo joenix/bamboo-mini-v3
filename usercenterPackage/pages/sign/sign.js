@@ -4,7 +4,7 @@ import {
   dayjs,
   day1,
   stream1
-} from '../../utils/util';
+} from '../../../utils/util';
 
 // pages/sign/sign.js
 Page({
