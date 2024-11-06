@@ -5,7 +5,7 @@
   <view class="blocker">
     <line-square />
     <button class="avatar-box" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-      <t-image width="100" height="100" mode="aspectFill" src="{{userInfo.avatar}}" />
+      <t-image width="100" height="100" mode="aspectFill" src="{{userInfo.avatarUrl}}" />
     </button>
     <t-input value="{{userInfo.leftEyes}}" borderless label="左眼视力" placeholder="请输入左眼视力" align="right" data-name="leftEyes" bind:change="onInput" type="number">
       <image slot="prefix-icon" class="prefix-icon" src="http://oss.lhdd.club/ui/left-eyesight.png" mode="scaleToFill" />

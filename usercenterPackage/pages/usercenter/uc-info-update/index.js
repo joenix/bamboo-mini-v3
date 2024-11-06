@@ -8,7 +8,8 @@ import {
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    avatarEdited: false,
   },
   onLoad() {
     const userInfo = wx.getStorageSync('userInfo');
@@ -43,18 +44,63 @@ Page({
       });
     }
   },
+  showMessage(type, content) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: 3000,
+      content
+    });
+  },
   async update() {
-    const success = await post(api.User.updateInfo, this.data.userInfo);
-    if (success) {
-      Message.success({
-        context: this,
-        offset: [90, 32],
-        duration: 3000,
-        content: '更新成功'
+    const {avatarUrl, ...rest} = this.data.userInfo;
+    wx.showLoading({
+      title: '正在更新中...'
+    });
+    let ossUrl = avatarUrl;
+    try {
+      if (this.data.avatarEdited) {
+        ossUrl = await this.uploadAvatar(avatarUrl);
+        if (!ossUrl) {
+          throw new Error('上传头像失败');
+        }
+      }
+      await post(api.User.updateInfo, {
+        ...rest,
+        avatar: ossUrl
       });
+      this.showMessage('success', '更新成功')
       await wait(2000);
       wx.navigateBack();
+    } catch (error) {
+      this.showMessage('error', '更新失败')
+    } finally {
+      wx.hideLoading();
     }
+  },
+  uploadAvatar(filePath) {
+    return new Promise((resolve, reject) => {
+      const token = wx.getStorageSync('token')
+      wx.uploadFile({
+        url: api.Public.upload,
+        filePath,
+        name: 'files',
+        formData: {
+          token
+        },
+        success (res){
+          const _res = res.data;
+          if (res.statusCode !== 200 || _res.status !== 200) {
+            reject({ errMsg: '上传失败' });
+            return;
+          }
+          resolve(_res.msg[0]?.path)
+        },
+        fail(e){
+          reject(e);
+        }
+      })
+    })
   },
   onChooseAvatar(e) {
     const {
@@ -63,8 +109,9 @@ Page({
     this.setData({
       userInfo: {
         ...this.data.userInfo,
-        avatar: avatarUrl,
-      }
+        avatarUrl,
+      },
+      avatarEdited: true
     })
   }
 });
