@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "我的报告",
-  "pageOrientation": "landscape",
   "usingComponents": {
     "t-message": "tdesign-miniprogram/message/message",
     "custom-nav": "/components/custom-nav/custom-nav",
