@@ -10,7 +10,7 @@ Page({
   },
   onLoad: function () {
     const checkInDays = wx.getStorageSync('checkInDays');
-    const diffDays = getDiffDays();
+    const diffDays = this.getDiffDays();
     this.setData({ checkInDays: diffDays > 1 ? 0 : checkInDays || 0 });
   },
   getDiffDays: function () {
