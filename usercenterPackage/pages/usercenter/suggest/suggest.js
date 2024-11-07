@@ -1,5 +1,5 @@
 // pages/usercenter/suggest/suggest.js
-import { Toast } from 'tdesign-miniprogram';
+import Message from 'tdesign-miniprogram/message/index';
 import { wait } from '../../../../utils/util';
 
 Page({
@@ -14,21 +14,28 @@ Page({
     suggestion: ''
   },
   onChange(e) {
-    const value = e.detail.value;
     this.setData({
-      suggestion: value
+      suggestion: (e.detail.value || '').trim()
     });
   },
   async onSubmit() {
     console.log(this.data.suggestion);
+    if (!this.data.suggestion) {
+      this.showMessage('error', '请输入反馈意见');
+      return;
+    }
     wait(300);
     this.setData({
       suggestion: ''
     });
-    Toast({
+    this.showMessage('success', '提交成功，感谢您的反馈');
+  },
+  showMessage(type, content) {
+    Message[type]({
       context: this,
-      selector: '#t-toast',
-      message: '提交成功'
+      offset: [90, 32],
+      duration: 3000,
+      content: content
     });
   }
 });

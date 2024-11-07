@@ -1,5 +1,5 @@
 import Message from 'tdesign-miniprogram/message/index';
-import { formatTime, dayjs, day1, stream1 } from '../../../utils/util';
+import { formatTime, day1 } from '../../../utils/util';
 import { UpdateType, updateScoreAction } from '../../../utils/score';
 
 // pages/sign/sign.js

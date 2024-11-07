@@ -137,6 +137,10 @@ Page({
       this.showToast('请输入激活码');
       return;
     }
+    if (this.activing) {
+      return;
+    }
+    this.activing = true;
     const userInfo = wx.getStorageSync('userInfo');
     const bookId = this.data.bookId;
     try {
@@ -145,23 +149,24 @@ Page({
         code,
         userId: userInfo.id
       });
+      this.showToast('激活成功');
+      const newListData = this.data.listData.map((v) => {
+        return v.id === bookId
+          ? {
+              ...v,
+              active: true
+            }
+          : v;
+      });
+      this.setData({
+        activePopupShow: false,
+        listData: newListData
+      });
     } catch (e) {
-      this.showToast(e);
-      return;
+      this.showToast(e.message);
+    } finally {
+      this.activing = false;
     }
-    this.showToast('激活成功');
-    const newListData = this.data.listData.map((v) => {
-      return v.id === bookId
-        ? {
-            ...v,
-            active: true
-          }
-        : v;
-    });
-    this.setData({
-      activePopupShow: false,
-      listData: newListData
-    });
   },
   goShop() {
     // TODO
