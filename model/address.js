@@ -21,7 +21,7 @@ export function genAddress(id) {
     addressTag: id === 0 ? '' : '公司',
     latitude: '34.59103',
     longitude: '102.48699',
-    storeId: null,
+    storeId: null
   };
 }
 

@@ -1,15 +1,18 @@
 <!-- 自定义nav -->
 <custom-nav title="我的" showBack="{{false}}" background="transparent" />
-
+<t-message id="t-message" />
 <pager class="userinfo">
   <blocker background="transparent" stick="{{true}}" vertical="{{false}}" shadow="{{false}}">
     <t-row class="userinfo-layout">
       <t-col span="5" class="">
-        <t-avatar size="large" image="{{userInfo.avatarUrl}}" />
+        <t-avatar size="large" image="{{userInfo.avatarUrl || 'https://oss.lhdd.club/ui/avatar.png'}}" />
       </t-col>
       <t-col span="14">
-        <view class="userinfo-nickname">{{userInfo.nickname || "--"}}</view>
-        <text class="userinfo-badge">{{userInfo.mobile}}</text>
+        <view class="userinfo-nickname" bind:tap="onEditTap">
+          {{userInfo.nickname || '用户昵称'}}
+          <t-icon name="edit-2" size="36rpx" />
+        </view>
+        <text class="userinfo-badge">{{userInfo.mobile || '--'}}</text>
       </t-col>
       <t-col span="5">
         <view class="userinfo-sign" bind:tap="link2sign"></view>
