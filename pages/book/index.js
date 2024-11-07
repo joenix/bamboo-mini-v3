@@ -197,10 +197,8 @@ Page({
     this.getBookList();
     this.getReadRecords();
   },
-  onLoad() {
-    this.getTabBar().init();
-  },
   onShow() {
+    this.getTabBar().init();
     this.initPage();
   },
   onPullDownRefresh() {

@@ -1,10 +1,19 @@
 import TabMenu from './data';
 import { checkToken } from '../utils/util';
 
+const app = getApp();
+
 Component({
   data: {
     active: 0,
     list: TabMenu
+  },
+  lifetimes: {
+    attached() {
+      this.setData({
+        active: app.globalData.selectedTab
+      });
+    }
   },
   methods: {
     onChange(event) {
@@ -16,6 +25,7 @@ Component({
       }
       const index = event.detail.value;
       if (index === this.data.active) return;
+      app.globalData.selectedTab = data.index;
       this.setData({
         active: index
       });

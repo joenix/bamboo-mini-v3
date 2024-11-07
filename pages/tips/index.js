@@ -31,9 +31,9 @@ Page({
       indexs: this.data.tips.map((item) => item.index),
       viewId: this.data.tips[0].id
     });
-    this.getTabBar().init();
   },
   onShow() {
+    this.getTabBar().init();
     this.getTips();
   },
   onSelect(e) {

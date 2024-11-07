@@ -64,12 +64,12 @@ Page({
   },
 
   onShow() {
+    this.getTabBar().init();
     const id = this.data.currentTabId;
     this.init(id);
   },
 
   onLoad() {
-    this.getTabBar().init();
     wx.getImageInfo({
       src: '/assets/banner1.png',
       success(res) {
