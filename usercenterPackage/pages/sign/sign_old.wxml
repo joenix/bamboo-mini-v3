@@ -9,7 +9,7 @@
     <!-- 签到详情 -->
     <view class="sign-detail">
       <view class="title">已经连续签到</view>
-      <view class="day"><text class="num">{{checkInDays}}</text>天</view>
+      <view class="day"><text class="num">{{continous}}</text>天</view>
     </view>
 
     <!-- 签到模块 -->
@@ -20,15 +20,16 @@
       <!-- 签到进度 -->
       <view class="sign-module-progress">
         <view
-          class="progress-container {{index === 6 ? 'sevenday' : ''}} {{index < checkInDays ? 'signed' : ''}}"
-          wx:for="{{checks}}" wx:key="index">
+          class="progress-container {{index === 6 ? 'sevenday' : ''}} {{item.checked ? 'signed' : ''}}"
+          wx:for="{{checks}}" data-index="{{index}}" data-item="{{item}}" data-credit="{{index + 1}}"
+          wx:key="index" bind:tap="onSign">
           <text>第 {{index + 1}} 天</text>
-          <view class="tips" wx:if="{{index === 6 || index < checkInDays}}"></view>
+          <view class="tips" wx:if="{{index === 6 || item.checked === true}}"></view>
           <view class="tips" wx:else>+{{index + 1}}</view>
         </view>
       </view>
       <!-- 立即签到 -->
-      <view class="sign-btn" bind:tap="onSign">立即签到</view>
+      <view class="sign-btn">立即签到</view>
     </view>
   </view>
 
