@@ -6,7 +6,8 @@ const today = dayjs().format('YYYY-MM-DD');
 
 Page({
   data: {
-    checkInDays: 0
+    checkInDays: 0,
+    uiList: new Array(7).fill(1)
   },
   onLoad: function () {
     const checkInDays = wx.getStorageSync('checkInDays');
@@ -28,10 +29,11 @@ Page({
     const lastCheckedDate = wx.getStorageSync('lastCheckedDate');
     if (today === lastCheckedDate) {
       wx.showToast({ title: '今天已经签到过了！' });
+      this.submiting = false;
       return;
     }
 
-    this.showLoading({
+    wx.showLoading({
       title: '签到中...'
     });
 
@@ -54,7 +56,7 @@ Page({
       console.log(error);
       this.showMessage('error', '签到失败');
     } finally {
-      this.hideLoading();
+      wx.hideLoading();
       this.submiting = false;
     }
   },

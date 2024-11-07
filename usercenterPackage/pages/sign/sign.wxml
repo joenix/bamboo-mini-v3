@@ -21,7 +21,7 @@
       <view class="sign-module-progress">
         <view
           class="progress-container {{index === 6 ? 'sevenday' : ''}} {{index < checkInDays ? 'signed' : ''}}"
-          wx:for="{{checks}}" wx:key="index">
+          wx:for="{{uiList}}" wx:key="index">
           <text>第 {{index + 1}} 天</text>
           <view class="tips" wx:if="{{index === 6 || index < checkInDays}}"></view>
           <view class="tips" wx:else>+{{index + 1}}</view>
