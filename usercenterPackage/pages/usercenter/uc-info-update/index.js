@@ -14,7 +14,7 @@ Page({
   data: {
     info: {}
   },
-  onShow() {
+  onLoad() {
     this.init();
   },
   // 输入框输入时
