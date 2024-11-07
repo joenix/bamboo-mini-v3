@@ -77,7 +77,7 @@ Page({
       // 我的学分
       case 'score': {
         wx.navigateTo({
-          url: '/usercenterPackage/pages/usercenter/score/score'
+          url: '/usercenterPackage/pages/usercenter/score/score?score=' + userInfo.credits.credit || 0
         });
         break;
       }

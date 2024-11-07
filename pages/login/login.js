@@ -1,4 +1,5 @@
 import { api, get, post, link2 } from '../../utils/util';
+import { UpdateType, updateScoreAction } from '../../utils/score';
 import Message from 'tdesign-miniprogram/message/index';
 
 // pages/sign/sign.js
@@ -58,10 +59,7 @@ Page({
         captcha
       });
       if (!token) {
-        this.setData({
-          lock: false
-        });
-        return this.showError('请检查账号和密码是否正确');
+        throw new Error('请检查账号和密码是否正确');
       }
       wx.removeStorageSync('token');
       wx.setStorageSync('token', token);
@@ -69,11 +67,13 @@ Page({
         token
       });
       wx.setStorageSync('userInfo', userInfo);
+      await updateScoreAction(UpdateType.Login);
       wx.switchTab({
         url: '/pages/home/home'
       });
     } catch (e) {
       this.showError(typeof e === 'string' ? e : e.message);
+    } finally {
       this.setData({
         lock: false
       });

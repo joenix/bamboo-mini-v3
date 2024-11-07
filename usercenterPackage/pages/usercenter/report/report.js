@@ -11,11 +11,9 @@ Page({
     },
     isDisposed: false
   },
-  onReady: function () {
+  onReady() {
     // 获取组件
     this.ecComponent = this.selectComponent('#mychart-dom-line');
-  },
-  onShow() {
     wx.showLoading({
       title: '加载中',
       mask: true

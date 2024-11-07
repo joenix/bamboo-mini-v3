@@ -1,5 +1,6 @@
 import Message from 'tdesign-miniprogram/message/index';
 import { api, post } from '../../../../utils/util';
+import { UpdateType, updateScoreAction } from '../../../../utils/score';
 
 Page({
   data: {
@@ -228,7 +229,8 @@ Page({
     }
     this.submiting = true;
     wx.showLoading({
-      title: '提交中'
+      title: '提交中',
+      mask: true
     });
     const userInfo = wx.getStorageSync('userInfo');
     const { countdown, resultTimes, resultFeedback, bookId } = this.data;
@@ -240,6 +242,7 @@ Page({
         bookId: +bookId,
         userId: userInfo.id
       });
+      await updateScoreAction(UpdateType.Read);
       this.showMessage('success', '点读记录提交成功');
       this.resetCountdown();
       this.setData({

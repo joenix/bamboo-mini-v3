@@ -1,5 +1,6 @@
 import Message from 'tdesign-miniprogram/message/index';
 import { formatTime, dayjs, day1, stream1 } from '../../../utils/util';
+import { UpdateType, updateScoreAction } from '../../../utils/score';
 
 // pages/sign/sign.js
 Page({
@@ -115,36 +116,45 @@ Page({
   },
 
   // 点击签到
-  onSign(e) {
+  async onSign(e) {
     const { item, index } = e.currentTarget.dataset;
-
     if (item.date !== this.data.today) {
       return;
     }
-
     if (this.data.isSign) {
-      return Message.warning({
-        context: this,
-        offset: [90, 32],
-        duration: 3000,
-        content: '今天已经签过到了'
-      });
+      return this.showMessage('warning', '今天已经签过到了');
     }
-
-    this.data.checks[index].checked = true;
-    this.data.isSign = true;
-
-    // 更新 Checks
-    this.onSave({
-      checks: this.data.checks,
-      isSign: this.data.isSign
+    if (this.submiting) {
+      return;
+    }
+    this.submiting = true;
+    this.showLoading({
+      title: '签到中...'
     });
-
-    return Message.success({
+    try {
+      await updateScoreAction(UpdateType.Sign);
+      this.data.checks[index].checked = true;
+      this.data.isSign = true;
+      // 更新 Checks
+      this.onSave({
+        checks: this.data.checks,
+        isSign: this.data.isSign
+      });
+      return this.showMessage('success', '签到成功');
+    } catch (error) {
+      console.log(error);
+      this.showMessage('success', '签到失败');
+    } finally {
+      this.hideLoading();
+      this.submiting = false;
+    }
+  },
+  showMessage(type, content) {
+    Message[type]({
       context: this,
       offset: [90, 32],
       duration: 3000,
-      content: '签到成功'
+      content: content
     });
   },
   todoTask() {

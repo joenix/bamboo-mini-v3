@@ -1,5 +1,6 @@
 // pages/usercenter/suggest/suggest.js
 import Message from 'tdesign-miniprogram/message/index';
+import dayjs from 'dayjs';
 
 Page({
   /**
@@ -10,20 +11,27 @@ Page({
     total: 0,
     listData: []
   },
-  onShow: function () {
+  onLoad: function (options) {
+    this.setData({
+      score: options.score,
+      total: options.score
+    });
     this.getScoreData();
   },
   async getScoreData() {
     this.showLoading();
     try {
       const userInfo = wx.getStorageSync('userInfo');
-      const data = await post(api.User.score, {
-        userId: userInfo.id
+      const data = await post(api.User.getScore, {
+        userid: userInfo.id
       });
       this.setData({
-        score: data.score,
-        total: data.total,
-        listData: data.list
+        listData: data.map((item) => {
+          return {
+            ...item,
+            createdAt: dayjs(item.createdAt).format('YYYY-MM-DD')
+          };
+        })
       });
     } catch (error) {
       console.log(error);
