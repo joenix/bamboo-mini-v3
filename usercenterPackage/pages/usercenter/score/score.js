@@ -1,26 +1,54 @@
 // pages/usercenter/suggest/suggest.js
-Page({
+import Message from 'tdesign-miniprogram/message/index';
+import dayjs from 'dayjs';
+import { api, post } from '../../../../utils/util';
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    score: 289,
-    total: 4000,
+    score: 0,
+    total: 0,
     listData: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    console.log(1213);
     this.setData({
-      listData: [{
-        name: '点读任务',
-        time: '2024-09-21',
-        score: '100'
-      }]
-    })
+      score: options.score,
+      total: options.score
+    });
+    this.getScoreData();
   },
-})
+  async getScoreData() {
+    wx.showLoading({
+      title:"加载中"
+    });
+    try {
+      const userInfo = wx.getStorageSync('userInfo');
+      const data = await post(api.User.getScore, {
+        userid: userInfo.id
+      });
+      this.setData({
+        listData: data.map((item) => {
+          return {
+            ...item,
+            createdAt: dayjs(item.createdAt).format('YYYY-MM-DD')
+          };
+        })
+      });
+    } catch (error) {
+      console.log(error);
+      this.showMessage('error', '获取数据失败');
+    } finally {
+      wx.hideLoading();
+    }
+  },
+  showMessage(type, content) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: 3000,
+      content
+    });
+  }
+});

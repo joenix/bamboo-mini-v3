@@ -21,7 +21,7 @@ page {
   padding-left: 12rpx;
   border-radius: 8rpx 8rpx 0 0;
   background:
-    #926523 url(https://oss.lhdd.club/ui/ui_calendar.png) right 68rpx top no-repeat;
+    #926523 url(http://oss.lhdd.club/ui/ui_calendar.png) right 68rpx top no-repeat;
   background-size: 332rpx 124rpx;
 }
 
@@ -138,11 +138,17 @@ page {
 }
 
 .book-entries-block {
-  background: #fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top no-repeat;
+  background: #fff url(http://oss.lhdd.club/ui/book-entries-3.png) right top no-repeat;
   background-size: 400rpx 164rpx;
   border: 1px solid #CBBA9F;
   margin-bottom: 20rpx;
   padding: 20rpx;
+}
+
+.flex-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .book-entries-title {
@@ -192,6 +198,15 @@ page {
   justify-content: space-between;
 }
 
+.flex-block .book-entries-flex {
+  flex: 1;
+}
+
+.w-220 {
+  max-width: 250rpx;
+  margin-left: 10rpx;
+}
+
 .book-entries-total {
   font-size: 24rpx;
   color: #B3ABA0;
@@ -223,7 +238,7 @@ page {
 .book-entries-button-large {
   color: #926523;
   margin-top: 16rpx;
-  padding: 8rpx 0;
+  padding: 12rpx 0;
   text-align: center;
   border: 2rpx solid #926523;
 }
@@ -252,5 +267,5 @@ page {
 }
 
 .activePopup .btn:last-child {
-  margin-top: 60rpx;
+  margin-top: 30rpx;
 }

@@ -1,23 +1,39 @@
 import TabMenu from './data';
+import { checkToken } from '../utils/util';
+
+const app = getApp();
 
 Component({
   data: {
     active: 0,
     list: TabMenu
   },
+  lifetimes: {
+    attached() {
+      this.setData({
+        active: app.globalData.selectedTab
+      });
+    }
+  },
   methods: {
     onChange(event) {
+      if (!checkToken()) {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        });
+        return;
+      }
+      const index = event.detail.value;
+      if (index === this.data.active) return;
+      app.globalData.selectedTab = index;
       this.setData({
-        active: event.detail.value
+        active: index
       });
-
-      const url = this.data.list[event.detail.value].url;
-
+      const url = this.data.list[index].url;
       wx.switchTab({
         url: `/${url}`
       });
     },
-
     init() {
       const page = getCurrentPages().pop();
       const route = page ? page.route.split('?')[0] : '';

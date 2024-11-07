@@ -1,5 +1,5 @@
 <!-- 自定义nav -->
-<scroll-view style="height: 100vh;" scroll-y scroll-with-animation scroll-into-view="{{viewId}}">
+<scroll-view style="height: 100vh;" scroll-y scroll-with-animation scroll-into-view="{{viewId}}" scroll-into-view-offset="-150">
   <custom-nav title="贴士集" center showBack="{{false}}" background="transparent" />
   <pager class="page-tips">
     <view class="tabs">

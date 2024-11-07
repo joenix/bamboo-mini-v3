@@ -12,17 +12,8 @@ Page({
     });
   },
 
-  loadImage({
-    key,
-    src
-  }) {
+  loadImage({ key, src }) {
     return new Promise((resolve, reject) => {
-      // wx.getImageInfo({
-      //   src,
-      //   success: ({ path }) => resolve({ key, path }),
-      //   fail: (e) => reject(e)
-      // });
-
       resolve({
         key,
         path: src
@@ -36,22 +27,24 @@ Page({
     Promise.all(promises)
       .then((results) => {
         // results.forEach(({ key, path }) => this.setData({ [key]: `background-image: url(${path});` }));
-        console.log(results.reduce((acc, {
-          key,
-          path
-        }) => ({
-          ...acc,
-          [key]: path
-        }), {}));
+        console.log(
+          results.reduce(
+            (acc, { key, path }) => ({
+              ...acc,
+              [key]: path
+            }),
+            {}
+          )
+        );
 
         this.setData({
-          ...results.reduce((acc, {
-            key,
-            path
-          }) => ({
-            ...acc,
-            [key]: path
-          }), {}),
+          ...results.reduce(
+            (acc, { key, path }) => ({
+              ...acc,
+              [key]: path
+            }),
+            {}
+          ),
           visible: true
         });
       })
@@ -61,9 +54,10 @@ Page({
   },
 
   onLoad() {
-    this.preloadImage([{
+    this.preloadImage([
+      {
         key: 'bgImage',
-        src: 'https://oss.lhdd.club/ui/bg.jpg'
+        src: 'http://oss.lhdd.club/ui/bg.jpg'
       },
       {
         key: 'sgImage',

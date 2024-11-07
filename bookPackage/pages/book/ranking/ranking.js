@@ -1,7 +1,4 @@
-import {
-  api,
-  post
-} from '../../../../utils/util';
+import { api, post } from '../../../../utils/util';
 
 // pages/book/ranking/ranking.js
 Page({
@@ -23,8 +20,8 @@ Page({
     this.setData({
       myUserId: userInfo.id,
       currentTab: 'today'
-    })
-    this.getRankList('today')
+    });
+    this.getRankList('today');
   },
 
   /**
@@ -41,6 +38,7 @@ Page({
     this.setData({
       currentTab: tab
     });
+    this.getRankList(tab);
   },
   async getRankList(listType) {
     const isTodayList = listType === 'today';
@@ -51,7 +49,7 @@ Page({
       const data = {
         rank: index + 1,
         userId: v.userId,
-        time: (v._sum.time / 3600).toFixed(2),
+        time: (v._sum.time / 3600 / 1000).toFixed(2),
         avatarUrl: v.user.avatarUrl,
         nickname: v.user.nickname
       };

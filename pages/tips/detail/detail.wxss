@@ -1,7 +1,7 @@
 /* pages/tips/detail/detail.wxss */
 page {
   position: relative;
-  background: #F9F8F6 url('https://oss.lhdd.club/ui/tips-top.png') top center no-repeat;
+  background: #F9F8F6 url('http://oss.lhdd.club/ui/tips-top.png') top center no-repeat;
   background-size: 100%;
 }
 
@@ -23,7 +23,7 @@ page {
   line-height: 80rpx;
   color: #373737;
   border-radius: 4rpx;
-  background: #FAF8F4 url('https://oss.lhdd.club/ui/tips-detail.png') right bottom no-repeat;
+  background: #FAF8F4 url('http://oss.lhdd.club/ui/tips-detail.png') right bottom no-repeat;
   background-size: 410rpx 390rpx;
   box-sizing: border-box;
   border: 2rpx solid #E1D5BD;

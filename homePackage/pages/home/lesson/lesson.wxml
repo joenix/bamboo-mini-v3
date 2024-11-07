@@ -2,10 +2,10 @@
 <custom-nav title="教师介绍" />
 
 <pager class="lesson">
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_2.png" />
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_3.png" />
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_4.png" />
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_2.png" />
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_3.png" />
-    <image class="lesson-picture" src="https://oss.lhdd.club/ui/lesson_sample_4.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_2.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_3.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_4.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_2.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_3.png" />
+  <image class="lesson-picture" src="http://oss.lhdd.club/ui/lesson_sample_4.png" />
 </pager>

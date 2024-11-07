@@ -1,5 +1,7 @@
 <!--pages/usercenter/suggest/suggest.wxml-->
 <!-- 自定义nav -->
 <custom-nav title="我的报告" center background="transparent" />
-
-<text>我的报告</text>
+<t-message id="t-message" />
+<view class="container">
+  <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view>

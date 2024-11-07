@@ -8,11 +8,15 @@ export const api = {
     registry: '/users/regist',
     getall: '/users/get_all',
     info: '/users/get_info',
-    data: '/users/get_data',
+    data: '/users/get_user_info_item',
     login: '/users/login',
     wx_login: '/users/wx_login',
     update: '/users/update',
-    updateInfo: '/users/update_user_info'
+    // updateInfo: '/users/update_user_info'
+    updateInfo: '/users/set_user_info',
+    report: '/users/get_user_report',
+    getScore: '/users/get_credit_his',
+    updateScore: '/users/update_crtedit'
   },
   // 通用
   Public: {
@@ -90,6 +94,7 @@ export const api = {
   Read: {
     books: '/book/wx_get_books',
     avtiveBook: '/code/active',
+    records: '/book/get_all_records',
     submit: '/book/book_his'
   },
   // 点读排行

@@ -1,6 +1,6 @@
 <!-- 自定义nav -->
 <custom-nav title="我的学分" white center background="transparent" />
-
+<t-message id="t-message" />
 <view class="score-container">
   <view class="cur">
     <view class="title">可用学分</view>
@@ -16,10 +16,10 @@
     <view class="list-container">
       <view class="list-item" wx:for="{{listData}}" wx:key="index">
         <view class="left">
-          <view class="name">{{ item.name }}</view>
-          <view class="time">{{ item.time }}</view>
+          <view class="name">{{ item.content }}</view>
+          <view class="time">{{ item.createdAt }}</view>
         </view>
-        <view>学分<text class="score">+{{ item.score }}</text></view>
+        <view>学分<text class="score">{{ item.credit }}</text></view>
       </view>
     </view>
   </view>

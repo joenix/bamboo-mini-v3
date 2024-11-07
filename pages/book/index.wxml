@@ -27,7 +27,7 @@
 
   <t-row gutter="10" class="book-entries">
     <t-col span="12">
-      <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(https://oss.lhdd.club/ui/book-entries-1.png);">
+      <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(http://oss.lhdd.club/ui/book-entries-1.png);">
         <view class="book-entries-title">点读排名</view>
         <view class="book-entries-text">
           查看你的历史排名
@@ -36,7 +36,7 @@
       </view>
     </t-col>
     <t-col span="12">
-      <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(https://oss.lhdd.club/ui/book-entries-2.png);">
+      <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(http://oss.lhdd.club/ui/book-entries-2.png);">
         <view class="book-entries-title">六合竹简</view>
         <view class="book-entries-text">
           点读指法教学
@@ -46,37 +46,33 @@
     </t-col>
   </t-row>
   <view class="book-entries-block" wx:for="{{listData}}" wx:key="index">
-    <t-row data-item="{{item}}" bind:tap="onButtonTap">
-      <t-col span="12">
-        <view class="book-entries-flex">
-          <view>
-            <view class="book-entries-title">{{item.name}}</view>
-            <view class="book-entries-text">建议单次时长45分</view>
-          </view>
-          <view class="book-entries-total">
-            今日已完成 <text>{{item.count}}</text> 次，总时长 <text>{{item.time}}</text>
+    <view class="flex-block">
+      <view class="book-entries-flex">
+        <view>
+          <view class="book-entries-title">{{item.name}}</view>
+          <view class="book-entries-text">建议单次时长45分</view>
+        </view>
+        <view class="book-entries-total">
+          今日已完成 <text>{{item.today_count}}</text>次，总时长 <text>{{item.today_time}}</text>
+        </view>
+      </view>
+      <view class="book-entries-flex w-220">
+        <view></view>
+        <view class="book-entries-affix">
+          今天已有 <text>{{ item.read_count }}</text> 人完成点读
+          <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap" style="opacity: {{isToday ? 1 : 0.3}}">
+            {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
           </view>
         </view>
-      </t-col>
-      <t-col span="9" offset="3">
-        <view class="book-entries-flex">
-          <view></view>
-          <view class="book-entries-affix">
-            今天已有 <text>{{ item.userName }}</text> 人完成点读
-            <view class="book-entries-button-large">
-              {{ !item.active ? "暂未激活" : "开始点读" }} <text>▶</text>
-            </view>
-          </view>
-        </view>
-      </t-col>
-    </t-row>
+      </view>
+    </view>
   </view>
 </pager>
 <t-popup usingCustomNavbar bind:visible-change="onVisibleChange" visible="{{activePopupShow}}" placement="bottom">
   <view class="activePopup">
     <t-input borderless placeholder="请输入激活码" bind:change="onActiveCodeChange" />
     <view class="btn" bind:tap="activeBook">激活</view>
-    <t-divider content="或去商场购买" />
+    <t-divider content="或" />
     <view class="btn" bind:tap="goShop">去商场购买</view>
   </view>
 </t-popup>

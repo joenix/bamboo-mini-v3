@@ -1,63 +1,48 @@
-import {
-  lunar,
-  api,
-  post,
-  link2
-} from '../../utils/util';
+import { lunar, api, post, link2 } from '../../utils/util';
 import dayjs from 'dayjs';
-import {
-  Toast
-} from 'tdesign-miniprogram';
+import { Toast } from 'tdesign-miniprogram';
 
 // pages/book/book.js
 function getCommonData(month, disable) {
   return {
-    minDate: month.startOf("month").valueOf(),
-    maxDate: month.endOf("month").valueOf(),
-    curerntDate: month.endOf("month").valueOf(),
+    minDate: month.startOf('month').valueOf(),
+    maxDate: month.endOf('month').valueOf(),
+    curerntDate: month.endOf('month').valueOf(),
     currentYearMonthStr: month.format('YYYY/MM'),
     disableNext: disable
-  }
+  };
 }
 
-const initData = getCommonData(dayjs(), true)
+const initData = getCommonData(dayjs(), true);
 
 const generateFormatFn = (readDates = []) => {
   return (current) => {
-    console.log(this);
-    const {
-      date
-    } = current;
+    const { date } = current;
     if (dayjs(date) > dayjs()) {
-      current.type = 'disabled'
+      current.type = 'disabled';
     }
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const today = date.getDate();
+    const newClassName = [current.className || ''];
     const week_day = date.getDay();
-    // 农历
-    const {
-      dayStr,
-      day,
-      monthStr
-    } = lunar.solarToLunar(year, month, today);
-    let newClassName = [];
     if (week_day === 0) {
-      newClassName.push('sunday')
+      newClassName.push('sunday');
     }
     if (week_day === 6) {
       newClassName.push('saturday');
     }
-    if (readDates.includes(day)) {
+    if (readDates.some((v) => dayjs(v).isSame(date, 'day'))) {
       newClassName.push('is-readed');
     }
-    current.className = (current.className || "") + ' ' + newClassName.join(' ');
-    // 日期
+    current.className = newClassName.join(' ');
+    // 农历日期
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const today = date.getDate();
+    const { dayStr } = lunar.solarToLunar(year, month, today);
     current.suffix = dayStr;
     // Update
     return current;
-  }
-}
+  };
+};
 
 Page({
   /**
@@ -70,13 +55,15 @@ Page({
     listData: [],
     activePopupShow: false,
     bookId: '',
-    activeCode: ''
+    activeCode: '',
+    isToday: true
   },
   prevMonth() {
     const current = this.data.curerntDate;
     const month = dayjs(current).subtract(1, 'month');
     const data = getCommonData(month, false);
     this.setData(data);
+    this.getReadRecords();
   },
   nextMonth() {
     if (this.data.disableNext) {
@@ -86,20 +73,23 @@ Page({
     const month = dayjs(current).add(1, 'month');
     const data = getCommonData(month, month >= dayjs());
     this.setData(data);
+    this.getReadRecords();
   },
   toToday() {
     this.setData({
       calendarValue: dayjs().valueOf(),
+      isToday: true,
       ...initData
     });
+    this.getReadRecords();
   },
   handleSelect(e) {
-    const {
-      value
-    } = e.detail;
+    const { value } = e.detail;
+    const isToday = dayjs(value).format('YYYYMMDD') === dayjs().format('YYYYMMDD');
     this.setData({
       calendarValue: value,
-    })
+      isToday
+    });
   },
   link_ranking() {
     link2('/bookPackage/pages/book/ranking/ranking');
@@ -111,76 +101,112 @@ Page({
     link2('/bookPackage/pages/book/learn/learn');
   },
   onButtonTap(e) {
-    const data = e.currentTarget.dataset.item
-    const bookId = data.id
+    if (!this.data.isToday) return;
+    const data = e.currentTarget.dataset.item;
+    const bookId = data.id;
     if (data.active) {
-      this.link_read(bookId)
+      this.link_read(bookId);
       return;
     }
     this.setData({
       activePopupShow: true,
       bookId
-    })
+    });
   },
   onVisibleChange(e) {
     this.setData({
-      activePopupShow: e.detail.visible,
+      activePopupShow: e.detail.visible
     });
   },
   onActiveCodeChange(e) {
     this.setData({
       activeCode: e.detail.value
-    })
+    });
   },
-  showToast(message) {
+  showToast(e) {
+    const message = typeof e === 'string' ? e : e.message;
     Toast({
       context: this,
       selector: '#t-toast',
-      message,
+      message
     });
   },
   async activeBook() {
-    const userInfo = wx.getStorageSync('userInfo');
     const code = this.data.activeCode;
-    if (!code) {
-      showToast('请输入激活码');
+    if (!code.trim()) {
+      this.showToast('请输入激活码');
       return;
     }
+    if (this.activing) {
+      return;
+    }
+    this.activing = true;
+    const userInfo = wx.getStorageSync('userInfo');
     const bookId = this.data.bookId;
-    await post(api.Read.active, {
-      bookId,
-      code,
-      userId: userInfo.id
-    });
-    showToast('激活成功');
-    const newListData = this.data.listData.map(v => {
-      return v.id === bookId ? {
-        ...v,
-        active: true
-      } : v
-    })
-    this.setData({
-      listData: newListData
-    })
+    try {
+      await post(api.Read.avtiveBook, {
+        bookId,
+        code,
+        userId: userInfo.id
+      });
+      this.showToast('激活成功');
+      const newListData = this.data.listData.map((v) => {
+        return v.id === bookId
+          ? {
+              ...v,
+              active: true
+            }
+          : v;
+      });
+      this.setData({
+        activePopupShow: false,
+        listData: newListData
+      });
+    } catch (e) {
+      this.showToast(e.message);
+    } finally {
+      this.activing = false;
+    }
   },
   goShop() {
     // TODO
+    this.showToast('暂未开通');
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  async onLoad() {
-    const res = await post(api.Read.books);
+  async getReadRecords() {
+    const userInfo = wx.getStorageSync('userInfo');
+    const [year, month] = this.data.currentYearMonthStr.split('/');
+    const records = await post(api.Read.records, {
+      year: +year,
+      month: +month,
+      userid: userInfo.id
+    });
+    const recordDates = records?.data?.map((v) => dayjs(+v)) || [];
     this.setData({
-      listData: res || [],
-      format: generateFormatFn([1, 5, 9, 22])
-    })
+      format: generateFormatFn(recordDates)
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  async getBookList() {
+    const bookList = await post(api.Read.books);
+    const listData =
+      bookList?.data?.map((v) => {
+        return {
+          ...v,
+          today_time: Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h'
+        };
+      }) || [];
+    this.setData({
+      listData
+    });
+  },
+  initPage() {
+    this.getBookList();
+    this.getReadRecords();
+  },
   onShow() {
     this.getTabBar().init();
+    this.initPage();
   },
+  onPullDownRefresh() {
+    this.initPage();
+  }
 });

@@ -141,11 +141,15 @@ const get = (url, data = {}, options = {}) => {
         'Content-Type': 'application/json',
         token
       },
-      success: ({
-        data
-      }) => {
-        const _data = !data.msg || typeof data.msg === 'string' ? data.data : data.msg
-        return data.status === 200 ? resolve(_data) : reject(data.msg)
+      success: (res) => {
+        const data = res.data;
+        if (res.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+          return reject(data.error)
+        }
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
       },
       fail: (error) => reject(error)
     });
@@ -164,13 +168,19 @@ const post = async (url, data = {}, options = {}) => {
         'Content-Type': 'application/json',
         token
       },
-      success: ({
-        data
-      }) => {
-        const _data = !data.msg || typeof data.msg === 'string' ? data.data : data.msg
-        return data.status === 200 ? resolve(_data) : reject(data.msg)
+      success: (res) => {
+        const data = res.data;
+        if (res.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+          return reject(data.error)
+        }
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
       },
-      fail: (error) => reject(error)
+      fail: (error) => {
+        reject(error)
+      }
     });
   });
 };

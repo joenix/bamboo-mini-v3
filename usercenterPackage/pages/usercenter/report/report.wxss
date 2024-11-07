@@ -1,4 +1,11 @@
 /* pages/usercenter/suggest/suggest.wxss */
 page {
+  height: 100vh;
   background: #F9F8F6;
+}
+
+.container,
+ec-canvas {
+  width: 100vw;
+  height: 800rpx;
 }

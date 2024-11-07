@@ -1,5 +1,5 @@
 page {
-  background: linear-gradient(180deg, #C0975A 0%, #C0975A 520rpx, #F9F8F6 521rpx, #F9F8F6 100%);
+  background: linear-gradient(180deg, #C0975A 0%, #C0975A 520rpx, #F9F8F6 521rpx, #F9F8F6 100%) no-repeat;
 }
 
 .score-container {

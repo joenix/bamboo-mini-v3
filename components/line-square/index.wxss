@@ -2,7 +2,7 @@
 .line-box {
   height: 8px;
   width: 100%;
-  background: url('https://oss.lhdd.club/ui/split1.png') center no-repeat;
+  background: url('http://oss.lhdd.club/ui/split1.png') center no-repeat;
   background-size: 100%;
   margin-bottom: 44rpx;
 }
