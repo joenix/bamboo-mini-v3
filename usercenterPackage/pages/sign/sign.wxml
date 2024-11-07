@@ -19,7 +19,10 @@
 
       <!-- 签到进度 -->
       <view class="sign-module-progress">
-        <view class="progress-container {{index === 6 ? 'sevenday' : ''}} {{item.checked ? 'signed' : ''}}" wx:for="{{checks}}" wx:for-index="index" wx:for-item="item" data-index="{{index}}" data-item="{{item}}" data-credit="{{index + 1}}" wx:key="*this" bind:tap="onSign">
+        <view
+          class="progress-container {{index === 6 ? 'sevenday' : ''}} {{item.checked ? 'signed' : ''}}"
+          wx:for="{{checks}}" data-index="{{index}}" data-item="{{item}}" data-credit="{{index + 1}}"
+          wx:key="index" bind:tap="onSign">
           <text>第 {{index + 1}} 天</text>
           <view class="tips" wx:if="{{index === 6 || item.checked === true}}"></view>
           <view class="tips" wx:else>+{{index + 1}}</view>
