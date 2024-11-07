@@ -119,7 +119,7 @@ Page({
   logout() {
     wx.removeStorageSync('token');
     wx.navigateTo({
-      url: ''
+      url: '/pages/login/login'
     });
   }
 });

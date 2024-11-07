@@ -12,7 +12,7 @@ const ScoreType = {
   [UpdateType.Sign]: { content: '签到', credit: 10 }
 };
 
-export default updateScoreAction = async (type) => {
+export const updateScoreAction = async (type) => {
   const userInfo = wx.getStorageSync('userInfo');
   await post(api.User.updateScore, {
     userid: userInfo.id,
