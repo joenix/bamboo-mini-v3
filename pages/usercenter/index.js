@@ -1,12 +1,5 @@
-import {
-  fetchUserCenter
-} from '../../services/usercenter/fetchUsercenter';
-import {
-  api,
-  get,
-  post,
-  link2
-} from '../../utils/util';
+import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
+import { api, get, post, link2 } from '../../utils/util';
 
 // 生成信息
 const getDefaultData = () => {
@@ -18,7 +11,7 @@ const getDefaultData = () => {
     },
     customerServiceInfo: {},
     currAuthStep: 1,
-    versionNo: '',
+    versionNo: ''
   };
 };
 
@@ -60,11 +53,7 @@ Page({
   },
 
   fetUseriInfoHandle() {
-    fetchUserCenter().then(({
-      userInfo,
-      countsData,
-      customerServiceInfo
-    }) => {
+    fetchUserCenter().then(({ userInfo, countsData, customerServiceInfo }) => {
       this.setData({
         userInfo,
         customerServiceInfo,
@@ -74,12 +63,8 @@ Page({
     });
   },
 
-  onClickCell({
-    currentTarget
-  }) {
-    const {
-      type
-    } = currentTarget.dataset;
+  onClickCell({ currentTarget }) {
+    const { type } = currentTarget.dataset;
 
     switch (type) {
       // 学分兑换
@@ -109,9 +94,7 @@ Page({
   },
 
   gotoUserEditPage() {
-    const {
-      currAuthStep
-    } = this.data;
+    const { currAuthStep } = this.data;
     if (currAuthStep === 2) {
       wx.navigateTo({
         url: '/usercenterPackage/pages/usercenter/person-info/index'
@@ -123,10 +106,7 @@ Page({
 
   getVersionInfo() {
     const versionInfo = wx.getAccountInfoSync();
-    const {
-      version,
-      envVersion = __wxConfig
-    } = versionInfo.miniProgram;
+    const { version, envVersion = __wxConfig } = versionInfo.miniProgram;
     this.setData({
       versionNo: envVersion === 'release' ? version : envVersion
     });

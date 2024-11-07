@@ -1,17 +1,7 @@
-import {
-  checkToken,
-  api,
-  get,
-  post,
-  link2
-} from '../../utils/util';
+import { checkToken, api, get, post, link2 } from '../../utils/util';
 
-import {
-  fetchHome
-} from '../../services/home/home';
-import {
-  fetchGoodsList
-} from '../../services/good/fetchGoods';
+import { fetchHome } from '../../services/home/home';
+import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
@@ -41,10 +31,10 @@ Page({
     },
     // Code by Joenix
     content: {
-      '0': [],
-      '1': [],
-      '2': [],
-      '3': [],
+      0: [],
+      1: [],
+      2: [],
+      3: []
     },
     course: []
   },
@@ -52,11 +42,7 @@ Page({
   // 从 Blocker 同步数据
   syncIndex(e) {
     // 解构数据
-    const {
-      name,
-      index,
-      item
-    } = e.detail;
+    const { name, index, item } = e.detail;
 
     // 更新数据
     this.setData({
@@ -95,7 +81,7 @@ Page({
   onReachBottom() {},
 
   onPullDownRefresh() {
-    const id = this.data.currentTabId
+    const id = this.data.currentTabId;
     this.init(id);
   },
 
@@ -103,13 +89,13 @@ Page({
     if (!id) {
       return;
     }
-    let {
-      data
-    } = await post(api.Information.getall, {
-      filters: [{
-        key: 'type',
-        value: id
-      }]
+    let { data } = await post(api.Information.getall, {
+      filters: [
+        {
+          key: 'type',
+          value: id
+        }
+      ]
     });
     const newContent = data.map((item) => {
       if (/\,/.test(item.name)) {
@@ -137,18 +123,15 @@ Page({
     const id = e.detail.value;
     this.setData({
       currentTabId: id
-    })
-    this.init(id)
+    });
+    this.init(id);
   },
   loadHomePage() {
     wx.stopPullDownRefresh();
     this.setData({
       pageLoading: true
     });
-    fetchHome().then(({
-      swiper,
-      tabList
-    }) => {
+    fetchHome().then(({ swiper, tabList }) => {
       this.setData({
         tabList,
         imgSrcs: swiper.slice(0),
@@ -216,9 +199,7 @@ Page({
   },
   // 最新资讯 链接跳转
   link_article(e) {
-    const {
-      id
-    } = e.currentTarget.dataset;
+    const { id } = e.currentTarget.dataset;
 
     link2('/homePackage/pages/article/article', {
       id
@@ -226,9 +207,7 @@ Page({
   },
 
   link_team(e) {
-    const {
-      id
-    } = e.currentTarget.dataset;
+    const { id } = e.currentTarget.dataset;
 
     link2('/homePackage/pages/home/team/team', {
       id
@@ -236,9 +215,7 @@ Page({
   },
 
   link_org(e) {
-    const {
-      id
-    } = e.currentTarget.dataset;
+    const { id } = e.currentTarget.dataset;
 
     link2('/homePackage/pages/home/org/org', {
       id
@@ -246,9 +223,7 @@ Page({
   },
 
   link_lesson(e) {
-    const {
-      id
-    } = e.currentTarget.dataset;
+    const { id } = e.currentTarget.dataset;
 
     link2('/homePackage/pages/home/lesson/lesson', {
       id
@@ -259,9 +234,7 @@ Page({
   jump2information(e) {
     const {
       currentTarget: {
-        dataset: {
-          id
-        }
+        dataset: { id }
       }
     } = e;
 
@@ -284,9 +257,7 @@ Page({
   jump2jingang(e) {
     const {
       currentTarget: {
-        dataset: {
-          type
-        }
+        dataset: { type }
       }
     } = e;
 
@@ -362,12 +333,7 @@ Page({
   },
 
   handleTouchEnd(e) {
-    const {
-      startY,
-      endY,
-      current,
-      newImages
-    } = this.data;
+    const { startY, endY, current, newImages } = this.data;
 
     const slideDistance = startY - endY;
 

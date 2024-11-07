@@ -1,44 +1,35 @@
-import {
-  lunar,
-  api,
-  post,
-  link2
-} from '../../utils/util';
+import { lunar, api, post, link2 } from '../../utils/util';
 import dayjs from 'dayjs';
-import {
-  Toast
-} from 'tdesign-miniprogram';
+import { Toast } from 'tdesign-miniprogram';
 
 // pages/book/book.js
 function getCommonData(month, disable) {
   return {
-    minDate: month.startOf("month").valueOf(),
-    maxDate: month.endOf("month").valueOf(),
-    curerntDate: month.endOf("month").valueOf(),
+    minDate: month.startOf('month').valueOf(),
+    maxDate: month.endOf('month').valueOf(),
+    curerntDate: month.endOf('month').valueOf(),
     currentYearMonthStr: month.format('YYYY/MM'),
     disableNext: disable
-  }
+  };
 }
 
-const initData = getCommonData(dayjs(), true)
+const initData = getCommonData(dayjs(), true);
 
 const generateFormatFn = (readDates = []) => {
   return (current) => {
-    const {
-      date
-    } = current;
+    const { date } = current;
     if (dayjs(date) > dayjs()) {
-      current.type = 'disabled'
+      current.type = 'disabled';
     }
-    const newClassName = [current.className || ""];
+    const newClassName = [current.className || ''];
     const week_day = date.getDay();
     if (week_day === 0) {
-      newClassName.push('sunday')
+      newClassName.push('sunday');
     }
     if (week_day === 6) {
       newClassName.push('saturday');
     }
-    if (readDates.some(v => dayjs(v).isSame(date, 'day'))) {
+    if (readDates.some((v) => dayjs(v).isSame(date, 'day'))) {
       newClassName.push('is-readed');
     }
     current.className = newClassName.join(' ');
@@ -46,14 +37,12 @@ const generateFormatFn = (readDates = []) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const today = date.getDate();
-    const {
-      dayStr
-    } = lunar.solarToLunar(year, month, today);
+    const { dayStr } = lunar.solarToLunar(year, month, today);
     current.suffix = dayStr;
     // Update
     return current;
-  }
-}
+  };
+};
 
 Page({
   /**
@@ -95,14 +84,12 @@ Page({
     this.getReadRecords();
   },
   handleSelect(e) {
-    const {
-      value
-    } = e.detail;
-    const isToday = dayjs(value).format('YYYYMMDD') === dayjs().format('YYYYMMDD')
+    const { value } = e.detail;
+    const isToday = dayjs(value).format('YYYYMMDD') === dayjs().format('YYYYMMDD');
     this.setData({
       calendarValue: value,
       isToday
-    })
+    });
   },
   link_ranking() {
     link2('/bookPackage/pages/book/ranking/ranking');
@@ -115,33 +102,33 @@ Page({
   },
   onButtonTap(e) {
     if (!this.data.isToday) return;
-    const data = e.currentTarget.dataset.item
-    const bookId = data.id
+    const data = e.currentTarget.dataset.item;
+    const bookId = data.id;
     if (data.active) {
-      this.link_read(bookId)
+      this.link_read(bookId);
       return;
     }
     this.setData({
       activePopupShow: true,
       bookId
-    })
+    });
   },
   onVisibleChange(e) {
     this.setData({
-      activePopupShow: e.detail.visible,
+      activePopupShow: e.detail.visible
     });
   },
   onActiveCodeChange(e) {
     this.setData({
       activeCode: e.detail.value
-    })
+    });
   },
   showToast(e) {
-    const message = typeof e === 'string' ? e : e.message
+    const message = typeof e === 'string' ? e : e.message;
     Toast({
       context: this,
       selector: '#t-toast',
-      message,
+      message
     });
   },
   async activeBook() {
@@ -159,49 +146,52 @@ Page({
         userId: userInfo.id
       });
     } catch (e) {
-      this.showToast(e)
+      this.showToast(e);
       return;
     }
     this.showToast('激活成功');
-    const newListData = this.data.listData.map(v => {
-      return v.id === bookId ? {
-        ...v,
-        active: true
-      } : v
-    })
+    const newListData = this.data.listData.map((v) => {
+      return v.id === bookId
+        ? {
+            ...v,
+            active: true
+          }
+        : v;
+    });
     this.setData({
       activePopupShow: false,
       listData: newListData
-    })
+    });
   },
   goShop() {
     // TODO
     this.showToast('暂未开通');
   },
   async getReadRecords() {
-    const userInfo = wx.getStorageSync('userInfo')
-    const [year, month] = this.data.currentYearMonthStr.split('/')
+    const userInfo = wx.getStorageSync('userInfo');
+    const [year, month] = this.data.currentYearMonthStr.split('/');
     const records = await post(api.Read.records, {
       year: +year,
       month: +month,
       userid: userInfo.id
-    })
-    const recordDates = records?.data?.map(v => dayjs(+v)) || [];
+    });
+    const recordDates = records?.data?.map((v) => dayjs(+v)) || [];
     this.setData({
       format: generateFormatFn(recordDates)
-    })
+    });
   },
   async getBookList() {
     const bookList = await post(api.Read.books);
-    const listData = bookList?.data?.map(v => {
-      return {
-        ...v,
-        today_time: Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h'
-      }
-    }) || []
+    const listData =
+      bookList?.data?.map((v) => {
+        return {
+          ...v,
+          today_time: Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h'
+        };
+      }) || [];
     this.setData({
       listData
-    })
+    });
   },
   initPage() {
     this.getBookList();
@@ -211,9 +201,9 @@ Page({
     this.getTabBar().init();
   },
   onShow() {
-    this.initPage()
+    this.initPage();
   },
   onPullDownRefresh() {
     this.initPage();
-  },
+  }
 });

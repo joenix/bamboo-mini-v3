@@ -1,15 +1,12 @@
-import {
-  api,
-  post,
-  formatTime
-} from '../../utils/util';
+import { api, post, formatTime } from '../../utils/util';
 
 Page({
   data: {
     indexs: [],
     selectIdx: 0,
     viewId: '',
-    tips: [{
+    tips: [
+      {
         index: '今日贴士',
         id: 'today',
         children: []
@@ -21,7 +18,7 @@ Page({
       },
       {
         index: '本月贴士',
-        id: "month",
+        id: 'month',
         children: []
       }
     ],
@@ -47,9 +44,7 @@ Page({
     });
   },
   onControl(event) {
-    const {
-      index
-    } = event.currentTarget.dataset;
+    const { index } = event.currentTarget.dataset;
     const value = this.data.opens[index] || false;
 
     this.data.opens[index] = !value;
@@ -62,9 +57,7 @@ Page({
     this.getTips();
   },
   async getTips() {
-    const {
-      data
-    } = await post(api.Tips.getall);
+    const { data } = await post(api.Tips.getall);
 
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;
@@ -97,7 +90,7 @@ Page({
   },
   jump2Detail(e) {
     const info = e.currentTarget.dataset.info;
-    wx.setStorageSync('tipInfo', info)
+    wx.setStorageSync('tipInfo', info);
     wx.navigateTo({
       url: `/pages/tips/detail/detail`
     });

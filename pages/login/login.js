@@ -1,9 +1,4 @@
-import {
-  api,
-  get,
-  post,
-  link2
-} from '../../utils/util';
+import { api, get, post, link2 } from '../../utils/util';
 import Message from 'tdesign-miniprogram/message/index';
 
 // pages/sign/sign.js
@@ -42,10 +37,7 @@ Page({
    * ======== ======== ========
    */
   async doLogin(e) {
-    const {
-      mobile,
-      captcha
-    } = this.data;
+    const { mobile, captcha } = this.data;
     if (!/^[1][3,4,5,7,8,9][0-9]{9}$/.test(mobile)) {
       return this.showError('请检查手机号码');
     }
@@ -75,13 +67,13 @@ Page({
       wx.setStorageSync('token', token);
       const userInfo = await post(api.User.info, {
         token
-      })
-      wx.setStorageSync('userInfo', userInfo)
+      });
+      wx.setStorageSync('userInfo', userInfo);
       wx.switchTab({
         url: '/pages/home/home'
       });
     } catch (e) {
-      this.showError(typeof e === 'string' ? e : e.message)
+      this.showError(typeof e === 'string' ? e : e.message);
       this.setData({
         lock: false
       });

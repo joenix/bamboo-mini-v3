@@ -1,10 +1,7 @@
 // pages/usercenter/suggest/suggest.js
 import Message from 'tdesign-miniprogram/message/index';
 import dayjs from 'dayjs';
-import {
-  post,
-  api
-} from '../../../../utils/util';
+import { post, api } from '../../../../utils/util';
 import * as echarts from '../../../../components/ec-canvas/echarts';
 
 Page({
@@ -12,7 +9,7 @@ Page({
     ec: {
       lazyLoad: true
     },
-    isDisposed: false,
+    isDisposed: false
   },
   onReady: function () {
     // 获取组件
@@ -22,14 +19,14 @@ Page({
     wx.showLoading({
       title: '加载中',
       mask: true
-    })
+    });
     if (this.ecComponent) {
       this.getUserReport();
       return;
     }
     setTimeout(() => {
       this.getUserReport();
-    }, 300)
+    }, 300);
   },
   onHide() {
     if (this.chart) {
@@ -45,13 +42,13 @@ Page({
       const data = await post(api.User.report, {
         id: userInfo.id,
         day: 30
-      })
+      });
       this.initChart(data);
     } catch (error) {
       console.log(error);
-      this.showMessage('error', '获取数据失败')
+      this.showMessage('error', '获取数据失败');
     } finally {
-      wx.hideLoading()
+      wx.hideLoading();
     }
   },
   initChart(data) {
@@ -78,9 +75,10 @@ Page({
     });
   },
   setOption(chart, data) {
-    const xAxisData = data.map(v => dayjs(v.updatedAt).format('YYYY/MM/DD'))
+    const xAxisData = data.map((v) => dayjs(v.updatedAt).format('YYYY/MM/DD'));
 
-    const legend = [{
+    const legend = [
+      {
         key: 'leftEyes',
         name: '左眼'
       },
@@ -96,22 +94,22 @@ Page({
         key: 'weight',
         name: '体重'
       }
-    ]
+    ];
 
-    const series = legend.map(v => {
+    const series = legend.map((v) => {
       return {
         name: v.name,
         type: 'line',
         smooth: true,
-        data: data.map(d => d[v.key])
-      }
-    })
+        data: data.map((d) => d[v.key])
+      };
+    });
 
     var option = {
       legend: {
-        data: legend.map(v => v.name),
+        data: legend.map((v) => v.name),
         top: 10,
-        left: 'center',
+        left: 'center'
       },
       grid: {
         containLabel: true,
@@ -124,7 +122,7 @@ Page({
       },
       xAxis: {
         type: 'category',
-        data: xAxisData,
+        data: xAxisData
       },
       yAxis: {
         x: 'center',
@@ -148,4 +146,4 @@ Page({
       content
     });
   }
-})
+});

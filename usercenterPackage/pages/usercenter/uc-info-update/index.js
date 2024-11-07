@@ -1,41 +1,32 @@
 // pages/usercenter/suggest/suggest.js
 import Message from 'tdesign-miniprogram/message/index';
-import {
-  host,
-  api,
-  post,
-  wait
-} from '../../../../utils/util';
+import { host, api, post, wait } from '../../../../utils/util';
 
-const keys = ['leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId']
+const keys = ['leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId'];
 const getFilterInfo = (userInfo) => {
   return keys.reduce((acc, k) => {
-    acc[k] = userInfo[k]
+    acc[k] = userInfo[k];
     return acc;
-  }, {})
-}
+  }, {});
+};
 
 Page({
   data: {
-    info: {},
+    info: {}
   },
   onShow() {
     this.init();
   },
   // 输入框输入时
   onInput(e) {
-    const {
-      value
-    } = e.detail;
-    const {
-      name
-    } = e.currentTarget.dataset;
+    const { value } = e.detail;
+    const { name } = e.currentTarget.dataset;
     this.setData({
       info: {
         ...this.data.info,
-        [name]: value,
+        [name]: value
       }
-    })
+    });
   },
   // 初始化获取用户资料
   async init() {
@@ -44,9 +35,9 @@ Page({
       userId: userInfo.id
     });
     if (!info) {
-      return
+      return;
     }
-    const newInfo = getFilterInfo(info)
+    const newInfo = getFilterInfo(info);
     console.log(newInfo);
     this.setData({
       info: newInfo
@@ -63,12 +54,12 @@ Page({
     });
     try {
       await post(api.User.updateInfo, this.data.info);
-      this.showMessage('success', '更新成功')
+      this.showMessage('success', '更新成功');
       await wait(2000);
       wx.navigateBack();
     } catch (error) {
-      console.log(error)
-      this.showMessage('error', '更新失败')
+      console.log(error);
+      this.showMessage('error', '更新失败');
     } finally {
       wx.hideLoading();
       this.updating = false;
@@ -76,7 +67,7 @@ Page({
   },
   uploadAvatar(filePath) {
     return new Promise((resolve, reject) => {
-      const token = wx.getStorageSync('token')
+      const token = wx.getStorageSync('token');
       wx.uploadFile({
         url: host + api.Public.upload,
         filePath,
@@ -92,14 +83,14 @@ Page({
             });
             return;
           }
-          resolve(_res.msg[0]?.path)
+          resolve(_res.msg[0]?.path);
         },
         fail(e) {
           console.log(e);
           reject(e);
         }
-      })
-    })
+      });
+    });
   },
   async onChooseImage(e) {
     // TODO: 选择图片
@@ -111,18 +102,18 @@ Page({
         this.setData({
           info: {
             ...this.data.info,
-            avatar: newAvatar,
+            avatar: newAvatar
           }
-        })
+        });
       },
       fail: (e) => {
         console.log(e);
         if (e.errMsg.indexOf('cancel') > -1) {
           return;
         }
-        this.showMessage('error', '选择图片失败')
+        this.showMessage('error', '选择图片失败');
       }
-    })
+    });
   },
   showMessage(type, content) {
     Message[type]({
@@ -131,5 +122,5 @@ Page({
       duration: 3000,
       content
     });
-  },
+  }
 });

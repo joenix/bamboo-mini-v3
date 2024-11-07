@@ -1,6 +1,5 @@
 // pages/usercenter/suggest/suggest.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -16,11 +15,13 @@ Page({
   onLoad: function (options) {
     console.log(1213);
     this.setData({
-      listData: [{
-        name: '点读任务',
-        time: '2024-09-21',
-        score: '100'
-      }]
-    })
-  },
-})
+      listData: [
+        {
+          name: '点读任务',
+          time: '2024-09-21',
+          score: '100'
+        }
+      ]
+    });
+  }
+});

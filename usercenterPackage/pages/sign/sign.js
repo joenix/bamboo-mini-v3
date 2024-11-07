@@ -1,10 +1,5 @@
 import Message from 'tdesign-miniprogram/message/index';
-import {
-  formatTime,
-  dayjs,
-  day1,
-  stream1
-} from '../../../utils/util';
+import { formatTime, dayjs, day1, stream1 } from '../../../utils/util';
 
 // pages/sign/sign.js
 Page({
@@ -121,10 +116,7 @@ Page({
 
   // 点击签到
   onSign(e) {
-    const {
-      item,
-      index
-    } = e.currentTarget.dataset;
+    const { item, index } = e.currentTarget.dataset;
 
     if (item.date !== this.data.today) {
       return;
@@ -155,6 +147,11 @@ Page({
       content: '签到成功'
     });
   },
+  todoTask() {
+    wx.navigateTo({
+      url: '/pages/book/index'
+    });
+  },
 
   // 数据存储
   onSave(data) {
@@ -173,40 +170,5 @@ Page({
   onLoad: async function (options) {
     // 先获取本地数据
     await this.init();
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {}
+  }
 });

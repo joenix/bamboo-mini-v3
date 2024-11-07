@@ -43,18 +43,7 @@
             <view class="count">+34</view>
           </view>
         </view>
-        <view class="todo">去完成</view>
-      </view>
-      <view class="task-list-item">
-        <image class="split" src="http://oss.lhdd.club/ui/split3.png"></image>
-        <view class="task-detail">
-          <view class="task">每日点读</view>
-          <view class="reward">
-            <view class="score">学分</view>
-            <view class="count">+34</view>
-          </view>
-        </view>
-        <view class="todo">去完成</view>
+        <view class="todo" bind:tap="todoTask">去完成</view>
       </view>
     </view>
   </view>

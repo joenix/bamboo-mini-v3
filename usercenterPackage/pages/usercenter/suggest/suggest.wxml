@@ -1,7 +1,7 @@
 <!--pages/usercenter/suggest/suggest.wxml-->
 <!-- 自定义nav -->
 <custom-nav title="意见反馈" center background="transparent" />
-
+<t-toast id="t-toast" />
 <pager>
   <t-textarea maxlength="500" indicator autosize="{{autosize}}" placeholder="请输入文字" disableDefaultPadding="{{true}}" bind:change="onChange"/>
   <view style="margin-top: 40rpx;">

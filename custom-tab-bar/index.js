@@ -1,7 +1,5 @@
 import TabMenu from './data';
-import {
-  checkToken
-} from '../utils/util'
+import { checkToken } from '../utils/util';
 
 Component({
   data: {
@@ -12,8 +10,8 @@ Component({
     onChange(event) {
       if (!checkToken()) {
         wx.navigateTo({
-          url: '/pages/login/login',
-        })
+          url: '/pages/login/login'
+        });
         return;
       }
       const index = event.detail.value;
