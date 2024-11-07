@@ -37,6 +37,10 @@ Page({
     });
   },
   async save() {
+    wx.showLoading({
+      title: '图片生成中...',
+      mask: true
+    })
     console.log('保存图片');
     try {
       await this.renderToCanvas();
@@ -58,6 +62,8 @@ Page({
       });
     } catch (e) {
       this.showToast('保存失败');
+    } finally {
+      wx.hideLoading()
     }
   },
   renderToCanvas() {

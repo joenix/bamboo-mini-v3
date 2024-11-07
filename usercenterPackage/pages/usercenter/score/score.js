@@ -1,6 +1,7 @@
 // pages/usercenter/suggest/suggest.js
 import Message from 'tdesign-miniprogram/message/index';
 import dayjs from 'dayjs';
+import { api, post } from '../../../../utils/util';
 
 Page({
   /**
@@ -19,7 +20,9 @@ Page({
     this.getScoreData();
   },
   async getScoreData() {
-    this.showLoading();
+    wx.showLoading({
+      title:"加载中"
+    });
     try {
       const userInfo = wx.getStorageSync('userInfo');
       const data = await post(api.User.getScore, {
@@ -37,7 +40,7 @@ Page({
       console.log(error);
       this.showMessage('error', '获取数据失败');
     } finally {
-      this.hideLoading();
+      wx.hideLoading();
     }
   },
   showMessage(type, content) {
