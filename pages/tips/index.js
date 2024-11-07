@@ -23,7 +23,6 @@ Page({
       }
     ],
     opens: [0],
-    stickyOffset: 0
   },
 
   onLoad() {
