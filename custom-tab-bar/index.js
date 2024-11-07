@@ -25,7 +25,7 @@ Component({
       }
       const index = event.detail.value;
       if (index === this.data.active) return;
-      app.globalData.selectedTab = data.index;
+      app.globalData.selectedTab = index;
       this.setData({
         active: index
       });
