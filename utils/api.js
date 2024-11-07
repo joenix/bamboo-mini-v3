@@ -14,7 +14,8 @@ export const api = {
     update: '/users/update',
     // updateInfo: '/users/update_user_info'
     updateInfo: '/users/set_user_info',
-    report: '/users/get_user_report'
+    report: '/users/get_user_report',
+    score: ''
   },
   // 通用
   Public: {

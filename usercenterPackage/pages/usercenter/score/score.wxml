@@ -1,6 +1,6 @@
 <!-- 自定义nav -->
 <custom-nav title="我的学分" white center background="transparent" />
-
+<t-message id="t-message" />
 <view class="score-container">
   <view class="cur">
     <view class="title">可用学分</view>
