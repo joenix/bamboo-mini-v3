@@ -2,7 +2,7 @@
 <!-- 自定义nav -->
 <custom-nav title="学习视频" background="transparent" />
 <view class="main">
-  <video class="video" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"></video>
+  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
   <view class="article">
     <view class="title">01.PPT怎么制作制么制作制作</view>
     <view class="extra-info">
