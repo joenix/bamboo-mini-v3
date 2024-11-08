@@ -18,29 +18,13 @@ page {
   height: 200rpx;
   line-height: 200rpx;
   padding: 0;
-  border: 1px solid #EBE4DD;
+  border-width: 0px;
+  outline: none;
 }
 
-.t-input {
-  padding: 24rpx 0 !important;
-  border-bottom: 1rpx solid #EBE4DD;
-}
-
-.t-input__icon--prefix {
-  display: flex;
-  align-items: center;
-}
-
-.prefix-icon {
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.t-input__label {
-  font-size: 28rpx !important;
-  font-weight: 500;
-  line-height: 40rpx;
-  color: rgba(0, 0, 0, 0.8) !important;
+.input {
+  border-bottom: 1px solid #EBE4DD;
+  padding: 24rpx 0;
 }
 
 .input-placeholder {

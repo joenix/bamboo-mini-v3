@@ -1,12 +1,12 @@
-import { fetchUserCenter } from '../../services/usercenter/fetchUsercenter';
-import { api, get, post, link2 } from '../../utils/util';
+import { api, post, link2, wait } from '../../utils/util';
+import Message from 'tdesign-miniprogram/message/index';
 
 // 生成信息
 const getDefaultData = () => {
   return {
     userInfo: {
       avatarUrl: '',
-      nickname: '正在登录...',
+      nickname: '',
       mobile: ''
     },
     customerServiceInfo: {},
@@ -32,7 +32,6 @@ Page({
    * ======== ======== ========
    */
   async init() {
-    // this.fetUseriInfoHandle();
     // 1. 校验本地 OpenID
     const token = wx.getStorageSync('token');
     if (!token) {
@@ -44,6 +43,14 @@ Page({
     const userInfo = await post(api.User.info, {
       token
     });
+    if (!userInfo) {
+      this.showMessage('error', '获取用户信息失败,请重新登录');
+      wait(3000);
+      wx.redirectTo({
+        url: '/pages/login/login'
+      });
+      return;
+    }
     // 2.1 本地存储 User 信息
     wx.setStorageSync('userInfo', userInfo);
     // 2.2 Mock
@@ -51,18 +58,6 @@ Page({
       userInfo
     });
   },
-
-  fetUseriInfoHandle() {
-    fetchUserCenter().then(({ userInfo, countsData, customerServiceInfo }) => {
-      this.setData({
-        userInfo,
-        customerServiceInfo,
-        currAuthStep: 2
-      });
-      wx.stopPullDownRefresh();
-    });
-  },
-
   onClickCell({ currentTarget }) {
     const { type } = currentTarget.dataset;
 
@@ -87,24 +82,6 @@ Page({
       }
     }
   },
-
-  call() {
-    wx.makePhoneCall({
-      phoneNumber: this.data.customerServiceInfo.servicePhone
-    });
-  },
-
-  gotoUserEditPage() {
-    const { currAuthStep } = this.data;
-    if (currAuthStep === 2) {
-      wx.navigateTo({
-        url: '/usercenterPackage/pages/usercenter/person-info/index'
-      });
-    } else {
-      this.fetUseriInfoHandle();
-    }
-  },
-
   getVersionInfo() {
     const versionInfo = wx.getAccountInfoSync();
     const { version, envVersion = __wxConfig } = versionInfo.miniProgram;
@@ -112,15 +89,26 @@ Page({
       versionNo: envVersion === 'release' ? version : envVersion
     });
   },
-
   link2sign() {
     link2('/usercenterPackage/pages/sign/sign');
   },
-
   logout() {
     wx.removeStorageSync('token');
     wx.navigateTo({
       url: '/pages/login/login'
+    });
+  },
+  onEditTap() {
+    wx.navigateTo({
+      url: '/usercenterPackage/pages/usercenter/profile/index'
+    });
+  },
+  showMessage(type, content) {
+    Message[type]({
+      context: this,
+      offset: [90, 32],
+      duration: 3000,
+      content
     });
   }
 });

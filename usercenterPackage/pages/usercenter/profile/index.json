@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-message": "tdesign-miniprogram/message/message",
+    "pager": "/components/pager/pager",
+    "btn": "/components/btn/btn",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "line-square": "/components/line-square/index"
+  }
+}

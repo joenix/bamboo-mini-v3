@@ -54,7 +54,8 @@
         "pages/usercenter/exchange/exchange",
         "pages/usercenter/uc-info-update/index",
         "pages/usercenter/files/files",
-        "pages/sign/sign"
+        "pages/sign/sign",
+        "pages/usercenter/profile/index"
       ]
     }
   ],
