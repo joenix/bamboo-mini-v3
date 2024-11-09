@@ -311,7 +311,6 @@ Page({
     });
   },
   onUnload() {
-    this.clearBgmContext();
     this.resetData();
     this.stopBgm();
     this.setData({
