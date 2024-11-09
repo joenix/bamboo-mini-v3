@@ -1,7 +1,6 @@
 /* pages/home/lesson/lesson.wxss */
 
-.lesson {
-}
+.lesson {}
 
 .lesson-avatar {
   margin-top: 24rpx;
@@ -42,4 +41,5 @@
 
 .lesson-picture {
   margin-bottom: 24rpx;
+  width: 100%;
 }

@@ -1,4 +1,5 @@
 /* homePackage/pages/home/share/detail/index.wxss */
 .picture {
   margin-bottom: 24rpx;
+  width: 100%;
 }
