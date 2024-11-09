@@ -1,0 +1,22 @@
+/* homePackage/pages/home/gongfu/detail/index.wxss */
+.org {
+  padding-top: 40rpx;
+}
+
+.org-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.org-datetime {
+  color: #d3be9c;
+}
+
+.org-rich {
+  text-align: justify;
+}
+
+.org-rich p {
+  margin-bottom: 12rpx;
+}

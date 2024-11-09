@@ -94,24 +94,22 @@
     <view class="card-theme">
       <pager class="card-theme-entry">
         <t-row gutter="16">
-          <t-col span="12">
-            <view>
-              <text class="name">六场功夫</text>
-              <t-image src="https://oss.lhdd.club/ui/ui_entry_1.png" width="100%" height="90" />
-            </view>
+          <t-col span="12" data-type="gongfu" bind:tap="jump2Child">
+            <text class="name">六场功夫</text>
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_1.png" width="164" height="90" />
           </t-col>
-          <t-col span="12">
+          <t-col span="12" data-type="jiangzuo" bind:tap="jump2Child">
             <text class="name">仇师讲座</text>
-            <t-image src="https://oss.lhdd.club/ui/ui_entry_2.png" width="100%" height="90" />
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_2.png" width="164" height="90" />
           </t-col>
-          <t-col span="12">
-            <text class="name">成功案例</text>
-            <t-image src="https://oss.lhdd.club/ui/ui_entry_3.png" width="100%" height="90" />
+          <t-col span="12" data-type="case" bind:tap="jump2Child">
+            <text class="name">成果案例</text>
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_3.png" width="164" height="90" />
           </t-col>
-          <t-col span="12">
+          <t-col span="12" data-type="share" bind:tap="jump2Child">
             <text class="name">学习分享</text>
             <text class="subname">点读指法教学</text>
-            <t-image src="https://oss.lhdd.club/ui/ui_entry_4.png" width="100%" height="90" />
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_4.png" width="164" height="90" />
           </t-col>
         </t-row>
       </pager>

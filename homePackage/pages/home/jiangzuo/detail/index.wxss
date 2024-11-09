@@ -1,0 +1,4 @@
+/* homePackage/pages/home/jiangzuo/detail/index.wxss */
+.picture {
+  margin-bottom: 24rpx;
+}

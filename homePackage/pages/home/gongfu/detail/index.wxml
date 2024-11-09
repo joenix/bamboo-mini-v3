@@ -1,0 +1,16 @@
+<!--homePackage/pages/home/gongfu/detail/index.wxml-->
+<custom-nav title="六场功夫详情" />
+
+<pager class="org">
+  <view class="org-title">{{data.title}}</view>
+  <view class="org-datetime">
+    {{data.datetime}}
+  </view>
+  <liner side="{{false}}" />
+  <blocker shadow="{{false}}" class="org-content">
+    <view wx:for="{{data.img}}" style="margin-bottom: 40rpx;">
+      <t-image src="{{item.link}}" class="org-avatar" mode="aspectFill" width="306" height="172" />
+    </view>
+    <rich-text class="org-rich" nodes="{{data.remark}}"></rich-text>
+  </blocker>
+</pager>

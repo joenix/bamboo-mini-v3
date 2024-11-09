@@ -197,6 +197,7 @@ page {
   left: 32rpx;
   position: absolute;
   font-weight: bold;
+  z-index: 2;
 }
 
 .card-theme .card-theme-entry .subname {
@@ -205,6 +206,7 @@ page {
   position: absolute;
   font-size: 24rpx;
   color: #926523;
+  z-index: 2;
 }
 
 /* tab */
@@ -272,8 +274,9 @@ page {
 
 .lesson-content text {
   margin-right: 12rpx;
+  color: #A1A1A1;
 }
 
-.lesson-name {
+.lesson-content .lesson-name {
   color: #c0975a;
 }

@@ -19,7 +19,15 @@
         "pages/home/sixbook/sixbook",
         "pages/home/notice/notice",
         "pages/webview/webview",
-        "pages/article/article"
+        "pages/article/article",
+        "pages/home/gongfu/index",
+        "pages/home/case/index",
+        "pages/home/jiangzuo/index",
+        "pages/home/share/index",
+        "pages/home/gongfu/detail/index",
+        "pages/home/share/detail/index",
+        "pages/home/jiangzuo/detail/index",
+        "pages/home/case/detail/index"
       ]
     },
     {

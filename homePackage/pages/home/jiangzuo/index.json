@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "pager": "/components/pager/pager",
+    "content": "/components/content/content"
+  }
+}

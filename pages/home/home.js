@@ -344,5 +344,10 @@ Page({
         [`imgSrcs[${current}]`]: newSrc
       });
     }
+  },
+  jump2Child(e) {
+    const type = e.currentTarget.dataset.type;
+    const url = `/homePackage/pages/home/${type}/index`;
+    link2(url)
   }
 });

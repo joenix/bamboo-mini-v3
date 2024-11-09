@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "t-image": "tdesign-miniprogram/image/image",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "pager": "/components/pager/pager",
+    "liner": "/components/liner/liner",
+    "blocker": "/components/blocker/blocker"
+  }
+}
