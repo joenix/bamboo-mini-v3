@@ -29,7 +29,10 @@ page {
   border: 2rpx solid #E1D5BD;
   padding: 46rpx 40rpx;
   padding-bottom: 420rpx;
-  text-decoration: underline #E4C79C solid 4rpx;
+  text-decoration-line: underline;
+  text-decoration-color: #E4C79C;
+  text-decoration-style: solid;
+  text-decoration-thickness: 4rpx;
   text-underline-offset: 6rpx;
   margin-bottom: 140rpx;
 }
