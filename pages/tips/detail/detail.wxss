@@ -59,12 +59,9 @@ page {
   z-index: -1;
 }
 
-.auth-tip {
+.popup-iamge-box {
   padding: 32rpx;
-  font-size: 28rpx;
-}
-
-.auth-tip .text {
-  margin-bottom: 40rpx;
-  color: #4D4D4D;
+  max-height: 70vh !important;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }

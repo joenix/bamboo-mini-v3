@@ -51,7 +51,6 @@ Component({
   methods: {
     handleBack() {
       wx.navigateBack();
-      this.triggerEvent('customevent') 
     }
   },
   lifetimes: {
