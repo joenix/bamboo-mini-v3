@@ -5,10 +5,7 @@ import utc from './dayjs_utc';
 // Use Timezone from DayJS
 import timezone from './dayjs_timezone';
 
-import {
-  host,
-  api
-} from './api';
+import { host, api } from './api';
 import lunar from './lunar';
 
 // Add Extension for DayJS
@@ -71,10 +68,7 @@ export const loadSystemWidth = () => {
   }
 
   try {
-    ({
-      screenWidth: systemWidth,
-      pixelRatio
-    } = wx.getSystemInfoSync());
+    ({ screenWidth: systemWidth, pixelRatio } = wx.getSystemInfoSync());
   } catch (e) {
     systemWidth = 0;
   }
@@ -145,11 +139,11 @@ const get = (url, data = {}, options = {}) => {
         const data = res.data;
         if (res.statusCode === 401) {
           wx.navigateTo({
-            url: '/pages/login/login',
-          })
-          return reject(data.error)
+            url: '/pages/login/login'
+          });
+          return reject(data.error);
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg);
       },
       fail: (error) => reject(error)
     });
@@ -172,14 +166,14 @@ const post = async (url, data = {}, options = {}) => {
         const data = res.data;
         if (res.statusCode === 401) {
           wx.navigateTo({
-            url: '/pages/login/login',
-          })
-          return reject(data.error)
+            url: '/pages/login/login'
+          });
+          return reject(data.error);
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg)
+        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg);
       },
       fail: (error) => {
-        reject(error)
+        reject(error);
       }
     });
   });
@@ -197,6 +191,31 @@ const link2 = async (page, param = {}) => {
 
 const checkToken = () => {
   return wx.getStorageSync('token');
+};
+
+// 1. 检测本地存储是否可提交积分
+const checkStorageCanScore = () => {
+  const { date, ...cans } = wx.getStorageSync('cacheStorage') || {};
+
+  const today = dayjs().format('YYYY-MM-DD');
+
+  if (date !== today) {
+    wx.removeStorageSync('cacheStorage');
+    wx.setStorageSync('cacheStorage', { date: today });
+
+    // 置空可提交项
+    return {};
+  }
+
+  return cans || {};
+};
+
+// 2. 存储提交数据
+const saveStorageScore = (key) => {
+  const cacheStorage = wx.getStorageSync('cacheStorage') || {};
+
+  cacheStorage[key] = true;
+  wx.setStorageSync('cacheStorage', cacheStorage);
 };
 
 const wait = async (time) => {
@@ -233,5 +252,8 @@ module.exports = {
   wait,
 
   day1,
-  stream1
+  stream1,
+
+  checkStorageCanScore,
+  saveStorageScore
 };

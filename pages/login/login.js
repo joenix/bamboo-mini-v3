@@ -1,4 +1,4 @@
-import { api, get, post, link2 } from '../../utils/util';
+import { api, get, post, link2, checkStorageCanScore, saveStorageScore } from '../../utils/util';
 import { UpdateType, updateScoreAction } from '../../utils/score';
 import Message from 'tdesign-miniprogram/message/index';
 
@@ -73,6 +73,14 @@ Page({
       await updateScoreAction(UpdateType.Login);
       const redirectUrl = wx.getStorageSync('loginRedirectUrl')
       wx.removeStorageSync('redirectUrl')
+
+      // 上积分
+      const { login } = checkStorageCanScore();
+      if (!login) {
+        await updateScoreAction(UpdateType.Login);
+        saveStorageScore('login');
+      }
+
       wx.switchTab({
         url: redirectUrl || '/pages/home/home'
       });
