@@ -12,7 +12,7 @@
       <t-button class="read-bgm-change" bind:tap="bgmPopupOpen">切换音乐</t-button>
     </view>
     <view class="read-poster">
-      <image src="http://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
+      <image src="https://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
     </view>
     <view class="read-button read-setting w-600" bind:tap="settingPopupOpen">
       <image class="read-setting-icon" src="/assets/list-settings-fill.png" mode="aspectFit" />
@@ -26,7 +26,7 @@
     <view class="header">
       <view class="count-down-box">
         <view wx:if="{{remindCountDown > 0}}">
-          <t-count-down time="{{ remindCountDown }}" bind:finish="remindFinish" />
+          <t-count-down time="{{ remindCountDown }}" bind:finish="playRemindBgm" />
         </view>
       </view>
       <view class="music-icon-box">
@@ -58,8 +58,8 @@
         </t-cell>
         <t-cell title="提醒时间" bordered="{{false}}" wx:if="{{settingData.remind === '1'}}">
           <view class="input-group" slot="note">
-            <t-input borderless placeholder="0" suffix="小时" data-type="hour" bind:change="settingChange" type="number" maxlength="{{2}}" />
-            <t-input borderless placeholder="0" suffix="分钟" data-type="minute" bind:change="settingChange" type="number" maxlength="{{2}}" />
+            <t-input borderless placeholder="0" suffix="小时" data-type="hour" bind:change="settingChange" type="number" maxlength="{{2}}" cursor-color="#C0975A" />
+            <t-input borderless placeholder="0" suffix="分钟" data-type="minute" bind:change="settingChange" type="number" maxlength="{{2}}" cursor-color="#C0975A" />
           </view>
         </t-cell>
         <t-cell title="是否需要引导" bordered="{{false}}">
@@ -68,7 +68,7 @@
             <t-radio icon="dot" block="{{false}}" label="不需要" value="0" />
           </t-radio-group>
         </t-cell>
-        <view class="read-button read-setting-popup-submit" data-inner="{{true}}" data-go="{{2}}" bind:tap="updateStep">
+        <view class="read-button read-setting-popup-submit" data-go="{{2}}" bind:tap="updateStep">
           开始点读
         </view>
       </view>
@@ -81,7 +81,7 @@
         <view class="read-result-time">{{countdown / 1000}}秒</view>
         <view class="read-result-tip">本次点读总时长</view>
         <view class="input-box">
-          <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" />
+          <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" cursor-color="#C0975A" />
         </view>
         <view class="textarea-box">
           <t-textarea value="{{resultFeedback}}" maxcharacter="300" disableDefaultPadding="{{true}}" indicator placeholder="请您写下本次点读后的感悟，300字以内" bind:change="onResultFeedbackChange" />

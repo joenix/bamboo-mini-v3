@@ -12,7 +12,7 @@ const getFilterInfo = (userInfo) => {
 
 Page({
   data: {
-    info: {}
+    info: {},
   },
   onLoad() {
     this.init();
@@ -97,7 +97,7 @@ Page({
     wx.chooseMedia({
       count: 1,
       mediaType: ['image'],
-      success: async function (res) {
+      success: async (res) => {
         const newAvatar = await this.uploadAvatar(res.tempFiles[0].tempFilePath);
         this.setData({
           info: {

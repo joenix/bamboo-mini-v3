@@ -12,7 +12,7 @@
         <view class="top-item" wx:for="{{ top3ListData }}" wx:key="index">
           <t-avatar class="avatar" image="{{item.avatarUrl}}" />
           <view class="text-box">
-            <image class="lv-num" src="http://oss.lhdd.club/ui/lv{{item.rank + 1}}.png" mode="scaleToFill" />
+            <image class="lv-num" src="https://oss.lhdd.club/ui/lv{{item.rank + 1}}.png" mode="scaleToFill" />
             <view>{{ item.time }}h</view>
           </view>
         </view>

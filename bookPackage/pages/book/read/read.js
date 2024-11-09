@@ -73,18 +73,6 @@ Page({
       bgmPopup: false
     });
   },
-  resetCountdown() {
-    this.setData({
-      countdown: 0,
-      countdown_ui: {
-        hh: '00',
-        mm: '00',
-        ss: '00'
-      },
-      resultTimes: '',
-      resultFeedback: ''
-    });
-  },
   startCountdown() {
     const that = this;
 
@@ -117,19 +105,6 @@ Page({
     this.setData({
       countdown_interval
     });
-  },
-  endCountdown() {
-    if (this.data.bgm) {
-      this.data.bgm.stop();
-    }
-    if (this.data.remindAudioContext) {
-      this.data.remindAudioContext.destroy();
-    }
-    this.setData({
-      remindCountDown: 0,
-      remindAudioContext: null
-    });
-    clearInterval(this.data.countdown_interval);
   },
   startBgm(guide) {
     const { bgm, bgmList, bgmInfo } = this.data;
@@ -178,12 +153,16 @@ Page({
   },
   // 内部跳转
   updateStep(e) {
-    const { go: step, inner } = e.currentTarget.dataset;
+    const { go: step } = e.currentTarget.dataset;
+    this.setData({
+      step
+    });
     // 提交点读
     if (step === 1) {
       this.setData({
         pageTitle: '开始点读'
       });
+      return;
     }
     // 开始点读
     if (step === 2) {
@@ -195,20 +174,16 @@ Page({
       const { remind, hour, minute, guide } = this.data.settingData;
       this.startBgm(guide);
       this.startCountdown();
-      if (inner && remind === '1') {
-        this.handleRemind(hour, minute);
+      if (remind === '1') {
+        this.setRemindTime(hour, minute);
       }
+      return;
     }
     // 结束点读
-    if (step === 3) {
-      this.setData({
-        resultPopup: true,
-        pageTitle: '计时'
-      });
-      this.endCountdown();
-    }
+    this.stopBgm();
     this.setData({
-      step
+      resultPopup: true,
+      pageTitle: '计时'
     });
   },
   showMessage(type, content) {
@@ -217,6 +192,23 @@ Page({
       offset: [90, 32],
       duration: 3200,
       content
+    });
+  },
+  onResultVisible(e) {
+    const visible = e.detail.visible
+    if (visible) return;
+    this.resetData();
+  },
+  onResultTimesChange(e) {
+    const { value: resultTimes } = e.detail;
+    this.setData({
+      resultTimes
+    });
+  },
+  onResultFeedbackChange(e) {
+    const { value: resultFeedback } = e.detail;
+    this.setData({
+      resultFeedback
     });
   },
   async doSubmit() {
@@ -244,7 +236,6 @@ Page({
       });
       await updateScoreAction(UpdateType.Read);
       this.showMessage('success', '点读记录提交成功');
-      this.resetCountdown();
       this.setData({
         step: 1,
         resultPopup: false
@@ -257,13 +248,7 @@ Page({
       wx.hideLoading();
     }
   },
-  onResultVisible(e) {
-    this.setData({
-      resultPopup: e.detail.visible,
-      step: 1
-    });
-  },
-  handleRemind(hour, minute) {
+  setRemindTime(hour, minute) {
     if (!hour && !minute) {
       return;
     }
@@ -272,15 +257,10 @@ Page({
       remindCountDown: time * 1000
     });
   },
-  remindFinish() {
+  playRemindBgm() {
     let count = 0;
-    const audioContext = wx.createInnerAudioContext({
-      useWebAudioImplement: false
-    });
-    this.setData({
-      remindAudioContext: audioContext
-    });
-    audioContext.src = 'http://oss.lhdd.club/music/ring.mp3';
+    const audioContext = this.data.remindAudioContext;
+    audioContext.src = 'https://oss.lhdd.club/music/ring.mp3';
     audioContext.onEnded(() => {
       count += 1;
       if (count === 3) {
@@ -295,26 +275,6 @@ Page({
     });
     audioContext.play();
   },
-  onResultTimesChange(e) {
-    const { value: resultTimes } = e.detail;
-
-    this.setData({
-      resultTimes
-    });
-  },
-  onResultFeedbackChange(e) {
-    const { value: resultFeedback } = e.detail;
-
-    this.setData({
-      resultFeedback
-    });
-  },
-  onReady() {
-    const bgm = wx.getBackgroundAudioManager();
-    this.setData({
-      bgm
-    });
-  },
   onLoad(options) {
     const defalutList = [
       {
@@ -328,11 +288,11 @@ Page({
     ];
     const newBgmList = [
       {
-        value: 'http://oss.lhdd.club/music/read_bgm_1.mp3',
+        value: 'https://oss.lhdd.club/music/read_bgm_1.mp3',
         label: '古筝 - 古风温馨春华秋实'
       },
       {
-        value: 'http://oss.lhdd.club/music/read_bgm_2.mp3',
+        value: 'https://oss.lhdd.club/music/read_bgm_2.mp3',
         label: '古筝 - 中国风 余音绕梁'
       }
     ];
@@ -341,9 +301,47 @@ Page({
       bgmList: defalutList.concat(newBgmList),
       bookId: options.bookId
     });
-    this.resetCountdown();
+    const bgm = wx.getBackgroundAudioManager();
+    const audioContext = wx.createInnerAudioContext({
+      useWebAudioImplement: false
+    });
+    this.setData({
+      bgm,
+      remindAudioContext: audioContext
+    });
   },
   onUnload() {
-    this.endCountdown();
-  }
+    this.clearBgmContext();
+    this.resetData();
+    this.stopBgm();
+    this.setData({
+      bgm: null,
+      remindAudioContext: null
+    });
+  },
+  resetData() {
+    this.setData({
+      countdown: 0,
+      countdown_ui: {
+        hh: '00',
+        mm: '00',
+        ss: '00'
+      },
+      resultTimes: '',
+      resultFeedback: '',
+      remindCountDown: 0,
+      resultPopup: false,
+      step: 1
+    });
+  },
+  stopBgm() {
+    if (this.data.bgm) {
+      this.data.bgm.startTime = 0;
+      this.data.bgm.stop();
+    }
+    if (this.data.remindAudioContext) {
+      this.data.remindAudioContext.stop();
+    }
+    clearInterval(this.data.countdown_interval);
+  },
 });

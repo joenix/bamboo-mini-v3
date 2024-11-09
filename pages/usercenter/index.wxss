@@ -1,5 +1,5 @@
 page {
-  background-color: #F9F8F6;
+  background-color: #f9f8f6;
 }
 
 .t-cell__title-text {
@@ -7,7 +7,7 @@ page {
 }
 
 .t-icon {
-  color: #E1D5BD !important;
+  color: #e1d5bd !important;
 }
 
 .content-wrapper {
@@ -187,23 +187,23 @@ page {
 }
 
 .mine-sample-1 {
-  background: url(http://oss.lhdd.club/pic/mine_sample_1.jpg) center -96px / cover no-repeat;
+  background: url(https://oss.lhdd.club/pic/mine_sample_1.jpg) center -96px / cover no-repeat;
 }
 
 .mine-sample-2 {
-  background: url(http://oss.lhdd.club/pic/mine_sample_2.jpg) center -96px / cover no-repeat;
+  background: url(https://oss.lhdd.club/pic/mine_sample_2.jpg) center -96px / cover no-repeat;
 }
 
 .mine-sample-3 {
-  background: url(http://oss.lhdd.club/pic/mine_sample_3.jpg) center -96px / cover no-repeat;
+  background: url(https://oss.lhdd.club/pic/mine_sample_3.jpg) center -96px / cover no-repeat;
 }
 
 .mine-sample-4 {
-  background: url(http://oss.lhdd.club/pic/mine_sample_4.jpg) center -96px / cover no-repeat;
+  background: url(https://oss.lhdd.club/pic/mine_sample_4.jpg) center -96px / cover no-repeat;
 }
 
 .mine-sample-5 {
-  background: url(http://oss.lhdd.club/pic/mine_sample_5.jpg) center -96px / cover no-repeat;
+  background: url(https://oss.lhdd.club/pic/mine_sample_5.jpg) center -96px / cover no-repeat;
 }
 
 .userinfo-layout {
@@ -239,7 +239,7 @@ page {
 .userinfo-sign {
   width: 152rpx;
   height: 58rpx;
-  background: url(http://oss.lhdd.club/ui/userinfo-sign.png) center / cover no-repeat;
+  background: url(https://oss.lhdd.club/ui/userinfo-sign.png) center / cover no-repeat;
 }
 
 .userinfo-image {

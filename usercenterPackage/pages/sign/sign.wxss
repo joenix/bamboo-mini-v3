@@ -7,7 +7,7 @@ page {
 .sign-header-container {
   position: relative;
   padding: 0 32rpx;
-  background-image: url('http://oss.lhdd.club/ui/sign-top.png');
+  background-image: url('https://oss.lhdd.club/ui/sign-top.png');
   background-repeat: no-repeat;
   background-size: 800rpx;
   background-position: 113rpx -95rpx;
@@ -62,7 +62,7 @@ page {
 .sign-task-container .title {
   width: 144rpx;
   line-height: 52rpx;
-  background-image: url('http://oss.lhdd.club/ui/btn-bg.png');
+  background-image: url('https://oss.lhdd.club/ui/btn-bg.png');
   background-repeat: no-repeat;
   background-size: contain;
   font-size: 24rpx;
@@ -101,13 +101,13 @@ page {
   font-weight: bold;
   text-align: center;
   line-height: 64rpx;
-  background-image: url('http://oss.lhdd.club/ui/sign-normal.png');
+  background-image: url('https://oss.lhdd.club/ui/sign-normal.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .sign-module .sign-module-progress .sevenday .tips {
-  background-image: url('http://oss.lhdd.club/ui/sign-gift.png');
+  background-image: url('https://oss.lhdd.club/ui/sign-gift.png');
   align-self: flex-start;
   margin-left: 38rpx;
 }
@@ -118,13 +118,13 @@ page {
 }
 
 .sign-module .sign-module-progress .signed .tips {
-  background-image: url('http://oss.lhdd.club/ui/signed.png');
+  background-image: url('https://oss.lhdd.club/ui/signed.png');
 }
 
 
 .sign-module .sign-module-progress .sevenday {
   width: 50%;
-  background-image: url('http://oss.lhdd.club/ui/sign-bg.png');
+  background-image: url('https://oss.lhdd.club/ui/sign-bg.png');
   background-repeat: no-repeat;
   background-size: 122rpx;
   background-position: right bottom;

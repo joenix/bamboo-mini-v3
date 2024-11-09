@@ -3,7 +3,9 @@
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-popup": "tdesign-miniprogram/popup/popup",
     "custom-nav": "/components/custom-nav/custom-nav",
+    "btn": "/components/btn/btn",
     "line-square": "/components/line-square/index",
     "wxml-to-canvas": "/components/wxml-to-canvas/index"
   }

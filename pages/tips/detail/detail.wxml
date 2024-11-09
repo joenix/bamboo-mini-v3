@@ -1,12 +1,24 @@
 <!-- 自定义nav -->
-<custom-nav title="" white background="transparent" />
+<custom-nav title="" white background="transparent" bind:customevent="goToIndex" />
 <t-toast id="t-toast" />
 <view class="tipsdetail-container">
   <view class="content">
     <line-square />
-    <view id="content">{{ content }}</view>
+    <view id="content">{{ tipInfo.content }}</view>
   </view>
   <view class="save" bindtap='save'>点击保存图片</view>
   <view class="tips">点击保存小程序右上角，转发到微信朋友圈</view>
 </view>
+<t-popup visible="{{visible}}" usingCustomNavbar bind:visible-change="onVisibleChange" placement="bottom">
+  <view class="auth-tip">
+    <view class="text">保存图片需要授权相册写入权限</view>
+    <btn bind:tap="openSetting">去授权</btn>
+  </view>
+</t-popup>
+<t-popup visible="{{imgVisible}}" usingCustomNavbar bind:visible-change="onImageVisibleChange" placement="center">
+  <view class="auth-tip">
+    <view class="text">保存图片需要授权相册写入权限</view>
+    <btn bind:tap="openSetting">去授权</btn>
+  </view>
+</t-popup>
 <wxml-to-canvas class="widget" width="{{canvasWidth}}" height="{{canvasHeight}}"></wxml-to-canvas>

@@ -27,7 +27,7 @@
 
   <t-row gutter="10" class="book-entries">
     <t-col span="12">
-      <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(http://oss.lhdd.club/ui/book-entries-1.png);">
+      <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(https://oss.lhdd.club/ui/book-entries-1.png);">
         <view class="book-entries-title">点读排名</view>
         <view class="book-entries-text">
           查看你的历史排名
@@ -36,7 +36,7 @@
       </view>
     </t-col>
     <t-col span="12">
-      <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(http://oss.lhdd.club/ui/book-entries-2.png);">
+      <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(https://oss.lhdd.club/ui/book-entries-2.png);">
         <view class="book-entries-title">六合竹简</view>
         <view class="book-entries-text">
           点读指法教学
@@ -70,7 +70,7 @@
 </pager>
 <t-popup usingCustomNavbar bind:visible-change="onVisibleChange" visible="{{activePopupShow}}" placement="bottom">
   <view class="activePopup">
-    <t-input borderless placeholder="请输入激活码" bind:change="onActiveCodeChange" />
+    <t-input borderless placeholder="请输入激活码" bind:change="onActiveCodeChange" cursor-color="#C0975A" />
     <view class="btn" bind:tap="activeBook">激活</view>
     <t-divider content="或" />
     <view class="btn" bind:tap="goShop">去商场购买</view>

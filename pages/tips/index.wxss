@@ -91,7 +91,7 @@ page {
 
 .page-tip-content {
   padding-left: 168rpx;
-  background: url(http://oss.lhdd.club/ui/ui_tip_first.png) -32rpx center/contain no-repeat;
+  background: url(https://oss.lhdd.club/ui/ui_tip_first.png) -32rpx center/contain no-repeat;
 }
 
 .tip-tip,

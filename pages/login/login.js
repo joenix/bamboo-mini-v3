@@ -45,6 +45,9 @@ Page({
     if (captcha.length < 4) {
       return this.showError('验证码不能少于4位');
     }
+    wx.showLoading({
+      title: '登录中...',
+    });
     // 请求防抖
     if (this.data.lock) {
       return;
@@ -68,8 +71,10 @@ Page({
       });
       wx.setStorageSync('userInfo', userInfo);
       await updateScoreAction(UpdateType.Login);
+      const redirectUrl = wx.getStorageSync('loginRedirectUrl')
+      wx.removeStorageSync('redirectUrl')
       wx.switchTab({
-        url: '/pages/home/home'
+        url: redirectUrl || '/pages/home/home'
       });
     } catch (e) {
       this.showError(typeof e === 'string' ? e : e.message);
@@ -77,6 +82,7 @@ Page({
       this.setData({
         lock: false
       });
+      wx.hideLoading();
     }
   }
 });

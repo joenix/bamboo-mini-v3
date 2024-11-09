@@ -2,32 +2,65 @@
 const { getWxml, getStyle } = require('./config.js');
 import { Toast } from 'tdesign-miniprogram';
 
+const pagePath = '/pages/tips/detail/detail';
+
 Page({
   data: {
-    content: '',
+    tipInfo: {},
     canvasWidth: '',
-    canvasHeight: ''
+    canvasHeight: '',
+    visible: false,
+    canSaveImage: false,
+    imgVisible: false,
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    const token = wx.getStorageSync('token')
+    if (!token) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return;
+    }
+    const options = wx.getLaunchOptionsSync();
+    const {path, scene, query} = options;
+    this.formShare = `/${path}` === pagePath && scene === 1007
+    if (this.formShare) {
+      this.getTipInfoById(query.id);
+    } else {
+      const info = wx.getStorageSync('tipInfo');
+      this.setData({
+        tipInfo: info
+      });
+    }
+    this.getSaveSetting();
     this.widget = this.selectComponent('.widget');
-    const info = wx.getStorageSync('tipInfo');
-    this.setData({
-      content: info.content
-    });
   },
   onUnload() {
     wx.removeStorageSync('tipInfo');
   },
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
     return {
       // title: ""
+      path: `${pagePath}?id=${this.data.tipInfo.id}`
     };
+  },
+  goToIndex() {
+    if (!this.formShare) {
+      return;
+    }
+    wx.switchTab({
+      url: '/pages/tips/index',
+    })
+  },
+  getTipInfoById() {
+    this.setData({
+      tipInfo: {
+        content: '121313'
+      }
+    });
   },
   showToast(message) {
     Toast({
@@ -37,10 +70,16 @@ Page({
     });
   },
   async save() {
+    if (!this.data.canSaveImage) {
+      this.setData({
+        visible: true
+      });
+      return;
+    }
     wx.showLoading({
       title: '图片生成中...',
       mask: true
-    })
+    });
     console.log('保存图片');
     try {
       await this.renderToCanvas();
@@ -53,6 +92,12 @@ Page({
         },
         fail: (res) => {
           console.log(res);
+          if (res.errMsg.indexOf('auth deny') >= 0) {
+            this.setData({
+              visible: true
+            });
+            return;
+          }
           if (res.errMsg === 'saveImageToPhotosAlbum:fail cancel') {
             this.showToast('保存已取消');
             return;
@@ -63,7 +108,7 @@ Page({
     } catch (e) {
       this.showToast('保存失败');
     } finally {
-      wx.hideLoading()
+      wx.hideLoading();
     }
   },
   renderToCanvas() {
@@ -82,12 +127,40 @@ Page({
         });
         setTimeout(() => {
           const p1 = this.widget.renderToCanvas({
-            wxml: getWxml(that.data.content),
+            wxml: getWxml(that.data.tipInfo.content),
             style
           });
           p1.then(resolve);
         }, 300);
       });
+    });
+  },
+  getSaveSetting() {
+    wx.getSetting({
+      success: (res) => {
+        const can = res.authSetting['scope.writePhotosAlbum'];
+        this.setData({
+          canSaveImage: can
+        });
+        if (!can) {
+          this.setData({
+            visible: true
+          });
+        }
+      }
+    });
+  },
+  openSetting() {
+    wx.openSetting({
+      success: (res) => {
+        console.log(res.authSetting);
+        this.setData({
+          canSaveImage: res.authSetting['scope.writePhotosAlbum']
+        });
+      }
+    });
+    this.setData({
+      visible: false
     });
   }
 });

@@ -6,13 +6,13 @@
     <view class="login-logo"></view>
 
     <blocker background="transparent">
-      <t-input value="{{mobile}}" t-class="login-input" t-class-input="login-input-entry" placeholder="请输入手机号" bind:change="onMobileChange" />
-      <t-input value="{{captcha}}" t-class="login-input" t-class-input="login-input-entry" t-class-suffix="login-input-captcha" placeholder="输入验证码" type="number" bind:change="onCaptchaChange">
+      <t-input value="{{mobile}}" t-class="login-input" t-class-input="login-input-entry" placeholder="请输入手机号" type="number" bind:change="onMobileChange" cursor-color="#C0975A" />
+      <t-input value="{{captcha}}" t-class="login-input" t-class-input="login-input-entry" t-class-suffix="login-input-captcha" placeholder="输入验证码" type="number" bind:change="onCaptchaChange" cursor-color="#C0975A">
         <view slot="suffix" style="display: flex; align-items: center">
           <view class="login-verify" aria-role="button"> 发送验证码 </view>
         </view>
       </t-input>
-      <t-input t-class="login-input" t-class-input="login-input-entry" placeholder="请输入机构代码（选填）" />
+      <t-input t-class="login-input" t-class-input="login-input-entry" cursor-color="#C0975A" placeholder="请输入机构代码（选填）" />
     </blocker>
 
     <blocker background="transparent">

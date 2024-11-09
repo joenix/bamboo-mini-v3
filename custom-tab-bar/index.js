@@ -17,12 +17,6 @@ Component({
   },
   methods: {
     onChange(event) {
-      if (!checkToken()) {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        });
-        return;
-      }
       const index = event.detail.value;
       if (index === this.data.active) return;
       app.globalData.selectedTab = index;
@@ -30,6 +24,13 @@ Component({
         active: index
       });
       const url = this.data.list[index].url;
+      if (!checkToken()) {
+        wx.setStorageSync('loginRedirectUrl', `/${url}`);
+        wx.navigateTo({
+          url: '/pages/login/login'
+        });
+        return;
+      }
       wx.switchTab({
         url: `/${url}`
       });

@@ -73,11 +73,11 @@
 .welcome-logo {
   width: 512rpx;
   height: 512rpx;
-  background: url(http://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
+  background: url(https://oss.lhdd.club/ui/welcome-logo.png) center/cover no-repeat;
 }
 
 .welcome-btn-entry {
   width: 532rpx;
   height: 140rpx;
-  background: url(http://oss.lhdd.club/ui/btn-entry-red.png) center/cover no-repeat;
+  background: url(https://oss.lhdd.club/ui/btn-entry-red.png) center/cover no-repeat;
 }

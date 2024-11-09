@@ -86,7 +86,7 @@
 
   <t-tab-panel label="学习商城" value="4" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <!-- <swipor content="{{content}}"></swipor> -->
+      暂未开放
     </view>
   </t-tab-panel>
 
@@ -97,21 +97,21 @@
           <t-col span="12">
             <view>
               <text class="name">六场功夫</text>
-              <t-image src="http://oss.lhdd.club/ui/ui_entry_1.png" width="100%" height="90" />
+              <t-image src="https://oss.lhdd.club/ui/ui_entry_1.png" width="100%" height="90" />
             </view>
           </t-col>
           <t-col span="12">
             <text class="name">仇师讲座</text>
-            <t-image src="http://oss.lhdd.club/ui/ui_entry_2.png" width="100%" height="90" />
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_2.png" width="100%" height="90" />
           </t-col>
           <t-col span="12">
             <text class="name">成功案例</text>
-            <t-image src="http://oss.lhdd.club/ui/ui_entry_3.png" width="100%" height="90" />
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_3.png" width="100%" height="90" />
           </t-col>
           <t-col span="12">
             <text class="name">学习分享</text>
             <text class="subname">点读指法教学</text>
-            <t-image src="http://oss.lhdd.club/ui/ui_entry_4.png" width="100%" height="90" />
+            <t-image src="https://oss.lhdd.club/ui/ui_entry_4.png" width="100%" height="90" />
           </t-col>
         </t-row>
       </pager>

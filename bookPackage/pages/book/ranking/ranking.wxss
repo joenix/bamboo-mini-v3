@@ -1,5 +1,5 @@
 page {
-  background: url('http://oss.lhdd.club/ui/rank-top.png') top center no-repeat;
+  background: url('https://oss.lhdd.club/ui/rank-top.png') top center no-repeat;
   background-size: 100%;
 }
 
@@ -73,17 +73,17 @@ page {
 .top-item:nth-child(1) {
   order: 2;
   top: -40rpx;
-  background-image: url('http://oss.lhdd.club/ui/top1.png');
+  background-image: url('https://oss.lhdd.club/ui/top1.png');
 }
 
 .top-item:nth-child(2) {
   order: 1;
-  background-image: url('http://oss.lhdd.club/ui/top2.png');
+  background-image: url('https://oss.lhdd.club/ui/top2.png');
 }
 
 .top-item:nth-child(3) {
   order: 3;
-  background-image: url('http://oss.lhdd.club/ui/top3.png');
+  background-image: url('https://oss.lhdd.club/ui/top3.png');
 }
 
 .top3 .avatar {
