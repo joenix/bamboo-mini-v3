@@ -99,7 +99,7 @@ Page({
         name: v.name,
         type: 'line',
         smooth: true,
-        data: data.map((d) => d[v.key])
+        data: data.map((d) => +d[v.key])
       };
     });
 

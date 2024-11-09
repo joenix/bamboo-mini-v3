@@ -32,7 +32,7 @@ Page({
   async init() {
     const userInfo = wx.getStorageSync('userInfo');
     const info = await post(api.User.data, {
-      userId: userInfo.id
+      id: userInfo.id
     });
     if (!info) {
       return;

@@ -45,15 +45,15 @@ Page({
     if (captcha.length < 4) {
       return this.showError('验证码不能少于4位');
     }
-    wx.showLoading({
-      title: '登录中...',
-    });
     // 请求防抖
     if (this.data.lock) {
       return;
     }
     this.setData({
       lock: true
+    });
+    wx.showLoading({
+      title: '登录中...',
     });
     // 因为验证码没下来，先把验证码当密码用
     try {
