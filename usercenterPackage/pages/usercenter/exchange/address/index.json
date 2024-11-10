@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "pager": "/components/pager/pager",
+    "btn": "/components/btn/btn",
+    "custom-nav": "/components/custom-nav/custom-nav"
+  }
+}

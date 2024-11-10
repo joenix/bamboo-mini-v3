@@ -1,66 +1,77 @@
 // pages/usercenter/suggest/suggest.js
+import {api, post} from '../../../../utils/util'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    gifts: [
+      {
+        image: '礼品1图片链接',
+        name: '礼品1',
+        credits: 100
+      },
+      {
+        image: '礼品2图片链接',
+        name: '礼品2',
+        credits: 200
+      }
+      // 添加更多礼品...
+    ],
+    confirmModal: false,
+    addressModal: false,
+    succsssModal: false,
+    selectedGift: null,
+    totalCredits: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad() {
+    this.initGiftList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  async initGiftList() {
+    const userInfo = wx.getStorageSync('userInfo')
+    const data = await post(api.User.getGiftList, {
+      userId: userInfo.id
+    })
+    this.setData({
+      gifts: data,
+      totalCredits: userInfo.credits.credit || 0
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  exchangeGift: function (event) {
+    var index = event.currentTarget.dataset.index;
+    this.setData({
+      confirmModal: true,
+      selectedGift: this.data.gifts[index]
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  confirmExchange: async function () {
+    // await post(api.User.selectedGift, {
+    //   id: this.data.selectedGift.id
+    // })
+    this.setData({
+      confirmModal: false,
+      addressModal: true
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  cancelExchange: function () {
+    this.setData({
+      confirmModal: false
+    });
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  confirmAddress: function () {
+    wx.navigateTo({
+      url: '/usercenterPackage/pages/usercenter/exchange/address/index',
+      events: {
+        addressOk: () => {
+          this.setData({
+            addressModal: false,
+            succsssModal: true
+          });
+        }
+      }
+    });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  confirmOk() {
+    this.setData({
+      succsssModal: false
+    })
   }
-})
+});

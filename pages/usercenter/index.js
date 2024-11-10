@@ -45,7 +45,7 @@ Page({
     });
     if (!userInfo) {
       this.showMessage('error', '获取用户信息失败,请重新登录');
-      wait(3000);
+      await wait(3000);
       wx.redirectTo({
         url: '/pages/login/login'
       });

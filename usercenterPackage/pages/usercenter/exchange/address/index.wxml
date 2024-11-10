@@ -1,0 +1,44 @@
+<custom-nav title="填写地址" center background="transparent" customBackClick="{{customBackClick}}" bind:backClick="onBackClick" />
+
+<pager wx:if="{{noAddress}}">
+  <view class="blocker input-blocker">
+    <view class="cell">
+      <t-image mode="widthFix" width="22" src="/assets/address.png"></t-image>
+      <t-textarea value="{{address}}" autosize="{ maxHeight: 48, minHeight: 24 }" placeholder="请输入地址信息" data-name="address" bind:change="onInput" />
+    </view>
+    <view class="cell">
+      <t-image mode="widthFix" width="22" src="/assets/name.png"></t-image>
+      <t-input value="{{name}}" borderless placeholder="请输入收货人姓名" data-name="name" bind:change="onInput" cursor-color="#C0975A" />
+    </view>
+    <view class="cell">
+      <t-image mode="widthFix" width="22" src="/assets/phone.png"></t-image>
+      <t-input value="{{phone}}" borderless placeholder="请输入收货人手机号" data-name="phone" bind:change="onInput" type="number" cursor-color="#C0975A" />
+    </view>
+    <view class="btn">
+      <btn bind:tap="confirmAddress">确定使用该地址信息发货</btn>
+    </view>
+  </view>
+</pager>
+
+<pager wx:else>
+  <view class="blocker">
+    <view class="cell-box">
+      <view class="cell">
+        <t-image mode="widthFix" width="22" src="/assets/address.png"></t-image>
+        {{address}}
+      </view>
+      <view class="cell">
+        <t-image mode="widthFix" width="22" src="/assets/name.png"></t-image>
+        {{name}}
+      </view>
+      <view class="cell">
+        <t-image mode="widthFix" width="22" src="/assets/phone.png"></t-image>
+        {{phone}}
+      </view>
+    </view>
+    <view class="btn">
+      <btn bind:tap="confirmAddress">使用该地址发货</btn>
+    </view>
+    <view class="ghost-button" bind:tap="addNewAddress">使用新地址发货</view>
+  </view>
+</pager>

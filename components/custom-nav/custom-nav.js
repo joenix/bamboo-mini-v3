@@ -34,6 +34,10 @@ Component({
     center: {
       type: Boolean,
       value: false
+    },
+    customBackClick: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -50,7 +54,11 @@ Component({
    */
   methods: {
     handleBack() {
-      wx.navigateBack();
+      if (this.data.customBackClick) {
+        this.triggerEvent('backClick')
+        return;
+      }
+      wx.navigateBack(); 
     }
   },
   lifetimes: {

@@ -1,1 +1,93 @@
 /* pages/usercenter/suggest/suggest.wxss */
+page {
+  background: #F9F8F6 url('https://oss.lhdd.club/ui/sign-top.png') no-repeat 160rpx 20rpx;
+  background-size: 100%;
+}
+
+.tip {
+  font-size: 16px;
+  font-weight: 600;
+  color: #434343;
+  margin-top: 40rpx;
+}
+
+.container {
+  padding: 32rpx;
+  margin-top: 28rpx;
+  background: #fff;
+  border-radius: 4rpx;
+}
+
+
+.gift-item {
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+  background: #FAF8F4;
+}
+
+
+.gift-image {
+  width: 100%;
+}
+
+.gift-info {
+  margin: 24rpx 0;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+
+
+.gift-credits {
+  color: #FD8553;
+}
+
+.exchange-btn {
+  width: 100%;
+  height: 56rpx;
+  background: #C0975A;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+
+.popup-content {
+  width: 600rpx;
+  padding: 0 28rpx 28rpx;
+  text-align: center;
+  color: #373737;
+}
+
+.popup-content .title {
+  height: 112rpx;
+  line-height: 112rpx;
+  border-bottom: 2rpx solid #F3F6F8;
+}
+
+.popup-content .ask {
+  line-height: 48rpx;
+  margin: 36rpx 0;
+}
+
+.popup-content .name {
+  margin-top: 24rpx;
+  font-size: 24rpx;
+}
+
+
+.popup-content .btn {
+  margin-top: 56rpx;
+}
+
+.popup-content .success-icon {
+  margin: 68rpx 0;
+}
+
+.popup-content .congratulation {
+  font-size: 32rpx;
+  line-height: 56rpx;
+  color: #656C74;
+  text-align: left;
+  padding: 0 20rpx;
+}

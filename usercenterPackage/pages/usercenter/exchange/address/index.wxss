@@ -1,0 +1,56 @@
+page {
+  background: #F9F8F6 url('https://oss.lhdd.club/ui/sign-top.png') no-repeat 160rpx 20rpx;
+  background-size: 100%;
+}
+
+.cell {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+  gap: 80rpx;
+  text-align: right;
+}
+
+.cell-box {
+  padding: 24rpx 0;
+  border: 2rpx solid #c0975a;
+}
+
+.blocker {
+  border-radius: 4rpx;
+  background: #FFFFFF;
+  padding: 24rpx 24rpx 50rpx;
+  margin-top: 64rpx;
+}
+
+.input-blocker .cell {
+  justify-content: flex-start;
+  gap: 20rpx;
+  padding: 0 24rpx;
+  border-bottom: 1rpx solid #EBE4DD;
+}
+
+.input-blocker .cell .t-input {
+  padding: 24rpx 0;
+}
+
+.input-blocker .cell .t-textarea {
+  padding: 24rpx 0;
+  flex: 1;
+}
+
+.btn {
+  margin-top: 400rpx;
+}
+
+.ghost-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24rpx 80rpx;
+  margin-top: 32rpx;
+  color: #C0975A;
+  border: 2rpx solid #C0975A;
+}

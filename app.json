@@ -63,7 +63,8 @@
         "pages/usercenter/uc-info-update/index",
         "pages/usercenter/files/files",
         "pages/sign/sign",
-        "pages/usercenter/profile/index"
+        "pages/usercenter/profile/index",
+        "pages/usercenter/exchange/address/index"
       ]
     }
   ],

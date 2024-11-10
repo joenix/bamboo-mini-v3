@@ -1,5 +1,54 @@
-<!--pages/usercenter/suggest/suggest.wxml-->
+<!-- pages/usercenter/suggest/suggest.wxml -->
 <!-- 自定义nav -->
-<custom-nav title="学分兑换" />
-
-<text>学分兑换</text>
+<custom-nav title="学分兑换" center background="transparnt" />
+<pager>
+  <view class="tip">使用学分可以兑换礼品啦！</view>
+  <view class="container">
+    <line-square />
+    <view class="gift-list">
+      <t-row gutter="20">
+        <t-col span="12" wx:for="{{gifts}}" wx:key="index">
+          <view class="gift-item">
+            <t-image class="gift-image" src="/assets/image.png" mode="widthFix" />
+            <view class="gift-info">
+              <view class="gift-name">{{item.name}}</view>
+              <view class="gift-credits">{{item.credits}}学分</view>
+            </view>
+            <view class="exchange-btn" data-index="{{index}}" bindtap="exchangeGift">立即兑换</view>
+          </view>
+        </t-col>
+      </t-row>
+    </view>
+  </view>
+</pager>
+<t-popup visible="{{confirmModal}}" usingCustomNavbar bind:visible-change="cancelExchange" placement="center">
+  <view class="popup-content">
+    <view class="title">学分兑换</view>
+    <view class="ask">是否确认使用{{selectedGift.credits}}学分兑换该礼品</view>
+    <t-image src="/assets/image.png" mode="widthFix" width="110" />
+    <view class="name">{{selectedGift.name}}</view>
+    <view class="btn">
+      <btn bindtap="confirmExchange">确定兑换</btn>
+    </view>
+  </view>
+</t-popup>
+<t-popup visible="{{addressModal}}" usingCustomNavbar placement="center">
+  <view class="popup-content">
+    <view class="title">兑换成功</view>
+    <t-image class="success-icon" src="https://oss.lhdd.club/ui/signed.png" mode="widthFix" width="80"></t-image>
+    <view class="congratulation">恭喜你已兑换成功改礼品，填写地址就可以发货了哦！</view>
+    <view class="btn">
+      <btn bindtap="confirmAddress">去填写发货地址 > </btn>
+    </view>
+  </view>
+</t-popup>
+<t-popup visible="{{succsssModal}}" usingCustomNavbar bind:visible-change="confirmOk" placement="center">
+  <view class="popup-content">
+    <view class="title">发货成功</view>
+    <t-image class="success-icon" src="https://oss.lhdd.club/ui/signed.png" mode="widthFix" width="80"></t-image>
+    <view class="congratulation">您的礼品已经进入系统准备发货，请耐心等待工作人员处理！</view>
+    <view class="btn">
+      <btn bindtap="confirmOk">我知道了</btn>
+    </view>
+  </view>
+</t-popup>

@@ -24,7 +24,7 @@ Page({
       this.showMessage('error', '请输入反馈意见');
       return;
     }
-    wait(300);
+    await wait(300);
     this.setData({
       suggestion: ''
     });

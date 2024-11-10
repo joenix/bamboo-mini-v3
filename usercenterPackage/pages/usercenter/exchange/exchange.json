@@ -1,6 +1,14 @@
 {
   "navigationBarTitleText": "学分兑换",
   "usingComponents": {
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "pager": "/components/pager/pager",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-message": "tdesign-miniprogram/message/message",
+    "line-square": "/components/line-square/index",
+    "btn": "/components/btn/btn"
   }
 }
