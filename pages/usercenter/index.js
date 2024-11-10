@@ -57,9 +57,9 @@ Page({
     switch (type) {
       // 学分兑换
       case 'exchange': {
-        // wx.navigateTo({
-        //   url: '/usercenterPackage/pages/usercenter/exchange/exchange'
-        // });
+        wx.navigateTo({
+          url: '/usercenterPackage/pages/usercenter/exchange/exchange'
+        });
         break;
       }
       // 我的学分
