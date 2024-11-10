@@ -15,7 +15,7 @@
       <image src="https://oss.lhdd.club/ui/read_bg_1.png" mode="aspectFit" />
     </view>
     <view class="read-button read-setting w-600" bind:tap="settingPopupOpen">
-      <image class="read-setting-icon" src="/assets/list-settings-fill.png" mode="aspectFit" />
+      <image class="read-setting-icon" src="https://oss.lhdd.club/ui/list-settings-fill.png" mode="aspectFit" />
       点读设置
     </view>
     <view class="read-button w-600" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
@@ -30,8 +30,8 @@
         </view>
       </view>
       <view class="music-icon-box">
-        <image class="music-icon" wx:if="{{isBgmStop}}" src="/assets/music-2-fill.png" mode="scaleToFill" bind:tap="toggleStop" />
-        <image class="music-icon" wx:else src="/assets/music-play.png" mode="scaleToFill" bind:tap="toggleStop" />
+        <image class="music-icon" wx:if="{{isBgmStop}}" src="https://oss.lhdd.club/ui/music-2-fill.png" mode="scaleToFill" bind:tap="toggleStop" />
+        <image class="music-icon" wx:else src="https://oss.lhdd.club/ui/music-play.png" mode="scaleToFill" bind:tap="toggleStop" />
       </view>
     </view>
     <view class="read-countdown">
