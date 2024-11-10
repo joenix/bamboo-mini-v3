@@ -35,21 +35,14 @@ Page({
     // 1. 校验本地 OpenID
     const token = wx.getStorageSync('token');
     if (!token) {
-      return wx.redirectTo({
-        url: '/pages/login/login'
-      });
+      return this.goToLogin();
     }
     // 2. 根据 Token 获取 User 数据
     const userInfo = await post(api.User.info, {
       token
     });
     if (!userInfo) {
-      this.showMessage('error', '获取用户信息失败,请重新登录');
-      await wait(3000);
-      wx.redirectTo({
-        url: '/pages/login/login'
-      });
-      return;
+      return this.goToLogin();
     }
     // 2.1 本地存储 User 信息
     wx.setStorageSync('userInfo', userInfo);
@@ -64,9 +57,9 @@ Page({
     switch (type) {
       // 学分兑换
       case 'exchange': {
-        wx.navigateTo({
-          url: '/usercenterPackage/pages/usercenter/exchange/exchange'
-        });
+        // wx.navigateTo({
+        //   url: '/usercenterPackage/pages/usercenter/exchange/exchange'
+        // });
         break;
       }
       // 我的学分
@@ -95,6 +88,15 @@ Page({
   logout() {
     wx.removeStorageSync('token');
     wx.navigateTo({
+      url: '/pages/login/login'
+    });
+  },
+  async goToLogin() {
+    this.showMessage('error', '获取用户信息失败,请重新登录');
+    await wait(3000);
+    const page = getCurrentPages().pop();
+    wx.setStorageSync('loginRedirectUrl', `/${page.route}`);
+    wx.redirectTo({
       url: '/pages/login/login'
     });
   },
