@@ -1,6 +1,9 @@
 <!-- pages/usercenter/suggest/suggest.wxml -->
 <!-- 自定义nav -->
 <custom-nav title="学分兑换" center background="transparnt" />
+
+<t-message id="t-message" />
+
 <pager>
   <view class="tip">使用学分可以兑换礼品啦！</view>
   <view class="container">
@@ -29,26 +32,6 @@
     <view class="name">{{selectedGift.name}}</view>
     <view class="btn">
       <btn bindtap="confirmExchange">确定兑换</btn>
-    </view>
-  </view>
-</t-popup>
-<t-popup visible="{{addressModal}}" usingCustomNavbar placement="center">
-  <view class="popup-content">
-    <view class="title">兑换成功</view>
-    <t-image class="success-icon" src="https://oss.lhdd.club/ui/signed.png" mode="widthFix" width="80"></t-image>
-    <view class="congratulation">恭喜你已兑换成功改礼品，填写地址就可以发货了哦！</view>
-    <view class="btn">
-      <btn bindtap="confirmAddress">去填写发货地址 > </btn>
-    </view>
-  </view>
-</t-popup>
-<t-popup visible="{{succsssModal}}" usingCustomNavbar bind:visible-change="confirmOk" placement="center">
-  <view class="popup-content">
-    <view class="title">发货成功</view>
-    <t-image class="success-icon" src="https://oss.lhdd.club/ui/signed.png" mode="widthFix" width="80"></t-image>
-    <view class="congratulation">您的礼品已经进入系统准备发货，请耐心等待工作人员处理！</view>
-    <view class="btn">
-      <btn bindtap="confirmOk">我知道了</btn>
     </view>
   </view>
 </t-popup>

@@ -44,13 +44,3 @@ page {
 .btn {
   margin-top: 400rpx;
 }
-
-.ghost-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24rpx 80rpx;
-  margin-top: 32rpx;
-  color: #C0975A;
-  border: 2rpx solid #C0975A;
-}

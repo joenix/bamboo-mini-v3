@@ -3,6 +3,7 @@
     "t-input": "tdesign-miniprogram/input/input",
     "t-image": "tdesign-miniprogram/image/image",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-message": "tdesign-miniprogram/message/message",
     "pager": "/components/pager/pager",
     "btn": "/components/btn/btn",
     "custom-nav": "/components/custom-nav/custom-nav"

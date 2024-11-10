@@ -1,19 +1,18 @@
-import { api, post } from '../../../../../utils/util';
+import { api, post, wait } from '../../../../../utils/util';
 
 Page({
   data: {
     address: '上海市虹口区海伦路海伦大厦101海伦路海伦大厦101',
     phone: '16662636362',
     name: '苏苏',
-    noAddress: true,
-    customBackClick: false
+    selectedGift: null
   },
   onLoad() {
-    this.eventChannel = this.getOpenerEventChannel();
-    this.setData({
-      customBackClick: false
-    });
-    this.getAddress();
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('dataFromOpenerPage', (data) => {
+      console.log(data)
+      this.setData(data)
+    })
   },
   // 输入框输入时
   onInput(e) {
@@ -26,12 +25,6 @@ Page({
       }
     });
   },
-  async getAddress() {
-    await post(api.User.getAddress, {});
-    this.setData({
-      noAddress: true
-    })
-  },
   confirmAddress: async function () {
     console.log(this.data);
     await post(api.User.addAddress, {
@@ -39,22 +32,13 @@ Page({
       phone: this.data.phone,
       name: this.data.name
     });
-    this.eventChannel.emit('addressOk');
-    wx.navigateBack();
-  },
-  addNewAddress() {
-    this.setData({
-      noAddress: true,
-      customBackClick: true,
-      address: '',
-      phone: '',
-      name: '',
+    Message.error({
+      context: this,
+      offset: [90, 32],
+      duration: 3000,
+      content: "兑换申请已提交"
     });
-  },
-  onBackClick() {
-    this.setData({
-      noAddress: false,
-      customBackClick: false
-    })
+    await wait(3000)
+    wx.navigateBack();
   }
 });

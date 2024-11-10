@@ -79,15 +79,3 @@ page {
 .popup-content .btn {
   margin-top: 56rpx;
 }
-
-.popup-content .success-icon {
-  margin: 68rpx 0;
-}
-
-.popup-content .congratulation {
-  font-size: 32rpx;
-  line-height: 56rpx;
-  color: #656C74;
-  text-align: left;
-  padding: 0 20rpx;
-}

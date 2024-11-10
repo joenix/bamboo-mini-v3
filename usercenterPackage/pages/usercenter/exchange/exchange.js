@@ -1,5 +1,6 @@
 // pages/usercenter/suggest/suggest.js
 import {api, post} from '../../../../utils/util'
+import Message from 'tdesign-miniprogram/message/index';
 
 Page({
   data: {
@@ -17,8 +18,6 @@ Page({
       // 添加更多礼品...
     ],
     confirmModal: false,
-    addressModal: false,
-    succsssModal: false,
     selectedGift: null,
     totalCredits: 0
   },
@@ -37,9 +36,19 @@ Page({
   },
   exchangeGift: function (event) {
     var index = event.currentTarget.dataset.index;
+    const gift = this.data.gifts[index];
+    // if (gift.credits >= this.data.totalCredits) {
+    //   Message.error({
+    //     context: this,
+    //     offset: [90, 32],
+    //     duration: 3000,
+    //     content: "您的学分不足"
+    //   });
+    //   return;
+    // }
     this.setData({
       confirmModal: true,
-      selectedGift: this.data.gifts[index]
+      selectedGift: gift
     });
   },
   confirmExchange: async function () {
@@ -48,30 +57,18 @@ Page({
     // })
     this.setData({
       confirmModal: false,
-      addressModal: true
+    });
+    wx.navigateTo({
+      url: '/usercenterPackage/pages/usercenter/exchange/address/index',
+      success: (res) => {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('dataFromOpenerPage', { selectedGift: this.data.selectedGift })
+      }
     });
   },
   cancelExchange: function () {
     this.setData({
       confirmModal: false
     });
-  },
-  confirmAddress: function () {
-    wx.navigateTo({
-      url: '/usercenterPackage/pages/usercenter/exchange/address/index',
-      events: {
-        addressOk: () => {
-          this.setData({
-            addressModal: false,
-            succsssModal: true
-          });
-        }
-      }
-    });
-  },
-  confirmOk() {
-    this.setData({
-      succsssModal: false
-    })
   }
 });
