@@ -1,4 +1,5 @@
 import { api, post, wait } from '../../../../../utils/util';
+import Message from 'tdesign-miniprogram/message/index';
 
 Page({
   data: {
@@ -31,21 +32,34 @@ Page({
     });
   },
   confirmAddress: async function () {
-    const userInfo = wx.getStorageSync('userInfo');
-    const selectedGift = this.data.selectedGift;
-    await post(api.Creditshop.confirmAddress, {
-      userid: userInfo.id,
-      credit: selectedGift.credits,
-      creditshopid: selectedGift.id,
-      content: [this.data.name, this.data.phone, this.data.address].join(',')
-    });
-    Message.error({
+    if(this.loading) {
+      return;
+    }
+    this.loading = true;
+    try {
+      const userInfo = wx.getStorageSync('userInfo');
+      const selectedGift = this.data.selectedGift;
+      await post(api.Creditshop.confirmAddress, {
+        userid: userInfo.id,
+        credit: selectedGift.credits,
+        creditshopid: selectedGift.id,
+        content: [this.data.name, this.data.phone, this.data.address].join(',')
+      });
+      this.showMessage('success', '兑换申请已提交')
+      await wait(3000);
+      wx.navigateBack();
+    } catch (error) {
+      this.showMessage('error', error.message)
+    } finally {
+      this.loading = false;
+    }
+  },
+  showMessage(type, content) {
+    Message[type]({
       context: this,
       offset: [90, 32],
       duration: 3000,
-      content: '兑换申请已提交'
+      content
     });
-    await wait(3000);
-    wx.navigateBack();
   }
 });
