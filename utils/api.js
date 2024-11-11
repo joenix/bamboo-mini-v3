@@ -16,11 +16,12 @@ export const api = {
     updateInfo: '/users/set_user_info',
     report: '/users/get_user_report',
     getScore: '/users/get_credit_his',
-    updateScore: '/users/update_crtedit',
-    getGiftList: '',
-    selectGift: '',
-    getAddress: '',
-    addAddress: ''
+    updateScore: '/users/update_crtedit'
+  },
+  // 学分兑换
+  Creditshop: {
+    getGiftList: '/creditshop/get_all',
+    confirmAddress: '/creditshop/buycreditshop'
   },
   // 通用
   Public: {
