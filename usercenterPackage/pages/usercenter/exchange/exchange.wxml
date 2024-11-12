@@ -12,7 +12,7 @@
       <t-row gutter="20">
         <t-col span="12" wx:for="{{gifts}}" wx:key="index">
           <view class="gift-item">
-            <t-image class="gift-image" src="/assets/image.png" mode="widthFix" />
+            <t-image class="gift-image" src="https://oss.lhdd.club/ui/image.png" mode="widthFix" />
             <view class="gift-info">
               <view class="gift-name">{{item.name}}</view>
               <view class="gift-credits">{{item.credits}}学分</view>

@@ -4,15 +4,15 @@
 <pager>
   <view class="blocker input-blocker">
     <view class="cell">
-      <t-image mode="widthFix" width="22" src="/assets/address.png"></t-image>
+      <t-image mode="widthFix" width="22" src="https://oss.lhdd.club/ui/address.png"></t-image>
       <t-textarea value="{{address}}" autosize="{ maxHeight: 48, minHeight: 24 }" placeholder="请输入地址信息" data-name="address" bind:change="onInput" />
     </view>
     <view class="cell">
-      <t-image mode="widthFix" width="22" src="/assets/name.png"></t-image>
+      <t-image mode="widthFix" width="22" src="https://oss.lhdd.club/ui/name.png"></t-image>
       <t-input value="{{name}}" borderless placeholder="请输入收货人姓名" data-name="name" bind:change="onInput" cursor-color="#C0975A" />
     </view>
     <view class="cell">
-      <t-image mode="widthFix" width="22" src="/assets/phone.png"></t-image>
+      <t-image mode="widthFix" width="22" src="https://oss.lhdd.club/ui/phone.png"></t-image>
       <t-input value="{{phone}}" borderless placeholder="请输入收货人手机号" data-name="phone" bind:change="onInput" type="number" cursor-color="#C0975A" maxlength="11" />
     </view>
     <view class="btn">
