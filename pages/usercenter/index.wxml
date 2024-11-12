@@ -46,7 +46,7 @@
   <blocker stick="{{true}}">
     <t-cell title="意见反馈" image="https://oss.lhdd.club/icon/userinfo-icon-feedback.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/usercenterPackage/pages/usercenter/suggest/suggest" />
     <t-cell title="关于我们" image="https://oss.lhdd.club/icon/userinfo-icon-aboutus.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/usercenterPackage/pages/usercenter/aboutus/aboutus" />
-    <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="" />
+    <t-cell title="我的设置" image="https://oss.lhdd.club/icon/userinfo-icon-setting.png" t-class-image="userinfo-image" hover bordered="{{false}}" arrow url="/usercenterPackage/pages/usercenter/setting/setting" />
   </blocker>
   <blocker background="transparent" stick="{{true}}">
     <btn bind:tap="logout">退出</btn>

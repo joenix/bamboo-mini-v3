@@ -1,0 +1,9 @@
+/* usercenterPackage/pages/usercenter/setting/setting.wxss */
+page {
+  background: #F9F8F6;
+}
+
+.content {
+  padding: 32rpx;
+  border-radius: 4rpx;
+}

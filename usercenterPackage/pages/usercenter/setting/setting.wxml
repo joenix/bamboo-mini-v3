@@ -1,0 +1,6 @@
+<!--usercenterPackage/pages/usercenter/setting/setting.wxml-->
+<custom-nav title="我的设置" center background="transparent" />
+<t-message id="t-message" />
+<view class="content">
+  <t-cell title="清楚缓存" hover arrow bind:tap="clearCache" />
+</view>
