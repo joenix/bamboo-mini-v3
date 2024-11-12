@@ -20,7 +20,7 @@
       <view class="my-rank" wx:if="{{ myRankInfo }}">
         <t-avatar image="{{myRankInfo.avatarUrl}}" />
         <view class="rank-num">
-          <view>第<text class="strong">{{myRankInfo.rank}}</text>名</view>
+          <view>第<text class="strong">{{myRankInfo.rank || 1}}</text>名</view>
           <view>我的排名</view>
         </view>
         <view class="time">
@@ -37,7 +37,7 @@
         <view class="rank-list-body">
           <view class="row rank-list-item" wx:for="{{ listData }}" wx:key="index">
             <text>{{item.rank}}</text>
-            <view>
+            <view class="nickname">
               <t-avatar image="{{item.avatarUrl}}" />
               <text class="name">{{ item.nickname }}</text>
             </view>

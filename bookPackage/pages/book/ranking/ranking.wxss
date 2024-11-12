@@ -190,3 +190,8 @@ page {
 .rank-list .name {
   margin-left: 24rpx;
 }
+
+.rank-list .nickname {
+  display: flex;
+  align-items: center;
+}
