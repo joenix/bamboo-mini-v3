@@ -16,11 +16,11 @@ Page({
   },
 
   async getData({ id }) {
-    const { name: title, content, remark, updatedAt: datetime } = await post(api.Information.detail, { id });
+    const { name: title, content, img, remark, updatedAt: datetime } = await post(api.Information.detail, { id });
     const teacher = { title, datetime: formatTime(datetime, 'YYYY年MM月DD日 HH:MM'), content, remark };
 
     teacher.content = teacher.content.split(',');
-
+    teacher.img = img;
     teacher.remark = teacher.remark
       // Image
       .replace(/<img/gi, '<img style="max-width: 100%; margin: .75rem 0 .25rem;"')

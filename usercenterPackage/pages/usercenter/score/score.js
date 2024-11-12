@@ -15,7 +15,6 @@ Page({
   onLoad: function (options) {
     this.setData({
       score: options.score,
-      total: options.score
     });
     this.getScoreData();
   },
@@ -28,13 +27,20 @@ Page({
       const data = await post(api.User.getScore, {
         userid: userInfo.id
       });
+      let total = 0;
+      const listData = data.map((item) => {
+        if (item.credit > 0) {
+          total += item.credit
+        }
+        return {
+          ...item,
+          createdAt: dayjs(item.createdAt).format('YYYY-MM-DD')
+        };
+      })
+
       this.setData({
-        listData: data.map((item) => {
-          return {
-            ...item,
-            createdAt: dayjs(item.createdAt).format('YYYY-MM-DD')
-          };
-        })
+        listData,
+        total
       });
     } catch (error) {
       console.log(error);

@@ -43,7 +43,8 @@ Page({
         userid: userInfo.id,
         credit: selectedGift.credits,
         creditshopid: selectedGift.id,
-        content: [this.data.name, this.data.phone, this.data.address].join(',')
+        content: [this.data.name, this.data.phone].join(','),
+        address: this.data.address
       });
       this.showMessage('success', '兑换申请已提交')
       await wait(3000);
