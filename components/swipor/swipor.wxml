@@ -1,0 +1,17 @@
+<view class="swipor-container">
+  <swiper class="swipor" indicator-dots="true" autoplay="{{false}}" current="{{current}}" bindchange="onSwiporChange" bindtransition="onSwiporTransition" next-margin='40rpx' previous-margin='40rpx' indicator-dots='{{false}}'>
+    <block wx:for="{{content}}" wx:key="*this">
+      <swiper-item wx:for-index="index" class="swipor-item {{current === index ? 'active' : ''}}" style="{{swiporStyles}}">
+        <view class="swipor-item-content">
+          <navigator hover-class='none' open-type="navigate" url="/pages/article/article?article={{item.remark}}" class="swipor-item-inner">
+            <image mode="aspectFill" class="swipor-image" src="{{item.img[0] ? item.img[0].link : ''}}"></image>
+            <view class="swipor-context">
+              <text class="swipor-title">{{item.name}}</text>
+              <rich-text nodes="{{item.content}}"></rich-text>
+            </view>
+          </navigator>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
