@@ -53,7 +53,7 @@ Page({
       lock: true
     });
     wx.showLoading({
-      title: '登录中...',
+      title: '登录中...'
     });
     // 因为验证码没下来，先把验证码当密码用
     try {
@@ -71,8 +71,8 @@ Page({
       });
       wx.setStorageSync('userInfo', userInfo);
       await updateScoreAction(UpdateType.Login);
-      const redirectUrl = wx.getStorageSync('loginRedirectUrl')
-      wx.removeStorageSync('redirectUrl')
+      const redirectUrl = wx.getStorageSync('loginRedirectUrl');
+      wx.removeStorageSync('loginRedirectUrl');
 
       // 上积分
       const { login } = checkStorageCanScore();
