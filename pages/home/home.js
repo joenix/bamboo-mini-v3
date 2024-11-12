@@ -65,8 +65,6 @@ Page({
 
   onShow() {
     this.getTabBar().init();
-    const id = this.data.currentTabId;
-    this.init(id);
   },
 
   onLoad() {
@@ -76,11 +74,18 @@ Page({
         console.log(res);
       }
     });
+    const id = this.data.currentTabId;
+    this.init(id);
   },
 
   onReachBottom() {},
 
   onPullDownRefresh() {
+    this.setData({
+      content: {
+        [id]: []
+      }
+    });
     const id = this.data.currentTabId;
     this.init(id);
   },
@@ -122,7 +127,10 @@ Page({
   onTabsChange(e) {
     const id = e.detail.value;
     this.setData({
-      currentTabId: id
+      currentTabId: id,
+      content: {
+        [id]: []
+      }
     });
     this.init(id);
   },
@@ -348,6 +356,6 @@ Page({
   jump2Child(e) {
     const type = e.currentTarget.dataset.type;
     const url = `/homePackage/pages/home/${type}/index`;
-    link2(url)
+    link2(url);
   }
 });

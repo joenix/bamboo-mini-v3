@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    mobile: '13817152426',
+    mobile: '',
     captcha: '',
     lock: false,
     phoneError: true
