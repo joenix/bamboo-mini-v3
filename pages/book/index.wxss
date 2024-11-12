@@ -182,13 +182,16 @@ page {
 }
 
 .book-entries-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   text-align: right;
 }
 
 .book-entries-button text {
   color: #926523;
   vertical-align: middle;
-  font-size: 12rpx;
+  font-size: 20rpx;
 }
 
 .book-entries-flex {
@@ -251,7 +254,7 @@ page {
   vertical-align: middle;
 }
 
-.book-entries-button-large .icon {
+.arrow-icon {
   width: 8px;
 }
 

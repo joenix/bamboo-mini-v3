@@ -32,7 +32,10 @@
         <view class="book-entries-text">
           查看你的历史排名
         </view>
-        <view class="book-entries-button">完整榜单 <text>▶</text></view>
+        <view class="book-entries-button">
+          <text>完整榜单</text>
+          <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
+        </view>
       </view>
     </t-col>
     <t-col span="12">
@@ -41,7 +44,10 @@
         <view class="book-entries-text">
           点读指法教学
         </view>
-        <view class="book-entries-button">开始学习 <text>▶</text></view>
+        <view class="book-entries-button">
+          <text>开始学习</text>
+          <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
+        </view>
       </view>
     </t-col>
   </t-row>
@@ -62,7 +68,7 @@
           今天已有 <text>{{ item.read_count }}</text> 人完成点读
           <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap" style="opacity: {{isToday ? 1 : 0.3}}">
             <text class="text">{{ !item.active ? "暂未激活" : "开始点读" }} </text>
-            <image src="/assets/arrow.png" class="icon" mode="widthFix" />
+            <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
           </view>
         </view>
       </view>
