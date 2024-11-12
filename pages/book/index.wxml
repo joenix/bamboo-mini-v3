@@ -53,7 +53,7 @@
           <view class="book-entries-text">建议单次时长45分</view>
         </view>
         <view class="book-entries-total">
-          今日已完成 <text>{{item.today_count}}</text>次，总时长 <text>{{item.today_time}}</text>
+          今日已完成 <text>{{item.today_count || 0}}</text>次，总时长 <text>{{item.today_time}}</text>
         </view>
       </view>
       <view class="book-entries-flex w-220">
