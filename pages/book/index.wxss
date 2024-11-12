@@ -236,6 +236,9 @@ page {
 }
 
 .book-entries-button-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #926523;
   margin-top: 16rpx;
   padding: 12rpx 0;
@@ -243,9 +246,13 @@ page {
   border: 2rpx solid #926523;
 }
 
-.book-entries-button-large text {
-  font-size: 16rpx;
+.book-entries-button-large .text {
+  font-size: 20rpx;
   vertical-align: middle;
+}
+
+.book-entries-button-large .icon {
+  width: 8px;
 }
 
 .activePopup {

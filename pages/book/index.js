@@ -191,7 +191,7 @@ Page({
       bookList?.data?.map((v) => {
         return {
           ...v,
-          today_time: Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h'
+          today_time: v.today_time ? Number((v.today_time / 3600 / 1000).toFixed(2)) + 'h' : 0
         };
       }) || [];
     this.setData({
