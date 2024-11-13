@@ -28,7 +28,7 @@
   <view class="popup-content">
     <view class="title">学分兑换</view>
     <view class="ask">是否确认使用{{selectedGift.credits}}学分兑换该礼品</view>
-    <t-image src="/assets/image.png" mode="widthFix" width="110" />
+    <t-image src="https://oss.lhdd.club/ui/image.png" mode="widthFix" width="110" />
     <view class="name">{{selectedGift.name}}</view>
     <view class="btn">
       <btn bindtap="confirmExchange">确定兑换</btn>
