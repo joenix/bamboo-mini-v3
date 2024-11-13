@@ -1,5 +1,23 @@
 /* homePackage/pages/home/jiangzuo/detail/index.wxss */
-.picture {
-  margin-bottom: 24rpx;
-  width: 100%;
+
+.lesson {
+  padding-top: 40rpx;
+}
+
+.lesson-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.lesson-datetime {
+  color: #d3be9c;
+}
+
+.lesson-rich {
+  text-align: justify;
+}
+
+.lesson-rich p {
+  margin-bottom: 12rpx;
 }

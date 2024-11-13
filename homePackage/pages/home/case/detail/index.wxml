@@ -2,10 +2,15 @@
 <custom-nav title="成果案例详情" />
 
 <pager class="lesson">
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_2.png" />
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_3.png" />
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_4.png" />
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_2.png" />
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_3.png" />
-  <image class="picture" src="https://oss.lhdd.club/ui/lesson_sample_4.png" />
+  <view class="lesson-title">{{data.title}}</view>
+  <view class="lesson-datetime">
+    {{data.datetime}}
+  </view>
+  <liner side="{{false}}" />
+  <blocker shadow="{{false}}" class="lesson-content">
+    <view wx:for="{{data.img}}" style="margin-bottom: 40rpx;">
+      <t-image src="{{item.link}}" class="lesson-avatar" mode="aspectFill" width="306" height="172" />
+    </view>
+    <rich-text class="lesson-rich" nodes="{{data.remark}}"></rich-text>
+  </blocker>
 </pager>

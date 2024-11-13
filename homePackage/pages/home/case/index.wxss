@@ -2,11 +2,10 @@
 .item {
   padding: 20rpx;
   border-radius: 4rpx;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 2px 10px 0px rgba(194, 185, 172, 0.2);
   margin-bottom: 20rpx;
 }
-
 
 .item-poster {
   margin-bottom: 16rpx;
@@ -19,7 +18,7 @@
 
 .item-content text {
   margin-right: 12rpx;
-  color: #A1A1A1;
+  color: #a1a1a1;
 }
 
 .item-content .item-name {

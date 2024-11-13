@@ -1,66 +1,37 @@
-// homePackage/pages/home/case/detail/index.js
+// homePackage/pages/home/gongfu/detail/index.js
+import { api, post, formatTime } from '../../../../../utils/util';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    id: null,
+    data: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad({ id }) {
+    // 判断参数是否存在，并设置 URL
+    if (id) {
+      this.setData({ id });
+      this.getData({ id });
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+  async getData({ id }) {
+    const { name: title, img, content, remark, updatedAt: datetime } = await post(api.Information.detail, { id });
 
-  },
+    const _remark = remark
+      // Image
+      .replace(/<img/gi, '<img style="max-width: 100%; margin: .75rem 0 .25rem;"')
+      // Part
+      .replace(/<p/gi, '<p style="text-align: justify; margin: .75rem 0 .25rem; color: #363636;');
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+    const data = {
+      title,
+      img,
+      datetime: formatTime(datetime, 'YYYY年MM月DD日 HH:MM'),
+      content,
+      remark: _remark
+    };
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+    this.setData({ data });
   }
-})
+});
