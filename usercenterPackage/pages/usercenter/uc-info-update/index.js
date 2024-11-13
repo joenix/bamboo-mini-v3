@@ -35,6 +35,11 @@ Page({
       id: userInfo.id
     });
     if (!info) {
+      this.setData({
+        info: {
+          userId: userInfo.id
+        }
+      });
       return;
     }
     const newInfo = getFilterInfo(info);
