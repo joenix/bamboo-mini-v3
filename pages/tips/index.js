@@ -26,14 +26,16 @@ Page({
   },
 
   onLoad() {
+    const tips = this.data.tips;
     this.setData({
-      indexs: this.data.tips.map((item) => item.index),
-      viewId: this.data.tips[0].id
+      indexs: tips.map((item) => item.index),
+      viewId: tips[0].id,
     });
+    this.getTips();
   },
   onShow() {
     this.getTabBar().init();
-    this.getTips();
+    
   },
   onSelect(e) {
     const index = e.currentTarget.dataset.index;
@@ -56,7 +58,11 @@ Page({
     this.getTips();
   },
   async getTips() {
-    const { data } = await post(api.Tips.getall);
+    const tips = this.data.tips;
+    this.setData({
+      tips: tips.map(v => ({...v, children: []}))
+    });
+    const { data } = await post(api.Tips.getall + '?pageSize=100&page=1');
 
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;

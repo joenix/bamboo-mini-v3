@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "首页",
-  "onReachBottomDistance": 10,
+  "onReachBottomDistance": 50,
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "t-loading": "tdesign-miniprogram/loading/loading",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",

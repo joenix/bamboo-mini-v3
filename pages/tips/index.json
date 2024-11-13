@@ -6,5 +6,6 @@
     "content": "/components/content/content",
     "custom-nav": "/components/custom-nav/custom-nav"
   },
+  "onReachBottomDistance": 50,
   "enablePullDownRefresh": true
 }

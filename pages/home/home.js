@@ -78,7 +78,9 @@ Page({
     this.init(id);
   },
 
-  onReachBottom() {},
+  onReachBottom() {
+    
+  },
 
   onPullDownRefresh() {
     this.setData({
