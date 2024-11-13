@@ -86,11 +86,11 @@ Page({
       },
       {
         key: 'height',
-        name: '身高'
+        name: '身高(cm)'
       },
       {
         key: 'weight',
-        name: '体重'
+        name: '体重(kg)'
       }
     ];
 
