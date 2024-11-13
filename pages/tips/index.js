@@ -35,7 +35,6 @@ Page({
   },
   onShow() {
     this.getTabBar().init();
-    
   },
   onSelect(e) {
     const index = e.currentTarget.dataset.index;
@@ -62,7 +61,7 @@ Page({
     this.setData({
       tips: tips.map(v => ({...v, children: []}))
     });
-    const { data } = await post(api.Tips.getall + '?pageSize=100&page=1');
+    const { data } = await post(api.Tips.getall + '?pageSize=200&page=1');
 
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;
