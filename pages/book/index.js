@@ -150,18 +150,10 @@ Page({
         userId: userInfo.id
       });
       this.showToast('激活成功');
-      const newListData = this.data.listData.map((v) => {
-        return v.id === bookId
-          ? {
-              ...v,
-              active: true
-            }
-          : v;
-      });
       this.setData({
         activePopupShow: false,
-        listData: newListData
       });
+      this.getBookList();
     } catch (e) {
       this.showToast(e.message);
     } finally {
