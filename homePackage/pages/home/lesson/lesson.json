@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "教师介绍",
+    "navigationBarTitleText": "课件介绍",
     "backgroundColor": "#f9f8f7",
     "usingComponents": {
         "t-avatar": "tdesign-miniprogram/avatar/avatar",

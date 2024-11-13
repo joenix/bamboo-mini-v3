@@ -21,6 +21,8 @@ Page({
 
     org.title = org.title.split(',');
 
+    console.log(24, org.remark);
+
     org.remark = org.remark
       // Image
       .replace(/<img/gi, '<img style="max-width: 100%; margin: .75rem 0 .25rem;"')
