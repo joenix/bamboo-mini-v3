@@ -70,7 +70,6 @@ Page({
         token
       });
       wx.setStorageSync('userInfo', userInfo);
-      await updateScoreAction(UpdateType.Login);
       const redirectUrl = wx.getStorageSync('loginRedirectUrl');
       wx.removeStorageSync('loginRedirectUrl');
 
