@@ -23,13 +23,15 @@ Page({
       }
     ],
     opens: [0],
+    page: 1,
+    loadEnd: false
   },
 
   onLoad() {
     const tips = this.data.tips;
     this.setData({
       indexs: tips.map((item) => item.index),
-      viewId: tips[0].id,
+      viewId: tips[0].id
     });
     this.getTips();
   },
@@ -56,12 +58,24 @@ Page({
   onPullDownRefresh() {
     this.getTips();
   },
-  async getTips() {
-    const tips = this.data.tips;
-    this.setData({
-      tips: tips.map(v => ({...v, children: []}))
-    });
-    const { data } = await post(api.Tips.getall + '?pageSize=200&page=1');
+  onReachBottom() {
+    this.getTips(this.data.page);
+  },
+  async getTips(page = 1) {
+    if (this.data.loadEnd) return;
+    let tips = this.data.tips;
+
+    if (page === 1) {
+      // 重置
+      tips = tips.map((v) => ({ ...v, children: [] }));
+      this.setData({
+        tips,
+        page: 1,
+        loadEnd: false
+      });
+    }
+
+    const { data, totalPages, currentPage } = await post(api.Tips.getall + '?pageSize=50&page=' + page);
 
     const now = new Date().getTime();
     const day = now + 1000 * 60 * 60 * 24;
@@ -71,25 +85,27 @@ Page({
       item.updatedAt = formatTime(item.updatedAt, 'YYYY年MM月DD日');
 
       if (time <= day * 1) {
-        this.data.tips[0].children.push(item);
+        tips[0].children.push(item);
       }
 
       if (time > day * 1 && time <= day * 7) {
-        this.data.tips[1].children.push(item);
+        tips[1].children.push(item);
       }
 
       if (time > day * 7 && time <= day * 30) {
-        this.data.tips[2].children.push(item);
+        tips[2].children.push(item);
       }
 
       // 补丁
       this.data.opens[index] = false;
     });
 
-    console.log(this.data.tips);
+    console.log(tips);
 
     this.setData({
-      tips: this.data.tips
+      tips,
+      page: currentPage + 1,
+      loadEnd: currentPage >= totalPages
     });
   },
   jump2Detail(e) {

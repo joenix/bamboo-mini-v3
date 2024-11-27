@@ -4,7 +4,8 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "pager": "/components/pager/pager",
     "content": "/components/content/content",
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "t-divider": "tdesign-miniprogram/divider/divider"
   },
   "onReachBottomDistance": 50,
   "enablePullDownRefresh": true

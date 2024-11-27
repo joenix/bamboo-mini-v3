@@ -35,5 +35,8 @@
         </view>
       </view>
     </block>
+    <view style="margin-top: 20rpx;" wx:if="{{loadEnd}}">
+      <t-divider content="没有更多了" />
+    </view>
   </pager>
 </scroll-view>
