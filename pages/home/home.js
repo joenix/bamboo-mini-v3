@@ -1,8 +1,10 @@
 import { checkToken, api, get, post, link2 } from '../../utils/util';
-
+import dayjs from 'dayjs';
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
+
+const today = dayjs().format('YYYY-MM-DD');
 
 Page({
   data: {
@@ -36,7 +38,8 @@ Page({
       2: [],
       3: []
     },
-    course: []
+    course: [],
+    noticeContent: []
   },
 
   // 从 Blocker 同步数据
@@ -65,6 +68,11 @@ Page({
 
   onShow() {
     this.getTabBar().init();
+    const baseContent = ['添加六合融道官方微信公众号，传播国学智慧'];
+    const lastCheckedDate = wx.getStorageSync('lastCheckedDate');
+    this.setData({
+      noticeContent: today === lastCheckedDate ? baseContent : baseContent.concat('记得完成每日签到和每日任务哟')
+    });
   },
 
   onLoad() {

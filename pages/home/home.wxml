@@ -4,6 +4,7 @@
 <view wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
 </view>
+<t-notice-bar visible="{{true}}" direction="vertical" interval="{{3000}}" content="{{noticeContent}}" prefixIcon="sound" style="margin-bottom: 16rpx;background: #FFF" />
 <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel" t-class-track="custom-track" space-evenly="{{false}}">
   <t-tab-panel label="最新资讯" value="0" style="{{tabPanelstyle}}">
     <view class="card-theme">
