@@ -79,7 +79,11 @@ Page({
   },
 
   onReachBottom() {
-    
+    const id = this.data.currentTabId;
+    if (id !== 5) {
+      return;
+    }
+    this.getMoreTips();
   },
 
   onPullDownRefresh() {
@@ -96,6 +100,11 @@ Page({
     if (!id) {
       return;
     }
+    if (id === '5') {
+      this.getTips();
+      return;
+    }
+
     let { data } = await post(api.Information.getall, {
       filters: [
         {
@@ -121,7 +130,19 @@ Page({
       }
     });
   },
-
+  // 贴士集数据
+  getTips() {
+    const fn = () => {
+      const tipChild = this.selectComponent('#tip-list');
+      console.log(tipChild);
+      tipChild.getTips();
+    };
+    setTimeout(fn, 300);
+  },
+  getMoreTips() {
+    const tipChild = this.selectComponent('#tip-list');
+    tipChild?.getMoreTips();
+  },
   /**
    * Tabs
    * ====== ====== ======

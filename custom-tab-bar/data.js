@@ -11,8 +11,8 @@ export default [
   },
   {
     icon: 'tips',
-    text: '贴士集',
-    url: 'pages/tips/index'
+    text: '学习商城',
+    url: 'pages/learn-shop/learn-shop'
   },
   {
     icon: 'user',

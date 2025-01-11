@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "学习商城",
+  "usingComponents": {
+    "pager": "/components/pager/pager",
+    "content": "/components/content/content",
+    "custom-nav": "/components/custom-nav/custom-nav"
+  },
+  "onReachBottomDistance": 50,
+  "enablePullDownRefresh": true
+}

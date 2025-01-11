@@ -1,0 +1,44 @@
+<!-- 自定义nav -->
+<!-- <scroll-view style="height: 100vh;" scroll-y scroll-with-animation scroll-into-view="{{viewId}}" scroll-into-view-offset="-150">
+  <custom-nav title="贴士集" center showBack="{{false}}" background="transparent" />
+</scroll-view> -->
+<pager class="page-tips">
+  <!-- <view class="tabs">
+      <view class="tabs-item {{selectIdx === index ? 'selected' : ''}}" wx:for="{{indexs}}" wx:key="index" data-index="{{index}}" bind:tap="onSelect">
+        {{ item }}
+      </view>
+    </view> -->
+  <block wx:for="{{tips}}" wx:key="index">
+    <view class="page-tips-info" id="{{item.id}}">
+      <view wx:for="{{item.children}}" wx:key="info" wx:for-index="index" wx:for-item="info">
+        <view wx:if="{{index === 0}}" class="page-tip-first">
+          <view class="page-tip-first-in">
+            <view class="page-tip-header">
+              <view class="tip-tip">
+                <view class="tip-tip-in">今日贴士</view>
+                <view class="tip-tip-ar"></view>
+              </view>
+              <view class="tip-date">{{info.updatedAt}}</view>
+            </view>
+            <view class="page-tip-content">
+              <content count="6" data-info="{{info}}" bind:tap="jump2Detail">
+                {{info.content}}
+              </content>
+            </view>
+          </view>
+        </view>
+        <view class="page-tip-block" wx:else>
+          <t-icon class="tip-control" name="{{opens[index] ? 'chevron-down-circle' : 'chevron-up-circle'}}" size="48rpx" data-index="{{index}}" bind:tap="onControl" />
+          <view class="tip-date">{{info.updatedAt}}</view>
+          <view class="line"></view>
+          <content class="tip-collapse" count="{{opens[index] ? 5 : 1}}" data-info="{{info}}" bind:tap="jump2Detail">
+            {{info.content}}
+          </content>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view style="margin-top: 20rpx;" wx:if="{{loadEnd}}">
+    <t-divider content="没有更多了" />
+  </view>
+</pager>

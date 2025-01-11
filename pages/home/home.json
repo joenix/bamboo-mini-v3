@@ -15,6 +15,7 @@
     "pager": "/components/pager/pager",
     "blocker": "/components/blocker/blocker",
     "liner": "/components/liner/liner",
-    "content": "/components/content/content"
+    "content": "/components/content/content",
+    "tips": "./tips/index"
   }
 }

@@ -1,0 +1,4 @@
+<custom-nav title="学习商城" center showBack="{{false}}" />
+<pager>
+  <view class="card-theme">暂未开放</view>
+</pager>

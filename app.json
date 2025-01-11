@@ -4,8 +4,7 @@
     "pages/login/login",
     "pages/home/home",
     "pages/book/index",
-    "pages/tips/index",
-    "pages/tips/detail/detail",
+    "pages/learn-shop/learn-shop",
     "pages/usercenter/index"
   ],
   "subPackages": [
@@ -27,7 +26,8 @@
         "pages/home/gongfu/detail/index",
         "pages/home/share/detail/index",
         "pages/home/jiangzuo/detail/index",
-        "pages/home/case/detail/index"
+        "pages/home/case/detail/index",
+        "pages/tips-detail/detail"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "pagePath": "pages/book/index"
       },
       {
-        "pagePath": "pages/tips/index"
+        "pagePath": "pages/learn-shop/learn-shop"
       },
       {
         "pagePath": "pages/usercenter/index"

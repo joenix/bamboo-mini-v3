@@ -32,7 +32,7 @@
   },
   "editor.tabSize": 2,
   "[wxml]": {
-    "editor.defaultFormatter": "wechat.miniprogram.wxml-language-features"
+    "editor.defaultFormatter": "qiu8310.minapp-vscode"
   },
   "[css]": {
     "editor.defaultFormatter": "HookyQR.beautify"
