@@ -11,40 +11,15 @@ page {
   width: 100%;
 }
 
-.main .article {
+.main {
   margin-top: 40rpx;
 }
 
-.article .title {
+.title {
   font-size: 32rpx;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 40rpx;
   color: #2B2B2B;
-}
-
-.article .extra-info {
-  font-size: 24rpx;
-  font-weight: normal;
-  line-height: 28rpx;
-  color: #A1A1A1;
-  margin: 24rpx 0;
-  padding-bottom: 24rpx;
-  border-bottom: 1rpx solid rgba(0, 0, 0, 0.1);
-}
-
-.article .num {
-  font-size: 24rpx;
-  font-weight: normal;
-  line-height: 36rpx;
-  color: #C0975A;
-  margin-right: 16rpx;
-}
-
-.article .paragraph {
-  font-size: 28rpx;
-  font-weight: normal;
   line-height: 48rpx;
-  color: #A1A1A1;
-  white-space: pre-wrap;
-  margin-bottom: 16rpx;
+  margin-top: 20rpx;
 }
