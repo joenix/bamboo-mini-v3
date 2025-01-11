@@ -10,17 +10,18 @@ Page({
   data: {
     score: 0,
     total: 0,
-    listData: []
+    listData: [],
+    methodPopup: false
   },
   onLoad: function (options) {
     this.setData({
-      score: options.score,
+      score: options.score
     });
     this.getScoreData();
   },
   async getScoreData() {
     wx.showLoading({
-      title:"加载中"
+      title: '加载中'
     });
     try {
       const userInfo = wx.getStorageSync('userInfo');
@@ -30,13 +31,13 @@ Page({
       let total = 0;
       const listData = data.map((item) => {
         if (item.credit > 0) {
-          total += item.credit
+          total += item.credit;
         }
         return {
           ...item,
           createdAt: dayjs(item.createdAt).format('YYYY-MM-DD')
         };
-      })
+      });
 
       this.setData({
         listData,
@@ -55,6 +56,16 @@ Page({
       offset: [90, 32],
       duration: 3000,
       content
+    });
+  },
+  openGetMethodPopup() {
+    this.setData({
+      methodPopup: true
+    });
+  },
+  onMethodPopupOpen(e) {
+    this.setData({
+      methodPopup: e.detail.visible
     });
   }
 });

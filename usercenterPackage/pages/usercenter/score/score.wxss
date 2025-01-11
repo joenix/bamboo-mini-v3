@@ -37,6 +37,12 @@ page {
   font-weight: 500;
 }
 
+.get-score-tips {
+  font-size: 24rpx;
+  opacity: 0.5;
+  text-decoration: underline;
+}
+
 .record-container {
   border-radius: 2px;
   opacity: 1;
@@ -85,4 +91,21 @@ page {
   color: #C0975A;
   font-weight: 700;
   margin-left: 8rpx;
+}
+
+.method-popup {
+  background-color: #FFF;
+  padding: 32rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #333;
+  width: 480rpx;
+}
+
+.method-popup .title {
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  margin-bottom: 20rpx;
 }

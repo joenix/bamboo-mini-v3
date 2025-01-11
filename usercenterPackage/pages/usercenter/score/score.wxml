@@ -3,7 +3,10 @@
 <t-message id="t-message" />
 <view class="score-container">
   <view class="cur">
-    <view class="title">可用学分</view>
+    <view class="title">
+      可用学分
+      <text class="get-score-tips" bind:tap="openGetMethodPopup">积分获取？</text>
+    </view>
     <view class="score">{{score}}</view>
   </view>
   <view class="total">
@@ -19,8 +22,22 @@
           <view class="name">{{ item.content }}</view>
           <view class="time">{{ item.createdAt }}</view>
         </view>
-        <view>学分<text class="score">{{ item.credit }}</text></view>
+        <view>
+          学分
+          <text class="score">{{ item.credit }}</text>
+        </view>
       </view>
     </view>
   </view>
 </view>
+<t-popup visible="{{methodPopup}}" bind:visible-change="onMethodPopupOpen" usingCustomNavbar placement="center">
+  <view class="method-popup">
+    <view class="title">积分获取</view>
+    <view>1、完善个人信息可获得积分；</view>
+    <view>2、每日登录可获得积分；</view>
+    <view>3、每日在线签到可获得积分；</view>
+    <view>4、点读打卡超过15分钟可获得积分；</view>
+    <view>5、分享心得到朋友圈或者群获得积分；</view>
+    <view>6、分享每日贴士到朋友圈或群可获得积分；</view>
+  </view>
+</t-popup>
