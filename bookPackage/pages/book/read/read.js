@@ -2,6 +2,18 @@ import Message from 'tdesign-miniprogram/message/index';
 import { api, post } from '../../../../utils/util';
 import { UpdateType, updateScoreAction } from '../../../../utils/score';
 
+function formatSeconds(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+
+  const hoursStr = hours.toString().padStart(2, '0');
+  const minutesStr = minutes.toString().padStart(2, '0');
+  const secsStr = secs.toString().padStart(2, '0');
+  console.log(hoursStr, minutesStr, secsStr);
+  return `${hoursStr}:${minutesStr}:${secsStr}`;
+}
+
 Page({
   data: {
     bookId: '',
@@ -30,7 +42,13 @@ Page({
     remindAudioContext: null,
     resultPopup: false,
     resultTimes: '',
-    resultFeedback: ''
+    readRecordInfo: {
+      times: 0,
+      time: 0
+    },
+    totalTimeUi: '',
+    resultFeedback: '',
+    isReading: false
   },
   settingChange(e) {
     const key = e.currentTarget.dataset.type;
@@ -169,7 +187,8 @@ Page({
       this.setData({
         pageTitle: '计时',
         isBgmStop: false,
-        settingPopup: false
+        settingPopup: false,
+        isReading: true
       });
       const { remind, hour, minute, guide } = this.data.settingData;
       this.startBgm(guide);
@@ -181,9 +200,16 @@ Page({
     }
     // 结束点读
     this.stopBgm();
+    const readInfo = wx.getStorageSync('readInfo') || { times: 0, time: 0 };
+    const totalTime = readInfo.time + this.data.countdown / 1000;
     this.setData({
       resultPopup: true,
-      pageTitle: '计时'
+      pageTitle: '计时',
+      readRecordInfo: {
+        times: readInfo.times + 1,
+        time: totalTime
+      },
+      totalTimeUi: formatSeconds(totalTime)
     });
   },
   showMessage(type, content) {
@@ -195,7 +221,7 @@ Page({
     });
   },
   onResultVisible(e) {
-    const visible = e.detail.visible
+    const visible = e.detail.visible;
     if (visible) return;
     this.resetData();
   },
@@ -212,10 +238,10 @@ Page({
     });
   },
   async doSubmit() {
-    if ((this.data.resultTimes || 0) < 1) {
-      this.showMessage('error', '请检查点读遍数');
-      return;
-    }
+    // if ((this.data.resultTimes || 0) < 1) {
+    //   this.showMessage('error', '请检查点读遍数');
+    //   return;
+    // }
     if (this.submiting) {
       return;
     }
@@ -225,21 +251,23 @@ Page({
       mask: true
     });
     const userInfo = wx.getStorageSync('userInfo');
-    const { countdown, resultTimes, resultFeedback, bookId } = this.data;
+    const { countdown, resultFeedback, bookId, readRecordInfo } = this.data;
     try {
       await post(api.Read.submit + '?credit=10', {
         time: countdown,
-        count: +resultTimes,
+        count: totalReadTimes,
         content: resultFeedback,
         bookId: +bookId,
         userId: userInfo.id
       });
       await updateScoreAction(UpdateType.Read);
       this.showMessage('success', '点读记录提交成功');
+      wx.setStorageSync('readInfo', readRecordInfo);
       this.setData({
         step: 1,
         resultPopup: false
       });
+      // TODO分享
     } catch (error) {
       console.log(error);
       this.showMessage('error', '点读记录提交失败');
@@ -330,7 +358,8 @@ Page({
       resultFeedback: '',
       remindCountDown: 0,
       resultPopup: false,
-      step: 1
+      step: 1,
+      isReading: false
     });
   },
   stopBgm() {
@@ -343,4 +372,17 @@ Page({
     }
     clearInterval(this.data.countdown_interval);
   },
+  toggleReading() {
+    const isReading = this.data.isReading;
+    if (isReading) {
+      this.data.bgm?.pause();
+      this.data.remindAudioContext?.pause();
+      clearInterval(this.data.countdown_interval);
+    } else {
+      this.startCountdown();
+    }
+    this.setData({
+      isReading: !isReading
+    });
+  }
 });

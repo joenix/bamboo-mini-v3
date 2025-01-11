@@ -168,8 +168,8 @@ page {
 }
 
 .read-result-time {
-  font-size: 72rpx;
-  line-height: 88rpx;
+  font-size: 48rpx;
+  line-height: 48rpx;
   color: #C0975A;
 }
 
@@ -267,4 +267,21 @@ page {
 .input-group .t-input__wrap--suffix {
   font-size: 28rpx;
   padding-left: 10rpx !important;
+}
+
+.read-btn-box {
+  display: flex;
+  justify-content: space-between;
+}
+.read-btn-box .read-button {
+  flex: 1;
+}
+.read-btn-box .read-button.ghost {
+  background: transparent;
+  border: 2rpx solid #C0975A;
+  color: #c0975a;
+}
+
+.read-btn-box .read-button:last-child {
+  margin-left: 20rpx;
 }

@@ -1,7 +1,6 @@
 <!-- article.wxml -->
 <custom-nav title="{{pageTitle}}" center background="transparent" />
 <t-message id="t-message" />
-
 <view class="read">
   <pager wx:if="{{step === 1}}">
     <view class="read-bgm">
@@ -21,7 +20,6 @@
     <view class="read-button w-600" data-go="{{2}}" bind:tap="updateStep">开始点读</view>
     <view class="read-tip">点击后开始计时</view>
   </pager>
-
   <pager wx:if="{{step === 2}}">
     <view class="header">
       <view class="count-down-box">
@@ -35,9 +33,14 @@
       </view>
     </view>
     <view class="read-countdown">
-      <view class="read-countdown-time">{{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}</view>
+      <view class="read-countdown-time">
+        {{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}
+      </view>
     </view>
-    <view class="read-button w-600" data-go="{{3}}" bind:tap="updateStep">点读结束</view>
+    <view class="read-btn-box">
+      <view class="read-button ghost" bind:tap="toggleReading">{{isReading ? '暂停' : '继续'}}</view>
+      <view class="read-button" data-go="{{3}}" bind:tap="updateStep">点读结束</view>
+    </view>
     <view class="read-tip">点击后结束点读</view>
     <view class="read-subtip">温馨提示：请勿关闭/退出小程序</view>
   </pager>
@@ -78,10 +81,13 @@
   <t-popup visible="{{resultPopup}}" bind:visible-change="onResultVisible" placement="bottom">
     <view class="read-result-popup">
       <view class="read-result">
-        <view class="read-result-time">{{countdown / 1000}}秒</view>
+        <view class="read-result-time">
+          {{countdown_ui.hh}}:{{countdown_ui.mm}}:{{countdown_ui.ss}}
+        </view>
         <view class="read-result-tip">本次点读总时长</view>
         <view class="input-box">
-          <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" cursor-color="#C0975A" />
+          <view style="line-height: 68rpx;">累计点读{{readRecordInfo.times}}遍，总时长{{totalTimeUi}}</view>
+          <!-- <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" cursor-color="#C0975A" /> -->
         </view>
         <view class="textarea-box">
           <t-textarea value="{{resultFeedback}}" maxcharacter="300" disableDefaultPadding="{{true}}" indicator placeholder="请您写下本次点读后的感悟，300字以内" bind:change="onResultFeedbackChange" />
