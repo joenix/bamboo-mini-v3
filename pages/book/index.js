@@ -37,8 +37,8 @@ const generateFormatFn = (readDates = []) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const today = date.getDate();
-    const { dayStr } = lunar.solarToLunar(year, month, today);
-    current.suffix = dayStr;
+    const { dayStr, monthStr } = lunar.solarToLunar(year, month, today);
+    current.suffix = dayStr === '初一' ? monthStr : dayStr;
     // Update
     return current;
   };
@@ -151,7 +151,7 @@ Page({
       });
       this.showToast('激活成功');
       this.setData({
-        activePopupShow: false,
+        activePopupShow: false
       });
       this.getBookList();
     } catch (e) {
