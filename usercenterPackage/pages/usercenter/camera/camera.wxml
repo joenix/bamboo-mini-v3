@@ -1,0 +1,16 @@
+<!-- usercenterPackage/pages/usercenter/camera/camera.wxml -->
+<view class="body">
+  <view class="camera-box">
+    <camera device-position="{{position}}" frame-size="small" flash="off" binderror="error" resolution="high" style="width: 100vw; height: 100vw"></camera>
+    <image class="img" src="./outline-person.png" mode="widthFix"></image>
+  </view>
+  <view class="btn-area">
+    <view class="take-button" bindtap="takePhoto">
+      <view class="take-button-inner"></view>
+    </view>
+    <view class="switch-btn" bindtap="switchDevicePosition">
+      <t-icon name="rollfront" size="42rpx" />
+      <view>镜头翻转</view>
+    </view>
+  </view>
+</view>

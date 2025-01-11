@@ -1,4 +1,5 @@
 // pages/usercenter/suggest/suggest.js
+import dayjs from 'dayjs';
 import Message from 'tdesign-miniprogram/message/index';
 import { host, api, post, wait } from '../../../../utils/util';
 
@@ -13,9 +14,62 @@ const getFilterInfo = (userInfo) => {
 Page({
   data: {
     info: {},
+    sexVisible: false,
+    sexOptions: [
+      { value: '男', label: '男' },
+      { value: '女', label: '女' }
+    ],
+    dateVisible: false,
+    defaultDate: dayjs().subtract(15, 'year').valueOf(),
+    endDate: new Date().getTime(),
+    recentUpdateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
   },
   onLoad() {
     this.init();
+  },
+  openSexPicker() {
+    this.setData({
+      sexVisible: true
+    });
+  },
+  onSexPickerChange(e) {
+    const { key } = e.currentTarget.dataset;
+    const { value } = e.detail;
+    this.setData({
+      info: {
+        ...this.data.info,
+        sex: value[0]
+      },
+      sexVisible: false
+    });
+  },
+  onSexPickerCancel() {
+    this.setData({
+      sexVisible: false
+    });
+  },
+  openBirthDayPicker() {
+    const { birthday } = this.data.info;
+    this.setData({
+      dateVisible: true,
+      defaultDate: birthday ? new Date(birthday).getTime() : new Date().getTime()
+    });
+  },
+  onBirthDayConfirm(e) {
+    const { value } = e.detail;
+    this.setData({
+      info: {
+        ...this.data.info,
+        birthday: value,
+        age: dayjs().diff(dayjs(value), 'year')
+      },
+      dateVisible: false
+    });
+  },
+  onBirthDayCancel() {
+    this.setData({
+      dateVisible: false
+    });
   },
   // 输入框输入时
   onInput(e) {
@@ -97,27 +151,45 @@ Page({
       });
     });
   },
-  async onChooseImage(e) {
-    // TODO: 选择图片
-    wx.chooseMedia({
-      count: 1,
-      mediaType: ['image'],
-      success: async (res) => {
-        const newAvatar = await this.uploadAvatar(res.tempFiles[0].tempFilePath);
-        this.setData({
-          info: {
-            ...this.data.info,
-            avatar: newAvatar
-          }
-        });
+  // async onChooseImage(e) {
+  //   // TODO: 选择图片
+  //   wx.chooseMedia({
+  //     count: 1,
+  //     mediaType: ['image'],
+  //     success: async (res) => {
+  //       const newAvatar = await this.uploadAvatar(res.tempFiles[0].tempFilePath);
+  //       this.setData({
+  //         info: {
+  //           ...this.data.info,
+  //           avatar: newAvatar
+  //         }
+  //       });
+  //     },
+  //     fail: (e) => {
+  //       console.log(e);
+  //       if (e.errMsg.indexOf('cancel') > -1) {
+  //         return;
+  //       }
+  //       this.showMessage('error', '选择图片失败');
+  //     }
+  //   });
+  // },
+  onChooseImage() {
+    wx.navigateTo({
+      url: "/usercenterPackage/pages/usercenter/camera/camera",
+      events: {
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        acceptDataFromOpenedPage: async ({data}) => {
+          console.log(data);
+          const newAvatar = await this.uploadAvatar(data);
+          this.setData({
+            info: {
+              ...this.data.info,
+              avatar: newAvatar
+            }
+          });
+        },
       },
-      fail: (e) => {
-        console.log(e);
-        if (e.errMsg.indexOf('cancel') > -1) {
-          return;
-        }
-        this.showMessage('error', '选择图片失败');
-      }
     });
   },
   showMessage(type, content) {

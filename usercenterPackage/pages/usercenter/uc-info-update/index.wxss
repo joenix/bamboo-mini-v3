@@ -26,6 +26,10 @@ page {
   border-bottom: 1rpx solid #EBE4DD;
 }
 
+.t-input__control {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
 .t-input__icon--prefix {
   display: flex;
   align-items: center;
@@ -46,4 +50,17 @@ page {
 .input-placeholder {
   color: #D8D8D8 !important;
   font-size: 28rpx !important;
+}
+
+.custom-label::before {
+  content: '*';
+  color: red;
+  font-size: 24rpx;
+  margin-right: 4rpx;
+}
+
+.time {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.65);
 }

@@ -65,7 +65,8 @@
         "pages/sign/sign",
         "pages/usercenter/profile/index",
         "pages/usercenter/exchange/address/index",
-        "pages/usercenter/setting/setting"
+        "pages/usercenter/setting/setting",
+        "pages/usercenter/camera/camera"
       ]
     }
   ],
