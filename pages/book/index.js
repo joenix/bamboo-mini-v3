@@ -104,7 +104,7 @@ Page({
     if (!this.data.isToday) return;
     const data = e.currentTarget.dataset.item;
     const bookId = data.id;
-    if (!data.active) {
+    if (data.active) {
       this.link_read(bookId);
       return;
     }
