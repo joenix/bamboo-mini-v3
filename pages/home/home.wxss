@@ -282,6 +282,49 @@ page {
   color: #c0975a;
 }
 
+.member-title {
+  position: relative;
+  margin-bottom: 30rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #c0975a;
+  text-align: center;
+  background: url('https://oss.lhdd.club/ui/split1.png') bottom no-repeat;
+  background-size: 60%;
+  padding-bottom: 14rpx;
+}
+
+.member-title .sub-title {
+  font-size: 24rpx;
+  margin-left: 4rpx;
+  color: #c0975a;
+}
+
+.index-list-wrapper {
+  position: fixed;
+  top: 50%;
+  right: 10rpx;
+  transform: translateY(-50%);
+  z-index: 500;
+}
+
+.index-list-item {
+  width: 42rpx;
+  height: 42rpx;
+  text-align: center;
+  line-height: 42rpx;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+  border-radius: 50%;
+  background-color: #FFF;
+  color: #333;
+}
+
+.index-list-item.active {
+  color: #FFF;
+  background-color: #c0975a;
+}
+
 .search-wrapper {
   margin-bottom: 20rpx;
 }

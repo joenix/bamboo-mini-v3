@@ -6,6 +6,31 @@ import Toast from 'tdesign-miniprogram/toast/index';
 
 const today = dayjs().format('YYYY-MM-DD');
 
+function debounce(fn, interval) {
+  var timer;
+  var gapTime = interval || 300; //间隔时间，如果interval不传，则默认1000ms
+  return function (...args) {
+    clearTimeout(timer);
+    var context = this;
+    timer = setTimeout(function () {
+      fn.call(context, ...args);
+    }, gapTime);
+  };
+}
+
+function throttle(fn, interval) {
+  var enterTime = 0;//触发的时间
+  var gapTime = interval || 300 ;
+  return function(...agrs) {
+    var context = this;
+    var backTime = Date.now();
+    if (backTime - enterTime > gapTime) {
+      fn.call(context, ...agrs);
+      enterTime = backTime;
+    }
+  };
+}
+
 Page({
   data: {
     currentTabId: '0',
@@ -40,7 +65,18 @@ Page({
     },
     tempContent: null,
     course: [],
-    noticeContent: []
+    noticeContent: [],
+    memberTypes: [
+      { title: '六合竹简点读法创始人', subTitle: '', index: '创' },
+      { title: '六合点读师', subTitle: '', index: '点' },
+      { title: '六合导学师', subTitle: '', index: '导' },
+      { title: '六合规划师', subTitle: '', index: '规' }
+    ],
+    indexList: [],
+    currentIndex: 0,
+    selectedIndex: -1,
+    anchorArray: null,
+    offsetTop: 150
   },
 
   // 从 Blocker 同步数据
@@ -85,6 +121,9 @@ Page({
     });
     const id = this.data.currentTabId;
     this.init(id);
+    this.setData({
+      indexList: this.data.memberTypes.map((v) => v.index)
+    });
   },
 
   onReachBottom() {
@@ -393,27 +432,79 @@ Page({
   onSearchChange(e) {
     if (!this.data.tempContent) {
       this.setData({
-        tempContent: this.data.content,
-      })
+        tempContent: this.data.content
+      });
     }
-    const searchContent = e.detail.value
+    const searchContent = e.detail.value;
     if (searchContent.trim().length === 0) {
       this.setData({
         tempContent: null,
         content: this.data.tempContent
-      })
+      });
       return;
     }
-    const id = this.data.currentTabId
-    const allContent = this.data.tempContent || this.data.content
-    const filterContent = allContent[id].filter(item => {
-      return item.name[1].indexOf(searchContent) > -1
-    })
+    const id = this.data.currentTabId;
+    const allContent = this.data.tempContent || this.data.content;
+    const filterContent = allContent[id].filter((item) => {
+      return item.name[1].indexOf(searchContent) > -1;
+    });
     this.setData({
       content: {
         ...this.data.content,
         [id]: filterContent
       }
-    })
-  }
+    });
+  },
+  onIndexSelect(e) {
+    const index = e.target.dataset.index;
+    this.setData({
+      currentIndex: index,
+      selectedIndex: index
+    });
+    const id = `#member-${index}`;
+    const query = wx.createSelectorQuery();
+    query.select(id).boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec((res) => {
+      wx.pageScrollTo({
+        scrollTop: res[0].top + res[1].scrollTop - this.data.offsetTop,
+        duration: 300,
+        success: () => {
+          setTimeout(() => {
+            this.setData({
+              selectedIndex: -1
+            });
+          }, 350);
+        }
+      });
+    });
+  },
+  onHandleScroll(e) {
+    let anchorArray = this.data.anchorArray;
+    if (!anchorArray) {
+      const query = wx.createSelectorQuery();
+      query
+        .selectAll('.member-title')
+        .boundingClientRect((react) => {
+          anchorArray = react.map((v) => v.top);
+          this.setData({
+            anchorArray
+          });
+        })
+        .exec();
+    }
+    const currentIndex = anchorArray?.reduce((acc, v, index) => {
+      return v <= e.scrollTop + this.data.offsetTop ? index : acc;
+    }, 0);
+    if (currentIndex !== this.data.currentIndex) {
+      this.setData({
+        currentIndex: this.data.selectedIndex !== -1 ? this.data.selectedIndex : currentIndex
+      });
+    }
+  },
+  onPageScroll: throttle(function (e) {
+    if (+this.data.currentTabId !== 1) return;
+    if (this.data.selectedIndex >= 0) return;
+    this.onHandleScroll(e);
+  }, 100)
 });

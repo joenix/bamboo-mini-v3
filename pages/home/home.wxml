@@ -20,24 +20,33 @@
   <t-tab-panel label="师资团队" value="1" style="{{tabPanelstyle}}">
     <view class="card-theme">
       <pager>
-        <t-row gutter="16">
-          <t-col span="12" wx:for="{{content['1']}}" wx:key="index" data-item="{{item}}">
-            <blocker vertical="{{true}}" center="{{true}}" class="card-theme-infos" data-id="{{item.id}}" bind:tap="link_team">
-              <view class="mound">{{item.content[3]}}</view>
-              <t-avatar class="avatar" image="{{item.img[0].link}}" size="large" />
-              <view class="name">{{item.name}}</view>
-              <view class="gender">
-                <text>{{item.content[0] ? '女' : '男'}}</text>
-                <text>{{item.content[1]}}岁</text>
-              </view>
-              <view class="region">{{item.content[2]}}</view>
-              <liner side="{{false}}"></liner>
-              <content count="3" color="777" class="card-theme-desc">
-                <rich-text nodes="{{item.remark}}"></rich-text>
-              </content>
-            </blocker>
-          </t-col>
-        </t-row>
+        <view class="index-list-wrapper">
+          <view wx:for="{{indexList}}" wx:key="item" data-index="{{index}}" class="index-list-item {{currentIndex === index ? 'active' : ''}}" bind:tap="onIndexSelect">{{item}}</view>
+        </view>
+        <view wx:for="{{memberTypes}}" wx:key="title" id="member-{{index}}">
+          <view class="member-title">
+            {{item.title}}
+            <text class="sub-title" wx:if="{{item.subTitle}}">{{item.subTitle}}</text>
+          </view>
+          <t-row gutter="12" style="flex: 1; overflow-y: auto;">
+            <t-col span="12" wx:for="{{content['1']}}" wx:key="index" data-item="{{item}}">
+              <blocker vertical="{{true}}" center="{{true}}" class="card-theme-infos" data-id="{{item.id}}" bind:tap="link_team">
+                <view class="mound">{{item.content[3]}}</view>
+                <t-avatar class="avatar" image="{{item.img[0].link}}" size="large" />
+                <view class="name">{{item.name}}</view>
+                <view class="gender">
+                  <text>{{item.content[0] ? '女' : '男'}}</text>
+                  <text>{{item.content[1]}}岁</text>
+                </view>
+                <view class="region">{{item.content[2]}}</view>
+                <!-- <liner side="{{false}}"></liner>
+                <content count="3" color="777" class="card-theme-desc">
+                  <rich-text nodes="{{item.remark}}"></rich-text>
+                </content> -->
+              </blocker>
+            </t-col>
+          </t-row>
+        </view>
       </pager>
     </view>
   </t-tab-panel>
