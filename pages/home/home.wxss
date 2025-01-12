@@ -2,6 +2,7 @@ page {
   box-sizing: border-box;
   padding-bottom: calc(env(safe-area-inset-bottom) + 110rpx);
   /* backdrop-filter: brightness(5%); */
+  --td-search-bg-color: #c0975a
 }
 
 .t-tabs.t-tabs--top .t-tabs__scroll {
@@ -25,7 +26,7 @@ page {
 }
 
 .home-page-header .t-search__input {
-  font-size: 28rpx !important;
+  font-size: 24rpx !important;
   color: rgb(116, 116, 116) !important;
 }
 
@@ -279,4 +280,12 @@ page {
 
 .lesson-content .lesson-name {
   color: #c0975a;
+}
+
+.search-wrapper {
+  margin-bottom: 20rpx;
+}
+
+.search-wrapper .t-search__input-box {
+  background-color: #fff;
 }

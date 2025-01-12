@@ -1,5 +1,5 @@
 <!-- 自定义nav -->
-<custom-nav title="首页" showBack="{{false}}" />
+<custom-nav title="首页" showBack="{{false}}" background="transparent" />
 <t-toast />
 <view wx:if="{{pageLoading}}">
   <t-loading theme="circular" size="40rpx" text="加载中..." inherit-color />
@@ -44,6 +44,9 @@
   <t-tab-panel label="授权机构" value="2" style="{{tabPanelstyle}}">
     <view class="card-theme">
       <pager>
+        <view class="search-wrapper">
+          <t-search placeholder="搜索预设文案" shape="round" bind:change="onSearchChange" />
+        </view>
         <blocker wx:for="{{content['2']}}" wx:key="index" data-item="{{item}}" vertical="{{false}}" class="card-theme-orgs" data-id="{{item.id}}" bind:tap="link_org">
           <t-image src="{{item.img[0].link}}" mode="aspectFill" width="72" height="72" />
           <liner side="{{false}}" vertical="{{true}}"></liner>

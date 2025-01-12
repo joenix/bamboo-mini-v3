@@ -38,6 +38,7 @@ Page({
       2: [],
       3: []
     },
+    tempContent: null,
     course: [],
     noticeContent: []
   },
@@ -388,5 +389,31 @@ Page({
     const type = e.currentTarget.dataset.type;
     const url = `/homePackage/pages/home/${type}/index`;
     link2(url);
+  },
+  onSearchChange(e) {
+    if (!this.data.tempContent) {
+      this.setData({
+        tempContent: this.data.content,
+      })
+    }
+    const searchContent = e.detail.value
+    if (searchContent.trim().length === 0) {
+      this.setData({
+        tempContent: null,
+        content: this.data.tempContent
+      })
+      return;
+    }
+    const id = this.data.currentTabId
+    const allContent = this.data.tempContent || this.data.content
+    const filterContent = allContent[id].filter(item => {
+      return item.name[1].indexOf(searchContent) > -1
+    })
+    this.setData({
+      content: {
+        ...this.data.content,
+        [id]: filterContent
+      }
+    })
   }
 });

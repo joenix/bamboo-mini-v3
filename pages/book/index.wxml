@@ -1,5 +1,5 @@
 <!-- 自定义nav -->
-<custom-nav title="点读" showBack="{{false}}" center="{{ true }}" background="transparent" />
+<custom-nav title="点读" showBack="{{false}}" background="transparent" />
 
 <pager class="book-container">
   <!-- 日历 -->

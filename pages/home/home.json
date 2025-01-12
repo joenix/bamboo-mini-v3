@@ -8,6 +8,7 @@
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
     "t-image": "tdesign-miniprogram/image/image",
+    "t-search": "tdesign-miniprogram/search/search",
     "t-row": "tdesign-miniprogram/row/row",
     "t-col": "tdesign-miniprogram/col/col",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
