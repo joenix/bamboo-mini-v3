@@ -1,5 +1,6 @@
 import { checkToken, api, get, post, link2 } from '../../utils/util';
 import dayjs from 'dayjs';
+import { match as pinyinMatch } from 'pinyin-pro';
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
@@ -455,12 +456,12 @@ Page({
   },
   onSearchChange(e) {
     this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
-      return item.name[1].indexOf(searchContent) > -1;
+      return Boolean(pinyinMatch(item.name[1], searchContent));
     }))
   },
   onSearchChange2(e) {
     this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
-      return item.name.indexOf(searchContent) > -1;
+      return Boolean(pinyinMatch(item.name, searchContent));
     }))
   },
   onIndexSelect(e) {

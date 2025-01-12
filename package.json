@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.13",
+    "pinyin-pro": "^3.26.0",
     "tdesign-miniprogram": "^1.6.2",
     "tslib": "^2.7.0",
     "widget-ui": "^1.0.2"
