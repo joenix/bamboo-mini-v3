@@ -429,7 +429,7 @@ Page({
     const url = `/homePackage/pages/home/${type}/index`;
     link2(url);
   },
-  onSearchChange(e) {
+  baseSearchChange(e, getFilterContent) {
     if (!this.data.tempContent) {
       this.setData({
         tempContent: this.data.content
@@ -445,15 +445,23 @@ Page({
     }
     const id = this.data.currentTabId;
     const allContent = this.data.tempContent || this.data.content;
-    const filterContent = allContent[id].filter((item) => {
-      return item.name[1].indexOf(searchContent) > -1;
-    });
+    const filterContent = getFilterContent(allContent[id], searchContent)
     this.setData({
       content: {
         ...this.data.content,
         [id]: filterContent
       }
     });
+  },
+  onSearchChange(e) {
+    this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
+      return item.name[1].indexOf(searchContent) > -1;
+    }))
+  },
+  onSearchChange2(e) {
+    this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
+      return item.name.indexOf(searchContent) > -1;
+    }))
   },
   onIndexSelect(e) {
     const index = e.target.dataset.index;

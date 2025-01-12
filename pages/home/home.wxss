@@ -2,7 +2,10 @@ page {
   box-sizing: border-box;
   padding-bottom: calc(env(safe-area-inset-bottom) + 110rpx);
   /* backdrop-filter: brightness(5%); */
-  --td-search-bg-color: #c0975a
+  --td-search-bg-color: #c0975a;
+  --td-search-height: 68rpx;
+  --td-search-padding: 16rpx 24rpx;
+  --td-search-font-size: 28rpx;
 }
 
 .t-tabs.t-tabs--top .t-tabs__scroll {
@@ -331,4 +334,8 @@ page {
 
 .search-wrapper .t-search__input-box {
   background-color: #fff;
+}
+
+.search-wrapper .t-search__input-box .t-icon {
+  font-size: 16px !important;
 }

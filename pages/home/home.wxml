@@ -20,6 +20,9 @@
   <t-tab-panel label="师资团队" value="1" style="{{tabPanelstyle}}">
     <view class="card-theme">
       <pager>
+        <view class="search-wrapper">
+          <t-search placeholder="搜索" shape="round" bind:change="onSearchChange2" />
+        </view>
         <view class="index-list-wrapper">
           <view wx:for="{{indexList}}" wx:key="item" data-index="{{index}}" class="index-list-item {{currentIndex === index ? 'active' : ''}}" bind:tap="onIndexSelect">{{item}}</view>
         </view>
@@ -54,7 +57,7 @@
     <view class="card-theme">
       <pager>
         <view class="search-wrapper">
-          <t-search placeholder="搜索预设文案" shape="round" bind:change="onSearchChange" />
+          <t-search placeholder="搜索" shape="round" bind:change="onSearchChange" />
         </view>
         <blocker wx:for="{{content['2']}}" wx:key="index" data-item="{{item}}" vertical="{{false}}" class="card-theme-orgs" data-id="{{item.id}}" bind:tap="link_org">
           <t-image src="{{item.img[0].link}}" mode="aspectFill" width="72" height="72" />
