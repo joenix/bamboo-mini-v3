@@ -1,7 +1,56 @@
-<!--pages/usercenter/suggest/suggest.wxml-->
+<!-- pages/usercenter/suggest/suggest.wxml -->
 <!-- 自定义nav -->
-<custom-nav title="我的报告" center background="transparent" />
+<custom-nav title="我的报告" center />
 <t-message id="t-message" />
 <view class="container">
-  <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  <t-tabs defaultValue="{{0}}" bind:change="onTabsChange">
+    <t-tab-panel label="点读心得" value="0">
+      <view>点读心得121</view>
+    </t-tab-panel>
+    <t-tab-panel label="历史资料" value="1">
+      <view class="list">
+        <view class="list-item" wx:for="{{profileData}}" wx:key="index">
+          <view class="list-item-body">
+            <view class="base flex align-center">
+              <t-avatar image="{{item.image}}" />
+              <view class="base-info">
+                <view class="flex">
+                  <view class="flex align-center">
+                    {{item.name}}
+                    <t-icon name="gender-male" color="#16a9fa" wx:if="{{item.sex === '男'}}"></t-icon>
+                    <t-icon name="gender-female" color="#ff3ec9" wx:else></t-icon>
+                  </view>
+                  <text class="line">|</text>
+                  <text>{{item.age}}岁</text>
+                  <text class="line">|</text>
+                  <text>{{item.birthday}}</text>
+                </view>
+                <view class="truncate">{{item.profession}}</view>
+              </view>
+            </view>
+            <view class="other flex">
+              <view class="other-item">
+                <text class="label">身高:</text>
+                <text>{{item.height}}(cm)</text>
+              </view>
+              <view class="other-item">
+                <text class="label">体重:</text>
+                <text>{{item.weight}}(KG)</text>
+              </view>
+              <view class="other-item">
+                <text class="label">左眼视力:</text>
+                <text>{{item.leftEyes}}</text>
+              </view>
+              <view class="other-item">
+                <text class="label">右眼视力:</text>
+                <text>{{item.rightEyes}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="list-item-footer">更新时间：{{item.createTime}}</view>
+        </view>
+      </view>
+    </t-tab-panel>
+  </t-tabs>
 </view>
+<!-- <ec-canvas wx:if="{{!isDisposed}}" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas> -->
