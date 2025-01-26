@@ -16,7 +16,8 @@ export const api = {
     updateInfo: '/users/set_user_info',
     report: '/users/get_user_report',
     getScore: '/users/get_credit_his',
-    updateScore: '/users/update_crtedit'
+    updateScore: '/users/update_crtedit',
+    getReadMark: '/users/get_read_mark'
   },
   // 学分兑换
   Creditshop: {

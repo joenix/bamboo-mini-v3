@@ -75,9 +75,11 @@ Component({
     },
     jump2Detail(e) {
       const info = e.currentTarget.dataset.info;
-      wx.setStorageSync('tipInfo', info);
       wx.navigateTo({
-        url: `/homePackage/pages/tips-detail/detail`
+        url: `/homePackage/pages/tips-detail/detail`,
+        success: function (res) {
+          res.eventChannel.emit('setDetailContent', { data: info });
+        }
       });
     },
     async getTips(page = 1) {

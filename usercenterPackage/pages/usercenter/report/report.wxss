@@ -4,7 +4,7 @@ page {
   /* background: #f9f8f6; */
 }
 
-ec-canvas {
+.echarts-container, ec-canvas {
   width: 100vw;
   height: 800rpx;
 }
@@ -23,8 +23,9 @@ ec-canvas {
   white-space: nowrap;
 }
 
-.container {
-  padding: 0 30rpx;
+.mark-item {
+  padding: 20rpx 32rpx;
+  border-bottom: 1px solid #f5f5f5;
 }
 
 .list-item {

@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import Message from 'tdesign-miniprogram/message/index';
 import { host, api, post, wait } from '../../../../utils/util';
 
-const keys = ['leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId'];
+const keys = ['photo', 'name', 'gender', 'birth', 'age', 'career', 'leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId'];
 const getFilterInfo = (userInfo) => {
   return keys.reduce((acc, k) => {
     acc[k] = userInfo[k];
@@ -16,8 +16,8 @@ Page({
     info: {},
     sexVisible: false,
     sexOptions: [
-      { value: '男', label: '男' },
-      { value: '女', label: '女' }
+      { value: 1, label: '男' },
+      { value: 0, label: '女' }
     ],
     dateVisible: false,
     defaultDate: dayjs().subtract(15, 'year').valueOf(),
@@ -38,7 +38,7 @@ Page({
     this.setData({
       info: {
         ...this.data.info,
-        sex: value[0]
+        gender: value[0]
       },
       sexVisible: false
     });
@@ -49,10 +49,10 @@ Page({
     });
   },
   openBirthDayPicker() {
-    const { birthday } = this.data.info;
+    const { birth } = this.data.info;
     this.setData({
       dateVisible: true,
-      defaultDate: birthday ? new Date(birthday).getTime() : new Date().getTime()
+      defaultDate: birth ? new Date(birth).getTime() : new Date().getTime()
     });
   },
   onBirthDayConfirm(e) {
@@ -60,7 +60,7 @@ Page({
     this.setData({
       info: {
         ...this.data.info,
-        birthday: value,
+        birth: value,
         age: dayjs().diff(dayjs(value), 'year')
       },
       dateVisible: false
@@ -112,7 +112,8 @@ Page({
       mask: true
     });
     try {
-      await post(api.User.updateInfo, this.data.info);
+      const data = this.data.info;
+      await post(api.User.updateInfo, data);
       this.showMessage('success', '更新成功');
       await wait(2000);
       wx.navigateBack();
@@ -176,20 +177,20 @@ Page({
   // },
   onChooseImage() {
     wx.navigateTo({
-      url: "/usercenterPackage/pages/usercenter/camera/camera",
+      url: '/usercenterPackage/pages/usercenter/camera/camera',
       events: {
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-        acceptDataFromOpenedPage: async ({data}) => {
+        acceptDataFromOpenedPage: async ({ data }) => {
           console.log(data);
           const newAvatar = await this.uploadAvatar(data);
           this.setData({
             info: {
               ...this.data.info,
-              avatar: newAvatar
+              photo: newAvatar
             }
           });
-        },
-      },
+        }
+      }
     });
   },
   showMessage(type, content) {

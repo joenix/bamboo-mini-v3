@@ -3,8 +3,9 @@ const getWxml = function (conetnt) {
     <view class="container" >
       <view class="main">
         <image class="img1" src="https://oss.lhdd.club/ui/split1.png"></image>
-        <text class="text">${conetnt}</text>
+        <text class="content">${conetnt}</text>
         <image class="img2" src="https://oss.lhdd.club/ui/tips-detail.png"></image>
+        <text class="share">微信搜索【仇氏点读】小程序</text>
       </view>
     </view>
   `;
@@ -39,7 +40,7 @@ const getStyle = function (res) {
       paddingTop: mainPaddingTop,
       paddingBottom: mainPaddingBottom
     },
-    text: {
+    content: {
       width: rect.width,
       height: rect.height,
       lineHeight: '2.857em',
@@ -61,6 +62,18 @@ const getStyle = function (res) {
       right: 0,
       width: 205,
       height: 195
+    },
+    share: {
+      position: 'absolute',
+      bottom: 0,
+      left: mainPaddingX,
+      width: rect.width,
+      height: 20,
+      textAlign: 'center',
+      fontSize: 12,
+      color: '#999',
+      textUnderlineWidth: 0,
+      textUnderlineColor: 'transparent'
     }
   };
 

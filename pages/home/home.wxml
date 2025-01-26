@@ -24,7 +24,9 @@
           <t-search placeholder="搜索" shape="round" bind:change="onSearchChange2" />
         </view>
         <view class="index-list-wrapper">
-          <view wx:for="{{indexList}}" wx:key="item" data-index="{{index}}" class="index-list-item {{currentIndex === index ? 'active' : ''}}" bind:tap="onIndexSelect">{{item}}</view>
+          <view wx:for="{{indexList}}" wx:key="item" data-index="{{index}}" class="index-list-item {{currentIndex === index ? 'active' : ''}}" bind:tap="onIndexSelect">
+            {{item}}
+          </view>
         </view>
         <view wx:for="{{memberTypes}}" wx:key="title" id="member-{{index}}">
           <view class="member-title">

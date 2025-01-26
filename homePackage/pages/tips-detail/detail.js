@@ -14,15 +14,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    const info = wx.getStorageSync('tipInfo');
-    this.setData({
-      tipInfo: info
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('setDetailContent', ({ data }) => {
+      this.setData({
+        tipInfo: data
+      });
     });
     this.widget = this.selectComponent('.widget');
   },
-  onUnload() {
-    wx.removeStorageSync('tipInfo');
-  },
+  onUnload() {},
   onImageVisibleChange(e) {
     this.setData({
       imgVisible: e.detail.visible
@@ -53,7 +53,7 @@ Page({
       this.setData({
         imgSrc: src,
         imgVisible: true
-      })
+      });
     } catch (e) {
       this.showToast('图片生成失败');
     } finally {
@@ -83,5 +83,5 @@ Page({
         }, 300);
       });
     });
-  },
+  }
 });

@@ -268,6 +268,14 @@ Page({
         resultPopup: false
       });
       // TODO分享
+      setTimeout(() => {
+        wx.navigateTo({
+          url: `/homePackage/pages/tips-detail/detail`,
+          success: function (res) {
+            res.eventChannel.emit('setDetailContent', { data: { content: resultFeedback } });
+          }
+        });
+      }, 1000);
     } catch (error) {
       console.log(error);
       this.showMessage('error', '点读记录提交失败');
@@ -337,6 +345,7 @@ Page({
       bgm,
       remindAudioContext: audioContext
     });
+    this.getHistoryRecordInfo();
   },
   onUnload() {
     this.resetData();
@@ -384,5 +393,8 @@ Page({
     this.setData({
       isReading: !isReading
     });
+  },
+  getHistoryRecordInfo() {
+    // TODO: readRecordInfo
   }
 });
