@@ -11,8 +11,6 @@ const getFilterInfo = (userInfo) => {
   }, {});
 };
 
-const fifteenYaerOld = dayjs().subtract(15, 'year').valueOf();
-
 Page({
   data: {
     info: {},
@@ -22,7 +20,7 @@ Page({
       { value: 0, label: '女' }
     ],
     dateVisible: false,
-    defaultDate: fifteenYaerOld,
+    defaultDate: dayjs().subtract(15, 'year').valueOf(),
     endDate: new Date().getTime(),
     recentUpdateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
   },
@@ -105,7 +103,6 @@ Page({
         ...newInfo,
         birth: birth ? dayjs(birth).format('YYYY-MM-DD') : birth
       },
-      defaultDate: birth ? dayjs(birth).valueOf() : fifteenYaerOld,
       recentUpdateTime: dayjs(info.createdAt).format('YYYY-MM-DD HH:mm:ss')
     });
   },

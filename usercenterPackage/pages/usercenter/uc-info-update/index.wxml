@@ -41,4 +41,4 @@
 <t-picker visible="{{sexVisible}}" value="{{[info.gender]}}" title="选择性别" cancelBtn="取消" confirmBtn="确认" usingCustomNavbar bindchange="onSexPickerChange" bindcancel="onSexPickerCancel">
   <t-picker-item options="{{sexOptions}}"></t-picker-item>
 </t-picker>
-<t-date-time-picker auto-close title="选择日期" default-value="{{defaultDate}}" start="1900-01-01 00:00:00" end="{{endDate}}" visible="{{dateVisible}}" mode="date" format="YYYY-MM-DD" bindchange="onBirthDayConfirm" bindcancel="onBirthDayCancel" />
+<t-date-time-picker auto-close title="选择日期" default-value="{{defaultDate}}" value="{{info.birth}}" start="1900-01-01 00:00:00" end="{{endDate}}" visible="{{dateVisible}}" mode="date" format="YYYY-MM-DD" bindchange="onBirthDayConfirm" bindcancel="onBirthDayCancel" />
