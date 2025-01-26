@@ -11,6 +11,8 @@ const getFilterInfo = (userInfo) => {
   }, {});
 };
 
+const fifteenYaerOld = dayjs().subtract(15, 'year').valueOf();
+
 Page({
   data: {
     info: {},
@@ -20,7 +22,7 @@ Page({
       { value: 0, label: '女' }
     ],
     dateVisible: false,
-    defaultDate: dayjs().subtract(15, 'year').valueOf(),
+    defaultDate: fifteenYaerOld,
     endDate: new Date().getTime(),
     recentUpdateTime: dayjs().format('YYYY-MM-DD HH:mm:ss')
   },
@@ -33,7 +35,6 @@ Page({
     });
   },
   onSexPickerChange(e) {
-    const { key } = e.currentTarget.dataset;
     const { value } = e.detail;
     this.setData({
       info: {
@@ -98,8 +99,14 @@ Page({
     }
     const newInfo = getFilterInfo(info);
     console.log(newInfo);
+    const birth = newInfo.birth;
     this.setData({
-      info: newInfo
+      info: {
+        ...newInfo,
+        birth: birth ? dayjs(birth).format('YYYY-MM-DD') : birth
+      },
+      defaultDate: birth ? dayjs(birth).valueOf() : fifteenYaerOld,
+      recentUpdateTime: dayjs(info.createdAt).format('YYYY-MM-DD HH:mm:ss')
     });
   },
   async update() {
@@ -113,9 +120,9 @@ Page({
     });
     try {
       const data = this.data.info;
-      await post(api.User.updateInfo, data);
+      await post(api.User.updateInfo, { ...data, avatar: '', birth: data.birth ? dayjs(data.birth + ' 00:00:00') : '' });
       this.showMessage('success', '更新成功');
-      await wait(2000);
+      await wait(1000);
       wx.navigateBack();
     } catch (error) {
       console.log(error);

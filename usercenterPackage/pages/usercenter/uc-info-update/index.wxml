@@ -10,7 +10,7 @@
     <t-input value="{{info.name}}" borderless placeholder="请输入姓名" align="right" data-name="name" bind:change="onInput" adjust-position cursor-color="#C0975A">
       <view slot="label" class="custom-label">姓名</view>
     </t-input>
-    <t-input value="{{info.gender === 1 ? '男' : '女'}}" borderless placeholder="请选择性别" align="right" data-name="gender" bind:tap="openSexPicker" readonly="{{true}}" disabled>
+    <t-input value="{{info.gender === 1 ? '男' : info.gender === 0 ? '女' : ''}}" borderless placeholder="请选择性别" align="right" data-name="gender" bind:tap="openSexPicker" readonly="{{true}}" disabled>
       <view slot="label" class="custom-label">性别</view>
     </t-input>
     <t-input value="{{info.birth}}" borderless placeholder="请选择生日" align="right" data-name="birth" bind:tap="openBirthDayPicker" readonly="{{true}}" disabled>
