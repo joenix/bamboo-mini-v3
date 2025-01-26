@@ -255,7 +255,7 @@ Page({
     try {
       await post(api.Read.submit + '?credit=10', {
         time: countdown,
-        count: totalReadTimes,
+        count: 1,
         content: resultFeedback,
         bookId: +bookId,
         userId: userInfo.id
