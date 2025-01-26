@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import Message from 'tdesign-miniprogram/message/index';
 import { host, api, post, wait } from '../../../../utils/util';
 
-const keys = ['photo', 'name', 'gender', 'birth', 'age', 'career', 'leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId'];
+const keys = ['photo', 'name', 'gender', 'birth', 'age', 'career', 'leftEyes', 'rightEyes', 'height', 'weight', 'userId'];
 const getFilterInfo = (userInfo) => {
   return keys.reduce((acc, k) => {
     acc[k] = userInfo[k];
@@ -97,16 +97,18 @@ Page({
     }
     const newInfo = getFilterInfo(info);
     console.log(newInfo);
-    const birth = newInfo.birth;
     this.setData({
-      info: {
-        ...newInfo,
-        birth: birth ? dayjs(birth).format('YYYY-MM-DD') : birth
-      },
+      info: newInfo,
       recentUpdateTime: dayjs(info.createdAt).format('YYYY-MM-DD HH:mm:ss')
     });
   },
   async update() {
+    const data = this.data.info;
+    const requireKeys = keys.filter((v) => !['career', 'userId'].includes(v));
+    if (requireKeys.some((v) => !data[v])) {
+      this.showMessage('error', '请填写必填项');
+      return;
+    }
     if (this.updating) {
       return;
     }
@@ -116,8 +118,7 @@ Page({
       mask: true
     });
     try {
-      const data = this.data.info;
-      await post(api.User.updateInfo, { ...data, avatar: '', birth: data.birth ? dayjs(data.birth + ' 00:00:00') : '' });
+      await post(api.User.updateInfo, { ...data, avatar: '' });
       this.showMessage('success', '更新成功');
       await wait(1000);
       wx.navigateBack();
