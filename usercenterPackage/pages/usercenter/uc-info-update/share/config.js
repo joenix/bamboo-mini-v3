@@ -1,6 +1,3 @@
-{
-  /* <image class="img" width="100px" height="100px" src="${info.photo}" mode="aspectFill"></image> */
-}
 const getWxml = function (info) {
   return `
     <view class="container">
