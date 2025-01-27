@@ -1,0 +1,22 @@
+<!-- usercenterPackage/pages/usercenter/uc-info-update/share/index.wxml -->
+<custom-nav title="更新资料" center background="transparent" />
+<view class="container">
+  <view id="main">
+    <t-image width="100px" height="100px" mode="aspectFill" src="{{info.photo}}"></t-image>
+    <view class="content">
+      <view>身高：{{info.height}}(CM)</view>
+      <view>体重：{{info.weight}}(KG)</view>
+      <view>左眼视力：{{info.leftEyes}}</view>
+      <view>右眼视力：{{info.rightEyes}}</view>
+      <view class="time">更新时间：{{info.updateTime}}</view>
+    </view>
+  </view>
+  <view class="btn">
+    <btn bind:tap="createShareImage">生成图片</btn>
+  </view>
+  <view class="tips">图片生成后，长按可转发给微信好友</view>
+</view>
+<!-- <t-popup visible="{{imgVisible}}" bind:visible-change="onImageVisibleChange" placement="center" class="popup-iamge-box">
+  <t-image class="popup-iamge" src="{{imgSrc}}" mode="widthFix" width="80vw" show-menu-by-longpress />
+</t-popup> -->
+<wxml-to-canvas class="widget" width="{{canvasWidth}}" height="{{canvasHeight}}"></wxml-to-canvas>

@@ -120,8 +120,18 @@ Page({
     try {
       await post(api.User.updateInfo, { ...data, avatar: '' });
       this.showMessage('success', '更新成功');
-      await wait(1000);
-      wx.navigateBack();
+      const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+      this.setData({
+        recentUpdateTime: now
+      });
+      // await wait(1000);
+      // wx.navigateBack();
+      wx.navigateTo({
+        url: '/usercenterPackage/pages/usercenter/uc-info-update/share/index',
+        success: (res) => {
+          res.eventChannel.emit('acceptDataFromOpenerPage', { data: { ...this.data.info, updateTime: now } });
+        }
+      });
     } catch (error) {
       console.log(error);
       this.showMessage('error', '更新失败');

@@ -1,0 +1,38 @@
+/* usercenterPackage/pages/usercenter/uc-info-update/share/index.wxss */
+#main {
+  text-align: center;
+  width: 240px;
+  padding: 32rpx 0;
+  margin: 0 auto;
+}
+
+.content {
+  color: #333;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  margin-top: 20rpx;
+}
+
+.time {
+  color: #999;
+}
+
+.btn {
+  margin: 40rpx auto 0;
+  width: 70%;
+}
+
+.tips {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  text-align: center;
+  color: #B3ABA0;
+}
+/* 
+.widget {
+  position: fixed;
+  bottom: -99999px;
+  left: -9999px;
+  z-index: -1;
+} */
