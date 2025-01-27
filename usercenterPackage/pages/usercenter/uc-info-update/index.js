@@ -151,8 +151,14 @@ Page({
           token
         },
         success(res) {
+          if (res.statusCode !== 200) {
+            reject({
+              errMsg: '上传失败'
+            });
+            return;
+          }
           const _res = JSON.parse(res.data);
-          if (res.statusCode !== 200 || _res.status !== 200) {
+          if (_res.status !== 200) {
             reject({
               errMsg: '上传失败'
             });
@@ -197,13 +203,17 @@ Page({
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         acceptDataFromOpenedPage: async ({ data }) => {
           console.log(data);
-          const newAvatar = await this.uploadAvatar(data);
-          this.setData({
-            info: {
-              ...this.data.info,
-              photo: newAvatar
-            }
-          });
+          try {
+            const newAvatar = await this.uploadAvatar(data);
+            this.setData({
+              info: {
+                ...this.data.info,
+                photo: newAvatar
+              }
+            });
+          } catch (error) {
+            this.showMessage('error', '上传失败');
+          }
         }
       }
     });

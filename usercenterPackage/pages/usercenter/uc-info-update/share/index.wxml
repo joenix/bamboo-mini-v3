@@ -8,7 +8,7 @@
       <view>体重：{{info.weight}}(KG)</view>
       <view>左眼视力：{{info.leftEyes}}</view>
       <view>右眼视力：{{info.rightEyes}}</view>
-      <view class="time">更新时间：{{info.updateTime}}</view>
+      <view>更新时间：{{info.updateTime}}</view>
     </view>
   </view>
   <view class="btn">
@@ -16,7 +16,9 @@
   </view>
   <view class="tips">图片生成后，长按可转发给微信好友</view>
 </view>
-<!-- <t-popup visible="{{imgVisible}}" bind:visible-change="onImageVisibleChange" placement="center" class="popup-iamge-box">
-  <t-image class="popup-iamge" src="{{imgSrc}}" mode="widthFix" width="80vw" show-menu-by-longpress />
-</t-popup> -->
+<t-popup visible="{{imgVisible}}" bind:visible-change="onImageVisibleChange" placement="center" class="popup-iamge-box">
+  <view class="wrapper">
+    <t-image class="popup-iamge" src="{{imgSrc}}" mode="widthFix" width="70vw" show-menu-by-longpress />
+  </view>
+</t-popup>
 <wxml-to-canvas class="widget" width="{{canvasWidth}}" height="{{canvasHeight}}"></wxml-to-canvas>
