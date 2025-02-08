@@ -3,7 +3,8 @@
   "usingComponents": {
     "pager": "/components/pager/pager",
     "content": "/components/content/content",
-    "custom-nav": "/components/custom-nav/custom-nav"
+    "custom-nav": "/components/custom-nav/custom-nav",
+    "empty": "/components/empty/empty"
   },
   "onReachBottomDistance": 50,
   "enablePullDownRefresh": true

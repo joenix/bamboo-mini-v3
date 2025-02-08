@@ -1,4 +1,5 @@
 import { api, get, post, formatTime } from '../../../../utils/util';
+import { boss } from '../../../../utils/const';
 
 // teacher.js
 Page({
@@ -16,6 +17,11 @@ Page({
   },
 
   async getData({ id }) {
+    if (+id == 100) {
+      this.setData({ teacher: boss });
+      return;
+    }
+
     const { name: title, content, img, remark, updatedAt: datetime } = await post(api.Information.detail, { id });
     const teacher = { title, datetime: formatTime(datetime, 'YYYY年MM月DD日 HH:MM'), content, remark };
 

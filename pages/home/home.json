@@ -20,6 +20,7 @@
     "blocker": "/components/blocker/blocker",
     "liner": "/components/liner/liner",
     "content": "/components/content/content",
+    "empty": "/components/empty/empty",
     "tips": "./tips/index"
   }
 }

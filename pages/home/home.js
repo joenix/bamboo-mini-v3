@@ -4,6 +4,7 @@ import { match as pinyinMatch } from 'pinyin-pro';
 import { fetchHome } from '../../services/home/home';
 import { fetchGoodsList } from '../../services/good/fetchGoods';
 import Toast from 'tdesign-miniprogram/toast/index';
+import { boss } from '../../utils/const';
 
 const today = dayjs().format('YYYY-MM-DD');
 
@@ -68,10 +69,10 @@ Page({
     course: [],
     noticeContent: [],
     memberTypes: [
-      { title: '六合竹简点读法创始人', subTitle: '', index: '创' },
-      { title: '六合点读师', subTitle: '', index: '点' },
-      { title: '六合导学师', subTitle: '', index: '导' },
-      { title: '六合规划师', subTitle: '', index: '规' }
+      { title: '六合竹简点读法创始人', subTitle: '', index: '创', data: [boss] },
+      { title: '六合点读师', subTitle: '', index: '点', data: [] },
+      { title: '六合导学师', subTitle: '', index: '导', data: [] },
+      { title: '六合规划师', subTitle: '', index: '规', data: [] }
     ],
     indexList: [],
     currentIndex: 0,
@@ -172,6 +173,14 @@ Page({
       return item;
     });
     const nowData = this.data.content;
+    if (id === '1') {
+      const memberTypes = this.data.memberTypes;
+      memberTypes[2].data = newContent || [];
+      this.setData({
+        memberTypes
+      });
+      return;
+    }
     this.setData({
       content: {
         ...nowData,

@@ -1,24 +1,22 @@
 <!-- teacher.wxml -->
 <custom-nav title="教师介绍" />
-
 <pager class="teacher">
   <t-row>
     <t-col span="6">
       <t-avatar class="teacher-avatar" image="{{teacher.img[0].link}}" size="large" />
     </t-col>
     <t-col span="18">
-    <view class="teacher-title">{{teacher.title}}</view>
+      <view class="teacher-title">{{teacher.title}}</view>
       <view class="teacher-header">
         <view class="teacher-author">
-            <text class="teacher-tag">{{teacher.content[3]}}</text>
-            <text>{{teacher.content[0] ? '女' : '男'}}</text>
-            <text>{{teacher.content[1]}}岁</text>
+          <text class="teacher-tag">{{teacher.content[3]}}</text>
+          <text>{{teacher.content[0] ? '女' : '男'}}</text>
+          <text>{{teacher.content[1] ? teacher.content[1] + '岁' : '不详'}}</text>
         </view>
         <view>{{teacher.content[2]}}</view>
       </view>
     </t-col>
   </t-row>
-  
   <liner side="{{false}}" />
   <blocker shadow="{{false}}" class="teacher-content">
     <rich-text class="teacher-rich" nodes="{{teacher.remark}}"></rich-text>

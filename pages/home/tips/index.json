@@ -5,6 +5,7 @@
     "pager": "/components/pager/pager",
     "content": "/components/content/content",
     "custom-nav": "/components/custom-nav/custom-nav",
-    "t-divider": "tdesign-miniprogram/divider/divider"
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "empty": "/components/empty/empty"
   }
 }

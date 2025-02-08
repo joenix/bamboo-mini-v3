@@ -1,0 +1,5 @@
+<view class="empty-wrapper">
+  <image class="image" wx:if="{{image}}" src="{{image}}" mode="aspectFit"></image>
+  <image class="image" wx:else src="/assets/empty.png" mode="aspectFit"></image>
+  <view class="description">{{description}}</view>
+</view>

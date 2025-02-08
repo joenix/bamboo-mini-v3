@@ -8,7 +8,10 @@
 <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs" t-class-content="custom-panel" t-class-track="custom-track" space-evenly="{{false}}">
   <t-tab-panel label="最新资讯" value="0" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <pager>
+      <view style="margin-top: 100px" wx:if="{{content['0'].length === 0}}">
+        <empty />
+      </view>
+      <pager wx:else>
         <blocker wx:for="{{content['0']}}" wx:key="index" data-item="{{item}}" data-id="{{item.id}}" bind:tap="link_article">
           <t-image src="{{item.img[0].link}}" mode="aspectFill" width="100%" height="280rpx" />
           <liner></liner>
@@ -33,15 +36,15 @@
             {{item.title}}
             <text class="sub-title" wx:if="{{item.subTitle}}">{{item.subTitle}}</text>
           </view>
-          <t-row gutter="12" style="flex: 1; overflow-y: auto;">
-            <t-col span="12" wx:for="{{content['1']}}" wx:key="index" data-item="{{item}}">
+          <t-row gutter="12" style="flex: 1; overflow-y: auto;" wx:if="{{item.data.length > 0}}">
+            <t-col span="12" wx:for="{{item.data}}" wx:key="idx" wx:for-index="idx" data-item="{{item}}" offset="{{index === 0 ? 6 : 0}}">
               <blocker vertical="{{true}}" center="{{true}}" class="card-theme-infos" data-id="{{item.id}}" bind:tap="link_team">
                 <view class="mound">{{item.content[3]}}</view>
                 <t-avatar class="avatar" image="{{item.img[0].link}}" size="large" />
                 <view class="name">{{item.name}}</view>
                 <view class="gender">
                   <text>{{item.content[0] ? '女' : '男'}}</text>
-                  <text>{{item.content[1]}}岁</text>
+                  <text>{{item.content[1] ? item.content[1] + '岁' : '不详'}}</text>
                 </view>
                 <view class="region">{{item.content[2]}}</view>
                 <!-- <liner side="{{false}}"></liner>
@@ -51,6 +54,7 @@
               </blocker>
             </t-col>
           </t-row>
+          <view wx:else style="padding: 10px 0;text-align: center;color: #999;">暂无入驻</view>
         </view>
       </pager>
     </view>
@@ -61,15 +65,20 @@
         <view class="search-wrapper">
           <t-search placeholder="搜索" shape="round" bind:change="onSearchChange" />
         </view>
-        <blocker wx:for="{{content['2']}}" wx:key="index" data-item="{{item}}" vertical="{{false}}" class="card-theme-orgs" data-id="{{item.id}}" bind:tap="link_org">
-          <t-image src="{{item.img[0].link}}" mode="aspectFill" width="72" height="72" />
-          <liner side="{{false}}" vertical="{{true}}"></liner>
-          <view>
-            <view>{{item.name[1]}}</view>
-            <view class="org">{{item.name[0]}}</view>
-            <view class="region">{{item.content}}</view>
-          </view>
-        </blocker>
+        <view style="margin-top: 100px" wx:if="{{content['2'].length === 0}}">
+          <empty />
+        </view>
+        <view wx:else>
+          <blocker wx:for="{{content['2']}}" wx:key="index" data-item="{{item}}" vertical="{{false}}" class="card-theme-orgs" data-id="{{item.id}}" bind:tap="link_org">
+            <t-image src="{{item.img[0].link}}" mode="aspectFill" width="72" height="72" />
+            <liner side="{{false}}" vertical="{{true}}"></liner>
+            <view>
+              <view>{{item.name[1]}}</view>
+              <view class="org">{{item.name[0]}}</view>
+              <view class="region">{{item.content}}</view>
+            </view>
+          </blocker>
+        </view>
         <view class="auth-group">
           <view wx:for="{{content}}" wx:key="index" class="auth-card">{{ item.name[1] }}</view>
         </view>
@@ -103,9 +112,12 @@
   </t-tab-panel>
   <t-tab-panel label="学习课件" value="4" style="{{tabPanelstyle}}">
     <view class="card-theme">
-      <pager>
+      <view style="margin-top: 100px" wx:if="{{content['4'].length === 0}}">
+        <empty />
+      </view>
+      <pager wx:else>
         <t-row gutter="16">
-          <t-col span="12" wx:for="{{content['3']}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" data-id="{{item.id}}" bind:tap="link_lesson">
+          <t-col span="12" wx:for="{{content['4']}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" data-id="{{item.id}}" bind:tap="link_lesson">
             <blocker vertical="{{true}}" class="lesson">
               <t-image class="lesson-poster" src="{{item.img[0].link}}" mode="aspectFill" width="100%" height="100" />
               <content count="{{1}}" class="lesson-title">{{item.name}}</content>
