@@ -201,7 +201,7 @@ Page({
     // 结束点读
     this.stopBgm();
     const readInfo = wx.getStorageSync('readInfo') || { times: 0, time: 0 };
-    const totalTime = readInfo.time + this.data.countdown / 1000;
+    const totalTime = Number(((readInfo.time + this.data.countdown) / 1000).toFixed(0));
     this.setData({
       resultPopup: true,
       pageTitle: '计时',
@@ -263,10 +263,7 @@ Page({
       await updateScoreAction(UpdateType.Read);
       this.showMessage('success', '点读记录提交成功');
       wx.setStorageSync('readInfo', readRecordInfo);
-      this.setData({
-        step: 1,
-        resultPopup: false
-      });
+      this.resetData();
       // TODO分享
       setTimeout(() => {
         wx.navigateTo({
@@ -394,7 +391,15 @@ Page({
       isReading: !isReading
     });
   },
-  getHistoryRecordInfo() {
-    // TODO: readRecordInfo
+  async getHistoryRecordInfo() {
+    const { bookId } = this.data;
+    const userInfo = wx.getStorageSync('userInfo');
+    const res = await post(api.Book.getBookInfo + `?id=${bookId}`, {
+      userId: userInfo.id
+    });
+    wx.setStorageSync('readInfo', {
+      times: res.data?.count || 0,
+      time: res.data?.time || 0
+    });
   }
 });

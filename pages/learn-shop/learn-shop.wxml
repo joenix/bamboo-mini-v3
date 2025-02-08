@@ -1,4 +1,6 @@
 <custom-nav title="学习商城" showBack="{{false}}" background="transparent" />
 <pager>
-  <view class="card-theme">即将开放，敬请期待</view>
+  <view style="margin-top: 100px">
+    <empty description="即将开放，敬请期待" image="https://oss.lhdd.club/ui/game_soon_f9f8f6.png" />
+  </view>
 </pager>
