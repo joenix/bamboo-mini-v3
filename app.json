@@ -66,7 +66,8 @@
         "pages/usercenter/profile/index",
         "pages/usercenter/exchange/address/index",
         "pages/usercenter/setting/setting",
-        "pages/usercenter/camera/camera"
+        "pages/usercenter/camera/camera",
+        "pages/usercenter/uc-info-update/share/index"
       ]
     }
   ],

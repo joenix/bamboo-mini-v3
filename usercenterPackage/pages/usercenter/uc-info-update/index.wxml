@@ -28,7 +28,7 @@
     <t-input value="{{info.rightEyes}}" borderless placeholder="请输入右眼视力" align="right" data-name="rightEyes" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">
       <view slot="label" class="custom-label">右眼视力</view>
     </t-input>
-    <t-input value="{{info.height}}" borderless placeholder="请输入身高(cm)" align="right" data-name="height" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">
+    <t-input value="{{info.height}}" borderless placeholder="请输入身高(CM)" align="right" data-name="height" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">
       <view slot="label" class="custom-label">身高</view>
     </t-input>
     <t-input value="{{info.weight}}" borderless placeholder="请输入体重(KG)" align="right" data-name="weight" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">

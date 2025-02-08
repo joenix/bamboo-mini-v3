@@ -70,7 +70,7 @@ const getStyle = function (res) {
       width: rect.width,
       height: 20,
       textAlign: 'center',
-      fontSize: 12,
+      fontSize: 10,
       color: '#999',
       textUnderlineWidth: 0,
       textUnderlineColor: 'transparent'

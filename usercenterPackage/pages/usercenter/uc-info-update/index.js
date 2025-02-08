@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import Message from 'tdesign-miniprogram/message/index';
 import { host, api, post, wait } from '../../../../utils/util';
 
-const keys = ['photo', 'name', 'gender', 'birth', 'age', 'career', 'leftEyes', 'rightEyes', 'height', 'weight', 'avatar', 'userId'];
+const keys = ['photo', 'name', 'gender', 'birth', 'age', 'career', 'leftEyes', 'rightEyes', 'height', 'weight', 'userId'];
 const getFilterInfo = (userInfo) => {
   return keys.reduce((acc, k) => {
     acc[k] = userInfo[k];
@@ -97,16 +97,18 @@ Page({
     }
     const newInfo = getFilterInfo(info);
     console.log(newInfo);
-    const birth = newInfo.birth;
     this.setData({
-      info: {
-        ...newInfo,
-        birth: birth ? dayjs(birth).format('YYYY-MM-DD') : birth
-      },
+      info: newInfo,
       recentUpdateTime: dayjs(info.createdAt).format('YYYY-MM-DD HH:mm:ss')
     });
   },
   async update() {
+    const data = this.data.info;
+    const requireKeys = keys.filter((v) => !['career', 'userId'].includes(v));
+    if (requireKeys.some((v) => !data[v])) {
+      this.showMessage('error', '请填写必填项');
+      return;
+    }
     if (this.updating) {
       return;
     }
@@ -116,11 +118,20 @@ Page({
       mask: true
     });
     try {
-      const data = this.data.info;
-      await post(api.User.updateInfo, { ...data, avatar: '', birth: data.birth ? dayjs(data.birth + ' 00:00:00') : '' });
+      await post(api.User.updateInfo, { ...data, avatar: '' });
       this.showMessage('success', '更新成功');
-      await wait(1000);
-      wx.navigateBack();
+      const now = dayjs().format('YYYY-MM-DD HH:mm:ss');
+      this.setData({
+        recentUpdateTime: now
+      });
+      // await wait(1000);
+      // wx.navigateBack();
+      wx.navigateTo({
+        url: '/usercenterPackage/pages/usercenter/uc-info-update/share/index',
+        success: (res) => {
+          res.eventChannel.emit('acceptDataFromOpenerPage', { data: { ...this.data.info, updateTime: now } });
+        }
+      });
     } catch (error) {
       console.log(error);
       this.showMessage('error', '更新失败');
@@ -140,8 +151,14 @@ Page({
           token
         },
         success(res) {
+          if (res.statusCode !== 200) {
+            reject({
+              errMsg: '上传失败'
+            });
+            return;
+          }
           const _res = JSON.parse(res.data);
-          if (res.statusCode !== 200 || _res.status !== 200) {
+          if (_res.status !== 200) {
             reject({
               errMsg: '上传失败'
             });
@@ -186,13 +203,17 @@ Page({
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         acceptDataFromOpenedPage: async ({ data }) => {
           console.log(data);
-          const newAvatar = await this.uploadAvatar(data);
-          this.setData({
-            info: {
-              ...this.data.info,
-              photo: newAvatar
-            }
-          });
+          try {
+            const newAvatar = await this.uploadAvatar(data);
+            this.setData({
+              info: {
+                ...this.data.info,
+                photo: newAvatar
+              }
+            });
+          } catch (error) {
+            this.showMessage('error', '上传失败');
+          }
         }
       }
     });
