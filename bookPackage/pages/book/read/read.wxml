@@ -41,7 +41,7 @@
       <view class="read-button ghost" bind:tap="toggleReading">{{isReading ? '暂停' : '继续'}}</view>
       <view class="read-button" data-go="{{3}}" bind:tap="updateStep">点读结束</view>
     </view>
-    <view class="read-tip">点击后结束点读</view>
+    <!-- <view class="read-tip">点击后结束点读</view> -->
     <view class="read-subtip">温馨提示：请勿关闭/退出小程序</view>
   </pager>
   <!-- 音乐 popup -->
