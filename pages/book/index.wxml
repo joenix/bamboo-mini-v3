@@ -34,7 +34,7 @@
         </view>
         <view class="book-entries-button">
           <text>完整榜单</text>
-          <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
+          <image src="http://oss.lhdd.club/ui/arrow.png" class="arrow-icon" mode="widthFix" />
         </view>
       </view>
     </t-col>
@@ -46,7 +46,7 @@
         </view>
         <view class="book-entries-button">
           <text>开始学习</text>
-          <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
+          <image src="http://oss.lhdd.club/ui/arrow.png" class="arrow-icon" mode="widthFix" />
         </view>
       </view>
     </t-col>
@@ -68,7 +68,7 @@
           今天已有 <text>{{ item.read_count }}</text> 人完成点读
           <view class="book-entries-button-large" data-item="{{item}}" bind:tap="onButtonTap" style="opacity: {{isToday ? 1 : 0.3}}">
             <text class="text">{{ !item.active ? "暂未激活" : "开始点读" }} </text>
-            <image src="/assets/arrow.png" class="arrow-icon" mode="widthFix" />
+            <image src="http://oss.lhdd.club/ui/arrow.png" class="arrow-icon" mode="widthFix" />
           </view>
         </view>
       </view>

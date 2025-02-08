@@ -20,9 +20,9 @@ function debounce(fn, interval) {
 }
 
 function throttle(fn, interval) {
-  var enterTime = 0;//触发的时间
-  var gapTime = interval || 300 ;
-  return function(...agrs) {
+  var enterTime = 0; //触发的时间
+  var gapTime = interval || 300;
+  return function (...agrs) {
     var context = this;
     var backTime = Date.now();
     if (backTime - enterTime > gapTime) {
@@ -115,7 +115,7 @@ Page({
 
   onLoad() {
     wx.getImageInfo({
-      src: '/assets/banner1.png',
+      src: 'http://oss.lhdd.club/ui/banner1.png',
       success(res) {
         console.log(res);
       }
@@ -446,7 +446,7 @@ Page({
     }
     const id = this.data.currentTabId;
     const allContent = this.data.tempContent || this.data.content;
-    const filterContent = getFilterContent(allContent[id], searchContent)
+    const filterContent = getFilterContent(allContent[id], searchContent);
     this.setData({
       content: {
         ...this.data.content,
@@ -455,14 +455,18 @@ Page({
     });
   },
   onSearchChange(e) {
-    this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
-      return Boolean(pinyinMatch(item.name[1], searchContent));
-    }))
+    this.baseSearchChange(e, (content, searchContent) =>
+      content.filter((item) => {
+        return Boolean(pinyinMatch(item.name[1], searchContent));
+      })
+    );
   },
   onSearchChange2(e) {
-    this.baseSearchChange(e, (content, searchContent) => content.filter((item) => {
-      return Boolean(pinyinMatch(item.name, searchContent));
-    }))
+    this.baseSearchChange(e, (content, searchContent) =>
+      content.filter((item) => {
+        return Boolean(pinyinMatch(item.name, searchContent));
+      })
+    );
   },
   onIndexSelect(e) {
     const index = e.target.dataset.index;

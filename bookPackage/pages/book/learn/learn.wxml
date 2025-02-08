@@ -2,14 +2,5 @@
 <!-- 自定义nav -->
 <custom-nav title="学习视频" background="transparent" />
 <view class="main">
-  <view class="title">01.点读注意事项</view>
-  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
-  <view class="title">02.基础版指法教学</view>
-  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
-  <view class="title">03.进阶版指法教学</view>
-  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
-  <view class="title">04.拍按摩指法教学</view>
-  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
-  <view class="title">05.点读收工视频</view>
-  <video class="video" src="https://oss.lhdd.club/video/read_finger_demo.mp4"></video>
+  <view>图文内容，敬请期待~</view>
 </view>
