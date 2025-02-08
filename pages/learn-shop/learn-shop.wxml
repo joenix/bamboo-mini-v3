@@ -1,4 +1,4 @@
 <custom-nav title="学习商城" showBack="{{false}}" background="transparent" />
 <pager>
-  <view class="card-theme">暂未开放</view>
+  <view class="card-theme">即将开放，敬请期待</view>
 </pager>
