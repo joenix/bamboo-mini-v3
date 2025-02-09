@@ -11,7 +11,7 @@ Page({
     },
     isDisposed: false,
     // profileData: []
-    marks: ['心心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得心得得心得心得心得心得心得心得心得', '心得心得心得心得心得心得心得']
+    marks: []
   },
   async getUserReport() {
     wx.showLoading({
@@ -133,8 +133,8 @@ Page({
       content
     });
   },
-  onReady() {
-    // this.getUserReport();
+  onLoad() {
+    this.getReadMark();
   },
   onHide() {
     if (this.chart) {
@@ -154,8 +154,8 @@ Page({
   },
   async getReadMark() {
     const userInfo = wx.getStorageSync('userInfo');
-    const data = await post(api.User.getReadMark, {
-      id: userInfo.id
+    const data = await post(api.Book.getBookExp, {
+      userid: userInfo.id
     });
     console.log(data);
     this.setData({ marks: data });

@@ -1,7 +1,7 @@
 /* pages/usercenter/suggest/suggest.wxss */
 page {
   height: 100vh;
-  /* background: #f9f8f6; */
+  background: #FFF;
 }
 
 .echarts-container, ec-canvas {

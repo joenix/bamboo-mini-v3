@@ -5,7 +5,10 @@
 <view class="container">
   <t-tabs defaultValue="{{0}}" bind:change="onTabsChange">
     <t-tab-panel label="点读心得" value="0">
-      <view class="marks">
+      <view style="margin-top: 100px" wx:if="{{marks.length === 0}}">
+        <empty />
+      </view>
+      <view class="marks" wx:else>
         <view class="mark-item" wx:for="{{marks}}" wx:key="index">{{item}}</view>
       </view>
     </t-tab-panel>

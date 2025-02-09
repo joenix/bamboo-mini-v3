@@ -53,7 +53,8 @@ export const api = {
     create: '/book/create',
     update: '/book/update',
     getall: '/book/get_all',
-    getBookInfo: '/book/get_book_info'
+    getBookInfo: '/book/get_book_info',
+    getBookExp: '/book/get_all_exp'
   },
   // 导航
   Banner: {
