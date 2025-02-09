@@ -1,6 +1,6 @@
 /* pages/book/book.wxss */
 page {
-  background: linear-gradient(180deg, #E0D4BB 0%, rgba(224, 212, 187, 0) 484rpx, #F9F8F6 100%) no-repeat;
+  background: linear-gradient(180deg, #e0d4bb 0%, rgba(224, 212, 187, 0) 484rpx, #f9f8f6 100%) no-repeat;
 }
 
 .book-container {
@@ -20,8 +20,7 @@ page {
   height: 116rpx;
   padding-left: 12rpx;
   border-radius: 8rpx 8rpx 0 0;
-  background:
-    #926523 url(https://oss.lhdd.club/ui/ui_calendar.png) right 68rpx top no-repeat;
+  background: #926523 url(https://oss.lhdd.club/ui/ui_calendar.png) right 68rpx top no-repeat;
   background-size: 332rpx 124rpx;
 }
 
@@ -103,7 +102,7 @@ page {
 }
 
 .t-calendar__dates-item--selected {
-  background: #EEE8DC;
+  background: #eee8dc;
 }
 
 .t-calendar__dates-item.is-readed::after {
@@ -112,7 +111,7 @@ page {
   right: 0;
   transform: translate3d(8rpx, -8rpx, 0);
   content: '';
-  color: #FFF;
+  color: #fff;
   font-size: 12rpx;
   text-align: center;
   line-height: 20rpx;
@@ -125,12 +124,12 @@ page {
 
 .t-calendar__dates-item.saturday:not(.t-calendar__dates-item--selected):not(.t-calendar__dates-item--disabled),
 .t-calendar__dates-item.saturday:not(.t-calendar__dates-item--selected):not(.t-calendar__dates-item--disabled) .t-calendar__dates-item-suffix {
-  color: #259C5F;
+  color: #259c5f;
 }
 
 .t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected):not(.t-calendar__dates-item--disabled),
 .t-calendar__dates-item.sunday:not(.t-calendar__dates-item--selected):not(.t-calendar__dates-item--disabled) .t-calendar__dates-item-suffix {
-  color: #E44A38;
+  color: #e44a38;
 }
 
 .book-entries {
@@ -140,7 +139,7 @@ page {
 .book-entries-block {
   background: #fff url(https://oss.lhdd.club/ui/book-entries-3.png) right top no-repeat;
   background-size: 400rpx 164rpx;
-  border: 1px solid #CBBA9F;
+  border: 1px solid #cbba9f;
   margin-bottom: 20rpx;
   padding: 20rpx;
 }
@@ -212,7 +211,7 @@ page {
 
 .book-entries-total {
   font-size: 24rpx;
-  color: #B3ABA0;
+  color: #b3aba0;
 }
 
 .book-entries-affix {
@@ -230,7 +229,7 @@ page {
   font-size: 20rpx;
 }
 
-.book-entries-affix>text {
+.book-entries-affix > text {
   display: inline-block;
   padding: 0 8rpx;
   border-radius: 48rpx;
@@ -271,8 +270,8 @@ page {
   height: 96rpx;
   line-height: 96rpx;
   text-align: center;
-  color: #FFF;
-  background: #C0975A;
+  color: #fff;
+  background: #c0975a;
   border-radius: 4rpx;
 }
 
