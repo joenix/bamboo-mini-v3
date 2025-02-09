@@ -17,7 +17,7 @@ Page({
   onLoad() {
     this.widget = this.selectComponent('.widget');
     const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on('acceptDataFromOpenerPage', function ({ data }) {
+    eventChannel.on('acceptDataFromOpenerPage', ({ data }) => {
       console.log(data);
       this.setData({ info: data });
     });
