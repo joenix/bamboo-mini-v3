@@ -26,7 +26,7 @@
   </view>
 
   <t-row gutter="10" class="book-entries">
-    <t-col span="24">
+    <t-col span="12">
       <view class="book-entries-block" bind:tap="link_ranking" style="background-image: url(https://oss.lhdd.club/ui/book-entries-1.png);">
         <view class="book-entries-title">点读排名</view>
         <view class="book-entries-text">
@@ -38,7 +38,7 @@
         </view>
       </view>
     </t-col>
-    <!-- 过审临时注释
+    <!-- 过审临时注释 -->
     <t-col span="12">
       <view class="book-entries-block" bind:tap="startLearn" style="background-image: url(https://oss.lhdd.club/ui/book-entries-2.png);">
         <view class="book-entries-title">六合竹简</view>
@@ -51,7 +51,6 @@
         </view>
       </view>
     </t-col>
-    -->
   </t-row>
   <view class="book-entries-block" wx:for="{{listData}}" wx:key="index">
     <view class="flex-block">

@@ -107,7 +107,7 @@ Page({
 
   onShow() {
     this.getTabBar().init();
-    const baseContent = ['添加六合融道官方微信公众号，传播国学智慧'];
+    const baseContent = ['添加【六合融道】官方微信公众号，传播国学智慧'];
     const lastCheckedDate = wx.getStorageSync('lastCheckedDate');
     this.setData({
       noticeContent: today === lastCheckedDate ? baseContent : baseContent.concat('记得完成每日签到和每日任务哟')
