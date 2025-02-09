@@ -154,10 +154,25 @@ Page({
   },
   async getReadMark() {
     const userInfo = wx.getStorageSync('userInfo');
-    const data = await post(api.Book.getBookExp, {
-      userid: userInfo.id
+    wx.showLoading({
+      title: '加载中',
+      mask: true
     });
-    console.log(data);
-    this.setData({ marks: data });
+    this.setData({
+      marks: []
+    });
+    try {
+      const res = await post(api.Book.getBookExp, {
+        userid: userInfo.id
+      });
+      console.log(res);
+      const data = res.data?.[0] || [];
+      this.setData({ marks: data.map((v) => ({ ...v, createdAtUi: dayjs(v.createdAt).format('YYYY/MM/DD HH:mm:ss') })) });
+    } catch (error) {
+      console.log(error);
+      this.showMessage('error', '获取数据失败');
+    } finally {
+      wx.hideLoading();
+    }
   }
 });
