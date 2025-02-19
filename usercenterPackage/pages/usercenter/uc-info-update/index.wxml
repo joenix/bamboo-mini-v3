@@ -19,7 +19,7 @@
     <t-input value="{{info.age}}" borderless placeholder="年龄" align="right" data-name="age" readonly="{{true}}" disabled>
       <view slot="label" class="custom-label">年龄</view>
     </t-input>
-    <t-input value="{{info.career}}" borderless placeholder="请输入职业" align="right" data-name="career" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">
+    <t-input value="{{info.career}}" borderless placeholder="请输入职业" align="right" data-name="career" bind:change="onInput" adjust-position cursor-color="#C0975A">
       <view slot="label">职业</view>
     </t-input>
     <t-input value="{{info.leftEyes}}" borderless placeholder="请输入左眼视力" align="right" data-name="leftEyes" bind:change="onInput" type="digit" adjust-position cursor-color="#C0975A">
