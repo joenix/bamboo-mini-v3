@@ -40,7 +40,7 @@
             <t-col span="12" wx:for="{{item.data}}" wx:key="idx" wx:for-index="idx" data-item="{{item}}" offset="{{index === 0 ? 6 : 0}}">
               <blocker vertical="{{true}}" center="{{true}}" class="card-theme-infos" data-id="{{item.id}}" bind:tap="link_team">
                 <view class="mound">{{item.content[3]}}</view>
-                <t-avatar class="avatar" image="{{item.img[0].link}}" size="large" />
+                <t-avatar class="avatar" image="{{item.img}}" size="large" />
                 <view class="name">{{item.name}}</view>
                 <view class="gender">
                   <text>{{item.content[0] ? '女' : '男'}}</text>

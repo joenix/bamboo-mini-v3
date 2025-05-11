@@ -9,11 +9,11 @@ export default [
     text: '点读',
     url: 'pages/book/index'
   },
-  {
-    icon: 'tips',
-    text: '学习商城',
-    url: 'pages/learn-shop/learn-shop'
-  },
+  // {
+  //   icon: 'tips',
+  //   text: '学习商城',
+  //   url: 'pages/learn-shop/learn-shop'
+  // },
   {
     icon: 'user',
     text: '我的',

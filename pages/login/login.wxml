@@ -17,7 +17,7 @@
 
     <blocker background="transparent">
       <view class="login-btn-entry" bind:tap="doLogin"></view>
-      <text class="login-btn-tip">关注公众号xxxxxxx，获取最新学习资讯</text>
+      <text class="login-btn-tip">关注公众号【六合融道】，获取更多资讯</text>
     </blocker>
 
     <view class="login-slogan">让天下没有难读的书，让天下没有难教的孩子</view>

@@ -86,7 +86,7 @@
         </view>
         <view class="read-result-tip">本次点读总时长</view>
         <view class="input-box">
-          <view style="line-height: 68rpx;">累计点读{{readRecordInfo.times}}遍，总时长{{totalTimeUi}}</view>
+          <view style="line-height: 68rpx;">累计点读 {{readRecordInfo.times}} 遍，总时长 {{totalTimeUi}}</view>
           <!-- <t-input value="{{resultTimes}}" type="number" align="left" suffix="遍" placeholder="请输入点读遍数" bind:change="onResultTimesChange" cursor-color="#C0975A" /> -->
         </view>
         <view class="textarea-box">

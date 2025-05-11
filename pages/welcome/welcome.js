@@ -1,3 +1,5 @@
+import { checkToken, api, get, post, link2 } from '../../utils/util';
+
 // pages/welcome/welcome.js
 Page({
   data: {
@@ -53,7 +55,7 @@ Page({
       });
   },
 
-  onLoad() {
+  async onLoad() {
     this.preloadImage([
       {
         key: 'bgImage',
@@ -64,6 +66,15 @@ Page({
         src: 'http://oss.vue-scaff.com/lhdd/title.png'
       }
     ]);
+
+    // Test Code
+    console.log('》》》》》开始测试《《《《《');
+    let response = await post(`/admin/users/get_all`, {
+      page: 1,
+      pageSize: 10
+    });
+
+    console.log('用户', response);
   },
 
   start() {

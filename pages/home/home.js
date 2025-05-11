@@ -155,7 +155,16 @@ Page({
       return;
     }
 
-    let { data } = await post(api.Information.getall, {
+    let link = api.Information.getall;
+
+    switch (id) {
+      case '1':
+        link = api.Information.teach_getall;
+      case '2':
+        link = api.Information.school_getall;
+    }
+
+    let { data } = await post(link, {
       filters: [
         {
           key: 'type',

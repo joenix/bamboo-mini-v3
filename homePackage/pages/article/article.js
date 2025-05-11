@@ -23,7 +23,7 @@ Page({
       // Image
       .replace(/<img/gi, '<img style="max-width: 100%; margin: .75rem 0 .25rem;"')
       // Part
-      .replace(/<p/gi, '<p style="text-align: justify; margin: .75rem 0 .25rem; color: #363636;');
+      .replace(/<p/gi, '<p style="text-align: justify; margin: .75rem 0 .25rem; color: #363636;"');
 
     this.setData({ article });
   }

@@ -46,6 +46,8 @@ export const api = {
     create: '/infomation/create',
     update: '/infomation/update',
     getall: '/infomation/get_all',
+    teach_getall: '/admin/teach/get_all',
+    school_getall: '/admin/school/get_all',
     detail: '/infomation/get_id'
   },
   // 图书
