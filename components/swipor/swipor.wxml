@@ -4,7 +4,7 @@
       <swiper-item wx:for-index="index" class="swipor-item {{current === index ? 'active' : ''}}" style="{{swiporStyles}}">
         <view class="swipor-item-content">
           <navigator hover-class='none' open-type="navigate" url="/pages/article/article?article={{item.remark}}" class="swipor-item-inner">
-            <image mode="aspectFill" class="swipor-image" src="{{item.img[0] ? item.img[0].link : ''}}"></image>
+            <image mode="aspectFill" class="swipor-image" src="{{item.img}}"></image>
             <view class="swipor-context">
               <text class="swipor-title">{{item.name}}</text>
               <rich-text nodes="{{item.content}}"></rich-text>

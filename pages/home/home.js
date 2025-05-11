@@ -157,12 +157,16 @@ Page({
 
     let link = api.Information.getall;
 
+    console.log(160, id);
+
     switch (id) {
       case '1':
-        link = api.Information.teach_getall;
+      // link = api.Information.teach_getall;
       case '2':
-        link = api.Information.school_getall;
+      // link = api.Information.school_getall;
     }
+
+    console.log(169, link);
 
     let { data } = await post(link, {
       filters: [

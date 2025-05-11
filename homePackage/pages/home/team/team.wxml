@@ -3,7 +3,7 @@
 <pager class="teacher">
   <t-row>
     <t-col span="6">
-      <t-avatar class="teacher-avatar" image="{{teacher.img[0].link}}" size="large" />
+      <t-avatar class="teacher-avatar" image="{{teacher.img}}" size="large" />
     </t-col>
     <t-col span="18">
       <view class="teacher-title">{{teacher.title}}</view>

@@ -4,7 +4,7 @@
 <pager class="org">
   <t-row>
     <t-col span="6">
-      <t-image src="{{org.img[0].link}}" class="org-avatar" mode="aspectFill" width="72" height="72" />
+      <t-image src="{{org.img}}" class="org-avatar" mode="aspectFill" width="72" height="72" />
     </t-col>
     <t-col span="18">
       <view class="org-title">{{org.title[1]}}</view>

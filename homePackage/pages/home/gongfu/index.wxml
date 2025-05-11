@@ -5,7 +5,7 @@
   <t-row gutter="10">
     <t-col span="12" wx:for="{{list}}" wx:key="index" data-item="{{item}}" data-index="{{index}}" data-id="{{item.id}}" bind:tap="link_detail">
       <view class="item">
-        <t-image class="item-poster" src="{{item.img[0].link}}" mode="aspectFill" width="56" height="80" />
+        <t-image class="item-poster" src="{{item.img}}" mode="aspectFill" width="56" height="80" />
         <view class="right">
           <view class="item-title">{{item.name}}</view>
           <view class="item-content">
