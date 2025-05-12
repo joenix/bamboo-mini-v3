@@ -67,19 +67,46 @@ Page({
       }
     ]);
 
-    // Test Code
-    console.log('》》》》》开始测试《《《《《');
-    let response = await post(`/admin/users/get_all`, {
-      page: 1,
-      pageSize: 10
-    });
+    try {
+      // 1. Login for Get Code
+      const { code } = await new Promise((resolve, reject) => wx.login({ success: resolve, fail: reject }));
 
-    console.log('用户', response);
+      // 2. Code To Session
+      const { session_key, openid } = await post('/wx/login', { code });
+
+      // 3. Cache into Storage
+      wx.setStorageSync('session_key', session_key);
+      wx.setStorageSync('openid', openid);
+    } catch (e) {
+      console.log('Login Error:', e);
+    }
   },
 
-  start() {
-    wx.switchTab({
-      url: '/pages/home/home' // 跳转到首页
+  async onGetPhoneNumber(e) {
+    if (e.detail.errMsg === 'getPhoneNumber:ok') {
+      const session_key = wx.getStorageSync('session_key');
+      const openid = wx.getStorageSync('openid');
+
+      const { purePhoneNumber: mobile } = await post('/wx/phone', {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        session_key
+      });
+
+      const token = await post('/wx/mnp_login', { mobile, openid });
+      wx.setStorageSync('token', token);
+
+      wx.switchTab({
+        url: '/pages/home/home' // 跳转到首页
+      });
+
+      return;
+    }
+
+    wx.showToast({
+      title: '登录失败',
+      icon: 'none',
+      duration: 3000
     });
   }
 });

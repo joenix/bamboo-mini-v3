@@ -137,13 +137,15 @@ const get = (url, data = {}, options = {}) => {
       },
       success: (res) => {
         const data = res.data;
-        if (res.statusCode === 401) {
-          wx.navigateTo({
-            url: '/pages/login/login'
-          });
+        const status = res.status || res.statusCode;
+
+        if (status === 401) {
+          // wx.navigateTo({
+          //   url: '/pages/login/login'
+          // });
           return reject(data.error);
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg);
+        return status === 200 ? resolve(data.msg || data) : reject(data);
       },
       fail: (error) => reject(error)
     });
@@ -164,17 +166,17 @@ const post = async (url, data = {}, options = {}) => {
       },
       success: (res) => {
         const data = res.data;
-        if (res.statusCode === 401) {
-          wx.navigateTo({
-            url: '/pages/login/login'
-          });
+        const status = res.status || res.statusCode;
+
+        if (status === 401) {
+          // wx.navigateTo({
+          //   url: '/pages/login/login'
+          // });
           return reject(data.error);
         }
-        return data.status === 200 ? resolve(data.msg) : reject(data.error || data.msg);
+        return status === 200 ? resolve(data.msg || data) : reject(data);
       },
-      fail: (error) => {
-        reject(error);
-      }
+      fail: (error) => reject(error)
     });
   });
 };
