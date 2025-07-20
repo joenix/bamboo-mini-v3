@@ -1,13 +1,12 @@
 // homePackage/pages/home/share/index.js
-import { api, post, link2 } from '../../../../utils/util';
+import { api, post, link2, formatTime } from '../../../../utils/util';
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    list:[]
+    list: []
   },
 
   /**
@@ -38,6 +37,7 @@ Page({
       if (/\,/.test(item.content)) {
         item.content = item.content.split(',');
       }
+      item.updatedAt = formatTime(item.updatedAt, 'YYYY年MM月DD日');
       return item;
     });
     const list = this.data.list;
@@ -51,5 +51,5 @@ Page({
     link2('/homePackage/pages/home/share/detail/index', {
       id
     });
-  },
-})
+  }
+});

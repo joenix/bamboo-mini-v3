@@ -8,6 +8,7 @@
   </view>
   <liner side="{{false}}" />
   <blocker shadow="{{false}}" class="org-content">
-    <rich-text class="org-rich" nodes="{{data.remark}}"></rich-text>
+    <view class="org-content-title">{{data.name}}</view>
+    <rich-text class="org-rich" nodes="{{data.content}}"></rich-text>
   </blocker>
 </pager>

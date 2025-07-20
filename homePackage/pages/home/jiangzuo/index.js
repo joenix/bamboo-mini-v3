@@ -1,9 +1,9 @@
 // homePackage/pages/home/jiangzuo/index.js
-import { api, post, link2 } from '../../../../utils/util';
+import { api, post, link2, formatTime } from '../../../../utils/util';
 
 Page({
   data: {
-    list:[]
+    list: []
   },
   onLoad(options) {
     this.init();
@@ -11,7 +11,7 @@ Page({
   onPullDownRefresh() {
     this.init();
   },
-  async init(id = "6") {
+  async init(id = '6') {
     if (!id) {
       return;
     }
@@ -30,8 +30,10 @@ Page({
       if (/\,/.test(item.content)) {
         item.content = item.content.split(',');
       }
+      item.updatedAt = formatTime(item.updatedAt, 'YYYY年MM月DD日');
       return item;
     });
+
     const list = this.data.list;
     this.setData({
       list: list.concat(newContent)
@@ -43,5 +45,5 @@ Page({
     link2('/homePackage/pages/home/jiangzuo/detail/index', {
       id
     });
-  },
-})
+  }
+});

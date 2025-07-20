@@ -89,7 +89,8 @@ Page({
     wx.removeStorageSync('token');
     wx.removeStorageSync('userInfo');
     wx.navigateTo({
-      url: '/pages/login/login'
+      // url: '/pages/login/login'
+      url: '/pages/welcome/welcome'
     });
   },
   async goToLogin() {
@@ -98,7 +99,8 @@ Page({
     const page = getCurrentPages().pop();
     wx.setStorageSync('loginRedirectUrl', `/${page.route}`);
     wx.redirectTo({
-      url: '/pages/login/login'
+      // url: '/pages/login/login'
+      url: '/pages/welcome/welcome'
     });
   },
   onEditTap() {

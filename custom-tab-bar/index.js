@@ -27,7 +27,8 @@ Component({
       if (!checkToken()) {
         wx.setStorageSync('loginRedirectUrl', `/${url}`);
         wx.navigateTo({
-          url: '/pages/login/login'
+          // url: '/pages/login/login'
+          url: '/pages/welcome/welcome'
         });
         return;
       }

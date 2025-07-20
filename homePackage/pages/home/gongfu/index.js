@@ -1,25 +1,17 @@
 // homePackage/pages/home/gongfu/index.js
-import { api, post, link2 } from '../../../../utils/util';
+import { api, post, link2, formatTime } from '../../../../utils/util';
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    list:[]
+    list: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
     this.init();
   },
   onPullDownRefresh() {
     this.init();
   },
-  async init(id = "5") {
+  async init(id = '5') {
     if (!id) {
       return;
     }
@@ -38,8 +30,10 @@ Page({
       if (/\,/.test(item.content)) {
         item.content = item.content.split(',');
       }
+      item.updatedAt = formatTime(item.updatedAt, 'YYYY年MM月DD日');
       return item;
     });
+
     const list = this.data.list;
     this.setData({
       list: list.concat(newContent)
@@ -51,5 +45,5 @@ Page({
     link2('/homePackage/pages/home/gongfu/detail/index', {
       id
     });
-  },
-})
+  }
+});

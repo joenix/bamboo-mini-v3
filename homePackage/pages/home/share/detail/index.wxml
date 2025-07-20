@@ -8,6 +8,6 @@
   </view>
   <liner side="{{false}}" />
   <blocker shadow="{{false}}" class="lesson-content">
-    <rich-text class="lesson-rich" nodes="{{data.remark}}"></rich-text>
+    <rich-text class="lesson-rich" nodes="{{data.content}}"></rich-text>
   </blocker>
 </pager>

@@ -9,10 +9,10 @@
         <view class="right">
           <view class="item-title">{{item.name}}</view>
           <view class="item-content">
-            <text class="item-name">{{item.content[0]}}</text>
+            <text class="item-name">{{item.updatedAt}}</text>
           </view>
           <view class="item-content">
-            <text>{{item.content[1]}}</text>
+            <text></text>
           </view>
         </view>
       </view>
