@@ -35,6 +35,7 @@ Page({
     // 1. 校验本地 OpenID
     const token = wx.getStorageSync('token');
     if (!token) {
+      return;
       return this.goToLogin();
     }
     // 2. 根据 Token 获取 User 数据

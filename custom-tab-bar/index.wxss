@@ -18,3 +18,22 @@
 .custom-tab-bar-wrapper .text {
   font-size: 20rpx;
 }
+
+.custom-blank {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+}
+
+.custom-blank-entry {
+  width: 532rpx;
+  height: 140rpx;
+  background: url(https://oss.lhdd.club/ui/btn-permission-red.png) center/cover no-repeat;
+}

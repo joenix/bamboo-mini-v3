@@ -1,4 +1,5 @@
 <view class="welcome-page-cover" wx:if="{{visible}}" style="background-image: url({{bgImage}})">
   <view class="welcome-logo"></view>
-  <button class="welcome-btn-entry" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber"></button>
+  <!-- <button class="welcome-btn-entry" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber"></button> -->
+  <button class="welcome-btn-entry" bindtap="switchToHome"></button>
 </view>
